@@ -1,0 +1,6 @@
+{
+  "name": "Eudossier - EU Commerce & Inventory Portal",
+  "description": "Eudossier European e-commerce demo with default Euro (€) transactions, multi-currency preview, GDPR compliance privacy suite, EU VAT calculation, and merchant inventory tools.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

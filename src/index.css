@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/**
+ * Harbour Light — CSS design tokens for Eudossier commerce demo.
+ * Aligned with parent project src/styles/tokens.css.
+ */
+:root {
+  --color-ink-50: #e8eef4;
+  --color-ink-100: #c5d3e0;
+  --color-ink-200: #8fa8c0;
+  --color-ink-500: #2a4a66;
+  --color-ink-700: #143049;
+  --color-ink-900: #0b1f33;
+  --color-ink-950: #071421;
+
+  --color-paper-0: #ffffff;
+  --color-paper-50: #f5f7fa;
+  --color-paper-100: #ebeff4;
+  --color-paper-200: #dce3ec;
+
+  --color-accent-50: #f0fdfa;
+  --color-accent-100: #ccfbf1;
+  --color-accent-200: #99f6e4;
+  --color-accent-500: #14b8a6;
+  --color-accent-600: #0f766e;
+  --color-accent-700: #0d5f59;
+  --color-accent-800: #0a4a46;
+
+  --font-display: "Outfit", system-ui, sans-serif;
+  --font-sans: "Source Sans 3", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  body {
+    background-color: var(--color-ink-950);
+    color: var(--color-paper-50);
+  }
+}
