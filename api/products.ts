@@ -1,7 +1,17 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createProduct, listProducts } from '../src/server/products-repository';
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+function errorMessage(err: unknown): string {
+  if (err instanceof Error && err.message) return err.message;
+  return 'Failed to load catalogue from Neon';
+}
+
+export default async function handler(
+  req: { method?: string; body?: unknown },
+  res: {
+    status: (code: number) => { json: (body: unknown) => unknown };
+    setHeader: (name: string, value: string) => void;
+  }
+) {
   try {
     if (req.method === 'GET') {
       const products = await listProducts();
@@ -9,7 +19,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     if (req.method === 'POST') {
-      const product = await createProduct(req.body || {});
+      const product = await createProduct((req.body as object) || {});
       return res.status(201).json(product);
     }
 
@@ -17,6 +27,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   } catch (err) {
     console.error('Products API error:', err);
-    return res.status(500).json({ error: 'Failed to load catalogue from Neon' });
+    return res.status(500).json({ error: errorMessage(err) });
   }
 }

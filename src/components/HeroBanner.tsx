@@ -1,16 +1,33 @@
 import React from 'react';
-import { ShieldCheck, Truck, Sparkles, ArrowRight, Euro } from 'lucide-react';
+import { ShieldCheck, Truck, ArrowRight, Euro } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 
 export const HeroBanner: React.FC = () => {
   const { selectedCountry, setIsLocalizationModalOpen, setIsGDPRModalOpen, setViewMode } = useStore();
 
   return (
-    <div className="relative bg-gradient-to-br from-[var(--color-ink-950)] via-[var(--color-ink-900)] to-[var(--color-ink-700)] text-white overflow-hidden border-b border-[var(--color-ink-700)]">
-      
-      {/* Subtle background glow */}
-      <div className="absolute -top-24 -right-24 w-96 h-96 bg-[var(--color-accent-600)]/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-[var(--color-ink-500)]/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div className="relative text-white overflow-hidden border-b border-[var(--color-ink-700)]">
+      <div className="absolute inset-0">
+        <img
+          src="/hero-eu-regulations.png"
+          alt=""
+          className="h-full w-full object-cover object-[center_40%]"
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-[var(--color-ink-950)] via-[var(--color-ink-950)]/88 to-[var(--color-ink-950)]/45"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink-950)] via-[var(--color-ink-950)]/35 to-transparent"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-[var(--color-accent-800)]/35 via-transparent to-amber-500/15"
+          aria-hidden
+        />
+      </div>
+      <div className="absolute -top-24 left-0 w-96 h-96 bg-[var(--color-accent-600)]/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 right-0 w-[28rem] h-[28rem] bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -48,7 +65,7 @@ export const HeroBanner: React.FC = () => {
             {/* Feature Highlights Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
               
-              <div className="bg-slate-800/60 border border-slate-700/70 rounded-xl p-3 flex items-start space-x-2.5">
+              <div className="bg-slate-950/55 backdrop-blur-md border border-white/10 rounded-xl p-3 flex items-start space-x-2.5">
                 <div className="p-2 bg-[var(--color-accent-600)]/20 text-[var(--color-accent-500)] rounded-lg shrink-0">
                   <Euro className="w-4 h-4" />
                 </div>
@@ -58,7 +75,7 @@ export const HeroBanner: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-slate-800/60 border border-slate-700/70 rounded-xl p-3 flex items-start space-x-2.5">
+              <div className="bg-slate-950/55 backdrop-blur-md border border-white/10 rounded-xl p-3 flex items-start space-x-2.5">
                 <div className="p-2 bg-emerald-600/20 text-emerald-400 rounded-lg shrink-0">
                   <ShieldCheck className="w-4 h-4" />
                 </div>
@@ -68,7 +85,7 @@ export const HeroBanner: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-slate-800/60 border border-slate-700/70 rounded-xl p-3 flex items-start space-x-2.5">
+              <div className="bg-slate-950/55 backdrop-blur-md border border-white/10 rounded-xl p-3 flex items-start space-x-2.5">
                 <div className="p-2 bg-indigo-600/20 text-indigo-400 rounded-lg shrink-0">
                   <Truck className="w-4 h-4" />
                 </div>
@@ -83,7 +100,7 @@ export const HeroBanner: React.FC = () => {
           </div>
 
           {/* Right Info Card: Localized EU Summary */}
-          <div className="lg:col-span-4 bg-slate-800/80 border border-slate-700/90 rounded-2xl p-5 shadow-xl space-y-4">
+          <div className="lg:col-span-4 bg-slate-950/60 backdrop-blur-md border border-white/10 rounded-2xl p-5 shadow-xl space-y-4">
             
             <div className="flex items-center justify-between pb-3 border-b border-slate-700/60">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Your EU Delivery Profile</span>

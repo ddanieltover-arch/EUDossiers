@@ -1,4 +1,5 @@
 import { Product, WarehouseStock } from '../types';
+import { localCatalogueImages, withLocalCatalogueImages } from '../data/catalogueAssets';
 import { getSql } from './db';
 
 type ProductRow = {
@@ -24,7 +25,7 @@ type ProductRow = {
 };
 
 export function mapProductRow(row: ProductRow): Product {
-  return {
+  return withLocalCatalogueImages({
     id: row.id,
     sku: row.sku,
     name: row.name,
@@ -45,7 +46,7 @@ export function mapProductRow(row: ProductRow): Product {
     supplierName: row.supplier_name,
     tags: row.tags ?? [],
     lastRestocked: row.last_restocked,
-  };
+  });
 }
 
 export async function ensureProductsTable(): Promise<void> {
@@ -78,7 +79,6 @@ export async function ensureProductsTable(): Promise<void> {
 }
 
 export async function listProducts(): Promise<Product[]> {
-  await ensureProductsTable();
   const sql = getSql();
   const rows = await sql`
     SELECT *
@@ -103,6 +103,7 @@ export async function getProductById(id: string): Promise<Product | null> {
 }
 
 async function insertProduct(product: Product): Promise<Product> {
+  const localProduct = withLocalCatalogueImages(product);
   const sql = getSql();
   const rows = await sql`
     INSERT INTO products (
@@ -111,25 +112,25 @@ async function insertProduct(product: Product): Promise<Product> {
       image_url, gallery_images, total_stock, low_stock_threshold,
       warehouses, vat_rate_category, weight_kg, supplier_name, tags, last_restocked
     ) VALUES (
-      ${product.id},
-      ${product.sku},
-      ${product.name},
-      ${product.category},
-      ${product.description},
-      ${product.priceEUR},
-      ${product.originalPriceEUR ?? null},
-      ${product.originCountry},
-      ${product.originFlag},
-      ${product.imageUrl},
-      ${JSON.stringify(product.galleryImages ?? [])}::jsonb,
-      ${product.totalStock},
-      ${product.lowStockThreshold},
-      ${JSON.stringify(product.warehouses ?? [])}::jsonb,
-      ${product.vatRateCategory},
-      ${product.weightKg},
-      ${product.supplierName},
-      ${JSON.stringify(product.tags ?? [])}::jsonb,
-      ${product.lastRestocked}
+      ${localProduct.id},
+      ${localProduct.sku},
+      ${localProduct.name},
+      ${localProduct.category},
+      ${localProduct.description},
+      ${localProduct.priceEUR},
+      ${localProduct.originalPriceEUR ?? null},
+      ${localProduct.originCountry},
+      ${localProduct.originFlag},
+      ${localProduct.imageUrl},
+      ${JSON.stringify(localProduct.galleryImages ?? [])}::jsonb,
+      ${localProduct.totalStock},
+      ${localProduct.lowStockThreshold},
+      ${JSON.stringify(localProduct.warehouses ?? [])}::jsonb,
+      ${localProduct.vatRateCategory},
+      ${localProduct.weightKg},
+      ${localProduct.supplierName},
+      ${JSON.stringify(localProduct.tags ?? [])}::jsonb,
+      ${localProduct.lastRestocked}
     )
     RETURNING *
   `;
@@ -224,6 +225,27 @@ export async function deleteProduct(id: string): Promise<boolean> {
   const sql = getSql();
   const rows = (await sql`DELETE FROM products WHERE id = ${id} RETURNING id`) as { id: string }[];
   return rows.length > 0;
+}
+
+export async function syncLocalCatalogueImageUrls(): Promise<number> {
+  const sql = getSql();
+  const rows = (await sql`SELECT id FROM products`) as { id: string }[];
+  let updated = 0;
+
+  for (const row of rows) {
+    const local = localCatalogueImages(row.id);
+    if (!local) continue;
+    await sql`
+      UPDATE products SET
+        image_url = ${local.imageUrl},
+        gallery_images = ${JSON.stringify(local.galleryImages)}::jsonb,
+        updated_at = NOW()
+      WHERE id = ${row.id}
+    `;
+    updated += 1;
+  }
+
+  return updated;
 }
 
 export async function applyStockChange(

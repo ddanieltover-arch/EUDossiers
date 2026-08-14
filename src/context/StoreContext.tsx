@@ -11,6 +11,7 @@ import {
   StockAdjustment 
 } from '../types';
 import { EU_COUNTRIES, SUPPORTED_CURRENCIES } from '../data/mockData';
+import { withLocalCatalogueImages } from '../data/catalogueAssets';
 import { EXPORT_PREFIX } from '../brand';
 
 interface StoreContextType {
@@ -141,7 +142,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       if (res.ok && contentType.includes('application/json')) {
         const data = await res.json();
         if (Array.isArray(data)) {
-          setProducts(data);
+          setProducts(data.map(withLocalCatalogueImages));
           return;
         }
       }
