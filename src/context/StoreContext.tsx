@@ -10,7 +10,7 @@ import {
   Order, 
   StockAdjustment 
 } from '../types';
-import { EU_COUNTRIES, SUPPORTED_CURRENCIES } from '../data/mockData';
+import { EU_COUNTRIES, SUPPORTED_CURRENCIES, INITIAL_PRODUCTS } from '../data/mockData';
 import { withLocalCatalogueImages } from '../data/catalogueAssets';
 import { EXPORT_PREFIX } from '../brand';
 
@@ -135,21 +135,22 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   }, []);
 
   const fetchProducts = async () => {
+    const localCatalogue = INITIAL_PRODUCTS.map(withLocalCatalogueImages);
     try {
       setIsLoadingProducts(true);
       const res = await fetch('/api/products');
       const contentType = res.headers.get('content-type') || '';
       if (res.ok && contentType.includes('application/json')) {
         const data = await res.json();
-        if (Array.isArray(data)) {
+        if (Array.isArray(data) && data.length > 0) {
           setProducts(data.map(withLocalCatalogueImages));
           return;
         }
       }
-      setProducts([]);
+      setProducts(localCatalogue);
     } catch (err) {
       console.error('Failed to fetch products:', err);
-      setProducts([]);
+      setProducts(localCatalogue);
     } finally {
       setIsLoadingProducts(false);
     }

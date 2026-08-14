@@ -1,5 +1,10 @@
 import { createProduct, listProducts } from '../src/server/products-repository';
 
+export const config = {
+  runtime: 'nodejs',
+  maxDuration: 15,
+};
+
 function errorMessage(err: unknown): string {
   if (err instanceof Error && err.message) return err.message;
   return 'Failed to load catalogue from Neon';
