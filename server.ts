@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express, { Request, Response } from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
@@ -12,9 +13,17 @@ import {
 } from './src/data/mockData';
 import { Product, StockAdjustment, Order, GDPRPreferences, ConsentLog, DSARPackage } from './src/types';
 import { SITE_NAME, EXPORT_PREFIX } from './src/brand';
+import {
+  applyStockChange,
+  createProduct,
+  deleteProduct,
+  getProductById,
+  listProducts,
+  seedProductsIfEmpty,
+  updateProduct,
+} from './src/server/products-repository';
 
-// In-memory data store for server session persistence
-let productsStore: Product[] = [...INITIAL_PRODUCTS];
+// In-memory data store for server session persistence (non-catalogue)
 let stockAdjustmentsStore: StockAdjustment[] = [...INITIAL_STOCK_ADJUSTMENTS];
 let ordersStore: Order[] = [...INITIAL_ORDERS];
 let userConsentPreferences: GDPRPreferences = { ...INITIAL_GDPR_PREFERENCES };
@@ -33,85 +42,99 @@ async function startServer() {
   const app = express();
   const PORT = Number(process.env.PORT) || 3001;
 
+  await seedProductsIfEmpty(INITIAL_PRODUCTS);
+
   app.use(express.json());
 
   // --- API ROUTES ---
 
-  // 1. PRODUCTS & INVENTORY
-  app.get('/api/products', (req: Request, res: Response) => {
-    res.json(productsStore);
-  });
-
-  app.post('/api/products', (req: Request, res: Response) => {
-    const newProduct: Product = {
-      ...req.body,
-      id: `prod-${Date.now()}`,
-      lastRestocked: new Date().toISOString().split('T')[0],
-    };
-    productsStore.unshift(newProduct);
-
-    // Log initial stock adjustment
-    const initialAdjustment: StockAdjustment = {
-      id: `adj-${Date.now()}`,
-      productId: newProduct.id,
-      productName: newProduct.name,
-      sku: newProduct.sku,
-      warehouseId: newProduct.warehouses[0]?.warehouseId || 'wh-fra',
-      warehouseName: newProduct.warehouses[0]?.warehouseName || 'Frankfurt Hub (DE-01)',
-      adjustmentType: 'RESTOCK',
-      quantityChange: newProduct.totalStock,
-      previousStock: 0,
-      newStock: newProduct.totalStock,
-      note: 'Initial catalog creation',
-      performedBy: 'Merchant Admin',
-      timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC',
-    };
-    stockAdjustmentsStore.unshift(initialAdjustment);
-
-    res.status(201).json(newProduct);
-  });
-
-  app.put('/api/products/:id', (req: Request, res: Response) => {
-    const { id } = req.params;
-    const index = productsStore.findIndex(p => p.id === id);
-    if (index === -1) {
-      return res.status(404).json({ error: 'Product not found' });
+  // 1. PRODUCTS & INVENTORY (Neon)
+  app.get('/api/products', async (_req: Request, res: Response) => {
+    try {
+      res.json(await listProducts());
+    } catch (err) {
+      console.error('Failed to load products from Neon:', err);
+      res.status(500).json({ error: 'Failed to load catalogue from Neon' });
     }
-    productsStore[index] = { ...productsStore[index], ...req.body };
-    res.json(productsStore[index]);
   });
 
-  app.delete('/api/products/:id', (req: Request, res: Response) => {
-    const { id } = req.params;
-    productsStore = productsStore.filter(p => p.id !== id);
-    res.json({ success: true, deletedId: id });
+  app.post('/api/products', async (req: Request, res: Response) => {
+    try {
+      const newProduct = await createProduct(req.body || {});
+
+      const initialAdjustment: StockAdjustment = {
+        id: `adj-${Date.now()}`,
+        productId: newProduct.id,
+        productName: newProduct.name,
+        sku: newProduct.sku,
+        warehouseId: newProduct.warehouses[0]?.warehouseId || 'wh-fra',
+        warehouseName: newProduct.warehouses[0]?.warehouseName || 'Frankfurt Hub (DE-01)',
+        adjustmentType: 'RESTOCK',
+        quantityChange: newProduct.totalStock,
+        previousStock: 0,
+        newStock: newProduct.totalStock,
+        note: 'Initial catalog creation',
+        performedBy: 'Merchant Admin',
+        timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC',
+      };
+      stockAdjustmentsStore.unshift(initialAdjustment);
+
+      res.status(201).json(newProduct);
+    } catch (err) {
+      console.error('Failed to create product in Neon:', err);
+      res.status(500).json({ error: 'Failed to create product' });
+    }
+  });
+
+  app.put('/api/products/:id', async (req: Request, res: Response) => {
+    try {
+      const { id } = req.params;
+      const updated = await updateProduct(id, req.body || {});
+      if (!updated) {
+        return res.status(404).json({ error: 'Product not found' });
+      }
+      res.json(updated);
+    } catch (err) {
+      console.error('Failed to update product in Neon:', err);
+      res.status(500).json({ error: 'Failed to update product' });
+    }
+  });
+
+  app.delete('/api/products/:id', async (req: Request, res: Response) => {
+    try {
+      const { id } = req.params;
+      const deleted = await deleteProduct(id);
+      if (!deleted) {
+        return res.status(404).json({ error: 'Product not found' });
+      }
+      res.json({ success: true, deletedId: id });
+    } catch (err) {
+      console.error('Failed to delete product in Neon:', err);
+      res.status(500).json({ error: 'Failed to delete product' });
+    }
   });
 
   // 2. STOCK ADJUSTMENTS
-  app.get('/api/inventory/adjustments', (req: Request, res: Response) => {
+  app.get('/api/inventory/adjustments', (_req: Request, res: Response) => {
     res.json(stockAdjustmentsStore);
   });
 
-  app.post('/api/inventory/adjust', (req: Request, res: Response) => {
+  app.post('/api/inventory/adjust', async (req: Request, res: Response) => {
     const { productId, warehouseId, quantityChange, adjustmentType, note, performedBy } = req.body;
-    
-    const product = productsStore.find(p => p.id === productId);
+
+    const existing = await getProductById(productId);
+    if (!existing) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    const previousStock = existing.totalStock;
+    const product = await applyStockChange(productId, warehouseId, Number(quantityChange));
     if (!product) {
       return res.status(404).json({ error: 'Product not found' });
     }
 
-    const previousStock = product.totalStock;
-    const newTotalStock = Math.max(0, previousStock + Number(quantityChange));
-    product.totalStock = newTotalStock;
-
-    // Update warehouse stock if found
-    let warehouse = product.warehouses.find(w => w.warehouseId === warehouseId);
-    if (!warehouse && product.warehouses.length > 0) {
-      warehouse = product.warehouses[0];
-    }
-    if (warehouse) {
-      warehouse.quantity = Math.max(0, warehouse.quantity + Number(quantityChange));
-    }
+    const warehouse =
+      product.warehouses.find((w) => w.warehouseId === warehouseId) || product.warehouses[0];
 
     const newAdjustment: StockAdjustment = {
       id: `adj-${Date.now()}`,
@@ -123,7 +146,7 @@ async function startServer() {
       adjustmentType,
       quantityChange: Number(quantityChange),
       previousStock,
-      newStock: newTotalStock,
+      newStock: product.totalStock,
       note: note || `${adjustmentType} manual stock adjustment`,
       performedBy: performedBy || 'Inventory Manager',
       timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC',
@@ -133,59 +156,59 @@ async function startServer() {
     res.json({ product, adjustment: newAdjustment });
   });
 
-  app.post('/api/inventory/import', (req: Request, res: Response) => {
+  app.post('/api/inventory/import', async (req: Request, res: Response) => {
     const { items } = req.body;
     if (!Array.isArray(items)) {
       return res.status(400).json({ error: 'Items must be an array' });
     }
 
     let updatedCount = 0;
-    items.forEach((item: Partial<Product>) => {
-      if (!item.sku) return;
-      const existing = productsStore.find(p => p.sku === item.sku);
-      if (existing) {
-        if (typeof item.totalStock === 'number') existing.totalStock = item.totalStock;
-        if (typeof item.priceEUR === 'number') existing.priceEUR = item.priceEUR;
-        updatedCount++;
-      }
-    });
+    for (const item of items as Partial<Product>[]) {
+      if (!item.sku) continue;
+      const catalogue = await listProducts();
+      const existing = catalogue.find((p) => p.sku === item.sku);
+      if (!existing) continue;
+      await updateProduct(existing.id, {
+        totalStock: typeof item.totalStock === 'number' ? item.totalStock : existing.totalStock,
+        priceEUR: typeof item.priceEUR === 'number' ? item.priceEUR : existing.priceEUR,
+      });
+      updatedCount += 1;
+    }
 
     res.json({ success: true, updatedCount });
   });
 
   // 3. ORDERS & CHECKOUT (TRANSACTIONS IN EURO BY DEFAULT)
-  app.get('/api/orders', (req: Request, res: Response) => {
+  app.get('/api/orders', (_req: Request, res: Response) => {
     res.json(ordersStore);
   });
 
-  app.post('/api/orders', (req: Request, res: Response) => {
+  app.post('/api/orders', async (req: Request, res: Response) => {
     const { customerName, customerEmail, destinationCountry, items, subtotalEUR, vatAmountEUR, vatRate, shippingFeeEUR, totalEUR, paidCurrency, paidCurrencySymbol, paidAmountConverted, exchangeRateUsed, gdprConsentRecorded } = req.body;
 
-    // Deduct stock for each item ordered
-    items.forEach((item: { productId: string; quantity: number }) => {
-      const product = productsStore.find(p => p.id === item.productId);
-      if (product) {
-        const prev = product.totalStock;
-        product.totalStock = Math.max(0, product.totalStock - item.quantity);
-        
-        // Log sale adjustment
-        stockAdjustmentsStore.unshift({
-          id: `adj-${Date.now()}-${item.productId}`,
-          productId: product.id,
-          productName: product.name,
-          sku: product.sku,
-          warehouseId: product.warehouses[0]?.warehouseId || 'wh-fra',
-          warehouseName: product.warehouses[0]?.warehouseName || 'Frankfurt Hub (DE-01)',
-          adjustmentType: 'SALE',
-          quantityChange: -item.quantity,
-          previousStock: prev,
-          newStock: product.totalStock,
-          note: `Order auto-deduction (Ref: EU-ORD-${Date.now().toString().slice(-5)})`,
-          performedBy: 'System Auto Checkout',
-          timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC',
-        });
-      }
-    });
+    for (const item of items as { productId: string; quantity: number }[]) {
+      const product = await getProductById(item.productId);
+      if (!product) continue;
+      const prev = product.totalStock;
+      const updated = await applyStockChange(item.productId, product.warehouses[0]?.warehouseId, -item.quantity);
+      if (!updated) continue;
+
+      stockAdjustmentsStore.unshift({
+        id: `adj-${Date.now()}-${item.productId}`,
+        productId: product.id,
+        productName: product.name,
+        sku: product.sku,
+        warehouseId: product.warehouses[0]?.warehouseId || 'wh-fra',
+        warehouseName: product.warehouses[0]?.warehouseName || 'Frankfurt Hub (DE-01)',
+        adjustmentType: 'SALE',
+        quantityChange: -item.quantity,
+        previousStock: prev,
+        newStock: updated.totalStock,
+        note: `Order auto-deduction (Ref: EU-ORD-${Date.now().toString().slice(-5)})`,
+        performedBy: 'System Auto Checkout',
+        timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC',
+      });
+    }
 
     const newOrder: Order = {
       id: `EU-ORD-${Math.floor(10000 + Math.random() * 90000)}`,
