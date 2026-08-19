@@ -23,7 +23,7 @@ export async function notifyOrderPlaced(order: Order): Promise<void> {
   const customer = customerOrderConfirmationEmail(order);
   const admin = adminNewOrderEmail(order);
 
-  await Promise.all([
+  const [customerResult, adminResult] = await Promise.all([
     isValidEmail(order.customerEmail)
       ? sendBrandedEmail({
           to: order.customerEmail,
@@ -31,7 +31,7 @@ export async function notifyOrderPlaced(order: Order): Promise<void> {
           html: customer.html,
           text: customer.text,
         })
-      : Promise.resolve(),
+      : Promise.resolve({ ok: false as const, error: 'Invalid customer email' }),
     sendBrandedEmail({
       to: getAdminNotifyEmail(),
       subject: admin.subject,
@@ -40,6 +40,13 @@ export async function notifyOrderPlaced(order: Order): Promise<void> {
       replyTo: isValidEmail(order.customerEmail) ? order.customerEmail : undefined,
     }),
   ]);
+
+  if (!customerResult.ok) {
+    console.error('Customer order confirmation email failed:', customerResult.error);
+  }
+  if (!adminResult.ok) {
+    console.error('Admin new-order email failed:', adminResult.error);
+  }
 }
 
 export async function notifyOrderUpdated(
@@ -49,7 +56,7 @@ export async function notifyOrderUpdated(
   const customer = customerOrderUpdateEmail(order, previousStatus);
   const admin = adminOrderUpdateEmail(order, previousStatus);
 
-  await Promise.all([
+  const [customerResult, adminResult] = await Promise.all([
     isValidEmail(order.customerEmail)
       ? sendBrandedEmail({
           to: order.customerEmail,
@@ -57,7 +64,7 @@ export async function notifyOrderUpdated(
           html: customer.html,
           text: customer.text,
         })
-      : Promise.resolve(),
+      : Promise.resolve({ ok: false as const, error: 'Invalid customer email' }),
     sendBrandedEmail({
       to: getAdminNotifyEmail(),
       subject: admin.subject,
@@ -66,6 +73,13 @@ export async function notifyOrderUpdated(
       replyTo: isValidEmail(order.customerEmail) ? order.customerEmail : undefined,
     }),
   ]);
+
+  if (!customerResult.ok) {
+    console.error('Customer order update email failed:', customerResult.error);
+  }
+  if (!adminResult.ok) {
+    console.error('Admin order update email failed:', adminResult.error);
+  }
 }
 
 export async function notifyContactMessage(input: {

@@ -88,9 +88,11 @@ export async function createCheckoutOrder(
 
   await insertOrder(order);
 
-  notifyOrderPlaced(order).catch((err) => {
+  try {
+    await notifyOrderPlaced(order);
+  } catch (err) {
     console.error('Order placed email failed:', err);
-  });
+  }
 
   return order;
 }
@@ -121,9 +123,11 @@ export async function patchCheckoutOrder(
     (allowed.customerEmail && allowed.customerEmail !== existing.customerEmail);
 
   if (statusChanged || detailsChanged) {
-    notifyOrderUpdated(updated, previousStatus).catch((err) => {
+    try {
+      await notifyOrderUpdated(updated, previousStatus);
+    } catch (err) {
       console.error('Order update email failed:', err);
-    });
+    }
   }
 
   return updated;

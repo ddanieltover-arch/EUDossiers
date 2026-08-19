@@ -11516,13 +11516,13 @@ function isValidEmail(value) {
 async function notifyOrderUpdated(order, previousStatus) {
   const customer = customerOrderUpdateEmail(order, previousStatus);
   const admin = adminOrderUpdateEmail(order, previousStatus);
-  await Promise.all([
+  const [customerResult, adminResult] = await Promise.all([
     isValidEmail(order.customerEmail) ? sendBrandedEmail({
       to: order.customerEmail,
       subject: customer.subject,
       html: customer.html,
       text: customer.text
-    }) : Promise.resolve(),
+    }) : Promise.resolve({ ok: false, error: "Invalid customer email" }),
     sendBrandedEmail({
       to: getAdminNotifyEmail(),
       subject: admin.subject,
@@ -11531,6 +11531,12 @@ async function notifyOrderUpdated(order, previousStatus) {
       replyTo: isValidEmail(order.customerEmail) ? order.customerEmail : void 0
     })
   ]);
+  if (!customerResult.ok) {
+    console.error("Customer order update email failed:", customerResult.error);
+  }
+  if (!adminResult.ok) {
+    console.error("Admin order update email failed:", adminResult.error);
+  }
 }
 
 // src/server/orders-service.ts
@@ -11550,9 +11556,11 @@ async function patchCheckoutOrder(id, patch) {
   const statusChanged = previousStatus !== updated.status;
   const detailsChanged = allowed.customerName && allowed.customerName !== existing.customerName || allowed.customerEmail && allowed.customerEmail !== existing.customerEmail;
   if (statusChanged || detailsChanged) {
-    notifyOrderUpdated(updated, previousStatus).catch((err) => {
+    try {
+      await notifyOrderUpdated(updated, previousStatus);
+    } catch (err) {
       console.error("Order update email failed:", err);
-    });
+    }
   }
   return updated;
 }

@@ -11650,13 +11650,13 @@ function isValidEmail(value) {
 async function notifyOrderPlaced(order) {
   const customer = customerOrderConfirmationEmail(order);
   const admin = adminNewOrderEmail(order);
-  await Promise.all([
+  const [customerResult, adminResult] = await Promise.all([
     isValidEmail(order.customerEmail) ? sendBrandedEmail({
       to: order.customerEmail,
       subject: customer.subject,
       html: customer.html,
       text: customer.text
-    }) : Promise.resolve(),
+    }) : Promise.resolve({ ok: false, error: "Invalid customer email" }),
     sendBrandedEmail({
       to: getAdminNotifyEmail(),
       subject: admin.subject,
@@ -11665,6 +11665,12 @@ async function notifyOrderPlaced(order) {
       replyTo: isValidEmail(order.customerEmail) ? order.customerEmail : void 0
     })
   ]);
+  if (!customerResult.ok) {
+    console.error("Customer order confirmation email failed:", customerResult.error);
+  }
+  if (!adminResult.ok) {
+    console.error("Admin new-order email failed:", adminResult.error);
+  }
 }
 
 // src/server/orders-service.ts
@@ -11723,9 +11729,11 @@ async function createCheckoutOrder(input, recordAdjustment) {
     gdprConsentRecorded: !!input.gdprConsentRecorded
   };
   await insertOrder(order);
-  notifyOrderPlaced(order).catch((err) => {
+  try {
+    await notifyOrderPlaced(order);
+  } catch (err) {
     console.error("Order placed email failed:", err);
-  });
+  }
   return order;
 }
 
