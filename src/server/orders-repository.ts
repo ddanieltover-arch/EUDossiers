@@ -65,7 +65,7 @@ export async function insertOrder(order: Order): Promise<Order> {
   const sql = getSql();
   await sql`
     INSERT INTO store_orders (id, payload)
-    VALUES (${order.id}, ${asJson(order)}::jsonb)
+    VALUES (${order.id}, ${JSON.stringify(order)}::jsonb)
   `;
   return order;
 }

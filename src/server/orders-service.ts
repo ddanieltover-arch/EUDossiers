@@ -31,31 +31,35 @@ export async function createCheckoutOrder(
   recordAdjustment?: StockAdjustmentRecorder
 ): Promise<Order> {
   for (const item of input.items) {
-    const product = await getProductById(item.productId);
-    if (!product) continue;
-    const prev = product.totalStock;
-    const updated = await applyStockChange(
-      item.productId,
-      product.warehouses[0]?.warehouseId,
-      -item.quantity
-    );
-    if (!updated) continue;
+    try {
+      const product = await getProductById(item.productId);
+      if (!product) continue;
+      const prev = product.totalStock;
+      const updated = await applyStockChange(
+        item.productId,
+        product.warehouses?.[0]?.warehouseId,
+        -item.quantity
+      );
+      if (!updated) continue;
 
-    recordAdjustment?.({
-      id: `adj-${Date.now()}-${item.productId}`,
-      productId: product.id,
-      productName: product.name,
-      sku: product.sku,
-      warehouseId: product.warehouses[0]?.warehouseId || 'wh-fra',
-      warehouseName: product.warehouses[0]?.warehouseName || 'Frankfurt Hub (DE-01)',
-      adjustmentType: 'SALE',
-      quantityChange: -item.quantity,
-      previousStock: prev,
-      newStock: updated.totalStock,
-      note: `Order auto-deduction (Ref: ${item.sku})`,
-      performedBy: 'System Auto Checkout',
-      timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC',
-    });
+      recordAdjustment?.({
+        id: `adj-${Date.now()}-${item.productId}`,
+        productId: product.id,
+        productName: product.name,
+        sku: product.sku,
+        warehouseId: product.warehouses[0]?.warehouseId || 'wh-fra',
+        warehouseName: product.warehouses[0]?.warehouseName || 'Frankfurt Hub (DE-01)',
+        adjustmentType: 'SALE',
+        quantityChange: -item.quantity,
+        previousStock: prev,
+        newStock: updated.totalStock,
+        note: `Order auto-deduction (Ref: ${item.sku})`,
+        performedBy: 'System Auto Checkout',
+        timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC',
+      });
+    } catch (err) {
+      console.error(`Stock deduction failed for ${item.productId}:`, err);
+    }
   }
 
   const order: Order = {

@@ -497,6 +497,9 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         fetchConsentLogs(); // Refresh logs
         return newOrder;
       }
+
+      const data = await res.json().catch(() => ({}));
+      console.error('Failed to place order:', res.status, data);
     } catch (err) {
       console.error('Failed to place order:', err);
     }
