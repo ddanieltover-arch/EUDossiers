@@ -1,59 +1,26 @@
-import React from 'react';
-import { CheckCircle2, Download, ShieldCheck, FileText, ArrowRight, X, Euro } from 'lucide-react';
+import React, { useState } from 'react';
+import { CheckCircle2, Download, ShieldCheck, ArrowRight, X } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
-import { SITE_NAME, LEGAL_NAME, ADDRESS_LINE, EXPORT_PREFIX } from '../brand';
+import { downloadOfficialEuInvoice } from '../utils/generateInvoicePdf';
 
 export const OrderSuccessModal: React.FC = () => {
   const { currentCompletedOrder, setCurrentCompletedOrder, formatPriceEUR } = useStore();
+  const [isDownloading, setIsDownloading] = useState(false);
 
   if (!currentCompletedOrder) return null;
 
   const order = currentCompletedOrder;
 
-  const downloadInvoiceText = () => {
-    const invoiceContent = `=====================================================
-            ${SITE_NAME.toUpperCase()} - OFFICIAL EU TAX INVOICE
-=====================================================
-Invoice Ref: ${order.id}
-Date: ${new Date(order.createdAt).toLocaleString()}
-Customer Name: ${order.customerName}
-Customer Email: ${order.customerEmail}
-Destination EU Country: ${order.destinationCountry}
-GDPR Compliance Status: Consent Recorded (Art. 6 Regulation EU 2016/679)
-
------------------------------------------------------
-ORDER ITEMS (ALL PRICES SETTLED IN EUR)
------------------------------------------------------
-${order.items.map(item => `${item.name} (${item.sku})
-  Qty: ${item.quantity} x ${item.unitPriceEUR.toFixed(2)} EUR = ${item.totalPriceEUR.toFixed(2)} EUR`).join('\n\n')}
-
------------------------------------------------------
-TAX & FINANCIAL BREAKDOWN
------------------------------------------------------
-Subtotal: ${order.subtotalEUR.toFixed(2)} EUR
-EU Country VAT (${(order.vatRate * 100).toFixed(0)}%): ${order.vatAmountEUR.toFixed(2)} EUR
-Shipping Fee: ${order.shippingFeeEUR.toFixed(2)} EUR
------------------------------------------------------
-TOTAL AMOUNT SETTLED (EUR): ${order.totalEUR.toFixed(2)} EUR
------------------------------------------------------
-Display Reference: ${order.paidAmountConverted.toFixed(2)} ${order.paidCurrency} (Fx Rate: ${order.exchangeRateUsed})
-
-Primary Server Node: Frankfurt Hub (EU-West)
-Seller: ${LEGAL_NAME}, ${ADDRESS_LINE}
-VAT ID: DE000000000
-
-Thank you for supporting European artisans & craftsmen.
-=====================================================`;
-
-    const blob = new Blob([invoiceContent], { type: 'text/plain;charset=utf-8' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `Invoice_${order.id}_${EXPORT_PREFIX}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    window.URL.revokeObjectURL(url);
-    document.body.removeChild(a);
+  const handleDownloadInvoice = async () => {
+    if (isDownloading) return;
+    setIsDownloading(true);
+    try {
+      await downloadOfficialEuInvoice(order);
+    } catch (err) {
+      console.error('Failed to generate invoice PDF:', err);
+    } finally {
+      setIsDownloading(false);
+    }
   };
 
   return (
@@ -83,6 +50,23 @@ Thank you for supporting European artisans & craftsmen.
             <span>Customer: <strong className="text-[var(--color-text-primary)]">{order.customerName}</strong></span>
             <span>Destination: <strong className="text-[var(--color-text-primary)]">{order.destinationCountry}</strong></span>
           </div>
+          <div className="space-y-1 text-[var(--color-text-muted)]">
+            <div>Email: <strong className="text-[var(--color-text-primary)]">{order.customerEmail}</strong></div>
+            {order.customerPhone && (
+              <div>Phone: <strong className="text-[var(--color-text-primary)]">{order.customerPhone}</strong></div>
+            )}
+            {order.customerAddress && (
+              <div>Address: <strong className="text-[var(--color-text-primary)]">{order.customerAddress}</strong></div>
+            )}
+            {order.paymentMethod && (
+              <div>
+                Payment:{' '}
+                <strong className="text-[var(--color-text-primary)]">
+                  {order.paymentMethod === 'crypto' ? 'Cryptocurrency' : 'Bank Transfer'}
+                </strong>
+              </div>
+            )}
+          </div>
 
           <div className="space-y-2 py-1 max-h-36 overflow-y-auto custom-scrollbar">
             {order.items.map((it, idx) => (
@@ -98,6 +82,12 @@ Thank you for supporting European artisans & craftsmen.
               <span>EU VAT ({(order.vatRate * 100).toFixed(0)}%):</span>
               <span className="text-[var(--color-text-secondary)]">{formatPriceEUR(order.vatAmountEUR)}</span>
             </div>
+            {order.cryptoDiscountEUR && order.cryptoDiscountEUR > 0 && (
+              <div className="flex justify-between text-emerald-600">
+                <span>Crypto discount (5%):</span>
+                <span>-{formatPriceEUR(order.cryptoDiscountEUR)}</span>
+              </div>
+            )}
             <div className="flex justify-between items-baseline font-bold pt-1">
               <span className="text-[var(--color-text-primary)] text-sm">Settled EUR Total:</span>
               <span className="text-lg text-emerald-500">{formatPriceEUR(order.totalEUR)}</span>
@@ -120,11 +110,12 @@ Thank you for supporting European artisans & craftsmen.
 
         <div className="flex flex-col sm:flex-row gap-3">
           <button
-            onClick={downloadInvoiceText}
-            className="flex-1 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-bg-card-hover)] text-[var(--color-text-primary)] font-semibold text-xs py-3 rounded-xl border border-[var(--color-border)] flex items-center justify-center space-x-2 transition-all"
+            onClick={handleDownloadInvoice}
+            disabled={isDownloading}
+            className="flex-1 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-bg-card-hover)] disabled:opacity-60 text-[var(--color-text-primary)] font-semibold text-xs py-3 rounded-xl border border-[var(--color-border)] flex items-center justify-center space-x-2 transition-all"
           >
             <Download className="w-4 h-4 text-blue-500" />
-            <span>Download Official EU Invoice</span>
+            <span>{isDownloading ? 'Preparing PDF…' : 'Download Official EU Invoice'}</span>
           </button>
 
           <button

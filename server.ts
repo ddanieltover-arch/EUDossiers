@@ -5,13 +5,12 @@ import { createServer as createViteServer } from 'vite';
 import { 
   INITIAL_PRODUCTS, 
   INITIAL_STOCK_ADJUSTMENTS, 
-  INITIAL_ORDERS, 
   INITIAL_GDPR_PREFERENCES, 
   INITIAL_CONSENT_LOGS, 
   SUPPORTED_CURRENCIES, 
   EU_COUNTRIES 
 } from './src/data/mockData';
-import { Product, StockAdjustment, Order, GDPRPreferences, ConsentLog, DSARPackage } from './src/types';
+import { Product, StockAdjustment, GDPRPreferences, ConsentLog, DSARPackage } from './src/types';
 import { SITE_NAME, EXPORT_PREFIX } from './src/brand';
 import {
   applyStockChange,
@@ -22,10 +21,21 @@ import {
   seedProductsIfEmpty,
   updateProduct,
 } from './src/server/products-repository';
+import {
+  deleteOrderById,
+  listOrders,
+  seedOrdersIfEmpty,
+  updateOrderById,
+} from './src/server/orders-repository';
+import {
+  createCheckoutOrder,
+  parseContactPayload,
+  patchCheckoutOrder,
+} from './src/server/orders-service';
+import { notifyAdminGdpr, notifyContactMessage } from './src/server/email/notifications';
 
 // In-memory data store for server session persistence (non-catalogue)
 let stockAdjustmentsStore: StockAdjustment[] = [...INITIAL_STOCK_ADJUSTMENTS];
-let ordersStore: Order[] = [...INITIAL_ORDERS];
 let userConsentPreferences: GDPRPreferences = { ...INITIAL_GDPR_PREFERENCES };
 let consentLogsStore: ConsentLog[] = [...INITIAL_CONSENT_LOGS];
 
@@ -43,6 +53,7 @@ async function startServer() {
   const PORT = Number(process.env.PORT) || 3001;
 
   await seedProductsIfEmpty(INITIAL_PRODUCTS);
+  await seedOrdersIfEmpty();
 
   app.use(express.json());
 
@@ -179,69 +190,119 @@ async function startServer() {
   });
 
   // 3. ORDERS & CHECKOUT (TRANSACTIONS IN EURO BY DEFAULT)
-  app.get('/api/orders', (_req: Request, res: Response) => {
-    res.json(ordersStore);
+  app.get('/api/orders', async (_req: Request, res: Response) => {
+    try {
+      res.json(await listOrders());
+    } catch (err) {
+      console.error('Failed to load orders:', err);
+      res.status(500).json({ error: 'Failed to load orders' });
+    }
   });
 
   app.post('/api/orders', async (req: Request, res: Response) => {
-    const { customerName, customerEmail, destinationCountry, items, subtotalEUR, vatAmountEUR, vatRate, shippingFeeEUR, totalEUR, paidCurrency, paidCurrencySymbol, paidAmountConverted, exchangeRateUsed, gdprConsentRecorded } = req.body;
+    try {
+      const {
+        customerName,
+        customerEmail,
+        customerPhone,
+        customerAddress,
+        destinationCountry,
+        paymentMethod,
+        items,
+        subtotalEUR,
+        vatAmountEUR,
+        vatRate,
+        shippingFeeEUR,
+        cryptoDiscountEUR,
+        totalEUR,
+        paidCurrency,
+        paidCurrencySymbol,
+        paidAmountConverted,
+        exchangeRateUsed,
+        gdprConsentRecorded,
+      } = req.body;
 
-    for (const item of items as { productId: string; quantity: number }[]) {
-      const product = await getProductById(item.productId);
-      if (!product) continue;
-      const prev = product.totalStock;
-      const updated = await applyStockChange(item.productId, product.warehouses[0]?.warehouseId, -item.quantity);
-      if (!updated) continue;
+      if (!customerName || !customerEmail || !Array.isArray(items) || items.length === 0) {
+        return res.status(400).json({ error: 'Customer name, email, and at least one item are required' });
+      }
 
-      stockAdjustmentsStore.unshift({
-        id: `adj-${Date.now()}-${item.productId}`,
-        productId: product.id,
-        productName: product.name,
-        sku: product.sku,
-        warehouseId: product.warehouses[0]?.warehouseId || 'wh-fra',
-        warehouseName: product.warehouses[0]?.warehouseName || 'Frankfurt Hub (DE-01)',
-        adjustmentType: 'SALE',
-        quantityChange: -item.quantity,
-        previousStock: prev,
-        newStock: updated.totalStock,
-        note: `Order auto-deduction (Ref: EU-ORD-${Date.now().toString().slice(-5)})`,
-        performedBy: 'System Auto Checkout',
-        timestamp: new Date().toISOString().replace('T', ' ').substring(0, 19) + ' UTC',
+      const newOrder = await createCheckoutOrder(
+        {
+          customerName,
+          customerEmail,
+          customerPhone,
+          customerAddress,
+          destinationCountry,
+          paymentMethod,
+          items,
+          subtotalEUR,
+          vatAmountEUR,
+          vatRate,
+          shippingFeeEUR,
+          cryptoDiscountEUR,
+          totalEUR,
+          paidCurrency,
+          paidCurrencySymbol,
+          paidAmountConverted,
+          exchangeRateUsed,
+          gdprConsentRecorded,
+        },
+        (adjustment) => stockAdjustmentsStore.unshift(adjustment)
+      );
+
+      consentLogsStore.unshift({
+        id: `log-${Date.now()}`,
+        timestamp: new Date().toISOString(),
+        action: 'Transaction Executed (EUR Default)',
+        ipAddressHash: userProfile.ipHash,
+        details: `Order ${newOrder.id} placed for ${newOrder.totalEUR.toFixed(2)} EUR (Display ref: ${newOrder.paidAmountConverted.toFixed(2)} ${newOrder.paidCurrency}). GDPR consent confirmed.`,
       });
+
+      res.status(201).json(newOrder);
+    } catch (err) {
+      console.error('Failed to create order:', err);
+      res.status(500).json({ error: 'Failed to create order' });
     }
+  });
 
-    const newOrder: Order = {
-      id: `EU-ORD-${Math.floor(10000 + Math.random() * 90000)}`,
-      customerName: customerName || userProfile.name,
-      customerEmail: customerEmail || userProfile.email,
-      destinationCountry,
-      items,
-      subtotalEUR,
-      vatAmountEUR,
-      vatRate,
-      shippingFeeEUR,
-      totalEUR, // Stored strictly in Euro for accounting
-      paidCurrency: paidCurrency || 'EUR',
-      paidCurrencySymbol: paidCurrencySymbol || '€',
-      paidAmountConverted: paidAmountConverted || totalEUR,
-      exchangeRateUsed: exchangeRateUsed || 1.0,
-      status: 'COMPLETED',
-      createdAt: new Date().toISOString(),
-      gdprConsentRecorded: !!gdprConsentRecorded,
-    };
+  app.patch('/api/orders/:id', async (req: Request, res: Response) => {
+    try {
+      const updated = await patchCheckoutOrder(req.params.id, req.body || {});
+      if (!updated) {
+        return res.status(404).json({ error: 'Order not found' });
+      }
+      res.json(updated);
+    } catch (err) {
+      console.error('Failed to update order:', err);
+      res.status(500).json({ error: 'Failed to update order' });
+    }
+  });
 
-    ordersStore.unshift(newOrder);
+  app.delete('/api/orders/:id', async (req: Request, res: Response) => {
+    try {
+      const deleted = await deleteOrderById(req.params.id);
+      if (!deleted) {
+        return res.status(404).json({ error: 'Order not found' });
+      }
+      res.json({ success: true, deletedId: req.params.id });
+    } catch (err) {
+      console.error('Failed to delete order:', err);
+      res.status(500).json({ error: 'Failed to delete order' });
+    }
+  });
 
-    // Audit consent log
-    consentLogsStore.unshift({
-      id: `log-${Date.now()}`,
-      timestamp: new Date().toISOString(),
-      action: 'Transaction Executed (EUR Default)',
-      ipAddressHash: userProfile.ipHash,
-      details: `Order ${newOrder.id} placed for ${newOrder.totalEUR.toFixed(2)} EUR (Display ref: ${newOrder.paidAmountConverted.toFixed(2)} ${newOrder.paidCurrency}). GDPR consent confirmed.`,
-    });
-
-    res.status(201).json(newOrder);
+  app.post('/api/contact', async (req: Request, res: Response) => {
+    const parsed = parseContactPayload(req.body);
+    if ('error' in parsed) {
+      return res.status(400).json({ error: parsed.error });
+    }
+    try {
+      await notifyContactMessage(parsed);
+      res.json({ success: true });
+    } catch (err) {
+      console.error('Failed to send contact emails:', err);
+      res.status(500).json({ error: 'Failed to send your message. Please try again or email us directly.' });
+    }
   });
 
   // 4. GDPR DATA PRIVACY ENDPOINTS
@@ -269,14 +330,15 @@ async function startServer() {
   });
 
   // DSAR: Data Subject Access Request (Download full personal data)
-  app.get('/api/gdpr/export', (req: Request, res: Response) => {
+  app.get('/api/gdpr/export', async (_req: Request, res: Response) => {
+    const orderHistory = await listOrders();
     const dsarBundle: DSARPackage = {
       generatedAt: new Date().toISOString(),
       gdprComplianceNotice: 'This document contains all personal data and processing activity recorded under Regulation (EU) 2016/679 (General Data Protection Regulation). All transaction ledgers are held in Euro (€).',
       userProfile,
       consentPreferences: userConsentPreferences,
       consentAuditTrail: consentLogsStore,
-      orderHistory: ordersStore,
+      orderHistory,
       dataStorageLocation: 'Frankfurt, Germany (EU West Primary Server - Cloud Run)',
     };
 
@@ -288,14 +350,17 @@ async function startServer() {
       details: 'Full JSON data package exported by data subject under GDPR Article 15.',
     });
 
+    notifyAdminGdpr(
+      'DSAR export requested',
+      `A data subject access request was fulfilled. ${orderHistory.length} order record(s) were included in the export package.`
+    ).catch((err) => console.error('GDPR DSAR email failed:', err));
+
     res.setHeader('Content-Type', 'application/json');
     res.setHeader('Content-Disposition', `attachment; filename="GDPR_Personal_Data_Export_${EXPORT_PREFIX}.json"`);
     res.json(dsarBundle);
   });
 
-  // RIGHT TO BE FORGOTTEN (Data Erasure under Article 17)
-  app.post('/api/gdpr/erasure', (req: Request, res: Response) => {
-    // Pseudonymize user profile & remove tracking logs
+  app.post('/api/gdpr/erasure', async (_req: Request, res: Response) => {
     userProfile = {
       name: 'Anonymized User',
       email: 'anonymized.gdpr@deleted.eu',
@@ -304,12 +369,17 @@ async function startServer() {
       ipHash: '00000***.anonymized',
     };
 
-    // Anonymize personal info on past orders while preserving accounting totals
-    ordersStore = ordersStore.map(ord => ({
-      ...ord,
-      customerName: 'Anonymized Customer (GDPR Art.17)',
-      customerEmail: 'anonymized@gdpr.eu',
-    }));
+    const existingOrders = await listOrders();
+    await Promise.all(
+      existingOrders.map((ord) =>
+        updateOrderById(ord.id, {
+          customerName: 'Anonymized Customer (GDPR Art.17)',
+          customerEmail: 'anonymized@gdpr.eu',
+          customerPhone: '',
+          customerAddress: '',
+        })
+      )
+    );
 
     userConsentPreferences = {
       essential: true,
@@ -329,6 +399,11 @@ async function startServer() {
     };
 
     consentLogsStore = [erasureLog];
+
+    notifyAdminGdpr(
+      'Right to be forgotten exercised',
+      'Identifiable customer records were pseudonymized under GDPR Article 17. Essential transaction totals were retained in EUR for tax compliance.'
+    ).catch((err) => console.error('GDPR erasure email failed:', err));
 
     res.json({
       success: true,

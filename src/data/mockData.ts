@@ -17,6 +17,7 @@ export const EU_COUNTRIES: EUCountryVAT[] = [
   { code: 'CZ', name: 'Czechia', flag: '🇨🇿', vatRate: 0.21, standardCurrency: 'CZK', language: 'Čeština' },
   { code: 'GR', name: 'Greece', flag: '🇬🇷', vatRate: 0.24, standardCurrency: 'EUR', language: 'Ελληνικά' },
   { code: 'CH', name: 'Switzerland', flag: '🇨🇭', vatRate: 0.081, standardCurrency: 'CHF', language: 'Deutsch / Français / Italiano' },
+  { code: 'GB', name: 'United Kingdom', flag: '🇬🇧', vatRate: 0.20, standardCurrency: 'GBP', language: 'English' },
 ];
 
 export const SUPPORTED_CURRENCIES: Currency[] = [
@@ -845,6 +846,9 @@ export const INITIAL_ORDERS: Order[] = [
     status: 'COMPLETED',
     createdAt: '2026-08-09T14:22:10Z',
     gdprConsentRecorded: true,
+    customerPhone: '+49 30 555 2101',
+    customerAddress: 'Unter den Linden 12, 10117 Berlin, Germany',
+    paymentMethod: 'bank',
   },
   {
     id: 'EU-ORD-88022',
@@ -873,7 +877,10 @@ export const INITIAL_ORDERS: Order[] = [
     status: 'COMPLETED',
     createdAt: '2026-08-10T09:15:30Z',
     gdprConsentRecorded: true,
-  }
+    customerPhone: '+33 1 42 86 8200',
+    customerAddress: '18 Rue de Rivoli, 75004 Paris, France',
+    paymentMethod: 'crypto',
+  },
 ];
 
 export const INITIAL_GDPR_PREFERENCES: GDPRPreferences = {

@@ -1,6 +1,6 @@
 export type Category = 'Passports' | 'Driver Licenses' | 'Identity Cards' | 'Residence Permits' | 'EU Visas';
 
-export type EUCountryCode = 'DE' | 'FR' | 'IT' | 'ES' | 'NL' | 'BE' | 'SE' | 'AT' | 'IE' | 'PL' | 'DK' | 'FI' | 'PT' | 'GR' | 'CZ' | 'CH';
+export type EUCountryCode = 'DE' | 'FR' | 'IT' | 'ES' | 'NL' | 'BE' | 'SE' | 'AT' | 'IE' | 'PL' | 'DK' | 'FI' | 'PT' | 'GR' | 'CZ' | 'CH' | 'GB';
 
 export interface EUCountryVAT {
   code: EUCountryCode;
@@ -95,16 +95,22 @@ export interface OrderItem {
   totalPriceEUR: number;
 }
 
+export type PaymentMethod = 'bank' | 'crypto';
+
 export interface Order {
   id: string;
   customerName: string;
   customerEmail: string;
+  customerPhone?: string;
+  customerAddress?: string;
   destinationCountry: EUCountryCode;
+  paymentMethod?: PaymentMethod;
   items: OrderItem[];
   subtotalEUR: number;
   vatAmountEUR: number;
   vatRate: number;
   shippingFeeEUR: number;
+  cryptoDiscountEUR?: number;
   totalEUR: number;
   // Multi-currency display info
   paidCurrency: string;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
   Box, 
   Plus, 
@@ -32,7 +32,8 @@ import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell, PieCha
 import { useStore } from '../../context/StoreContext';
 import { EXPORT_PREFIX } from '../../brand';
 import { Product, StockAdjustment, Category, Order } from '../../types';
-import { INITIAL_ORDERS, EU_COUNTRIES } from '../../data/mockData';
+import { EU_COUNTRIES } from '../../data/mockData';
+import { downloadOfficialEuInvoice } from '../../utils/generateInvoicePdf';
 
 export const InventoryPortal: React.FC = () => {
   const { 
@@ -46,7 +47,8 @@ export const InventoryPortal: React.FC = () => {
     orders,
     consentLogs,
     downloadDSARPackage,
-    downloadTaxInvoicePDF
+    updateOrder,
+    deleteOrder,
   } = useStore();
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -57,10 +59,14 @@ export const InventoryPortal: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'overview' | 'inventory' | 'orders' | 'privacy' | 'audit'>('overview');
 
   // Orders Ledger state
-  const combinedOrdersList = orders && orders.length > 0 ? orders : INITIAL_ORDERS;
-  const [orderList, setOrderList] = useState<Order[]>(combinedOrdersList);
+  const [orderList, setOrderList] = useState<Order[]>(orders);
   const [orderSearchTerm, setOrderSearchTerm] = useState('');
   const [orderStatusFilter, setOrderStatusFilter] = useState<string>('ALL');
+  const [orderSaving, setOrderSaving] = useState(false);
+
+  useEffect(() => {
+    setOrderList(orders);
+  }, [orders]);
 
   // Modal States
   const [adjustModalProduct, setAdjustModalProduct] = useState<Product | null>(null);
@@ -194,8 +200,12 @@ export const InventoryPortal: React.FC = () => {
     setNewSku('');
   };
 
-  const updateOrderStatus = (orderId: string, newStatus: 'COMPLETED' | 'PROCESSING' | 'CANCELLED') => {
-    setOrderList(prev => prev.map(o => o.id === orderId ? { ...o, status: newStatus } : o));
+  const updateOrderStatus = async (orderId: string, newStatus: 'COMPLETED' | 'PROCESSING' | 'CANCELLED') => {
+    const updated = await updateOrder(orderId, { status: newStatus });
+    if (updated) {
+      setOrderList(prev => prev.map(o => o.id === orderId ? updated : o));
+      setSelectedOrderForDetail(prev => prev?.id === orderId ? updated : prev);
+    }
   };
 
   const openEditOrder = (order: Order) => {
@@ -205,20 +215,28 @@ export const InventoryPortal: React.FC = () => {
     setEditOrderStatus(order.status);
   };
 
-  const saveEditOrder = () => {
-    if (!editingOrder) return;
-    setOrderList(prev => prev.map(o => o.id === editingOrder.id ? {
-      ...o,
+  const saveEditOrder = async () => {
+    if (!editingOrder || orderSaving) return;
+    setOrderSaving(true);
+    const updated = await updateOrder(editingOrder.id, {
       customerName: editOrderName,
       customerEmail: editOrderEmail,
       status: editOrderStatus,
-    } : o));
-    setEditingOrder(null);
+    });
+    setOrderSaving(false);
+    if (updated) {
+      setOrderList(prev => prev.map(o => o.id === editingOrder.id ? updated : o));
+      setSelectedOrderForDetail(prev => prev?.id === editingOrder.id ? updated : prev);
+      setEditingOrder(null);
+    }
   };
 
-  const deleteOrder = (orderId: string) => {
-    setOrderList(prev => prev.filter(o => o.id !== orderId));
-    setDeleteConfirmOrderId(null);
+  const removeOrder = async (orderId: string) => {
+    const ok = await deleteOrder(orderId);
+    if (ok) {
+      setOrderList(prev => prev.filter(o => o.id !== orderId));
+      setDeleteConfirmOrderId(null);
+    }
   };
 
   const exportInventoryCSV = () => {
@@ -1203,6 +1221,24 @@ export const InventoryPortal: React.FC = () => {
                   <span className="text-[var(--color-text-secondary)]">{selectedOrderForDetail.customerEmail}</span>
                 </div>
                 <div>
+                  <span className="text-[var(--color-text-muted)] font-semibold block">Phone</span>
+                  <span className="text-[var(--color-text-secondary)]">{selectedOrderForDetail.customerPhone || '—'}</span>
+                </div>
+                <div className="col-span-2">
+                  <span className="text-[var(--color-text-muted)] font-semibold block">Delivery Address</span>
+                  <span className="text-[var(--color-text-primary)]">{selectedOrderForDetail.customerAddress || '—'}</span>
+                </div>
+                <div>
+                  <span className="text-[var(--color-text-muted)] font-semibold block">Payment Method</span>
+                  <span className="text-[var(--color-text-primary)]">
+                    {selectedOrderForDetail.paymentMethod === 'crypto'
+                      ? 'Cryptocurrency'
+                      : selectedOrderForDetail.paymentMethod === 'bank'
+                        ? 'Bank Transfer'
+                        : '—'}
+                  </span>
+                </div>
+                <div>
                   <span className="text-[var(--color-text-muted)] font-semibold block">Destination</span>
                   <span className="text-[var(--color-text-primary)]">{EU_COUNTRIES.find(c => c.code === selectedOrderForDetail.destinationCountry)?.flag} {EU_COUNTRIES.find(c => c.code === selectedOrderForDetail.destinationCountry)?.name || selectedOrderForDetail.destinationCountry}</span>
                 </div>
@@ -1230,6 +1266,9 @@ export const InventoryPortal: React.FC = () => {
                 <div className="flex justify-between"><span className="text-[var(--color-text-muted)]">Subtotal</span><span className="text-[var(--color-text-primary)]">{formatPriceEUR(selectedOrderForDetail.subtotalEUR)}</span></div>
                 <div className="flex justify-between"><span className="text-[var(--color-text-muted)]">VAT ({(selectedOrderForDetail.vatRate * 100).toFixed(0)}%)</span><span className="text-[var(--color-text-primary)]">{formatPriceEUR(selectedOrderForDetail.vatAmountEUR)}</span></div>
                 <div className="flex justify-between"><span className="text-[var(--color-text-muted)]">Shipping</span><span className="text-[var(--color-text-primary)]">{selectedOrderForDetail.shippingFeeEUR === 0 ? 'Free' : formatPriceEUR(selectedOrderForDetail.shippingFeeEUR)}</span></div>
+                {selectedOrderForDetail.cryptoDiscountEUR && selectedOrderForDetail.cryptoDiscountEUR > 0 && (
+                  <div className="flex justify-between"><span className="text-[var(--color-text-muted)]">Crypto Discount (5%)</span><span className="text-emerald-400">-{formatPriceEUR(selectedOrderForDetail.cryptoDiscountEUR)}</span></div>
+                )}
                 <div className="flex justify-between font-bold text-sm pt-1 border-t border-[var(--color-border)]"><span className="text-[var(--color-text-primary)]">Total</span><span className="text-emerald-400">{formatPriceEUR(selectedOrderForDetail.totalEUR)}</span></div>
               </div>
 
@@ -1238,6 +1277,15 @@ export const InventoryPortal: React.FC = () => {
                   Paid in {selectedOrderForDetail.paidCurrencySymbol}{selectedOrderForDetail.paidAmountConverted.toFixed(2)} {selectedOrderForDetail.paidCurrency} (rate: {selectedOrderForDetail.exchangeRateUsed})
                 </div>
               )}
+
+              <div className="flex space-x-2 pt-2">
+                <button
+                  onClick={() => void downloadOfficialEuInvoice(selectedOrderForDetail)}
+                  className="flex-1 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-bg-card-hover)] text-[var(--color-text-primary)] font-semibold py-2.5 rounded-xl text-xs border border-[var(--color-border)]"
+                >
+                  Download invoice
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1271,7 +1319,7 @@ export const InventoryPortal: React.FC = () => {
               </div>
 
               <div className="flex space-x-2 pt-2">
-                <button onClick={saveEditOrder} className="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 rounded-xl text-xs transition-all shadow-md">Save Changes</button>
+                <button onClick={saveEditOrder} disabled={orderSaving} className="flex-1 bg-blue-600 hover:bg-blue-500 disabled:opacity-60 text-white font-bold py-2.5 rounded-xl text-xs transition-all shadow-md">{orderSaving ? 'Saving…' : 'Save Changes'}</button>
                 <button onClick={() => setEditingOrder(null)} className="flex-1 bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] font-semibold py-2.5 rounded-xl text-xs border border-[var(--color-border)]">Cancel</button>
               </div>
             </div>
@@ -1291,7 +1339,7 @@ export const InventoryPortal: React.FC = () => {
               <p className="text-xs text-[var(--color-text-muted)]">This will permanently remove order <span className="font-mono font-bold text-blue-400">{deleteConfirmOrderId}</span> from the ledger. This action cannot be undone.</p>
             </div>
             <div className="flex space-x-2">
-              <button onClick={() => deleteOrder(deleteConfirmOrderId)} className="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-bold py-2.5 rounded-xl text-xs transition-all">Yes, Delete</button>
+              <button onClick={() => removeOrder(deleteConfirmOrderId)} className="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-bold py-2.5 rounded-xl text-xs transition-all">Yes, Delete</button>
               <button onClick={() => setDeleteConfirmOrderId(null)} className="flex-1 bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] font-semibold py-2.5 rounded-xl text-xs border border-[var(--color-border)]">Cancel</button>
             </div>
           </div>

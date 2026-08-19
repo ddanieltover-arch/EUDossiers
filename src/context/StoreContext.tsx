@@ -67,7 +67,18 @@ interface StoreContextType {
 
   // Orders & Checkout
   orders: Order[];
-  placeOrder: (customerInfo: { name: string; email: string }) => Promise<Order | null>;
+  placeOrder: (customerInfo: {
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+    paymentMethod: 'bank' | 'crypto';
+  }) => Promise<Order | null>;
+  updateOrder: (
+    id: string,
+    patch: Partial<Pick<Order, 'customerName' | 'customerEmail' | 'status'>>
+  ) => Promise<Order | null>;
+  deleteOrder: (id: string) => Promise<boolean>;
   currentCompletedOrder: Order | null;
   setCurrentCompletedOrder: (order: Order | null) => void;
   isLocalizationModalOpen: boolean;
@@ -420,7 +431,13 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   };
 
   // Checkout Placement
-  const placeOrder = async (customerInfo: { name: string; email: string }): Promise<Order | null> => {
+  const placeOrder = async (customerInfo: {
+    name: string;
+    email: string;
+    phone: string;
+    address: string;
+    paymentMethod: 'bank' | 'crypto';
+  }): Promise<Order | null> => {
     if (cart.length === 0) return null;
 
     const itemsForOrder = cart.map(item => ({
@@ -432,18 +449,24 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       totalPriceEUR: item.product.priceEUR * item.quantity,
     }));
 
-    const convertedVal = cartTotalEUR * selectedCurrency.rateToEUR;
+    const cryptoDiscountEUR = customerInfo.paymentMethod === 'crypto' ? cartTotalEUR * 0.05 : 0;
+    const settledTotalEUR = cartTotalEUR - cryptoDiscountEUR;
+    const convertedVal = settledTotalEUR * selectedCurrency.rateToEUR;
 
     const orderPayload = {
       customerName: customerInfo.name,
       customerEmail: customerInfo.email,
+      customerPhone: customerInfo.phone,
+      customerAddress: customerInfo.address,
       destinationCountry: selectedCountry.code,
+      paymentMethod: customerInfo.paymentMethod,
       items: itemsForOrder,
       subtotalEUR: cartSubtotalEUR,
       vatAmountEUR: cartVATAmountEUR,
       vatRate: selectedCountry.vatRate,
       shippingFeeEUR: cartShippingFeeEUR,
-      totalEUR: cartTotalEUR, // Transactions recorded in Euro by default
+      cryptoDiscountEUR,
+      totalEUR: settledTotalEUR,
       paidCurrency: selectedCurrency.code,
       paidCurrencySymbol: selectedCurrency.symbol,
       paidAmountConverted: convertedVal,
@@ -472,6 +495,40 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       console.error('Failed to place order:', err);
     }
     return null;
+  };
+
+  const updateOrder = async (
+    id: string,
+    patch: Partial<Pick<Order, 'customerName' | 'customerEmail' | 'status'>>
+  ): Promise<Order | null> => {
+    try {
+      const res = await fetch(`/api/orders/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(patch),
+      });
+      if (res.ok) {
+        const updated: Order = await res.json();
+        setOrders(prev => prev.map(order => (order.id === id ? updated : order)));
+        return updated;
+      }
+    } catch (err) {
+      console.error('Failed to update order:', err);
+    }
+    return null;
+  };
+
+  const deleteOrder = async (id: string): Promise<boolean> => {
+    try {
+      const res = await fetch(`/api/orders/${id}`, { method: 'DELETE' });
+      if (res.ok) {
+        setOrders(prev => prev.filter(order => order.id !== id));
+        return true;
+      }
+    } catch (err) {
+      console.error('Failed to delete order:', err);
+    }
+    return false;
   };
 
   return (
@@ -517,6 +574,8 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         importInventoryItems,
         orders,
         placeOrder,
+        updateOrder,
+        deleteOrder,
         currentCompletedOrder,
         setCurrentCompletedOrder,
         isLocalizationModalOpen,

@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { StoreProvider, useStore } from './context/StoreContext';
 import { TopTicker } from './components/TopTicker';
 import { Navbar } from './components/Navbar';
@@ -20,6 +20,13 @@ import AdminLoginPage from './pages/AdminLoginPage';
 import AdminPortalPage from './pages/AdminPortalPage';
 import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
+import ContactPage from './pages/ContactPage';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
 
 const AppContent: React.FC = () => {
   const { setIsLocalizationModalOpen } = useStore();
@@ -28,6 +35,7 @@ const AppContent: React.FC = () => {
   return (
     <div className="min-h-screen bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] flex flex-col font-sans selection:bg-[var(--color-accent-600)] selection:text-white transition-colors duration-200">
       
+      <ScrollToTop />
       <TopTicker />
       <Navbar />
 
@@ -39,6 +47,7 @@ const AppContent: React.FC = () => {
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/admin" element={<AdminLoginPage />} />
           <Route path="/admin/portal" element={<AdminPortalPage />} />
         </Routes>
@@ -99,6 +108,11 @@ const AppContent: React.FC = () => {
                 <li>
                   <Link to="/privacy" className="hover:text-emerald-500 transition-colors">
                     Consent Audit Log Inspector
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="hover:text-emerald-500 transition-colors flex items-center space-x-1">
+                    <span>Contact Us</span>
                   </Link>
                 </li>
               </ul>
