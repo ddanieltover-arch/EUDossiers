@@ -1,4 +1,23 @@
-import { parseJsonBody } from './parse-json-body';
+export function parseJsonBody(body: unknown): Record<string, unknown> {
+  if (body == null) return {};
+
+  if (typeof body === 'string') {
+    const trimmed = body.trim();
+    if (!trimmed) return {};
+    try {
+      const parsed = JSON.parse(trimmed);
+      return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+    } catch {
+      return {};
+    }
+  }
+
+  if (typeof body === 'object' && !Array.isArray(body)) {
+    return body as Record<string, unknown>;
+  }
+
+  return {};
+}
 
 export type ApiResult = {
   status: number;
@@ -24,29 +43,12 @@ export async function readJsonBody(req: unknown, fallbackBody?: unknown): Promis
   return parseJsonBody(fallbackBody);
 }
 
-export function readQuery(req: unknown): Record<string, string> {
-  const nodeQuery = (req as { query?: Record<string, unknown> })?.query;
-  if (nodeQuery && typeof nodeQuery === 'object') {
-    const out: Record<string, string> = {};
-    for (const [key, value] of Object.entries(nodeQuery)) {
-      out[key] = Array.isArray(value) ? String(value[0] ?? '') : String(value ?? '');
-    }
-    if (Object.keys(out).length > 0) return out;
-  }
-
-  try {
-    const rawUrl = (req as { url?: string })?.url;
-    if (!rawUrl) return {};
-    const url = new URL(rawUrl, 'http://localhost');
-    return Object.fromEntries(url.searchParams.entries());
-  } catch {
-    return {};
-  }
-}
-
 export function readPathId(req: unknown, prefix: string): string {
-  const query = readQuery(req);
-  if (query.id) return query.id;
+  const nodeQuery = (req as { query?: Record<string, unknown> })?.query;
+  const queryId = nodeQuery?.id;
+  if (typeof queryId === 'string' && queryId) return queryId;
+  if (Array.isArray(queryId) && queryId[0]) return String(queryId[0]);
+
   try {
     const rawUrl = (req as { url?: string })?.url || '';
     const url = new URL(rawUrl, 'http://localhost');

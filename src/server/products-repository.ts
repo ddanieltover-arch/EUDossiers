@@ -50,7 +50,7 @@ export function mapProductRow(row: ProductRow): Product {
 }
 
 export async function ensureProductsTable(): Promise<void> {
-  const sql = await getSql();
+  const sql = getSql();
   await sql`
     CREATE TABLE IF NOT EXISTS products (
       id TEXT PRIMARY KEY,
@@ -79,7 +79,7 @@ export async function ensureProductsTable(): Promise<void> {
 }
 
 export async function listProducts(): Promise<Product[]> {
-  const sql = await getSql();
+  const sql = getSql();
   const rows = await sql`
     SELECT *
     FROM products
@@ -90,13 +90,13 @@ export async function listProducts(): Promise<Product[]> {
 
 export async function countProducts(): Promise<number> {
   await ensureProductsTable();
-  const sql = await getSql();
+  const sql = getSql();
   const rows = await sql`SELECT COUNT(*)::int AS count FROM products`;
   return Number(rows[0]?.count ?? 0);
 }
 
 export async function getProductById(id: string): Promise<Product | null> {
-  const sql = await getSql();
+  const sql = getSql();
   const rows = await sql`SELECT * FROM products WHERE id = ${id} LIMIT 1`;
   const row = (rows as ProductRow[])[0];
   return row ? mapProductRow(row) : null;
@@ -104,7 +104,7 @@ export async function getProductById(id: string): Promise<Product | null> {
 
 async function insertProduct(product: Product): Promise<Product> {
   const localProduct = withLocalCatalogueImages(product);
-  const sql = await getSql();
+  const sql = getSql();
   const rows = await sql`
     INSERT INTO products (
       id, sku, name, category, description,
@@ -192,7 +192,7 @@ export async function updateProduct(
     tags: updates.tags ?? existing.tags,
   };
 
-  const sql = await getSql();
+  const sql = getSql();
   const rows = await sql`
     UPDATE products SET
       sku = ${next.sku},
@@ -222,13 +222,13 @@ export async function updateProduct(
 }
 
 export async function deleteProduct(id: string): Promise<boolean> {
-  const sql = await getSql();
+  const sql = getSql();
   const rows = (await sql`DELETE FROM products WHERE id = ${id} RETURNING id`) as { id: string }[];
   return rows.length > 0;
 }
 
 export async function syncLocalCatalogueImageUrls(): Promise<number> {
-  const sql = await getSql();
+  const sql = getSql();
   const rows = (await sql`SELECT id FROM products`) as { id: string }[];
   let updated = 0;
 

@@ -22,7 +22,7 @@ function mapRow(row: OrderRow): Order | null {
 }
 
 export async function ensureOrdersTable(): Promise<void> {
-  const sql = await getSql();
+  const sql = getSql();
   await sql`
     CREATE TABLE IF NOT EXISTS store_orders (
       id TEXT PRIMARY KEY,
@@ -35,7 +35,7 @@ export async function ensureOrdersTable(): Promise<void> {
 
 export async function listOrders(): Promise<Order[]> {
   await ensureOrdersTable();
-  const sql = await getSql();
+  const sql = getSql();
   const rows = (await sql`
     SELECT id, payload
     FROM store_orders
@@ -49,7 +49,7 @@ export async function listOrders(): Promise<Order[]> {
 
 export async function getOrderById(id: string): Promise<Order | null> {
   await ensureOrdersTable();
-  const sql = await getSql();
+  const sql = getSql();
   const rows = (await sql`
     SELECT id, payload FROM store_orders WHERE id = ${id} LIMIT 1
   `) as OrderRow[];
@@ -58,7 +58,7 @@ export async function getOrderById(id: string): Promise<Order | null> {
 
 export async function insertOrder(order: Order): Promise<Order> {
   await ensureOrdersTable();
-  const sql = await getSql();
+  const sql = getSql();
   const payload = JSON.parse(JSON.stringify(order));
   await sql`INSERT INTO store_orders (id, payload) VALUES (${order.id}, ${payload})`;
   return order;
@@ -71,7 +71,7 @@ export async function updateOrderById(
   const existing = await getOrderById(id);
   if (!existing) return null;
   const updated: Order = { ...existing, ...patch, id: existing.id };
-  const sql = await getSql();
+  const sql = getSql();
   const payload = JSON.parse(JSON.stringify(updated));
   await sql`UPDATE store_orders SET payload = ${payload}, updated_at = NOW() WHERE id = ${id}`;
   return updated;
@@ -79,7 +79,7 @@ export async function updateOrderById(
 
 export async function deleteOrderById(id: string): Promise<boolean> {
   await ensureOrdersTable();
-  const sql = await getSql();
+  const sql = getSql();
   const rows = (await sql`
     DELETE FROM store_orders WHERE id = ${id} RETURNING id
   `) as { id: string }[];

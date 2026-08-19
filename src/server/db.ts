@@ -1,8 +1,8 @@
-let sqlClient: SqlFn | null = null;
+import { neon } from '@neondatabase/serverless';
 
-type SqlFn = ((strings: TemplateStringsArray, ...values: unknown[]) => Promise<unknown>) & {
-  query?: (text: string, params?: unknown[]) => Promise<unknown>;
-};
+type SqlClient = ReturnType<typeof neon>;
+
+let sqlClient: SqlClient | null = null;
 
 function getDatabaseUrl(): string {
   const raw =
@@ -27,9 +27,8 @@ function getDatabaseUrl(): string {
   }
 }
 
-export async function getSql(): Promise<SqlFn> {
+export function getSql(): SqlClient {
   if (sqlClient) return sqlClient;
-  const { neon } = await import('@neondatabase/serverless');
-  sqlClient = neon(getDatabaseUrl()) as unknown as SqlFn;
+  sqlClient = neon(getDatabaseUrl());
   return sqlClient;
 }
