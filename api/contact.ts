@@ -1,38 +1,28 @@
 import { parseContactPayload } from '../src/server/orders-service';
 import { notifyContactMessage } from '../src/server/email/notifications';
-import { parseJsonBody } from '../src/server/parse-json-body';
+import { ensureContactTable, listContactMessages } from '../src/server/contact-repository';
+import { withApiHandler } from '../src/server/vercel-handler';
 
 export const config = {
   maxDuration: 15,
 };
 
-function errorMessage(err: unknown): string {
-  if (err instanceof Error && err.message) return err.message;
-  return 'Failed to send your message';
-}
+export default async function handler(req: unknown, res: unknown) {
+  return withApiHandler(req, res, async (method, body) => {
+    if (method === 'GET') {
+      await ensureContactTable();
+      return { status: 200, body: await listContactMessages() };
+    }
 
-export default async function handler(
-  req: { method?: string; body?: unknown },
-  res: {
-    status: (code: number) => { json: (body: unknown) => unknown };
-    setHeader: (name: string, value: string) => void;
-  }
-) {
-  if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+    if (method === 'POST') {
+      const parsed = parseContactPayload(body);
+      if ('error' in parsed) {
+        return { status: 400, body: { error: parsed.error } };
+      }
+      await notifyContactMessage(parsed);
+      return { status: 200, body: { success: true } };
+    }
 
-  const parsed = parseContactPayload(parseJsonBody(req.body));
-  if ('error' in parsed) {
-    return res.status(400).json({ error: parsed.error });
-  }
-
-  try {
-    await notifyContactMessage(parsed);
-    return res.status(200).json({ success: true });
-  } catch (err) {
-    console.error('Contact API error:', err);
-    return res.status(500).json({ error: errorMessage(err) });
-  }
+    return { status: 405, body: { error: 'Method not allowed' }, headers: { Allow: 'GET, POST' } };
+  });
 }

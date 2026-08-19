@@ -488,6 +488,10 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       });
 
       if (res.ok) {
+        const contentType = res.headers.get('content-type') || '';
+        if (!contentType.includes('application/json')) {
+          return { order: null, error: 'Checkout API did not respond correctly. Please try again.' };
+        }
         const newOrder = await res.json();
         setOrders(prev => [newOrder, ...prev]);
         setCurrentCompletedOrder(newOrder);

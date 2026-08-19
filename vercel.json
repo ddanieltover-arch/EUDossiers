@@ -1,7 +1,14 @@
 {
   "buildCommand": "npx vite build",
   "outputDirectory": "dist",
+  "framework": null,
+  "functions": {
+    "api/**/*.ts": {
+      "maxDuration": 15
+    }
+  },
   "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/((?!api/|catalogue/).*)", "destination": "/index.html" }
   ]
 }

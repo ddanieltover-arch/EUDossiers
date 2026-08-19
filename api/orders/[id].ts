@@ -1,45 +1,31 @@
 import { deleteOrderById } from '../../src/server/orders-repository';
 import { patchCheckoutOrder } from '../../src/server/orders-service';
+import { parseJsonBody } from '../../src/server/parse-json-body';
+import { readPathId, withApiHandler } from '../../src/server/vercel-handler';
 
 export const config = {
   maxDuration: 15,
 };
 
-function errorMessage(err: unknown): string {
-  if (err instanceof Error && err.message) return err.message;
-  return 'Failed to update order';
-}
-
-export default async function handler(
-  req: { method?: string; body?: unknown; query?: { id?: string | string[] } },
-  res: {
-    status: (code: number) => { json: (body: unknown) => unknown };
-    setHeader: (name: string, value: string) => void;
-  }
-) {
-  const id = req.query?.id;
-  const orderId = Array.isArray(id) ? id[0] : id;
-  if (!orderId) {
-    return res.status(400).json({ error: 'Order id is required' });
-  }
-
-  try {
-    if (req.method === 'PATCH') {
-      const updated = await patchCheckoutOrder(orderId, (req.body as object) || {});
-      if (!updated) return res.status(404).json({ error: 'Order not found' });
-      return res.status(200).json(updated);
+export default async function handler(req: unknown, res: unknown) {
+  return withApiHandler(req, res, async (method, body, rawReq) => {
+    const orderId = readPathId(rawReq, '/api/orders');
+    if (!orderId) {
+      return { status: 400, body: { error: 'Order id is required' } };
     }
 
-    if (req.method === 'DELETE') {
+    if (method === 'PATCH') {
+      const updated = await patchCheckoutOrder(orderId, parseJsonBody(body));
+      if (!updated) return { status: 404, body: { error: 'Order not found' } };
+      return { status: 200, body: updated };
+    }
+
+    if (method === 'DELETE') {
       const deleted = await deleteOrderById(orderId);
-      if (!deleted) return res.status(404).json({ error: 'Order not found' });
-      return res.status(200).json({ success: true, deletedId: orderId });
+      if (!deleted) return { status: 404, body: { error: 'Order not found' } };
+      return { status: 200, body: { success: true, deletedId: orderId } };
     }
 
-    res.setHeader('Allow', 'PATCH, DELETE');
-    return res.status(405).json({ error: 'Method not allowed' });
-  } catch (err) {
-    console.error('Order item API error:', err);
-    return res.status(500).json({ error: errorMessage(err) });
-  }
+    return { status: 405, body: { error: 'Method not allowed' }, headers: { Allow: 'PATCH, DELETE' } };
+  });
 }

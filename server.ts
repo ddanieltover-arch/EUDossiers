@@ -32,6 +32,7 @@ import {
   patchCheckoutOrder,
 } from './src/server/orders-service';
 import { notifyAdminGdpr, notifyContactMessage } from './src/server/email/notifications';
+import { ensureContactTable, listContactMessages } from './src/server/contact-repository';
 
 // In-memory data store for server session persistence (non-catalogue)
 let stockAdjustmentsStore: StockAdjustment[] = [...INITIAL_STOCK_ADJUSTMENTS];
@@ -52,6 +53,7 @@ async function startServer() {
   const PORT = Number(process.env.PORT) || 3001;
 
   await seedProductsIfEmpty(INITIAL_PRODUCTS);
+  await ensureContactTable();
 
   app.use(express.json());
 
@@ -286,6 +288,15 @@ async function startServer() {
     } catch (err) {
       console.error('Failed to delete order:', err);
       res.status(500).json({ error: 'Failed to delete order' });
+    }
+  });
+
+  app.get('/api/contact', async (_req: Request, res: Response) => {
+    try {
+      res.json(await listContactMessages());
+    } catch (err) {
+      console.error('Failed to load contact messages:', err);
+      res.status(500).json({ error: 'Failed to load contact messages' });
     }
   });
 

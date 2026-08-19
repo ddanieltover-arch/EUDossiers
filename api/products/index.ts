@@ -1,36 +1,19 @@
 import { createProduct, listProducts } from '../../src/server/products-repository';
+import { parseJsonBody } from '../../src/server/parse-json-body';
+import { withApiHandler } from '../../src/server/vercel-handler';
 
 export const config = {
   maxDuration: 15,
 };
 
-function errorMessage(err: unknown): string {
-  if (err instanceof Error && err.message) return err.message;
-  return 'Failed to load catalogue from Neon';
-}
-
-export default async function handler(
-  req: { method?: string; body?: unknown },
-  res: {
-    status: (code: number) => { json: (body: unknown) => unknown };
-    setHeader: (name: string, value: string) => void;
-  }
-) {
-  try {
-    if (req.method === 'GET') {
-      const products = await listProducts();
-      return res.status(200).json(products);
+export default async function handler(req: unknown, res: unknown) {
+  return withApiHandler(req, res, async (method, body) => {
+    if (method === 'GET') {
+      return { status: 200, body: await listProducts() };
     }
-
-    if (req.method === 'POST') {
-      const product = await createProduct((req.body as object) || {});
-      return res.status(201).json(product);
+    if (method === 'POST') {
+      return { status: 201, body: await createProduct(parseJsonBody(body)) };
     }
-
-    res.setHeader('Allow', 'GET, POST');
-    return res.status(405).json({ error: 'Method not allowed' });
-  } catch (err) {
-    console.error('Products API error:', err);
-    return res.status(500).json({ error: errorMessage(err) });
-  }
+    return { status: 405, body: { error: 'Method not allowed' }, headers: { Allow: 'GET, POST' } };
+  });
 }

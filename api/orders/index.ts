@@ -1,41 +1,27 @@
 import { listOrders } from '../../src/server/orders-repository';
 import { parseJsonBody } from '../../src/server/parse-json-body';
+import { withApiHandler } from '../../src/server/vercel-handler';
 
 export const config = {
   maxDuration: 15,
 };
 
-function errorMessage(err: unknown): string {
-  if (err instanceof Error && err.message) return err.message;
-  return 'Failed to process orders';
-}
-
-export default async function handler(
-  req: { method?: string; body?: unknown },
-  res: {
-    status: (code: number) => { json: (body: unknown) => unknown };
-    setHeader: (name: string, value: string) => void;
-  }
-) {
-  try {
-    if (req.method === 'GET') {
-      return res.status(200).json(await listOrders());
+export default async function handler(req: unknown, res: unknown) {
+  return withApiHandler(req, res, async (method, body) => {
+    if (method === 'GET') {
+      return { status: 200, body: await listOrders() };
     }
 
-    if (req.method === 'POST') {
+    if (method === 'POST') {
       const { createCheckoutOrder } = await import('../../src/server/orders-service');
-      const body = parseJsonBody(req.body) as unknown as Parameters<typeof createCheckoutOrder>[0];
-      if (!body.customerName || !body.customerEmail || !Array.isArray(body.items) || body.items.length === 0) {
-        return res.status(400).json({ error: 'Customer name, email, and at least one item are required' });
+      const payload = parseJsonBody(body) as unknown as Parameters<typeof createCheckoutOrder>[0];
+      if (!payload.customerName || !payload.customerEmail || !Array.isArray(payload.items) || payload.items.length === 0) {
+        return { status: 400, body: { error: 'Customer name, email, and at least one item are required' } };
       }
-      const order = await createCheckoutOrder(body);
-      return res.status(201).json(order);
+      const order = await createCheckoutOrder(payload);
+      return { status: 201, body: order };
     }
 
-    res.setHeader('Allow', 'GET, POST');
-    return res.status(405).json({ error: 'Method not allowed' });
-  } catch (err) {
-    console.error('Orders API error:', err);
-    return res.status(500).json({ error: errorMessage(err) });
-  }
+    return { status: 405, body: { error: 'Method not allowed' }, headers: { Allow: 'GET, POST' } };
+  });
 }

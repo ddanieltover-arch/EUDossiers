@@ -20,6 +20,27 @@ export async function ensureContactTable(): Promise<void> {
   `;
 }
 
+export async function listContactMessages(): Promise<StoredContactMessage[]> {
+  await ensureContactTable();
+  const sql = getSql();
+  const rows = (await sql`
+    SELECT id, payload
+    FROM store_contact_messages
+    ORDER BY created_at DESC
+  `) as { id: string; payload: StoredContactMessage | string }[];
+  return rows
+    .map((row) => {
+      try {
+        const payload = typeof row.payload === 'string' ? JSON.parse(row.payload) : row.payload;
+        if (!payload || typeof payload !== 'object') return null;
+        return payload as StoredContactMessage;
+      } catch {
+        return null;
+      }
+    })
+    .filter((item): item is StoredContactMessage => Boolean(item));
+}
+
 export async function insertContactMessage(
   input: Omit<StoredContactMessage, 'id' | 'createdAt'>
 ): Promise<StoredContactMessage> {
@@ -30,9 +51,7 @@ export async function insertContactMessage(
     ...input,
   };
   const sql = getSql();
-  await sql.query(
-    'INSERT INTO store_contact_messages (id, payload) VALUES ($1, $2::jsonb)',
-    [record.id, JSON.stringify(record)]
-  );
+  const payload = JSON.parse(JSON.stringify(record));
+  await sql`INSERT INTO store_contact_messages (id, payload) VALUES (${record.id}, ${payload})`;
   return record;
 }
