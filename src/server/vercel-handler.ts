@@ -13,10 +13,6 @@ function isNodeResponse(res: unknown): res is {
   return typeof (res as { status?: unknown })?.status === 'function';
 }
 
-function isWebRequest(req: unknown, res: unknown): req is Request {
-  return typeof Request !== 'undefined' && req instanceof Request && !isNodeResponse(res);
-}
-
 export async function readJsonBody(req: unknown, fallbackBody?: unknown): Promise<unknown> {
   if (typeof Request !== 'undefined' && req instanceof Request) {
     try {

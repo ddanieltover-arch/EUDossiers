@@ -10,7 +10,7 @@ export type StoredContactMessage = {
 };
 
 export async function ensureContactTable(): Promise<void> {
-  const sql = getSql();
+  const sql = await getSql();
   await sql`
     CREATE TABLE IF NOT EXISTS store_contact_messages (
       id TEXT PRIMARY KEY,
@@ -22,7 +22,7 @@ export async function ensureContactTable(): Promise<void> {
 
 export async function listContactMessages(): Promise<StoredContactMessage[]> {
   await ensureContactTable();
-  const sql = getSql();
+  const sql = await getSql();
   const rows = (await sql`
     SELECT id, payload
     FROM store_contact_messages
@@ -50,7 +50,7 @@ export async function insertContactMessage(
     createdAt: new Date().toISOString(),
     ...input,
   };
-  const sql = getSql();
+  const sql = await getSql();
   const payload = JSON.parse(JSON.stringify(record));
   await sql`INSERT INTO store_contact_messages (id, payload) VALUES (${record.id}, ${payload})`;
   return record;

@@ -1,8 +1,8 @@
-import { neon } from '@neondatabase/serverless';
+let sqlClient: SqlFn | null = null;
 
-type SqlClient = ReturnType<typeof neon>;
-
-let sqlClient: SqlClient | null = null;
+type SqlFn = ((strings: TemplateStringsArray, ...values: unknown[]) => Promise<unknown>) & {
+  query?: (text: string, params?: unknown[]) => Promise<unknown>;
+};
 
 function getDatabaseUrl(): string {
   const raw =
@@ -17,7 +17,6 @@ function getDatabaseUrl(): string {
 
   try {
     const parsed = new URL(raw);
-    // HTTP neon driver does not use Postgres channel binding; this flag can crash serverless invokes.
     parsed.searchParams.delete('channel_binding');
     if (!parsed.searchParams.has('sslmode')) {
       parsed.searchParams.set('sslmode', 'require');
@@ -28,8 +27,9 @@ function getDatabaseUrl(): string {
   }
 }
 
-export function getSql(): SqlClient {
+export async function getSql(): Promise<SqlFn> {
   if (sqlClient) return sqlClient;
-  sqlClient = neon(getDatabaseUrl());
+  const { neon } = await import('@neondatabase/serverless');
+  sqlClient = neon(getDatabaseUrl()) as unknown as SqlFn;
   return sqlClient;
 }
