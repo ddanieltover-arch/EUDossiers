@@ -1,4 +1,5 @@
 import { listOrders } from '../../src/server/orders-repository';
+import { parseJsonBody } from '../../src/server/parse-json-body';
 
 export const config = {
   maxDuration: 15,
@@ -23,7 +24,7 @@ export default async function handler(
 
     if (req.method === 'POST') {
       const { createCheckoutOrder } = await import('../../src/server/orders-service');
-      const body = (req.body || {}) as Parameters<typeof createCheckoutOrder>[0];
+      const body = parseJsonBody(req.body) as unknown as Parameters<typeof createCheckoutOrder>[0];
       if (!body.customerName || !body.customerEmail || !Array.isArray(body.items) || body.items.length === 0) {
         return res.status(400).json({ error: 'Customer name, email, and at least one item are required' });
       }

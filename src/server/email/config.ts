@@ -16,7 +16,11 @@ export const EMAIL_BRAND = {
 } as const;
 
 export function getAppUrl(): string {
-  return (process.env.APP_URL || 'http://localhost:3001').replace(/\/$/, '');
+  const explicit = process.env.APP_URL?.trim();
+  if (explicit) return explicit.replace(/\/$/, '');
+  const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
+  if (vercelHost) return `https://${vercelHost.replace(/^https?:\/\//, '')}`;
+  return 'http://localhost:3001';
 }
 
 export function getFromAddress(): string {
@@ -42,6 +46,9 @@ export function resolveOgImagePath(): string | null {
 }
 
 export function getLogoSrc(): { src: string; attachOgImage: boolean } {
+  if (process.env.VERCEL) {
+    return { src: `${getAppUrl()}/og-image.png`, attachOgImage: false };
+  }
   const filePath = resolveOgImagePath();
   if (filePath) {
     return { src: 'cid:eudossier-og', attachOgImage: true };

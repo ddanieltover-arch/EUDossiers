@@ -56,7 +56,7 @@ const CheckoutPage: React.FC = () => {
     if (!gdprAgreed) return;
     setIsSubmitting(true);
     setCheckoutError(null);
-    const created = await placeOrder({
+    const { order: created, error } = await placeOrder({
       name: customerName,
       email: customerEmail,
       phone: customerPhone,
@@ -65,7 +65,7 @@ const CheckoutPage: React.FC = () => {
     });
     setIsSubmitting(false);
     if (!created) {
-      setCheckoutError('We could not place your order. Please check your details and try again.');
+      setCheckoutError(error || 'We could not place your order. Please check your details and try again.');
       return;
     }
     setOrderSuccess(true);

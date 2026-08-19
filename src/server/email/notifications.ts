@@ -1,4 +1,5 @@
 import { Order } from '../../types';
+import { insertContactMessage } from '../contact-repository';
 import { getAdminNotifyEmail } from './config';
 import { sendBrandedEmail } from './mailer';
 import {
@@ -86,6 +87,14 @@ export async function notifyContactMessage(input: {
     message: input.message,
   });
 
+  let saved = false;
+  try {
+    await insertContactMessage(input);
+    saved = true;
+  } catch (err) {
+    console.error('Failed to persist contact message:', err);
+  }
+
   const [customerResult, adminResult] = await Promise.all([
     sendBrandedEmail({
       to: input.email,
@@ -102,8 +111,11 @@ export async function notifyContactMessage(input: {
     }),
   ]);
 
-  if (!adminResult.ok) {
+  if (!saved && !adminResult.ok) {
     throw new Error(adminResult.error || 'Failed to deliver the enquiry to our team');
+  }
+  if (!adminResult.ok) {
+    console.warn('Contact admin email failed:', adminResult.error);
   }
   if (!customerResult.ok) {
     console.warn('Contact acknowledgement email failed:', customerResult.error);

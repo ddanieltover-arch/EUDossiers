@@ -45,15 +45,21 @@ export async function sendBrandedEmail(options: {
   }
 
   try {
-    const { error } = await client.emails.send({
-      from: getFromAddress(),
-      to,
-      subject: options.subject,
-      html: options.html,
-      text: options.text,
-      replyTo: options.replyTo,
-      attachments: getLogoSrc().attachOgImage ? ogAttachment() : undefined,
-    });
+    const sendOnce = async (withAttachments: boolean) =>
+      client.emails.send({
+        from: getFromAddress(),
+        to,
+        subject: options.subject,
+        html: options.html,
+        text: options.text,
+        replyTo: options.replyTo,
+        attachments: withAttachments && getLogoSrc().attachOgImage ? ogAttachment() : undefined,
+      });
+
+    let { error } = await sendOnce(true);
+    if (error && /attach|cid|image|file/i.test(error.message || '')) {
+      ({ error } = await sendOnce(false));
+    }
 
     if (error) {
       console.error('Resend send failed:', error);

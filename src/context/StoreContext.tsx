@@ -74,7 +74,7 @@ interface StoreContextType {
     phone: string;
     address: string;
     paymentMethod: 'bank' | 'crypto';
-  }) => Promise<Order | null>;
+  }) => Promise<{ order: Order | null; error?: string }>;
   updateOrder: (
     id: string,
     patch: Partial<Pick<Order, 'customerName' | 'customerEmail' | 'status'>>
@@ -443,8 +443,8 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     phone: string;
     address: string;
     paymentMethod: 'bank' | 'crypto';
-  }): Promise<Order | null> => {
-    if (cart.length === 0) return null;
+  }): Promise<{ order: Order | null; error?: string }> => {
+    if (cart.length === 0) return { order: null, error: 'Your cart is empty' };
 
     const itemsForOrder = cart.map(item => ({
       productId: item.product.id,
@@ -495,15 +495,16 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         setIsCartOpen(false);
         fetchProducts(); // Refresh deducted stock levels
         fetchConsentLogs(); // Refresh logs
-        return newOrder;
+        return { order: newOrder };
       }
 
-      const data = await res.json().catch(() => ({}));
+      const data = await res.json().catch(() => ({} as { error?: string }));
       console.error('Failed to place order:', res.status, data);
+      return { order: null, error: data.error || 'We could not place your order. Please try again.' };
     } catch (err) {
       console.error('Failed to place order:', err);
+      return { order: null, error: 'We could not place your order. Please try again.' };
     }
-    return null;
   };
 
   const updateOrder = async (

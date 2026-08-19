@@ -63,10 +63,10 @@ export async function getOrderById(id: string): Promise<Order | null> {
 export async function insertOrder(order: Order): Promise<Order> {
   await ensureOrdersTable();
   const sql = getSql();
-  await sql`
-    INSERT INTO store_orders (id, payload)
-    VALUES (${order.id}, ${JSON.stringify(order)}::jsonb)
-  `;
+  await sql.query(
+    'INSERT INTO store_orders (id, payload) VALUES ($1, $2::jsonb)',
+    [order.id, JSON.stringify(order)]
+  );
   return order;
 }
 
@@ -78,11 +78,10 @@ export async function updateOrderById(
   if (!existing) return null;
   const updated: Order = { ...existing, ...patch, id: existing.id };
   const sql = getSql();
-  await sql`
-    UPDATE store_orders
-    SET payload = ${asJson(updated)}::jsonb, updated_at = NOW()
-    WHERE id = ${id}
-  `;
+  await sql.query(
+    'UPDATE store_orders SET payload = $1::jsonb, updated_at = NOW() WHERE id = $2',
+    [asJson(updated), id]
+  );
   return updated;
 }
 
