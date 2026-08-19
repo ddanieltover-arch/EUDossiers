@@ -2,7 +2,6 @@ import { parseContactPayload } from '../src/server/orders-service';
 import { notifyContactMessage } from '../src/server/email/notifications';
 
 export const config = {
-  runtime: 'nodejs',
   maxDuration: 15,
 };
 

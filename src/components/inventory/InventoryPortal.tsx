@@ -45,6 +45,7 @@ export const InventoryPortal: React.FC = () => {
     importInventoryItems,
     formatPriceEUR,
     orders,
+    fetchOrders,
     consentLogs,
     downloadDSARPackage,
     updateOrder,
@@ -63,6 +64,10 @@ export const InventoryPortal: React.FC = () => {
   const [orderSearchTerm, setOrderSearchTerm] = useState('');
   const [orderStatusFilter, setOrderStatusFilter] = useState<string>('ALL');
   const [orderSaving, setOrderSaving] = useState(false);
+
+  useEffect(() => {
+    void fetchOrders();
+  }, [fetchOrders]);
 
   useEffect(() => {
     setOrderList(orders);
@@ -762,6 +767,12 @@ export const InventoryPortal: React.FC = () => {
               </select>
             </div>
           </div>
+
+          {filteredOrders.length === 0 && (
+            <p className="text-xs text-[var(--color-text-muted)] px-1">
+              No orders match this view yet. New checkouts appear here as soon as they are saved.
+            </p>
+          )}
 
           <div className="overflow-x-auto custom-scrollbar">
             <table className="w-full text-left text-xs text-[var(--color-text-secondary)]">

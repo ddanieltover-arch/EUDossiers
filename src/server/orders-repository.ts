@@ -1,4 +1,3 @@
-import { INITIAL_ORDERS } from '../data/mockData';
 import { Order } from '../types';
 import { getSql } from './db';
 
@@ -7,9 +6,23 @@ type OrderRow = {
   payload: Order | string;
 };
 
-function mapRow(row: OrderRow): Order {
-  const payload = typeof row.payload === 'string' ? JSON.parse(row.payload) : row.payload;
-  return payload as Order;
+function asJson(value: Order): string {
+  return JSON.stringify(value);
+}
+
+function mapRow(row: OrderRow): Order | null {
+  try {
+    const payload = typeof row.payload === 'string' ? JSON.parse(row.payload) : row.payload;
+    if (!payload || typeof payload !== 'object' || Array.isArray(payload)) return null;
+    const order = payload as Order;
+    if (!order.id) return null;
+    return {
+      ...order,
+      items: Array.isArray(order.items) ? order.items : [],
+    };
+  } catch {
+    return null;
+  }
 }
 
 export async function ensureOrdersTable(): Promise<void> {
@@ -24,31 +37,18 @@ export async function ensureOrdersTable(): Promise<void> {
   `;
 }
 
-export async function seedOrdersIfEmpty(): Promise<void> {
-  await ensureOrdersTable();
-  const sql = getSql();
-  const existing = await sql`SELECT COUNT(*)::int AS count FROM store_orders`;
-  const count = Number((existing[0] as { count: number } | undefined)?.count || 0);
-  if (count > 0) return;
-
-  for (const order of INITIAL_ORDERS) {
-    await sql`
-      INSERT INTO store_orders (id, payload)
-      VALUES (${order.id}, ${JSON.stringify(order)}::jsonb)
-      ON CONFLICT (id) DO NOTHING
-    `;
-  }
-}
-
 export async function listOrders(): Promise<Order[]> {
-  await seedOrdersIfEmpty();
+  await ensureOrdersTable();
   const sql = getSql();
   const rows = (await sql`
     SELECT id, payload
     FROM store_orders
     ORDER BY created_at DESC
   `) as OrderRow[];
-  return rows.map(mapRow);
+  return rows
+    .map(mapRow)
+    .filter((order): order is Order => Boolean(order))
+    .sort((a, b) => Date.parse(b.createdAt || '') - Date.parse(a.createdAt || ''));
 }
 
 export async function getOrderById(id: string): Promise<Order | null> {
@@ -65,7 +65,7 @@ export async function insertOrder(order: Order): Promise<Order> {
   const sql = getSql();
   await sql`
     INSERT INTO store_orders (id, payload)
-    VALUES (${order.id}, ${JSON.stringify(order)}::jsonb)
+    VALUES (${order.id}, ${asJson(order)}::jsonb)
   `;
   return order;
 }
@@ -80,7 +80,7 @@ export async function updateOrderById(
   const sql = getSql();
   await sql`
     UPDATE store_orders
-    SET payload = ${JSON.stringify(updated)}::jsonb, updated_at = NOW()
+    SET payload = ${asJson(updated)}::jsonb, updated_at = NOW()
     WHERE id = ${id}
   `;
   return updated;

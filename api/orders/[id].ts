@@ -2,7 +2,6 @@ import { deleteOrderById } from '../../src/server/orders-repository';
 import { patchCheckoutOrder } from '../../src/server/orders-service';
 
 export const config = {
-  runtime: 'nodejs',
   maxDuration: 15,
 };
 

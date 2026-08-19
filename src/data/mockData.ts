@@ -1,4 +1,4 @@
-import { EUCountryVAT, Currency, Product, StockAdjustment, GDPRPreferences, ConsentLog, Order } from '../types';
+import { EUCountryVAT, Currency, Product, StockAdjustment, GDPRPreferences, ConsentLog } from '../types';
 
 export const EU_COUNTRIES: EUCountryVAT[] = [
   { code: 'DE', name: 'Germany', flag: '🇩🇪', vatRate: 0.19, standardCurrency: 'EUR', language: 'Deutsch' },
@@ -816,71 +816,6 @@ export const INITIAL_STOCK_ADJUSTMENTS: StockAdjustment[] = [
     performedBy: 'Marc Moreau (Warehouse Ops)',
     timestamp: '2026-08-12 09:00:00 UTC',
   }
-];
-
-export const INITIAL_ORDERS: Order[] = [
-  {
-    id: 'EU-ORD-88021',
-    customerName: 'Elena Rostova',
-    customerEmail: 'elena.rostova@example.eu',
-    destinationCountry: 'DE',
-    items: [
-      {
-        productId: 'doc-012',
-        sku: 'EU-PAS-012',
-        name: 'Authentic Biometric EU Passport (Full Citizen Registration)',
-        quantity: 1,
-        unitPriceEUR: 850.00,
-        totalPriceEUR: 850.00,
-      }
-    ],
-    subtotalEUR: 850.00,
-    vatAmountEUR: 161.50,
-    vatRate: 0.19,
-    shippingFeeEUR: 0.00, // Free EU Express over €150
-    totalEUR: 850.00,
-    paidCurrency: 'EUR',
-    paidCurrencySymbol: '€',
-    paidAmountConverted: 850.00,
-    exchangeRateUsed: 1.0,
-    status: 'COMPLETED',
-    createdAt: '2026-08-09T14:22:10Z',
-    gdprConsentRecorded: true,
-    customerPhone: '+49 30 555 2101',
-    customerAddress: 'Unter den Linden 12, 10117 Berlin, Germany',
-    paymentMethod: 'bank',
-  },
-  {
-    id: 'EU-ORD-88022',
-    customerName: 'Jean-Luc Bernier',
-    customerEmail: 'jeanluc.bernier@example.fr',
-    destinationCountry: 'FR',
-    items: [
-      {
-        productId: 'doc-006',
-        sku: 'EU-DRV-006',
-        name: 'Fast-Track EU Driver\'s License (Express 72-Hour Fulfillment)',
-        quantity: 1,
-        unitPriceEUR: 550.00,
-        totalPriceEUR: 550.00,
-      }
-    ],
-    subtotalEUR: 550.00,
-    vatAmountEUR: 110.00,
-    vatRate: 0.20,
-    shippingFeeEUR: 0.00,
-    totalEUR: 550.00,
-    paidCurrency: 'GBP',
-    paidCurrencySymbol: '£',
-    paidAmountConverted: 467.50,
-    exchangeRateUsed: 0.85,
-    status: 'COMPLETED',
-    createdAt: '2026-08-10T09:15:30Z',
-    gdprConsentRecorded: true,
-    customerPhone: '+33 1 42 86 8200',
-    customerAddress: '18 Rue de Rivoli, 75004 Paris, France',
-    paymentMethod: 'crypto',
-  },
 ];
 
 export const INITIAL_GDPR_PREFERENCES: GDPRPreferences = {

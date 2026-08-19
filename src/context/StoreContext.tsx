@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
 import { 
   Product, 
   CartItem, 
@@ -67,6 +67,7 @@ interface StoreContextType {
 
   // Orders & Checkout
   orders: Order[];
+  fetchOrders: () => Promise<void>;
   placeOrder: (customerInfo: {
     name: string;
     email: string;
@@ -168,17 +169,22 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     }
   };
 
-  const fetchOrders = async () => {
+  const fetchOrders = useCallback(async () => {
     try {
-      const res = await fetch('/api/orders');
-      if (res.ok) {
-        const data = await res.json();
+      const res = await fetch('/api/orders', { cache: 'no-store' });
+      const contentType = res.headers.get('content-type') || '';
+      if (!res.ok || !contentType.includes('application/json')) {
+        console.error('Failed to fetch orders:', res.status, await res.text().catch(() => ''));
+        return;
+      }
+      const data = await res.json();
+      if (Array.isArray(data)) {
         setOrders(data);
       }
     } catch (err) {
       console.error('Failed to fetch orders:', err);
     }
-  };
+  }, []);
 
   const fetchConsentLogs = async () => {
     try {
@@ -573,6 +579,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         deleteProduct,
         importInventoryItems,
         orders,
+        fetchOrders,
         placeOrder,
         updateOrder,
         deleteOrder,

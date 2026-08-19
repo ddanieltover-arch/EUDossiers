@@ -1,7 +1,6 @@
-import { createProduct, listProducts } from '../src/server/products-repository';
+import { createProduct, listProducts } from '../../src/server/products-repository';
 
 export const config = {
-  runtime: 'nodejs',
   maxDuration: 15,
 };
 

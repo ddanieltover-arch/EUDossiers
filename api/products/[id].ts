@@ -1,7 +1,6 @@
 import { deleteProduct, getProductById, updateProduct } from '../../src/server/products-repository';
 
 export const config = {
-  runtime: 'nodejs',
   maxDuration: 15,
 };
 

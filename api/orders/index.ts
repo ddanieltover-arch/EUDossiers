@@ -1,8 +1,6 @@
-import { createCheckoutOrder } from '../src/server/orders-service';
-import { listOrders, seedOrdersIfEmpty } from '../src/server/orders-repository';
+import { listOrders } from '../../src/server/orders-repository';
 
 export const config = {
-  runtime: 'nodejs',
   maxDuration: 15,
 };
 
@@ -20,11 +18,11 @@ export default async function handler(
 ) {
   try {
     if (req.method === 'GET') {
-      await seedOrdersIfEmpty();
       return res.status(200).json(await listOrders());
     }
 
     if (req.method === 'POST') {
+      const { createCheckoutOrder } = await import('../../src/server/orders-service');
       const body = (req.body || {}) as Parameters<typeof createCheckoutOrder>[0];
       if (!body.customerName || !body.customerEmail || !Array.isArray(body.items) || body.items.length === 0) {
         return res.status(400).json({ error: 'Customer name, email, and at least one item are required' });

@@ -6,7 +6,8 @@ import {
   Store, 
   Search,
   Sun,
-  Moon
+  Moon,
+  Mail
 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
@@ -30,6 +31,7 @@ export const Navbar: React.FC = () => {
   const totalCartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const isCatalogue = location.pathname.startsWith('/catalogue');
   const isHome = location.pathname === '/';
+  const isContact = location.pathname === '/contact';
 
   return (
     <header className="sticky top-0 z-40 bg-[var(--color-bg-secondary)]/95 backdrop-blur-md border-b border-[var(--color-border)] text-[var(--color-text-primary)] shadow-lg transition-colors duration-200">
@@ -102,6 +104,17 @@ export const Navbar: React.FC = () => {
               >
                 <Store className="w-3.5 h-3.5" />
                 <span>Catalogue</span>
+              </Link>
+              <Link
+                to="/contact"
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  isContact
+                    ? 'bg-[var(--color-accent-600)] text-white shadow-sm'
+                    : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-card-hover)]'
+                }`}
+              >
+                <Mail className="w-3.5 h-3.5" />
+                <span>Contact</span>
               </Link>
             </div>
 

@@ -47,43 +47,43 @@ const ContactPage: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-stretch">
 
         {/* Contact Info */}
-        <div className="lg:col-span-2 space-y-6">
-          <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-2xl p-6 space-y-5">
+        <div className="lg:col-span-2 flex flex-col gap-6 h-full">
+          <div className="flex-1 flex flex-col bg-[#04928F] rounded-2xl p-6 space-y-5 text-white shadow-lg shadow-[#04928F]/25">
 
             <div className="flex items-start space-x-3">
-              <Mail className="w-5 h-5 text-[var(--color-accent-500)] mt-0.5 shrink-0" />
+              <Mail className="w-5 h-5 text-white/90 mt-0.5 shrink-0" />
               <div>
-                <h3 className="font-semibold text-sm text-[var(--color-text-primary)]">General Enquiries</h3>
-                <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm text-[var(--color-accent-500)] hover:underline">{CONTACT_EMAIL}</a>
+                <h3 className="font-semibold text-sm">General Enquiries</h3>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm text-white hover:underline">{CONTACT_EMAIL}</a>
               </div>
             </div>
 
             <div className="flex items-start space-x-3">
-              <Mail className="w-5 h-5 text-emerald-500 mt-0.5 shrink-0" />
+              <Mail className="w-5 h-5 text-white/90 mt-0.5 shrink-0" />
               <div>
-                <h3 className="font-semibold text-sm text-[var(--color-text-primary)]">Privacy & GDPR (DSAR)</h3>
-                <a href={`mailto:${PRIVACY_EMAIL}`} className="text-sm text-emerald-500 hover:underline">{PRIVACY_EMAIL}</a>
-                <p className="text-xs text-[var(--color-text-muted)] mt-0.5">For data access, erasure, or portability requests under GDPR Art. 15–20.</p>
+                <h3 className="font-semibold text-sm">Privacy & GDPR (DSAR)</h3>
+                <a href={`mailto:${PRIVACY_EMAIL}`} className="text-sm text-white hover:underline">{PRIVACY_EMAIL}</a>
+                <p className="text-xs text-white/75 mt-0.5">For data access, erasure, or portability requests under GDPR Art. 15–20.</p>
               </div>
             </div>
 
             <div className="flex items-start space-x-3">
-              <Phone className="w-5 h-5 text-[var(--color-accent-500)] mt-0.5 shrink-0" />
+              <Phone className="w-5 h-5 text-white/90 mt-0.5 shrink-0" />
               <div>
-                <h3 className="font-semibold text-sm text-[var(--color-text-primary)]">Phone</h3>
-                <p className="text-sm text-[var(--color-text-secondary)]">+49 30 123 456 78</p>
-                <p className="text-xs text-[var(--color-text-muted)] mt-0.5">Mon–Fri, 09:00–17:00 CET</p>
+                <h3 className="font-semibold text-sm">Phone</h3>
+                <p className="text-sm text-white/95">+49 30 123 456 78</p>
+                <p className="text-xs text-white/75 mt-0.5">Mon–Fri, 09:00–17:00 CET</p>
               </div>
             </div>
 
             <div className="flex items-start space-x-3">
-              <MapPin className="w-5 h-5 text-[var(--color-accent-500)] mt-0.5 shrink-0" />
+              <MapPin className="w-5 h-5 text-white/90 mt-0.5 shrink-0" />
               <div>
-                <h3 className="font-semibold text-sm text-[var(--color-text-primary)]">Office Address</h3>
-                <p className="text-sm text-[var(--color-text-secondary)]">
+                <h3 className="font-semibold text-sm">Office Address</h3>
+                <p className="text-sm text-white/95">
                   {SITE_NAME} GmbH<br />
                   Friedrichstraße 123<br />
                   10117 Berlin, {ADDRESS_LINE}
@@ -92,36 +92,36 @@ const ContactPage: React.FC = () => {
             </div>
 
             <div className="flex items-start space-x-3">
-              <Globe className="w-5 h-5 text-[var(--color-accent-500)] mt-0.5 shrink-0" />
+              <Globe className="w-5 h-5 text-white/90 mt-0.5 shrink-0" />
               <div>
-                <h3 className="font-semibold text-sm text-[var(--color-text-primary)]">Website</h3>
-                <p className="text-sm text-[var(--color-text-secondary)]">{DOMAIN}</p>
+                <h3 className="font-semibold text-sm">Website</h3>
+                <p className="text-sm text-white/95">{DOMAIN}</p>
               </div>
             </div>
 
             <div className="flex items-start space-x-3">
-              <Clock className="w-5 h-5 text-[var(--color-accent-500)] mt-0.5 shrink-0" />
+              <Clock className="w-5 h-5 text-white/90 mt-0.5 shrink-0" />
               <div>
-                <h3 className="font-semibold text-sm text-[var(--color-text-primary)]">Business Hours</h3>
-                <p className="text-sm text-[var(--color-text-secondary)]">Monday – Friday: 09:00 – 17:00 CET</p>
-                <p className="text-xs text-[var(--color-text-muted)] mt-0.5">Responses within 1–2 business days.</p>
+                <h3 className="font-semibold text-sm">Business Hours</h3>
+                <p className="text-sm text-white/95">Monday – Friday: 09:00 – 17:00 CET</p>
+                <p className="text-xs text-white/75 mt-0.5">Responses within 1–2 business days.</p>
               </div>
             </div>
 
-          </div>
+            <div className="mt-auto pt-4 border-t border-white/20 space-y-2">
+              <h3 className="font-bold text-sm">🇪🇺 EU Data Protection</h3>
+              <p className="text-xs text-white/80 leading-relaxed">
+                All data submitted through this form is processed in accordance with Regulation (EU) 2016/679 (GDPR). Your personal data is stored on EU-based servers in Frankfurt, Germany and will only be used to respond to your enquiry. You may request deletion at any time.
+              </p>
+            </div>
 
-          <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-5 space-y-2">
-            <h3 className="font-bold text-sm text-emerald-600 dark:text-emerald-400">🇪🇺 EU Data Protection</h3>
-            <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-              All data submitted through this form is processed in accordance with Regulation (EU) 2016/679 (GDPR). Your personal data is stored on EU-based servers in Frankfurt, Germany and will only be used to respond to your enquiry. You may request deletion at any time.
-            </p>
           </div>
         </div>
 
         {/* Contact Form */}
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-3 h-full">
           {submitted ? (
-            <div className="bg-[var(--color-bg-secondary)] border border-emerald-500/30 rounded-2xl p-10 text-center space-y-4">
+            <div className="h-full flex flex-col items-center justify-center bg-[var(--color-bg-secondary)] border border-emerald-500/30 rounded-2xl p-10 text-center space-y-4">
               <CheckCircle className="w-14 h-14 text-emerald-500 mx-auto" />
               <h2 className="text-xl font-bold text-[var(--color-text-primary)]">Message Sent Successfully</h2>
               <p className="text-sm text-[var(--color-text-muted)] max-w-md mx-auto">
@@ -135,7 +135,7 @@ const ContactPage: React.FC = () => {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-2xl p-6 sm:p-8 space-y-5">
+            <form onSubmit={handleSubmit} className="h-full flex flex-col bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-2xl p-6 sm:p-8 space-y-5">
               <h2 className="text-lg font-bold text-[var(--color-text-primary)]">Send Us a Message</h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -174,11 +174,11 @@ const ContactPage: React.FC = () => {
                 </select>
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-1.5 flex-1 flex flex-col">
                 <label htmlFor="message" className="text-xs font-semibold text-[var(--color-text-secondary)] uppercase tracking-wider">Message *</label>
                 <textarea
                   id="message" name="message" required rows={5} value={form.message} onChange={handleChange}
-                  className="w-full px-4 py-2.5 rounded-xl bg-[var(--color-bg-primary)] border border-[var(--color-border)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-500)] transition resize-none"
+                  className="w-full flex-1 min-h-[8rem] px-4 py-2.5 rounded-xl bg-[var(--color-bg-primary)] border border-[var(--color-border)] text-sm text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:ring-2 focus:ring-[var(--color-accent-500)] transition resize-none"
                   placeholder="Tell us how we can help…"
                 />
               </div>

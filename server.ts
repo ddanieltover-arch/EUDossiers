@@ -24,7 +24,6 @@ import {
 import {
   deleteOrderById,
   listOrders,
-  seedOrdersIfEmpty,
   updateOrderById,
 } from './src/server/orders-repository';
 import {
@@ -53,7 +52,6 @@ async function startServer() {
   const PORT = Number(process.env.PORT) || 3001;
 
   await seedProductsIfEmpty(INITIAL_PRODUCTS);
-  await seedOrdersIfEmpty();
 
   app.use(express.json());
 

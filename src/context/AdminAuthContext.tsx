@@ -2,6 +2,13 @@ import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 const ADMIN_EMAIL = 'info@eudossier.eu';
 const ADMIN_PASSWORD = 'EuD0ss!er@2026';
+const ADMIN_SESSION_KEY = 'eudossier-admin-session';
+const SESSION_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+
+interface AdminSession {
+  v: 1;
+  exp: number;
+}
 
 interface AdminAuthContextType {
   isAdminAuthenticated: boolean;
@@ -15,8 +22,33 @@ interface AdminAuthContextType {
 
 const AdminAuthContext = createContext<AdminAuthContextType | undefined>(undefined);
 
+function readStoredSession(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    const raw = localStorage.getItem(ADMIN_SESSION_KEY);
+    if (!raw) return false;
+    const parsed = JSON.parse(raw) as AdminSession;
+    if (parsed?.v === 1 && typeof parsed.exp === 'number' && parsed.exp > Date.now()) {
+      return true;
+    }
+    localStorage.removeItem(ADMIN_SESSION_KEY);
+  } catch {
+    localStorage.removeItem(ADMIN_SESSION_KEY);
+  }
+  return false;
+}
+
+function persistSession(): void {
+  const session: AdminSession = { v: 1, exp: Date.now() + SESSION_TTL_MS };
+  localStorage.setItem(ADMIN_SESSION_KEY, JSON.stringify(session));
+}
+
+function clearSession(): void {
+  localStorage.removeItem(ADMIN_SESSION_KEY);
+}
+
 export const AdminAuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(readStoredSession);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
 
@@ -32,6 +64,7 @@ export const AdminAuthProvider: React.FC<{ children: ReactNode }> = ({ children 
 
   const login = (email: string, password: string): boolean => {
     if (email.toLowerCase().trim() === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+      persistSession();
       setIsAdminAuthenticated(true);
       setLoginError(null);
       setIsLoginModalOpen(false);
@@ -42,6 +75,7 @@ export const AdminAuthProvider: React.FC<{ children: ReactNode }> = ({ children 
   };
 
   const logout = () => {
+    clearSession();
     setIsAdminAuthenticated(false);
   };
 
