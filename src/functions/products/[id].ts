@@ -1,5 +1,5 @@
-import { deleteProduct, getProductById, updateProduct } from '../../src/server/products-repository';
-import { parseJsonBody, readPathId, withApiHandler } from '../_lib/http';
+import { deleteProduct, getProductById, updateProduct } from '../../server/products-repository';
+import { parseJsonBody, readPathId, withApiHandler } from '../../server/http';
 
 export const config = { maxDuration: 15 };
 

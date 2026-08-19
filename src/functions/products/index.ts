@@ -1,5 +1,5 @@
-import { createProduct, listProducts } from '../../src/server/products-repository';
-import { parseJsonBody, withApiHandler } from '../_lib/http';
+import { createProduct, listProducts } from '../../server/products-repository';
+import { parseJsonBody, withApiHandler } from '../../server/http';
 
 export const config = { maxDuration: 15 };
 

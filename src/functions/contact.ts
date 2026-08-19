@@ -1,7 +1,7 @@
-import { parseContactPayload } from '../src/server/orders-service';
-import { notifyContactMessage } from '../src/server/email/notifications';
-import { ensureContactTable, listContactMessages } from '../src/server/contact-repository';
-import { withApiHandler } from './_lib/http';
+import { parseContactPayload } from '../server/orders-service';
+import { notifyContactMessage } from '../server/email/notifications';
+import { ensureContactTable, listContactMessages } from '../server/contact-repository';
+import { withApiHandler } from '../server/http';
 
 export const config = { maxDuration: 15 };
 

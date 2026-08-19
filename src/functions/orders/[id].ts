@@ -1,6 +1,6 @@
-import { deleteOrderById } from '../../src/server/orders-repository';
-import { patchCheckoutOrder } from '../../src/server/orders-service';
-import { parseJsonBody, readPathId, withApiHandler } from '../_lib/http';
+import { deleteOrderById } from '../../server/orders-repository';
+import { patchCheckoutOrder } from '../../server/orders-service';
+import { parseJsonBody, readPathId, withApiHandler } from '../../server/http';
 
 export const config = { maxDuration: 15 };
 

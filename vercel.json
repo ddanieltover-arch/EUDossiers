@@ -1,11 +1,13 @@
 {
-  "buildCommand": "npx vite build",
+  "buildCommand": "node scripts/bundle-api.mjs && npx vite build",
   "outputDirectory": "dist",
   "framework": null,
   "functions": {
-    "api/**/*.ts": {
-      "maxDuration": 15,
-      "includeFiles": "src/**"
+    "api/**/*.js": {
+      "maxDuration": 15
+    },
+    "api/health.ts": {
+      "maxDuration": 15
     }
   },
   "rewrites": [

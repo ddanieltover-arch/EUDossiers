@@ -1,6 +1,6 @@
-import { listOrders } from '../../src/server/orders-repository';
-import { createCheckoutOrder } from '../../src/server/orders-service';
-import { parseJsonBody, withApiHandler } from '../_lib/http';
+import { listOrders } from '../../server/orders-repository';
+import { createCheckoutOrder } from '../../server/orders-service';
+import { parseJsonBody, withApiHandler } from '../../server/http';
 
 export const config = { maxDuration: 15 };
 

@@ -1,18 +1,43 @@
 import React, { useState, useEffect } from 'react';
-import { ShieldCheck, Check, Settings, X } from 'lucide-react';
+import { ShieldCheck, Settings, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
 
+const GDPR_BANNER_KEY = 'eudossier_gdpr_banner_seen_at';
+const GDPR_BANNER_TTL_MS = 30 * 24 * 60 * 60 * 1000;
+
+function shouldShowGdprBanner(): boolean {
+  try {
+    const seenAt = localStorage.getItem(GDPR_BANNER_KEY);
+    if (!seenAt) return true;
+    const timestamp = Number(seenAt);
+    if (!Number.isFinite(timestamp)) return true;
+    return Date.now() - timestamp >= GDPR_BANNER_TTL_MS;
+  } catch {
+    return true;
+  }
+}
+
+function rememberGdprBannerSeen(): void {
+  try {
+    localStorage.setItem(GDPR_BANNER_KEY, String(Date.now()));
+  } catch {
+    /* ignore private-mode storage failures */
+  }
+}
+
 export const GDPRBanner: React.FC = () => {
   const { updateGDPRPreferences } = useStore();
-  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
-    const dismissed = sessionStorage.getItem('gdpr_banner_dismissed');
-    if (dismissed) {
-      setIsVisible(false);
-    }
+    setIsVisible(shouldShowGdprBanner());
   }, []);
+
+  const dismissBanner = () => {
+    rememberGdprBannerSeen();
+    setIsVisible(false);
+  };
 
   const handleAcceptAll = () => {
     updateGDPRPreferences({
@@ -20,8 +45,7 @@ export const GDPRBanner: React.FC = () => {
       marketing: true,
       functional: true,
     });
-    sessionStorage.setItem('gdpr_banner_dismissed', 'true');
-    setIsVisible(false);
+    dismissBanner();
   };
 
   const handleAcceptEssential = () => {
@@ -30,8 +54,7 @@ export const GDPRBanner: React.FC = () => {
       marketing: false,
       functional: true,
     });
-    sessionStorage.setItem('gdpr_banner_dismissed', 'true');
-    setIsVisible(false);
+    dismissBanner();
   };
 
   if (!isVisible) return null;
@@ -51,7 +74,7 @@ export const GDPRBanner: React.FC = () => {
               <span className="text-[10px] bg-blue-50 dark:bg-blue-900/60 text-blue-600 dark:text-blue-300 px-1.5 py-0.2 rounded font-normal">EUR Settlement</span>
             </h4>
             <button
-              onClick={() => setIsVisible(false)}
+              onClick={dismissBanner}
               className="text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] p-0.5"
             >
               <X className="w-4 h-4" />
@@ -79,7 +102,7 @@ export const GDPRBanner: React.FC = () => {
 
             <Link
               to="/privacy"
-              onClick={() => setIsVisible(false)}
+              onClick={dismissBanner}
               className="text-xs text-blue-500 hover:text-blue-400 font-semibold flex items-center space-x-1 underline ml-auto"
             >
               <Settings className="w-3.5 h-3.5" />
