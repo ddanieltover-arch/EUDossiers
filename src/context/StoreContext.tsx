@@ -50,16 +50,10 @@ interface StoreContextType {
   cartShippingFeeEUR: number;
   cartTotalEUR: number;
 
-  // View Mode
-  viewMode: 'home' | 'storefront' | 'inventory';
-  setViewMode: (mode: 'home' | 'storefront' | 'inventory') => void;
-
   // GDPR & Privacy
   gdprPreferences: GDPRPreferences;
   updateGDPRPreferences: (newPrefs: Partial<GDPRPreferences>) => Promise<void>;
   consentLogs: ConsentLog[];
-  isGDPRModalOpen: boolean;
-  setIsGDPRModalOpen: (open: boolean) => void;
   downloadDSARPackage: () => Promise<void>;
   requestRightToBeForgotten: () => Promise<void>;
 
@@ -76,8 +70,6 @@ interface StoreContextType {
   placeOrder: (customerInfo: { name: string; email: string }) => Promise<Order | null>;
   currentCompletedOrder: Order | null;
   setCurrentCompletedOrder: (order: Order | null) => void;
-  selectedProductForDetail: Product | null;
-  setSelectedProductForDetail: (p: Product | null) => void;
   isLocalizationModalOpen: boolean;
   setIsLocalizationModalOpen: (open: boolean) => void;
 }
@@ -105,10 +97,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   // Cart & UI drawers
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
-  const [viewMode, setViewMode] = useState<'home' | 'storefront' | 'inventory'>('home');
-  const [isGDPRModalOpen, setIsGDPRModalOpen] = useState<boolean>(false);
   const [isLocalizationModalOpen, setIsLocalizationModalOpen] = useState<boolean>(false);
-  const [selectedProductForDetail, setSelectedProductForDetail] = useState<Product | null>(null);
 
   // GDPR & Audit logs
   const [gdprPreferences, setGdprPreferences] = useState<GDPRPreferences>({
@@ -515,13 +504,9 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         cartVATAmountEUR,
         cartShippingFeeEUR,
         cartTotalEUR,
-        viewMode,
-        setViewMode,
         gdprPreferences,
         updateGDPRPreferences,
         consentLogs,
-        isGDPRModalOpen,
-        setIsGDPRModalOpen,
         downloadDSARPackage,
         requestRightToBeForgotten,
         stockAdjustments,
@@ -534,8 +519,6 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         placeOrder,
         currentCompletedOrder,
         setCurrentCompletedOrder,
-        selectedProductForDetail,
-        setSelectedProductForDetail,
         isLocalizationModalOpen,
         setIsLocalizationModalOpen,
       }}

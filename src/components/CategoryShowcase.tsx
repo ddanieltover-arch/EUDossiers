@@ -22,7 +22,7 @@ export const CategoryShowcase: React.FC = () => {
       count: products.filter(p => p.category === 'Passports').length,
       icon: Globe,
       description: 'ICAO 9303 Biometric Passports with e-Chip',
-      gradient: 'from-amber-500/20 via-slate-800 to-slate-900',
+      gradient: 'from-amber-500/20 via-[var(--color-bg-tertiary)] to-[var(--color-bg-card)]',
       borderGlow: 'hover:border-amber-500/50 hover:shadow-amber-500/10'
     },
     {
@@ -31,7 +31,7 @@ export const CategoryShowcase: React.FC = () => {
       count: products.filter(p => p.category === 'Driver Licenses').length,
       icon: CreditCard,
       description: 'EU & International Credit-Card Permite',
-      gradient: 'from-blue-500/20 via-slate-800 to-slate-900',
+      gradient: 'from-blue-500/20 via-[var(--color-bg-tertiary)] to-[var(--color-bg-card)]',
       borderGlow: 'hover:border-blue-500/50 hover:shadow-blue-500/10'
     },
     {
@@ -40,7 +40,7 @@ export const CategoryShowcase: React.FC = () => {
       count: products.filter(p => p.category === 'Identity Cards').length,
       icon: Award,
       description: 'Electronic eID Cards with Contactless Microchip',
-      gradient: 'from-emerald-500/20 via-slate-800 to-slate-900',
+      gradient: 'from-emerald-500/20 via-[var(--color-bg-tertiary)] to-[var(--color-bg-card)]',
       borderGlow: 'hover:border-emerald-500/50 hover:shadow-emerald-500/10'
     },
     {
@@ -49,7 +49,7 @@ export const CategoryShowcase: React.FC = () => {
       count: products.filter(p => p.category === 'Residence Permits').length,
       icon: Shield,
       description: 'Biometric Schengen Right of Residence Cards',
-      gradient: 'from-purple-500/20 via-slate-800 to-slate-900',
+      gradient: 'from-purple-500/20 via-[var(--color-bg-tertiary)] to-[var(--color-bg-card)]',
       borderGlow: 'hover:border-purple-500/50 hover:shadow-purple-500/10'
     },
     {
@@ -58,7 +58,7 @@ export const CategoryShowcase: React.FC = () => {
       count: products.filter(p => p.category === 'EU Visas').length,
       icon: FileText,
       description: 'Schengen Multi-Entry Visas & Verified Statements',
-      gradient: 'from-cyan-500/20 via-slate-800 to-slate-900',
+      gradient: 'from-cyan-500/20 via-[var(--color-bg-tertiary)] to-[var(--color-bg-card)]',
       borderGlow: 'hover:border-cyan-500/50 hover:shadow-cyan-500/10'
     }
   ];
@@ -67,13 +67,13 @@ export const CategoryShowcase: React.FC = () => {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h3 className="text-lg font-bold text-white tracking-tight flex items-center space-x-2">
+          <h3 className="text-lg font-bold text-[var(--color-text-primary)] tracking-tight flex items-center space-x-2">
             <span>Official Catalogue Categories</span>
-            <span className="text-xs bg-[var(--color-accent-600)]/20 text-[var(--color-accent-300)] border border-[var(--color-accent-600)]/40 px-2 py-0.5 rounded-full font-normal">
+            <span className="text-xs bg-[var(--color-accent-600)]/20 text-[var(--color-accent-600)] border border-[var(--color-accent-600)]/40 px-2 py-0.5 rounded-full font-normal">
               {products.length} Products Registered
             </span>
           </h3>
-          <p className="text-xs text-slate-400">
+          <p className="text-xs text-[var(--color-text-muted)]">
             Browse by official document classification for single market fulfillment.
           </p>
         </div>
@@ -81,7 +81,7 @@ export const CategoryShowcase: React.FC = () => {
         {selectedCategory !== 'All' && (
           <button
             onClick={() => setSelectedCategory('All')}
-            className="text-xs text-blue-400 hover:text-blue-300 font-semibold underline transition-colors"
+            className="text-xs text-blue-500 hover:text-blue-400 font-semibold underline transition-colors"
           >
             Show All ({products.length})
           </button>
@@ -96,36 +96,39 @@ export const CategoryShowcase: React.FC = () => {
           return (
             <button
               key={cat.id}
-              onClick={() => setSelectedCategory(isSelected ? 'All' : cat.id)}
+              onClick={() => {
+                setSelectedCategory(isSelected ? 'All' : cat.id);
+                const el = document.getElementById(`category-${cat.id.toLowerCase().replace(/\s+/g, '-')}`);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
               className={`text-left p-4 rounded-2xl border transition-all duration-300 relative group overflow-hidden ${
                 isSelected
-                  ? 'bg-slate-800 border-[var(--color-accent-500)] ring-1 ring-[var(--color-accent-500)] shadow-lg shadow-[var(--color-accent-500)]/10'
-                  : `bg-slate-900/80 border-slate-800 ${cat.borderGlow} hover:bg-slate-800/90`
+                  ? 'bg-[var(--color-bg-tertiary)] border-[var(--color-accent-500)] ring-1 ring-[var(--color-accent-500)] shadow-lg shadow-[var(--color-accent-500)]/10'
+                  : `bg-[var(--color-bg-card)] border-[var(--color-border)] ${cat.borderGlow} hover:bg-[var(--color-bg-card-hover)]`
               }`}
             >
-              {/* Background Glow Gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${cat.gradient} opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none`}></div>
 
               <div className="relative z-10 flex flex-col justify-between h-full space-y-3">
                 <div className="flex items-center justify-between">
-                  <div className={`p-2.5 rounded-xl ${isSelected ? 'bg-[var(--color-accent-600)] text-white' : 'bg-slate-800 text-slate-300 group-hover:text-white'} transition-colors`}>
+                  <div className={`p-2.5 rounded-xl ${isSelected ? 'bg-[var(--color-accent-600)] text-white' : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] group-hover:text-[var(--color-text-primary)]'} transition-colors`}>
                     <Icon className="w-5 h-5" />
                   </div>
                   
                   {isSelected ? (
-                    <CheckCircle2 className="w-4 h-4 text-[var(--color-accent-400)]" />
+                    <CheckCircle2 className="w-4 h-4 text-[var(--color-accent-500)]" />
                   ) : (
-                    <span className="text-[11px] font-extrabold text-slate-400 bg-slate-800 px-2 py-0.5 rounded-md border border-slate-700">
+                    <span className="text-[11px] font-extrabold text-[var(--color-text-muted)] bg-[var(--color-bg-tertiary)] px-2 py-0.5 rounded-md border border-[var(--color-border)]">
                       {cat.count}
                     </span>
                   )}
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-bold text-white group-hover:text-[var(--color-accent-300)] transition-colors">
+                  <h4 className="text-sm font-bold text-[var(--color-text-primary)] group-hover:text-[var(--color-accent-600)] transition-colors">
                     {cat.name}
                   </h4>
-                  <p className="text-[11px] text-slate-400 leading-tight mt-0.5 line-clamp-1">
+                  <p className="text-[11px] text-[var(--color-text-muted)] leading-tight mt-0.5 line-clamp-1">
                     {cat.description}
                   </p>
                 </div>

@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
 /**
- * Harbour Light — CSS design tokens for Eudossier commerce demo.
- * Aligned with parent project src/styles/tokens.css.
+ * Eudossier — Semantic design tokens.
+ * :root = light theme (default), html.dark = dark theme.
  */
 :root {
+  /* --- Raw palette (unchanged, used for direct refs in hero etc.) --- */
   --color-ink-50: #e8eef4;
   --color-ink-100: #c5d3e0;
   --color-ink-200: #8fa8c0;
@@ -28,6 +29,55 @@
 
   --font-display: "Outfit", system-ui, sans-serif;
   --font-sans: "Source Sans 3", system-ui, sans-serif;
+
+  /* --- Semantic tokens: LIGHT (default) --- */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f5f7fa;
+  --color-bg-tertiary: #ebeff4;
+  --color-bg-card: #ffffff;
+  --color-bg-card-hover: #f5f7fa;
+  --color-bg-overlay: rgba(0, 0, 0, 0.45);
+  --color-bg-input: #f5f7fa;
+
+  --color-border: #dce3ec;
+  --color-border-subtle: #ebeff4;
+
+  --color-text-primary: #071421;
+  --color-text-secondary: #2a4a66;
+  --color-text-muted: #8fa8c0;
+  --color-text-inverse: #ffffff;
+
+  --color-shadow: rgba(0, 0, 0, 0.08);
+}
+
+html.dark {
+  /* --- Semantic tokens: DARK --- */
+  --color-bg-primary: #071421;
+  --color-bg-secondary: #0b1f33;
+  --color-bg-tertiary: #143049;
+  --color-bg-card: #0b1f33;
+  --color-bg-card-hover: #143049;
+  --color-bg-overlay: rgba(7, 20, 33, 0.85);
+  --color-bg-input: #143049;
+
+  --color-border: #143049;
+  --color-border-subtle: #0b1f33;
+
+  --color-text-primary: #f5f7fa;
+  --color-text-secondary: #c5d3e0;
+  --color-text-muted: #8fa8c0;
+  --color-text-inverse: #071421;
+
+  --color-shadow: rgba(0, 0, 0, 0.4);
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  animation: ticker 30s linear infinite;
 }
 
 @layer base {
@@ -40,7 +90,8 @@
   }
 
   body {
-    background-color: var(--color-ink-950);
-    color: var(--color-paper-50);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    transition: background-color 0.2s ease, color 0.2s ease;
   }
 }

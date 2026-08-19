@@ -1,9 +1,10 @@
 import React from 'react';
 import { ShieldCheck, Truck, ArrowRight, Euro } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
 
 export const HeroBanner: React.FC = () => {
-  const { selectedCountry, setIsLocalizationModalOpen, setIsGDPRModalOpen, setViewMode } = useStore();
+  const { selectedCountry, setIsLocalizationModalOpen } = useStore();
 
   return (
     <div className="relative text-white overflow-hidden border-b border-[var(--color-ink-700)]">
@@ -53,13 +54,13 @@ export const HeroBanner: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-1">
-              <button
-                onClick={() => setViewMode('storefront')}
+              <Link
+                to="/catalogue"
                 className="bg-[var(--color-accent-600)] hover:bg-[var(--color-accent-500)] text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-xl shadow-lg shadow-[var(--color-accent-600)]/30 flex items-center space-x-2 transition-all"
               >
                 <span>Browse Full Product Catalogue</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
 
             {/* Feature Highlights Grid */}
@@ -144,13 +145,13 @@ export const HeroBanner: React.FC = () => {
 
             </div>
 
-            <button
-              onClick={() => setIsGDPRModalOpen(true)}
+            <Link
+              to="/privacy"
               className="w-full bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-semibold py-2 rounded-xl transition-all flex items-center justify-center space-x-1.5"
             >
               <span>Inspect GDPR Rights &amp; Data Logs</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+            </Link>
 
           </div>
 

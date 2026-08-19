@@ -1,5 +1,6 @@
 import React from 'react';
 import { ShoppingBag, Eye, AlertTriangle, CheckCircle, MapPin, Warehouse } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { Product } from '../types';
 import { useStore } from '../context/StoreContext';
 
@@ -11,22 +12,28 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { 
     addToCart, 
     getConvertedPriceString, 
-    setSelectedProductForDetail,
     setSearchQuery
   } = useStore();
 
   const isLowStock = product.totalStock > 0 && product.totalStock <= product.lowStockThreshold;
   const isOutOfStock = product.totalStock <= 0;
 
+  // Stable random discount 5-10% based on product ID
+  const discountPercent = React.useMemo(() => {
+    let hash = 0;
+    for (let i = 0; i < product.id.length; i++) hash = ((hash << 5) - hash + product.id.charCodeAt(i)) | 0;
+    return 5 + (Math.abs(hash) % 6); // 5..10
+  }, [product.id]);
+
+  const originalPrice = product.priceEUR / (1 - discountPercent / 100);
   const { mainEUR, convertedRef } = getConvertedPriceString(product.priceEUR);
 
   return (
-    <div className="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:border-slate-700 transition-all flex flex-col h-full">
+    <div className="group bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:border-[var(--color-border-subtle)] transition-all flex flex-col h-full">
       
-      {/* Image & Badges */}
-      <div 
-        className="relative aspect-4/3 bg-slate-800 overflow-hidden cursor-pointer"
-        onClick={() => setSelectedProductForDetail(product)}
+      <Link 
+        to={`/catalogue/${product.id}`}
+        className="relative aspect-4/3 bg-[var(--color-bg-tertiary)] overflow-hidden cursor-pointer block"
       >
         <img
           src={product.imageUrl}
@@ -35,18 +42,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
 
-        {/* Origin Country & 5% OFF Discount Tag */}
         <div className="absolute top-3 left-3 flex items-center space-x-1.5">
-          <div className="bg-slate-950/80 backdrop-blur-md text-white text-xs font-semibold px-2.5 py-1 rounded-lg border border-slate-700/80 flex items-center space-x-1.5 shadow-sm">
+          <div className="bg-black/70 backdrop-blur-md text-white text-xs font-semibold px-2.5 py-1 rounded-lg border border-white/20 flex items-center space-x-1.5 shadow-sm">
             <span>{product.originFlag}</span>
             <span>Made in {product.originCountry}</span>
           </div>
-          <span className="bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-950 text-[11px] font-black px-2 py-0.5 rounded-lg shadow-sm">
-            5% OFF
-          </span>
         </div>
 
-        {/* Stock Status Badge */}
         <div className="absolute top-3 right-3">
           {isOutOfStock ? (
             <span className="bg-rose-950/90 text-rose-300 border border-rose-800/80 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-sm">
@@ -64,40 +66,37 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           )}
         </div>
 
-        {/* Quick View Hover Overlay */}
-        <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-          <span className="bg-white/90 text-slate-900 font-bold text-xs px-3 py-2 rounded-xl flex items-center space-x-1.5 shadow-lg">
+        <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+          <span className="bg-white/90 text-[var(--color-ink-950)] font-bold text-xs px-3 py-2 rounded-xl flex items-center space-x-1.5 shadow-lg">
             <Eye className="w-4 h-4" />
             <span>Quick Inspect Specs</span>
           </span>
         </div>
-      </div>
+      </Link>
 
-      {/* Card Details */}
       <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
         
         <div>
-          <div className="flex items-center justify-between text-xs text-slate-400 mb-1">
-            <span className="font-semibold text-blue-400 uppercase tracking-wider text-[10px]">
+          <div className="flex items-center justify-between text-xs text-[var(--color-text-muted)] mb-1">
+            <span className="font-semibold text-blue-500 uppercase tracking-wider text-[10px]">
               {product.category}
             </span>
-            <span className="font-mono text-slate-500 text-[10px]">
+            <span className="font-mono text-[var(--color-text-muted)] text-[10px]">
               SKU: {product.sku}
             </span>
           </div>
 
-          <h3 
-            onClick={() => setSelectedProductForDetail(product)}
-            className="font-bold text-base text-white group-hover:text-blue-300 transition-colors line-clamp-2 cursor-pointer"
+          <Link 
+            to={`/catalogue/${product.id}`}
+            className="font-bold text-base text-[var(--color-text-primary)] group-hover:text-blue-500 transition-colors line-clamp-2 cursor-pointer block"
           >
             {product.name}
-          </h3>
+          </Link>
 
-          <p className="text-xs text-slate-400 mt-1.5 line-clamp-2 leading-relaxed">
+          <p className="text-xs text-[var(--color-text-muted)] mt-1.5 line-clamp-2 leading-relaxed">
             {product.description}
           </p>
 
-          {/* Product Tags */}
           {product.tags && product.tags.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-2">
               {product.tags.map(tag => (
@@ -107,7 +106,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
                     e.stopPropagation();
                     setSearchQuery(tag);
                   }}
-                  className="text-[10px] font-medium bg-slate-800 hover:bg-blue-900/60 text-slate-400 hover:text-blue-300 border border-slate-700/80 hover:border-blue-600/50 px-1.5 py-0.5 rounded transition-colors"
+                  className="text-[10px] font-medium bg-[var(--color-bg-tertiary)] hover:bg-blue-100 dark:hover:bg-blue-900/60 text-[var(--color-text-muted)] hover:text-blue-600 dark:hover:text-blue-300 border border-[var(--color-border)] hover:border-blue-400/50 px-1.5 py-0.5 rounded transition-colors"
                   title={`Filter products by #${tag}`}
                 >
                   #{tag}
@@ -117,30 +116,33 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           )}
         </div>
 
-        {/* Pricing & Add to Cart */}
-        <div className="pt-3 border-t border-slate-800 flex items-end justify-between">
+        <div className="pt-3 border-t border-[var(--color-border)] flex items-end justify-between">
           
           <div>
-            <div className="flex items-center space-x-1.5 text-xs text-slate-400">
+            <div className="flex items-center space-x-1.5 text-xs text-[var(--color-text-muted)]">
               <span>Discounted Price:</span>
-              {product.originalPriceEUR && (
-                <span className="line-through text-slate-500 font-mono text-[11px]">
-                  €{product.originalPriceEUR.toFixed(2)}
-                </span>
-              )}
+              <span className="line-through text-[var(--color-text-muted)] font-mono text-[11px]">
+                €{originalPrice.toFixed(2)}
+              </span>
             </div>
             <div className="flex items-baseline space-x-1.5">
-              <span className="text-lg font-extrabold text-emerald-400">
+              <span className="text-lg font-extrabold text-emerald-500">
                 {mainEUR}
               </span>
+              <span className="text-[10px] font-black text-rose-500 bg-rose-50 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 px-1.5 py-0.5 rounded">
+                {discountPercent}% OFF
+              </span>
               {convertedRef && (
-                <span className="text-xs font-semibold text-indigo-300">
+                <span className="text-xs font-semibold text-indigo-500">
                   {convertedRef}
                 </span>
               )}
             </div>
-            <div className="text-[10px] text-slate-500">
+            <div className="text-[10px] text-[var(--color-text-muted)]">
               Includes {product.vatRateCategory === 'standard' ? 'Standard' : 'Reduced'} EU VAT
+            </div>
+            <div className={`text-[10px] font-bold mt-1 ${isOutOfStock ? 'text-rose-500' : isLowStock ? 'text-amber-500' : 'text-emerald-500'}`}>
+              {isOutOfStock ? 'Out of Stock' : `${product.totalStock} in stock`}
             </div>
           </div>
 
@@ -149,7 +151,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             disabled={isOutOfStock}
             className={`px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center space-x-1.5 transition-all shadow-md ${
               isOutOfStock
-                ? 'bg-slate-800 text-slate-500 cursor-not-allowed'
+                ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed'
                 : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-600/20'
             }`}
           >
