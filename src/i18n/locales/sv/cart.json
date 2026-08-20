@@ -1,0 +1,15 @@
+{
+  "title": "Din varukorg",
+  "emptyTitle": "Din varukorg är tom",
+  "emptyBody": "Bläddra i katalogen och lägg till artiklar för att påbörja din order.",
+  "summary": "Ordersammanfattning",
+  "subtotal": "Delsumma",
+  "total": "Totalt",
+  "remove": "Ta bort",
+  "continueShopping": "Fortsätt handla",
+  "itemCount": "{{count}} artiklar",
+  "each": "st",
+  "drawerTitle": "Artikel tillagd i varukorgen",
+  "drawerEmpty": "Din varukorg är tom",
+  "estimatedTotal": "Beräknat totalt"
+}

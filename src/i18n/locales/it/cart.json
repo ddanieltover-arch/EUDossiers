@@ -1,0 +1,15 @@
+{
+  "title": "Il tuo carrello",
+  "emptyTitle": "Il carrello è vuoto",
+  "emptyBody": "Sfoglia il catalogo e aggiungi articoli per iniziare l’ordine.",
+  "summary": "Riepilogo ordine",
+  "subtotal": "Subtotale",
+  "total": "Totale",
+  "remove": "Rimuovi",
+  "continueShopping": "Continua lo shopping",
+  "itemCount": "{{count}} articoli",
+  "each": "cad.",
+  "drawerTitle": "Articolo aggiunto al carrello",
+  "drawerEmpty": "Il carrello è vuoto",
+  "estimatedTotal": "Totale stimato"
+}

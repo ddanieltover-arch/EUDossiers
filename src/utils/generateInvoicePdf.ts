@@ -251,11 +251,8 @@ export async function downloadOfficialEuInvoice(order: Order): Promise<void> {
   y += 8;
   const boxW = 78;
   const boxX = PAGE_W - MARGIN - boxW;
-  const vatPct = (order.vatRate * 100).toFixed(0);
   const rows: { label: string; value: string; emphasize?: boolean; teal?: boolean }[] = [
-    { label: 'Subtotal (net)', value: formatEur(order.subtotalEUR) },
-    { label: `EU VAT (${vatPct}%)`, value: formatEur(order.vatAmountEUR) },
-    { label: 'Shipping', value: order.shippingFeeEUR === 0 ? 'Free' : formatEur(order.shippingFeeEUR) },
+    { label: 'Subtotal', value: formatEur(order.subtotalEUR) },
   ];
   if (order.cryptoDiscountEUR && order.cryptoDiscountEUR > 0) {
     rows.push({ label: 'Crypto discount (5%)', value: `-${formatEur(order.cryptoDiscountEUR)}` });

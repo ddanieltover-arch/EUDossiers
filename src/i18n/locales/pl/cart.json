@@ -1,0 +1,15 @@
+{
+  "title": "Twój koszyk",
+  "emptyTitle": "Koszyk jest pusty",
+  "emptyBody": "Przeglądaj katalog i dodawaj produkty, aby rozpocząć zamówienie.",
+  "summary": "Podsumowanie zamówienia",
+  "subtotal": "Suma częściowa",
+  "total": "Razem",
+  "remove": "Usuń",
+  "continueShopping": "Kontynuuj zakupy",
+  "itemCount": "{{count}} pozycji",
+  "each": "szt.",
+  "drawerTitle": "Produkt dodany do koszyka",
+  "drawerEmpty": "Koszyk jest pusty",
+  "estimatedTotal": "Szacowana suma"
+}

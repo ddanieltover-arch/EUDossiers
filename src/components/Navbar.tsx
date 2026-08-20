@@ -10,23 +10,27 @@ import {
   Mail
 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useStore } from '../context/StoreContext';
 import { useTheme } from '../context/ThemeContext';
 import { SITE_NAME, NAV_SUBTITLE } from '../brand';
+import { SUPPORTED_LOCALES } from '../i18n/languages';
 
 export const Navbar: React.FC = () => {
   const { 
     cart, 
-    selectedCountry, 
-    selectedCurrency, 
-    setIsLocalizationModalOpen,
+    setIsLanguageModalOpen,
     searchQuery,
     setSearchQuery,
   } = useStore();
 
   const { theme, toggleTheme } = useTheme();
+  const { t, i18n } = useTranslation('common');
   const location = useLocation();
   const navigate = useNavigate();
+  const currentLocale = SUPPORTED_LOCALES.find(
+    (l) => l.code === (i18n.language || 'en').split('-')[0]
+  ) || SUPPORTED_LOCALES[0];
 
   const totalCartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const isCatalogue = location.pathname.startsWith('/catalogue');
@@ -65,7 +69,7 @@ export const Navbar: React.FC = () => {
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-text-muted)]" />
               <input
                 type="text"
-                placeholder="Search registered passports, driver licenses, residence permits, visas..."
+                placeholder={t('nav.searchPlaceholder')}
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 className="w-full bg-[var(--color-bg-input)] text-xs text-[var(--color-text-primary)] pl-10 pr-4 py-2 rounded-xl border border-[var(--color-border)] focus:outline-none focus:border-[var(--color-accent-500)] focus:ring-1 focus:ring-[var(--color-accent-500)] placeholder-[var(--color-text-muted)] transition-all shadow-inner"
@@ -75,7 +79,7 @@ export const Navbar: React.FC = () => {
                   onClick={() => setSearchQuery('')}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]"
                 >
-                  Clear
+                  {t('nav.clear')}
                 </button>
               )}
             </div>
@@ -92,7 +96,7 @@ export const Navbar: React.FC = () => {
                     : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-card-hover)]'
                 }`}
               >
-                <span>Home</span>
+                <span>{t('nav.home')}</span>
               </Link>
               <Link
                 to="/catalogue"
@@ -103,7 +107,7 @@ export const Navbar: React.FC = () => {
                 }`}
               >
                 <Store className="w-3.5 h-3.5" />
-                <span>Catalogue</span>
+                <span>{t('nav.catalogue')}</span>
               </Link>
               <Link
                 to="/contact"
@@ -114,19 +118,17 @@ export const Navbar: React.FC = () => {
                 }`}
               >
                 <Mail className="w-3.5 h-3.5" />
-                <span>Contact</span>
+                <span>{t('nav.contact')}</span>
               </Link>
             </div>
 
             <button
-              onClick={() => setIsLocalizationModalOpen(true)}
+              onClick={() => setIsLanguageModalOpen(true)}
               className="flex items-center space-x-1.5 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-bg-card-hover)] border border-[var(--color-border)] text-[var(--color-text-secondary)] px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors"
-              title="Change Delivery Country or Display Currency Reference"
+              title={t('nav.changeLanguage')}
             >
-              <span className="text-sm">{selectedCountry.flag}</span>
-              <span className="hidden lg:inline">{selectedCountry.code}</span>
-              <span className="text-[var(--color-text-muted)] hidden lg:inline">•</span>
-              <span className="text-[var(--color-accent-500)] font-semibold">{selectedCurrency.code}</span>
+              <span className="text-sm">{currentLocale.flag}</span>
+              <span className="hidden lg:inline uppercase">{currentLocale.code}</span>
               <Globe className="w-3.5 h-3.5 text-[var(--color-text-muted)]" />
             </button>
 
@@ -136,32 +138,31 @@ export const Navbar: React.FC = () => {
               title="GDPR Data Privacy Controls & DSAR Export"
             >
               <ShieldCheck className="w-4 h-4 text-emerald-500" />
-              <span className="hidden md:inline">GDPR Privacy</span>
+              <span className="hidden md:inline">{t('nav.gdpr')}</span>
             </Link>
 
             <button
               onClick={toggleTheme}
-              className="flex items-center justify-center w-8 h-8 rounded-lg bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-bg-card-hover)] border border-[var(--color-border)] text-[var(--color-text-secondary)] transition-all"
-              title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+              className="p-2 rounded-lg bg-[var(--color-bg-tertiary)] border border-[var(--color-border)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+              title="Toggle theme"
             >
-              {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4 text-amber-400" />}
+              {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
             </button>
 
-            <Link
-              to="/cart"
-              className="relative bg-[var(--color-accent-600)] hover:bg-[var(--color-accent-500)] text-white px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1.5 transition-all shadow-md hover:shadow-[var(--color-accent-600)]/20"
+            <button
+              onClick={() => navigate('/cart')}
+              className="relative flex items-center space-x-1.5 bg-[var(--color-accent-600)] hover:bg-[var(--color-accent-500)] text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-all shadow-md"
             >
               <ShoppingBag className="w-4 h-4" />
-              <span className="hidden sm:inline">Cart</span>
+              <span className="hidden sm:inline">{t('nav.cart')}</span>
               {totalCartCount > 0 && (
-                <span className="bg-amber-400 text-[var(--color-ink-950)] font-bold px-1.5 py-0.2 rounded-full text-[11px] min-w-[18px] text-center">
+                <span className="absolute -top-1.5 -right-1.5 bg-rose-500 text-white text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center border-2 border-[var(--color-bg-secondary)]">
                   {totalCartCount}
                 </span>
               )}
-            </Link>
+            </button>
 
           </div>
-
         </div>
       </div>
     </header>

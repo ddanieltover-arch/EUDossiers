@@ -1,0 +1,15 @@
+{
+  "title": "Uw winkelwagen",
+  "emptyTitle": "Uw winkelwagen is leeg",
+  "emptyBody": "Blader door onze catalogus en voeg items toe om uw bestelling te starten.",
+  "summary": "Besteloverzicht",
+  "subtotal": "Subtotaal",
+  "total": "Totaal",
+  "remove": "Verwijderen",
+  "continueShopping": "Verder winkelen",
+  "itemCount": "{{count}} items",
+  "each": "per stuk",
+  "drawerTitle": "Item toegevoegd aan winkelwagen",
+  "drawerEmpty": "Uw winkelwagen is leeg",
+  "estimatedTotal": "Geschat totaal"
+}

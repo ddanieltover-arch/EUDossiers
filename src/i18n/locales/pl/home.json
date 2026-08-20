@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "badge": "Siedziba w Europie • Logistyka jednolitego rynku",
+    "titleLine1": "Oficjalne dokumenty UE i",
+    "titleLine2": "zarejestrowane rozwiązania dossier.",
+    "description": "Zamów zarejestrowane europejskie paszporty, prawa jazdy, krajowe dowody tożsamości, wizy Schengen i zezwolenia na pobyt UE. Wszystkie zamówienia rozliczane są w Euro (€) z biometryczną rejestracją w bazie danych oraz ekspresową dostawą kurierską w 72 godziny we wszystkich 27 państwach członkowskich UE.",
+    "eurStandard": "Standard Euro (€)",
+    "eurStandardDesc": "Bez marż walutowych i ukrytych opłat forex.",
+    "gdpr": "Zgodność z GDPR",
+    "gdprDesc": "Natychmiastowe eksporty danych DSAR i narzędzia usuwania.",
+    "logistics": "Zielona logistyka UE",
+    "logisticsDesc": "Huby magazynowe we Frankfurt, Amsterdam i Lyon."
+  },
+  "ticker": {
+    "portal": "Oficjalny portal dokumentów Unii Europejskiej",
+    "discount": "Aktywny automatyczny rabat 5 % na cały sklep",
+    "registry": "100 % rejestracji w bazach (KBA • ANTS • fedpol • BRP)",
+    "shipping": "Ekspresowa wysyłka kurierska 72 godziny",
+    "settlement": "Rozliczenie: baza EUR (€)",
+    "node": "Węzeł: DE-West (Frankfurt)"
+  },
+  "categories": {
+    "title": "Oficjalne kategorie katalogu",
+    "registered": "{{count}} produktów zarejestrowanych",
+    "subtitle": "Przeglądaj według oficjalnej klasyfikacji dokumentów na potrzeby realizacji na jednolitym rynku.",
+    "showAll": "Pokaż wszystkie ({{count}})",
+    "passportsDesc": "Paszporty biometryczne ICAO 9303 z e-Chip",
+    "licensesDesc": "Pozwolenia UE i międzynarodowe w formacie karty",
+    "idsDesc": "Elektroniczne karty eID z bezstykowym mikrochipem",
+    "residenceDesc": "Biometryczne karty prawa pobytu Schengen",
+    "visasName": "Wizy UE i finanse",
+    "visasDesc": "Wizy Schengen wielokrotnego wjazdu i zweryfikowane wyciągi"
+  },
+  "featured": {
+    "badge": "Wyróżniona prezentacja dokumentów",
+    "title": "Wybrane dokumenty",
+    "subtitle": "Poznaj wybór zarejestrowanych paszportów, praw jazdy, kart pobytu i wiz z naszego oficjalnego katalogu jednolitego rynku.",
+    "viewFull": "Zobacz pełny katalog ({{count}} pozycji)",
+    "topRegistered": "Najlepsze zarejestrowane {{category}} dostępne do dostawy na jednolitym rynku.",
+    "exploreAll": "Przeglądaj wszystkie {{category}}",
+    "ctaTitle": "Potrzebujesz dokumentu konkretnego państwa członkowskiego UE?",
+    "ctaBody": "Nasz katalog obejmuje ponad 28 zarejestrowanych dokumentów z Niemiec, Francji, Włoch, Hiszpanii, Holandii, Szwecji, Szwajcarii, Belgii, Danii i innych krajów.",
+    "ctaButton": "Otwórz pełny katalog i filtry"
+  },
+  "process": {
+    "badge": "Protokół realizacji",
+    "title": "Jak działa oficjalne przetwarzanie dokumentów",
+    "subtitle": "Przejrzysty, 3-etapowy proces zapewniający pełną rejestrację w bazie i bezpieczną dostawę na jednolitym rynku.",
+    "step1Badge": "Krok 1 • Przyjęcie",
+    "step1Title": "Przesłanie danych i zdjęcia",
+    "step1Subtitle": "Wpis biograficzny i biometryczny",
+    "step1Body": "Wybierz państwo docelowe dokumentu i przekaż zaszyfrowane dane osobowe, biometryczne zdjęcie paszportowe oraz wzór podpisu za pomocą bezpiecznego formularza GDPR.",
+    "step2Badge": "Krok 2 • Rejestracja",
+    "step2Title": "Rejestracja w bazie danych",
+    "step2Subtitle": "Wpis do oficjalnego rejestru",
+    "step2Body": "Twój rekord dokumentu jest rejestrowany w krajowych bazach (KBA Flensburg, ANTS France, fedpol Switzerland lub BRP Netherlands) z kodowaniem mikrochipa ICAO.",
+    "step3Badge": "Krok 3 • Realizacja",
+    "step3Title": "Ubezpieczona wysyłka ekspresowa 72 h",
+    "step3Subtitle": "Dyskretna dostawa kurierska",
+    "step3Body": "Wysyłka w dyskretnym, zabezpieczonym opakowaniu z śledzeniem DHL Express w czasie rzeczywistym z naszych hubów logistycznych we Frankfurt, Amsterdam lub Lyon."
+  },
+  "trust": {
+    "badge": "Gwarantowane standardy UE",
+    "title": "Dlaczego europejscy klienci ufają Eudossier",
+    "subtitle": "Zaprojektowane z myślą o pełnej zgodności prawnej, dokładności biometrycznej i płynnej dystrybucji na jednolitym rynku.",
+    "gdprPortal": "Otwórz portal bezpieczeństwa GDPR",
+    "chipTitle": "Zabezpieczenia biometryczne i mikrochip RFID",
+    "chipBody": "Wykonane zgodnie ze specyfikacją ICAO 9303 z bezstykowym kodowaniem chipa poliwęglanowego, laserowym grawerowaniem zdjęcia, tekstem tactile i tuszem ze znakiem wodnym UV.",
+    "gdprTitle": "Zgodność z art. 15/17 GDPR",
+    "gdprBody": "Twoje dane tożsamości i transakcji chronią rygorystyczne unijne przepisy o prywatności. Korzystaj z natychmiastowych pobrań pakietu danych DSAR i natychmiastowego usunięcia w ramach prawa do bycia zapomnianym.",
+    "shipTitle": "Ekspresowa wysyłka kurierska 72 godziny",
+    "shipBody": "Ubezpieczona wysyłka z europejskich węzłów logistycznych we Frankfurt (DE-01), Amsterdam (NL-02) i Lyon (FR-03) w dyskretnym, zabezpieczonym opakowaniu.",
+    "eurTitle": "Rozliczenie jednolitego rynku w Euro (€)",
+    "eurBody": "Natywne przetwarzanie transakcji w Euro bez dopłat za przewalutowanie i z przejrzystym fakturowaniem."
+  }
+}

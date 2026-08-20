@@ -4,13 +4,12 @@ import {
   CartItem, 
   EUCountryCode, 
   EUCountryVAT, 
-  Currency, 
   GDPRPreferences, 
   ConsentLog, 
   Order, 
   StockAdjustment 
 } from '../types';
-import { EU_COUNTRIES, SUPPORTED_CURRENCIES, INITIAL_PRODUCTS } from '../data/mockData';
+import { EU_COUNTRIES, INITIAL_PRODUCTS } from '../data/mockData';
 import { withLocalCatalogueImages } from '../data/catalogueAssets';
 import { EXPORT_PREFIX } from '../brand';
 
@@ -27,13 +26,10 @@ interface StoreContextType {
   showOnlyInStock: boolean;
   setShowOnlyInStock: (val: boolean) => void;
   
-  // Localization & Currency (Base EUR)
+  // Delivery destination (checkout only)
   selectedCountry: EUCountryVAT;
   setSelectedCountryByCode: (code: EUCountryCode) => void;
-  selectedCurrency: Currency;
-  setSelectedCurrencyByCode: (code: string) => void;
   formatPriceEUR: (amountEUR: number) => string;
-  getConvertedPriceString: (amountEUR: number) => { mainEUR: string; convertedRef?: string };
 
   // Cart
   cart: CartItem[];
@@ -46,8 +42,6 @@ interface StoreContextType {
   
   // Calculations (EUR transaction base)
   cartSubtotalEUR: number;
-  cartVATAmountEUR: number;
-  cartShippingFeeEUR: number;
   cartTotalEUR: number;
 
   // GDPR & Privacy
@@ -82,8 +76,8 @@ interface StoreContextType {
   deleteOrder: (id: string) => Promise<boolean>;
   currentCompletedOrder: Order | null;
   setCurrentCompletedOrder: (order: Order | null) => void;
-  isLocalizationModalOpen: boolean;
-  setIsLocalizationModalOpen: (open: boolean) => void;
+  isLanguageModalOpen: boolean;
+  setIsLanguageModalOpen: (open: boolean) => void;
 }
 
 const StoreContext = createContext<StoreContextType | undefined>(undefined);
@@ -101,15 +95,9 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     EU_COUNTRIES.find(c => c.code === 'DE') || EU_COUNTRIES[0]
   );
 
-  // Display Reference Currency: Defaults strictly to EUR (€)
-  const [selectedCurrency, setSelectedCurrency] = useState<Currency>(
-    SUPPORTED_CURRENCIES.find(c => c.code === 'EUR') || SUPPORTED_CURRENCIES[0]
-  );
-
-  // Cart & UI drawers
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
-  const [isLocalizationModalOpen, setIsLocalizationModalOpen] = useState<boolean>(false);
+  const [isLanguageModalOpen, setIsLanguageModalOpen] = useState<boolean>(false);
 
   // GDPR & Audit logs
   const [gdprPreferences, setGdprPreferences] = useState<GDPRPreferences>({
@@ -204,37 +192,12 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     if (found) setSelectedCountry(found);
   };
 
-  const setSelectedCurrencyByCode = (code: string) => {
-    const found = SUPPORTED_CURRENCIES.find(c => c.code === code);
-    if (found) setSelectedCurrency(found);
-  };
-
-  // Price formatting helper (EUR is ALWAYS primary)
   const formatPriceEUR = (amountEUR: number): string => {
     return new Intl.NumberFormat('de-DE', {
       style: 'currency',
       currency: 'EUR',
       minimumFractionDigits: 2,
     }).format(amountEUR);
-  };
-
-  // Multi-currency price renderer helper
-  const getConvertedPriceString = (amountEUR: number) => {
-    const mainEUR = formatPriceEUR(amountEUR);
-    if (selectedCurrency.code === 'EUR') {
-      return { mainEUR };
-    }
-    // Calculate reference estimate
-    const convertedVal = amountEUR * selectedCurrency.rateToEUR;
-    const formattedRef = `${selectedCurrency.symbol}${convertedVal.toLocaleString('en-US', {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    })} ${selectedCurrency.code}`;
-
-    return {
-      mainEUR,
-      convertedRef: `(~ ${formattedRef})`,
-    };
   };
 
   // Cart Management
@@ -280,12 +243,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     (sum, item) => sum + item.product.priceEUR * item.quantity,
     0
   );
-  
-  // Destination Country VAT
-  const vatRate = selectedCountry.vatRate;
-  const cartVATAmountEUR = cartSubtotalEUR * vatRate;
-  const cartShippingFeeEUR = cartSubtotalEUR > 150 ? 0.0 : 8.5; // Free EU shipping over €150
-  const cartTotalEUR = cartSubtotalEUR + cartVATAmountEUR + cartShippingFeeEUR;
+  const cartTotalEUR = cartSubtotalEUR;
 
   // GDPR Actions
   const updateGDPRPreferences = async (newPrefs: Partial<GDPRPreferences>) => {
@@ -457,7 +415,6 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
     const cryptoDiscountEUR = customerInfo.paymentMethod === 'crypto' ? cartTotalEUR * 0.05 : 0;
     const settledTotalEUR = cartTotalEUR - cryptoDiscountEUR;
-    const convertedVal = settledTotalEUR * selectedCurrency.rateToEUR;
 
     const orderPayload = {
       customerName: customerInfo.name,
@@ -468,15 +425,15 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       paymentMethod: customerInfo.paymentMethod,
       items: itemsForOrder,
       subtotalEUR: cartSubtotalEUR,
-      vatAmountEUR: cartVATAmountEUR,
-      vatRate: selectedCountry.vatRate,
-      shippingFeeEUR: cartShippingFeeEUR,
+      vatAmountEUR: 0,
+      vatRate: 0,
+      shippingFeeEUR: 0,
       cryptoDiscountEUR,
       totalEUR: settledTotalEUR,
-      paidCurrency: selectedCurrency.code,
-      paidCurrencySymbol: selectedCurrency.symbol,
-      paidAmountConverted: convertedVal,
-      exchangeRateUsed: selectedCurrency.rateToEUR,
+      paidCurrency: 'EUR',
+      paidCurrencySymbol: '€',
+      paidAmountConverted: settledTotalEUR,
+      exchangeRateUsed: 1.0,
       gdprConsentRecorded: true,
     };
 
@@ -560,10 +517,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         setShowOnlyInStock,
         selectedCountry,
         setSelectedCountryByCode,
-        selectedCurrency,
-        setSelectedCurrencyByCode,
         formatPriceEUR,
-        getConvertedPriceString,
         cart,
         addToCart,
         updateCartQuantity,
@@ -572,8 +526,6 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         isCartOpen,
         setIsCartOpen,
         cartSubtotalEUR,
-        cartVATAmountEUR,
-        cartShippingFeeEUR,
         cartTotalEUR,
         gdprPreferences,
         updateGDPRPreferences,
@@ -593,8 +545,8 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         deleteOrder,
         currentCompletedOrder,
         setCurrentCompletedOrder,
-        isLocalizationModalOpen,
-        setIsLocalizationModalOpen,
+        isLanguageModalOpen,
+        setIsLanguageModalOpen,
       }}
     >
       {children}

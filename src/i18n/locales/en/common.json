@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "home": "Home",
+    "catalogue": "Catalogue",
+    "contact": "Contact",
+    "gdpr": "GDPR Privacy",
+    "cart": "Cart",
+    "admin": "Admin",
+    "changeLanguage": "Change language",
+    "searchPlaceholder": "Search registered passports, driver licenses, residence permits, visas...",
+    "clear": "Clear"
+  },
+  "footer": {
+    "tagline": "European single market e-commerce platform with default Euro (€) settlement, GDPR Article 15/17 compliance, and merchant inventory tools.",
+    "standardsTitle": "EU Standards",
+    "eurSettlement": "Default Settlement Currency: EUR (€)",
+    "gdprCompliant": "GDPR Article 15/17 Compliant",
+    "warehouses": "Frankfurt • Amsterdam • Lyon Hubs",
+    "legalTitle": "Legal & Compliance",
+    "privacyPolicy": "Privacy Policy & DSAR",
+    "contactUs": "Contact Us",
+    "merchantPortal": "Merchant Admin Portal",
+    "privacyTitle": "GDPR Data Privacy",
+    "dsar": "Download Personal Data (DSAR)",
+    "forgotten": "Right to Be Forgotten (Art. 17)",
+    "auditLog": "Consent Audit Log Inspector",
+    "hosted": "Data hosted in Frankfurt, Germany (EU-West Node).",
+    "madeWith": "Made with precision for European Official Documents & Dossiers"
+  },
+  "language": {
+    "title": "Language Settings",
+    "subtitle": "Choose your preferred display language",
+    "info": "All checkout totals and invoices are processed in Euro (€). Translations apply to the storefront, product names, and product descriptions.",
+    "selected": "Selected language",
+    "save": "Save & Apply Language"
+  },
+  "actions": {
+    "browseCatalogue": "Browse Full Product Catalogue",
+    "proceedCheckout": "Proceed to Checkout",
+    "addToCart": "Add to Cart",
+    "viewCart": "View Cart",
+    "checkout": "Checkout",
+    "back": "Back"
+  },
+  "product": {
+    "madeIn": "Made in {{country}}",
+    "outOfStock": "Out of Stock",
+    "lowStock": "Only {{count}} left",
+    "inStock": "In Stock ({{count}})",
+    "quickInspect": "Quick Inspect Specs",
+    "includesVat": "All prices in Euro (€). Express EU delivery available.",
+    "soldOut": "Sold Out",
+    "notFound": "Product Not Found",
+    "notFoundBody": "The product you're looking for doesn't exist or has been removed.",
+    "transactionPrice": "Transaction Price (EUR Base)"
+  },
+  "gdprBanner": {
+    "title": "EU GDPR Data Protection Notice",
+    "eurBadge": "EUR Settlement",
+    "body": "We process your personal data under Regulation (EU) 2016/679. All prices are displayed in Euro (€) by default. You can customize cookie preferences or export your data anytime.",
+    "acceptAll": "Accept All Cookies",
+    "essentialOnly": "Essential Only",
+    "customize": "Customize"
+  },
+  "categories": {
+    "All": "All",
+    "Passports": "Passports",
+    "Driver Licenses": "Driver Licenses",
+    "Identity Cards": "Identity Cards",
+    "Residence Permits": "Residence Permits",
+    "EU Visas": "EU Visas"
+  }
+}

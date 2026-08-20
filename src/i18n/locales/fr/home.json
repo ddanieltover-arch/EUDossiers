@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "badge": "Basé en Europe • Logistique du marché unique",
+    "titleLine1": "Documents officiels UE &",
+    "titleLine2": "solutions de dossiers enregistrés.",
+    "description": "Commandez des passeports européens enregistrés, permis de conduire, cartes d’identité nationales, visas Schengen et titres de séjour UE. Toutes les commandes sont réglées en Euro (€) avec enregistrement biométrique en base de données et livraison courrier express 72 heures dans les 27 États membres de l’UE.",
+    "eurStandard": "Standard Euro (€)",
+    "eurStandardDesc": "Aucun majoration de change ni frais forex cachés.",
+    "gdpr": "Conforme GDPR",
+    "gdprDesc": "Exports DSAR instantanés et outils d’effacement.",
+    "logistics": "Logistique verte UE",
+    "logisticsDesc": "Entrepôts à Frankfurt, Amsterdam et Lyon."
+  },
+  "ticker": {
+    "portal": "Portail officiel des documents de l’Union européenne",
+    "discount": "Remise automatique de 5 % sur tout le magasin active",
+    "registry": "100 % d’enregistrement en base (KBA • ANTS • fedpol • BRP)",
+    "shipping": "Expédition courrier express 72 heures",
+    "settlement": "Règlement : base EUR (€)",
+    "node": "Nœud : DE-West (Frankfurt)"
+  },
+  "categories": {
+    "title": "Catégories officielles du catalogue",
+    "registered": "{{count}} produits enregistrés",
+    "subtitle": "Parcourir par classification officielle des documents pour l’exécution marché unique.",
+    "showAll": "Tout afficher ({{count}})",
+    "passportsDesc": "Passeports biométriques ICAO 9303 avec e-Chip",
+    "licensesDesc": "Permis UE et internationaux au format carte de crédit",
+    "idsDesc": "Cartes eID électroniques avec microprocesseur sans contact",
+    "residenceDesc": "Cartes biométriques de droit de séjour Schengen",
+    "visasName": "Visas UE & financier",
+    "visasDesc": "Visas Schengen multi-entrées et relevés vérifiés"
+  },
+  "featured": {
+    "badge": "Vitrine de documents vedettes",
+    "title": "Sélection de documents mis en avant",
+    "subtitle": "Explorez une sélection de passeports, permis, cartes de séjour et visas enregistrés de notre catalogue officiel du marché unique.",
+    "viewFull": "Voir le catalogue complet ({{count}} articles)",
+    "topRegistered": "Meilleurs {{category}} enregistrés disponibles pour livraison marché unique.",
+    "exploreAll": "Explorer tous les {{category}}",
+    "ctaTitle": "Besoin d’un document d’un État membre UE précis ?",
+    "ctaBody": "Notre catalogue comprend plus de 28 documents enregistrés pour l’Allemagne, la France, l’Italie, l’Espagne, les Pays-Bas, la Suède, la Suisse, la Belgique, le Danemark et d’autres pays.",
+    "ctaButton": "Ouvrir le catalogue complet et les filtres"
+  },
+  "process": {
+    "badge": "Protocole d’exécution",
+    "title": "Comment fonctionne le traitement officiel des documents",
+    "subtitle": "Un pipeline transparent en 3 étapes garantissant l’enregistrement complet en base et une livraison sécurisée sur le marché unique.",
+    "step1Badge": "Étape 1 • Collecte",
+    "step1Title": "Soumission des données et de la photo",
+    "step1Subtitle": "Saisie biographique et biométrique",
+    "step1Body": "Sélectionnez l’État cible du document et transmettez des données personnelles chiffrées, une photo biométrique de passeport et un spécimen de signature via un formulaire GDPR sécurisé.",
+    "step2Badge": "Étape 2 • Enregistrement",
+    "step2Title": "Enregistrement en base de données",
+    "step2Subtitle": "Insertion au registre officiel",
+    "step2Body": "Votre dossier est enregistré dans les bases nationales (KBA Flensburg, ANTS France, fedpol Switzerland ou BRP Netherlands) avec encodage microprocesseur ICAO.",
+    "step3Badge": "Étape 3 • Exécution",
+    "step3Title": "Expédition express 72 h assurée",
+    "step3Subtitle": "Livraison courrier discrète",
+    "step3Body": "Expédié dans un emballage discret et inviolable avec suivi DHL Express en temps réel depuis nos hubs logistiques de Frankfurt, Amsterdam ou Lyon."
+  },
+  "trust": {
+    "badge": "Normes UE garanties",
+    "title": "Pourquoi les clients européens font confiance à Eudossier",
+    "subtitle": "Conçu pour une conformité juridique absolue, une précision biométrique et une distribution fluide sur le marché unique.",
+    "gdprPortal": "Ouvrir le portail de sécurité GDPR",
+    "chipTitle": "Sécurité biométrique et microprocesseur RFID",
+    "chipBody": "Conforme aux spécifications ICAO 9303 avec encodage de puce polycarbonate sans contact, gravure photo laser, texte tactile et encre à filigrane UV.",
+    "gdprTitle": "Conformité GDPR articles 15/17",
+    "gdprBody": "Vos données d’identité et de transaction sont protégées par les lois européennes strictes sur la vie privée. Accédez aux téléchargements instantanés de lots DSAR et à l’effacement immédiat au titre du droit à l’oubli.",
+    "shipTitle": "Expédition courrier express 72 heures",
+    "shipBody": "Expédition assurée depuis les nœuds logistiques européens de Frankfurt (DE-01), Amsterdam (NL-02) et Lyon (FR-03) dans un emballage discret et inviolable.",
+    "eurTitle": "Règlement marché unique en Euro (€)",
+    "eurBody": "Traitement natif des transactions en Euro, sans surcoût de conversion et avec facturation transparente."
+  }
+}

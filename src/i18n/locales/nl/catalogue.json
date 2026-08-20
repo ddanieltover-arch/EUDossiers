@@ -1,0 +1,14 @@
+{
+  "title": "Catalogus van Europese officiële documenten en dossiers",
+  "subtitle": "Geregistreerde EU- en internationale paspoorten, rijbewijzen, verblijfskaarten, identiteitsbewijzen en visumverwerking met Euro (€)-afrekening.",
+  "items": "{{count}} items",
+  "allOrigins": "Alle EU-herkomsten",
+  "inStockOnly": "Alleen op voorraad",
+  "reset": "Resetten",
+  "popularTags": "Populaire tags:",
+  "filtering": "Filteren op trefwoord/tag: \"{{query}}\" ({{count}} resultaten)",
+  "clearSearch": "Zoekopdracht wissen",
+  "emptyTitle": "Geen overeenkomende Europese producten",
+  "emptyBody": "Probeer uw zoekopdracht te resetten of een ander EU-herkomstland te selecteren.",
+  "clearFilters": "Alle filters wissen"
+}

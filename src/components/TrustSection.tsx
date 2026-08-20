@@ -1,33 +1,35 @@
 import React from 'react';
 import { Shield, Lock, Truck, Euro, CheckCircle, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const TrustSection: React.FC = () => {
+  const { t } = useTranslation('home');
   const trustPoints = [
     {
-      title: 'Biometric & RFID Microchip Security',
-      description: 'Built to full ICAO 9303 specs with contactless poly-carbonate chip encoding, laser photo engraving, tactile surface text, and UV watermark ink.',
+      title: t('trust.chipTitle'),
+      description: t('trust.chipBody'),
       icon: Cpu,
       accent: 'text-blue-500',
       bg: 'bg-blue-50 dark:bg-blue-900/20 border-blue-300 dark:border-blue-700/40'
     },
     {
-      title: 'GDPR Article 15/17 Compliance',
-      description: 'Your identity and transactional data are protected by strict EU privacy laws. Access instant DSAR data package downloads and immediate right-to-be-forgotten erasure.',
+      title: t('trust.gdprTitle'),
+      description: t('trust.gdprBody'),
       icon: Lock,
       accent: 'text-emerald-500',
       bg: 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-300 dark:border-emerald-700/40'
     },
     {
-      title: '72-Hour Express Courier Shipping',
-      description: 'Insured dispatch from European logistics nodes in Frankfurt (DE-01), Amsterdam (NL-02), and Lyon (FR-03) with discrete tamper-evident packaging.',
+      title: t('trust.shipTitle'),
+      description: t('trust.shipBody'),
       icon: Truck,
       accent: 'text-indigo-500',
       bg: 'bg-indigo-50 dark:bg-indigo-900/20 border-indigo-300 dark:border-indigo-700/40'
     },
     {
-      title: 'Single Market Euro (€) Settlement',
-      description: 'Native Euro transaction processing with zero currency conversion surcharges, automatic destination VAT calculation, and transparent invoicing.',
+      title: t('trust.eurTitle'),
+      description: t('trust.eurBody'),
       icon: Euro,
       accent: 'text-amber-500',
       bg: 'bg-amber-50 dark:bg-amber-900/20 border-amber-300 dark:border-amber-700/40'
@@ -44,13 +46,13 @@ export const TrustSection: React.FC = () => {
           <div>
             <div className="inline-flex items-center space-x-1.5 text-xs font-semibold text-emerald-500 mb-1">
               <CheckCircle className="w-3.5 h-3.5" />
-              <span>EU Standards Guaranteed</span>
+              <span>{t('trust.badge')}</span>
             </div>
             <h2 className="text-2xl font-black text-[var(--color-text-primary)] tracking-tight font-display">
-              Why European Clients Trust Eudossier
+              {t('trust.title')}
             </h2>
             <p className="text-xs text-[var(--color-text-muted)] mt-1 max-w-xl">
-              Engineered for absolute legal compliance, biometric accuracy, and seamless single-market distribution.
+              {t('trust.subtitle')}
             </p>
           </div>
 
@@ -59,7 +61,7 @@ export const TrustSection: React.FC = () => {
             className="bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-bg-card-hover)] text-[var(--color-text-secondary)] border border-[var(--color-border)] px-4 py-2.5 rounded-xl text-xs font-semibold transition-all self-start md:self-auto flex items-center space-x-2"
           >
             <Shield className="w-4 h-4 text-emerald-500" />
-            <span>Open GDPR Security Portal</span>
+            <span>{t('trust.gdprPortal')}</span>
           </Link>
         </div>
 

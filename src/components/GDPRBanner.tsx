@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ShieldCheck, Settings, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
+import { useTranslation } from 'react-i18next';
 
 const GDPR_BANNER_KEY = 'eudossier_gdpr_banner_seen_at';
 const GDPR_BANNER_TTL_MS = 30 * 24 * 60 * 60 * 1000;
@@ -28,6 +29,7 @@ function rememberGdprBannerSeen(): void {
 
 export const GDPRBanner: React.FC = () => {
   const { updateGDPRPreferences } = useStore();
+  const { t } = useTranslation('common');
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   useEffect(() => {
@@ -70,8 +72,8 @@ export const GDPRBanner: React.FC = () => {
         <div className="flex-1 space-y-2">
           <div className="flex items-center justify-between">
             <h4 className="text-xs font-extrabold text-[var(--color-text-primary)] uppercase tracking-wider flex items-center space-x-1.5">
-              <span>EU GDPR Data Protection Notice</span>
-              <span className="text-[10px] bg-blue-50 dark:bg-blue-900/60 text-blue-600 dark:text-blue-300 px-1.5 py-0.2 rounded font-normal">EUR Settlement</span>
+              <span>{t('gdprBanner.title')}</span>
+              <span className="text-[10px] bg-blue-50 dark:bg-blue-900/60 text-blue-600 dark:text-blue-300 px-1.5 py-0.2 rounded font-normal">{t('gdprBanner.eurBadge')}</span>
             </h4>
             <button
               onClick={dismissBanner}
@@ -82,7 +84,7 @@ export const GDPRBanner: React.FC = () => {
           </div>
 
           <p className="text-xs text-[var(--color-text-secondary)] leading-relaxed">
-            We process your personal data under <strong>Regulation (EU) 2016/679</strong>. All prices are displayed in <strong>Euro (€)</strong> by default. You can customize cookie preferences or export your data anytime.
+            {t('gdprBanner.body')}
           </p>
 
           <div className="flex flex-wrap items-center gap-2 pt-1">
@@ -90,14 +92,14 @@ export const GDPRBanner: React.FC = () => {
               onClick={handleAcceptAll}
               className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-3.5 py-1.5 rounded-lg transition-all shadow-sm"
             >
-              Accept All Cookies
+              {t('gdprBanner.acceptAll')}
             </button>
 
             <button
               onClick={handleAcceptEssential}
               className="bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-bg-card-hover)] text-[var(--color-text-secondary)] font-semibold text-xs px-3 py-1.5 rounded-lg border border-[var(--color-border)] transition-all"
             >
-              Essential Only
+              {t('gdprBanner.essentialOnly')}
             </button>
 
             <Link
@@ -106,7 +108,7 @@ export const GDPRBanner: React.FC = () => {
               className="text-xs text-blue-500 hover:text-blue-400 font-semibold flex items-center space-x-1 underline ml-auto"
             >
               <Settings className="w-3.5 h-3.5" />
-              <span>Customize</span>
+              <span>{t('gdprBanner.customize')}</span>
             </Link>
           </div>
 

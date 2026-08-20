@@ -156,14 +156,6 @@ function orderItemsHtml(order: Order): string {
         <td style="padding:6px 0;font-size:13px;color:${EMAIL_BRAND.slate};">Subtotal</td>
         <td style="padding:6px 0;text-align:right;font-size:13px;color:${EMAIL_BRAND.ink};">${formatEur(order.subtotalEUR)}</td>
       </tr>
-      <tr>
-        <td style="padding:6px 0;font-size:13px;color:${EMAIL_BRAND.slate};">VAT (${(order.vatRate * 100).toFixed(0)}%)</td>
-        <td style="padding:6px 0;text-align:right;font-size:13px;color:${EMAIL_BRAND.ink};">${formatEur(order.vatAmountEUR)}</td>
-      </tr>
-      <tr>
-        <td style="padding:6px 0;font-size:13px;color:${EMAIL_BRAND.slate};">Shipping</td>
-        <td style="padding:6px 0;text-align:right;font-size:13px;color:${EMAIL_BRAND.ink};">${order.shippingFeeEUR === 0 ? 'Free' : formatEur(order.shippingFeeEUR)}</td>
-      </tr>
       ${cryptoRow}
       <tr>
         <td style="padding:10px 0 0;font-size:15px;color:${EMAIL_BRAND.ink};font-weight:800;">Total</td>

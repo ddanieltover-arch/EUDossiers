@@ -1,0 +1,14 @@
+{
+  "title": "European Official Documents & Dossier Catalogue",
+  "subtitle": "Registered EU & international passports, driving permits, residence cards, IDs and visa processing with Euro (€) settlement.",
+  "items": "{{count}} Items",
+  "allOrigins": "All EU Origins",
+  "inStockOnly": "In Stock Only",
+  "reset": "Reset",
+  "popularTags": "Popular Tags:",
+  "filtering": "Filtering by keyword/tag: \"{{query}}\" ({{count}} matches)",
+  "clearSearch": "Clear Search",
+  "emptyTitle": "No Matching European Products",
+  "emptyBody": "Try resetting your search query or selecting a different EU origin country filter.",
+  "clearFilters": "Clear All Filters"
+}

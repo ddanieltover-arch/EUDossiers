@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "home": "Hjem",
+    "catalogue": "Katalog",
+    "contact": "Kontakt",
+    "gdpr": "GDPR-privatliv",
+    "cart": "Kurv",
+    "admin": "Admin",
+    "changeLanguage": "Skift sprog",
+    "searchPlaceholder": "Søg efter registrerede pas, kørekort, opholdstilladelser, visa...",
+    "clear": "Ryd"
+  },
+  "footer": {
+    "tagline": "E-handelsplatform for det europæiske indre marked med Euro (€) som standardafregning, overholdelse af GDPR artikel 15/17 og inventarværktøjer til forhandlere.",
+    "standardsTitle": "EU-standarder",
+    "eurSettlement": "Standardafregningsvaluta: EUR (€)",
+    "gdprCompliant": "GDPR artikel 15/17-overholdende",
+    "warehouses": "Frankfurt • Amsterdam • Lyon-hubs",
+    "legalTitle": "Jura og overholdelse",
+    "privacyPolicy": "Privatlivspolitik og DSAR",
+    "contactUs": "Kontakt os",
+    "merchantPortal": "Forhandlerens adminportal",
+    "privacyTitle": "GDPR-databeskyttelse",
+    "dsar": "Download personoplysninger (DSAR)",
+    "forgotten": "Retten til at blive glemt (art. 17)",
+    "auditLog": "Inspektør for samtykkerevisionslog",
+    "hosted": "Data hostes i Frankfurt, Tyskland (EU-West Node).",
+    "madeWith": "Fremstillet med præcision til europæiske officielle dokumenter og dossierer"
+  },
+  "language": {
+    "title": "Sprogindstillinger",
+    "subtitle": "Vælg dit foretrukne visningssprog",
+    "info": "Alle kassetotaler og fakturaer behandles i Euro (€). Oversættelser gælder butiksgrænsefladen og produktnavne.",
+    "selected": "Valgt sprog",
+    "save": "Gem og anvend sprog"
+  },
+  "actions": {
+    "browseCatalogue": "Gennemse hele produktkataloget",
+    "proceedCheckout": "Gå til kassen",
+    "addToCart": "Læg i kurv",
+    "viewCart": "Se kurv",
+    "checkout": "Kasse",
+    "back": "Tilbage"
+  },
+  "product": {
+    "madeIn": "Fremstillet i {{country}}",
+    "outOfStock": "Ikke på lager",
+    "lowStock": "Kun {{count}} tilbage",
+    "inStock": "På lager ({{count}})",
+    "quickInspect": "Hurtig inspektion af specifikationer",
+    "includesVat": "Alle priser i Euro (€). Express EU-levering tilgængelig.",
+    "soldOut": "Udsolgt",
+    "notFound": "Produktet blev ikke fundet",
+    "notFoundBody": "Det produkt, du leder efter, findes ikke eller er blevet fjernet.",
+    "transactionPrice": "Transaktionspris (EUR-basis)"
+  },
+  "gdprBanner": {
+    "title": "EU GDPR-databeskyttelsesmeddelelse",
+    "eurBadge": "EUR-afregning",
+    "body": "Vi behandler dine personoplysninger i henhold til forordning (EU) 2016/679. Alle priser vises som standard i Euro (€). Du kan tilpasse cookiepræferencer eller eksportere dine data når som helst.",
+    "acceptAll": "Acceptér alle cookies",
+    "essentialOnly": "Kun essentielle",
+    "customize": "Tilpas"
+  },
+  "categories": {
+    "All": "Alle",
+    "Passports": "Pas",
+    "Driver Licenses": "Kørekort",
+    "Identity Cards": "Identitetskort",
+    "Residence Permits": "Opholdstilladelser",
+    "EU Visas": "EU-visa"
+  }
+}

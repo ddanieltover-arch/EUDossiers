@@ -1,0 +1,14 @@
+{
+  "title": "Katalog over europæiske officielle dokumenter og dossierer",
+  "subtitle": "Registrerede EU- og internationale pas, kørekort, opholdskort, ID-kort og visumbehandling med afregning i Euro (€).",
+  "items": "{{count}} varer",
+  "allOrigins": "Alle EU-oprindelser",
+  "inStockOnly": "Kun på lager",
+  "reset": "Nulstil",
+  "popularTags": "Populære tags:",
+  "filtering": "Filtrerer efter nøgleord/tag: \"{{query}}\" ({{count}} matches)",
+  "clearSearch": "Ryd søgning",
+  "emptyTitle": "Ingen matchende europæiske produkter",
+  "emptyBody": "Prøv at nulstille søgningen eller vælg et andet EU-oprindelsesland.",
+  "clearFilters": "Ryd alle filtre"
+}

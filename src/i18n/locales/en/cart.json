@@ -1,0 +1,15 @@
+{
+  "title": "Your Cart",
+  "emptyTitle": "Your Cart is Empty",
+  "emptyBody": "Browse our catalogue and add items to begin your order.",
+  "summary": "Order Summary",
+  "subtotal": "Subtotal",
+  "total": "Total",
+  "remove": "Remove",
+  "continueShopping": "Continue Shopping",
+  "itemCount": "{{count}} items",
+  "each": "each",
+  "drawerTitle": "Item Added to Cart",
+  "drawerEmpty": "Your cart is empty",
+  "estimatedTotal": "Estimated Total"
+}

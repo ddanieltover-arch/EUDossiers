@@ -1,0 +1,15 @@
+{
+  "title": "Su carrito",
+  "emptyTitle": "Su carrito está vacío",
+  "emptyBody": "Explore nuestro catálogo y añada artículos para iniciar su pedido.",
+  "summary": "Resumen del pedido",
+  "subtotal": "Subtotal",
+  "total": "Total",
+  "remove": "Eliminar",
+  "continueShopping": "Seguir comprando",
+  "itemCount": "{{count}} artículos",
+  "each": "ud.",
+  "drawerTitle": "Artículo añadido al carrito",
+  "drawerEmpty": "Su carrito está vacío",
+  "estimatedTotal": "Total estimado"
+}

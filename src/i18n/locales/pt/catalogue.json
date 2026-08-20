@@ -1,0 +1,14 @@
+{
+  "title": "Catálogo de documentos oficiais europeus e dossiers",
+  "subtitle": "Passaportes da UE e internacionais registados, cartas de condução, cartões de residência, documentos de identidade e processamento de vistos com liquidação em Euro (€).",
+  "items": "{{count}} artigos",
+  "allOrigins": "Todas as origens da UE",
+  "inStockOnly": "Apenas em stock",
+  "reset": "Repor",
+  "popularTags": "Tags populares:",
+  "filtering": "A filtrar por palavra-chave/tag: \"{{query}}\" ({{count}} correspondências)",
+  "clearSearch": "Limpar pesquisa",
+  "emptyTitle": "Nenhum produto europeu correspondente",
+  "emptyBody": "Tente repor a pesquisa ou selecionar outro filtro de país de origem da UE.",
+  "clearFilters": "Limpar todos os filtros"
+}

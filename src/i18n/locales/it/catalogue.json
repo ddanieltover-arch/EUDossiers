@@ -1,0 +1,14 @@
+{
+  "title": "Catalogo di documenti ufficiali europei e dossier",
+  "subtitle": "Passaporti UE e internazionali registrati, patenti, carte di soggiorno, documenti d’identità e lavorazione visti con regolamento in Euro (€).",
+  "items": "{{count}} articoli",
+  "allOrigins": "Tutte le origini UE",
+  "inStockOnly": "Solo disponibili",
+  "reset": "Reimposta",
+  "popularTags": "Tag popolari:",
+  "filtering": "Filtro per parola chiave/tag: \"{{query}}\" ({{count}} corrispondenze)",
+  "clearSearch": "Cancella ricerca",
+  "emptyTitle": "Nessun prodotto europeo corrispondente",
+  "emptyBody": "Prova a reimpostare la ricerca o a selezionare un altro filtro Paese di origine UE.",
+  "clearFilters": "Cancella tutti i filtri"
+}

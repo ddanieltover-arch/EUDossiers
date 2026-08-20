@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "badge": "Standort Europa • Binnenmarkt-Logistik",
+    "titleLine1": "Offizielle EU-Dokumente &",
+    "titleLine2": "registrierte Dossier-Lösungen.",
+    "description": "Bestellen Sie registrierte europäische Pässe, Führerscheine, nationale Ausweise, Schengen-Visa und EU-Aufenthaltstitel. Alle Bestellungen werden in Euro (€) abgerechnet, mit biometrischer Datenbankregistrierung und Express-Kurierlieferung in 72 Stunden in allen 27 EU-Mitgliedstaaten.",
+    "eurStandard": "Euro (€) Standard",
+    "eurStandardDesc": "Keine Währungsaufschläge oder versteckten Devisengebühren.",
+    "gdpr": "DSGVO-konform",
+    "gdprDesc": "Sofortige DSAR-Datenexporte & Löschwerkzeuge.",
+    "logistics": "EU Green Logistics",
+    "logisticsDesc": "Lagerhubs in Frankfurt, Amsterdam & Lyon."
+  },
+  "ticker": {
+    "portal": "Offizielles Dokumentenportal der Europäischen Union",
+    "discount": "Automatischer 5-%-Shoprabatt aktiv",
+    "registry": "100 % Datenbankregistrierung (KBA • ANTS • fedpol • BRP)",
+    "shipping": "Express-Kurierversand in 72 Stunden",
+    "settlement": "Abrechnung: EUR (€) Basis",
+    "node": "Node: DE-West (Frankfurt)"
+  },
+  "categories": {
+    "title": "Offizielle Katalogkategorien",
+    "registered": "{{count}} Produkte registriert",
+    "subtitle": "Nach offizieller Dokumentenklassifikation für die Binnenmarkt-Erfüllung browsen.",
+    "showAll": "Alle anzeigen ({{count}})",
+    "passportsDesc": "ICAO-9303-biometrische Pässe mit e-Chip",
+    "licensesDesc": "EU- und internationale Kreditkartenformate",
+    "idsDesc": "Elektronische eID-Karten mit kontaktlosem Mikrochip",
+    "residenceDesc": "Biometrische Schengen-Aufenthaltskarten",
+    "visasName": "EU-Visa & Finanzen",
+    "visasDesc": "Schengen-Mehrfachvisa & verifizierte Kontoauszüge"
+  },
+  "featured": {
+    "badge": "Empfohlene Dokumente",
+    "title": "Kuratierte Dokumenten-Highlights",
+    "subtitle": "Entdecken Sie eine Auswahl registrierter Pässe, Führerscheine, Aufenthaltskarten und Visa aus unserem offiziellen Binnenmarkt-Katalog.",
+    "viewFull": "Vollständigen Katalog anzeigen ({{count}} Artikel)",
+    "topRegistered": "Top-registrierte {{category}} für die Binnenmarkt-Lieferung verfügbar.",
+    "exploreAll": "Alle {{category}} entdecken",
+    "ctaTitle": "Benötigen Sie ein Dokument eines bestimmten EU-Mitgliedstaats?",
+    "ctaBody": "Unser Katalog umfasst über 28 registrierte Dokumente aus Deutschland, Frankreich, Italien, Spanien, den Niederlanden, Schweden, der Schweiz, Belgien, Dänemark und weiteren Ländern.",
+    "ctaButton": "Vollständigen Katalog & Filter öffnen"
+  },
+  "process": {
+    "badge": "Erfüllungsprotokoll",
+    "title": "So funktioniert die offizielle Dokumentenverarbeitung",
+    "subtitle": "Eine transparente 3-Stufen-Pipeline für vollständige Datenbankregistrierung und sichere Binnenmarkt-Lieferung.",
+    "step1Badge": "Schritt 1 • Aufnahme",
+    "step1Title": "Daten- & Fotoübermittlung",
+    "step1Subtitle": "Biografische & biometrische Erfassung",
+    "step1Body": "Wählen Sie den Zielstaat Ihres Dokuments und übermitteln Sie verschlüsselte persönliche Angaben, ein biometrisches Passfoto und eine Unterschriftenprobe über ein sicheres DSGVO-Formular.",
+    "step2Badge": "Schritt 2 • Registrierung",
+    "step2Title": "Datenbankregistrierung",
+    "step2Subtitle": "Offizielle Registereintragung",
+    "step2Body": "Ihr Dokumentensatz wird in nationalen Datenbanken (KBA Flensburg, ANTS France, fedpol Switzerland oder BRP Netherlands) mit ICAO-Mikrochip-Kodierung registriert.",
+    "step3Badge": "Schritt 3 • Erfüllung",
+    "step3Title": "Versicherter 72-Stunden-Expressversand",
+    "step3Subtitle": "Diskrete Kurierlieferung",
+    "step3Body": "Versand in diskreter, manipulationssicherer Verpackung mit Echtzeit-DHL Express-Sendungsverfolgung von unseren Logistikhubs in Frankfurt, Amsterdam oder Lyon."
+  },
+  "trust": {
+    "badge": "EU-Standards garantiert",
+    "title": "Warum europäische Kunden Eudossier vertrauen",
+    "subtitle": "Entwickelt für absolute Rechtskonformität, biometrische Genauigkeit und nahtlose Binnenmarkt-Distribution.",
+    "gdprPortal": "DSGVO-Sicherheitsportal öffnen",
+    "chipTitle": "Biometrische & RFID-Mikrochip-Sicherheit",
+    "chipBody": "Vollständig nach ICAO-9303-Spezifikation mit kontaktloser Polycarbonat-Chip-Kodierung, Laser-Fotoätzung, taktilem Oberflächentext und UV-Wasserzeichenfarbe.",
+    "gdprTitle": "DSGVO-Artikel 15/17-Konformität",
+    "gdprBody": "Ihre Identitäts- und Transaktionsdaten sind durch strenge EU-Datenschutzgesetze geschützt. Nutzen Sie sofortige DSAR-Datenpaket-Downloads und das unmittelbare Recht auf Vergessenwerden.",
+    "shipTitle": "72-Stunden-Express-Kurierversand",
+    "shipBody": "Versicherter Versand von europäischen Logistikknoten in Frankfurt (DE-01), Amsterdam (NL-02) und Lyon (FR-03) in diskreter, manipulationssicherer Verpackung.",
+    "eurTitle": "Binnenmarkt-Abrechnung in Euro (€)",
+    "eurBody": "Native Euro-Transaktionsverarbeitung ohne Währungsumrechnungszuschläge und mit transparenter Rechnungsstellung."
+  }
+}

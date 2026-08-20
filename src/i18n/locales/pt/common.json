@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "home": "Início",
+    "catalogue": "Catálogo",
+    "contact": "Contacto",
+    "gdpr": "Privacidade GDPR",
+    "cart": "Carrinho",
+    "admin": "Admin",
+    "changeLanguage": "Alterar idioma",
+    "searchPlaceholder": "Pesquisar passaportes, cartas de condução, autorizações de residência, vistos registados...",
+    "clear": "Limpar"
+  },
+  "footer": {
+    "tagline": "Plataforma de comércio eletrónico do mercado único europeu com liquidação predefinida em Euro (€), conformidade com os artigos 15/17 do GDPR e ferramentas de inventário para comerciantes.",
+    "standardsTitle": "Normas da UE",
+    "eurSettlement": "Moeda de liquidação predefinida: EUR (€)",
+    "gdprCompliant": "Conforme com os artigos 15/17 do GDPR",
+    "warehouses": "Hubs Frankfurt • Amsterdam • Lyon",
+    "legalTitle": "Jurídico e conformidade",
+    "privacyPolicy": "Política de privacidade e DSAR",
+    "contactUs": "Contacte-nos",
+    "merchantPortal": "Portal de administração comercial",
+    "privacyTitle": "Privacidade de dados GDPR",
+    "dsar": "Descarregar dados pessoais (DSAR)",
+    "forgotten": "Direito a ser esquecido (art. 17)",
+    "auditLog": "Inspetor do registo de auditoria de consentimento",
+    "hosted": "Dados alojados em Frankfurt, Alemanha (nó EU-West).",
+    "madeWith": "Feito com precisão para documentos oficiais europeus e dossiers"
+  },
+  "language": {
+    "title": "Definições de idioma",
+    "subtitle": "Escolha o idioma de apresentação preferido",
+    "info": "Todos os totais de checkout e faturas são processados em Euro (€). As traduções aplicam-se à interface da loja e aos nomes dos produtos.",
+    "selected": "Idioma selecionado",
+    "save": "Guardar e aplicar idioma"
+  },
+  "actions": {
+    "browseCatalogue": "Explorar o catálogo completo de produtos",
+    "proceedCheckout": "Prosseguir para o checkout",
+    "addToCart": "Adicionar ao carrinho",
+    "viewCart": "Ver carrinho",
+    "checkout": "Checkout",
+    "back": "Voltar"
+  },
+  "product": {
+    "madeIn": "Fabricado em {{country}}",
+    "outOfStock": "Esgotado",
+    "lowStock": "Apenas {{count}} restantes",
+    "inStock": "Em stock ({{count}})",
+    "quickInspect": "Inspeção rápida das especificações",
+    "includesVat": "Todos os preços em Euro (€). Entrega express UE disponível.",
+    "soldOut": "Esgotado",
+    "notFound": "Produto não encontrado",
+    "notFoundBody": "O produto que procura não existe ou foi removido.",
+    "transactionPrice": "Preço da transação (base EUR)"
+  },
+  "gdprBanner": {
+    "title": "Aviso de proteção de dados GDPR da UE",
+    "eurBadge": "Liquidação EUR",
+    "body": "Tratamos os seus dados pessoais ao abrigo do Regulamento (UE) 2016/679. Todos os preços são apresentados por predefinição em Euro (€). Pode personalizar as cookies ou exportar os seus dados a qualquer momento.",
+    "acceptAll": "Aceitar todas as cookies",
+    "essentialOnly": "Apenas essenciais",
+    "customize": "Personalizar"
+  },
+  "categories": {
+    "All": "Todos",
+    "Passports": "Passaportes",
+    "Driver Licenses": "Cartas de condução",
+    "Identity Cards": "Cartões de identidade",
+    "Residence Permits": "Autorizações de residência",
+    "EU Visas": "Vistos UE"
+  }
+}

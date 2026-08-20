@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { X, ShoppingBag, ShieldCheck, Warehouse, MapPin, Tag, Truck, Check, AlertTriangle } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
+import { getLocalizedProductName } from '../data/productNameTranslations';
+import { getLocalizedProductDescription } from '../data/productDescriptionTranslations';
+import { useTranslation } from 'react-i18next';
 
 export const ProductDetailModal: React.FC = () => {
   const { 
     selectedProductForDetail, 
     setSelectedProductForDetail, 
     addToCart, 
-    getConvertedPriceString,
-    selectedCountry 
+    formatPriceEUR,
   } = useStore();
+  const { t, i18n } = useTranslation('common');
 
   const [quantity, setQuantity] = useState<number>(1);
   const [activeImage, setActiveImage] = useState<string | null>(null);
@@ -18,7 +21,9 @@ export const ProductDetailModal: React.FC = () => {
 
   const product = selectedProductForDetail;
   const isOutOfStock = product.totalStock <= 0;
-  const { mainEUR, convertedRef } = getConvertedPriceString(product.priceEUR);
+  const localizedName = getLocalizedProductName(product, i18n.language);
+  const localizedDescription = getLocalizedProductDescription(product, i18n.language);
+  const priceLabel = formatPriceEUR(product.priceEUR);
 
   const displayImage = activeImage || product.imageUrl;
   const allImages = [product.imageUrl, ...(product.galleryImages || [])].filter(
@@ -47,7 +52,7 @@ export const ProductDetailModal: React.FC = () => {
             <div className="relative aspect-square rounded-2xl overflow-hidden bg-[var(--color-bg-tertiary)] border border-[var(--color-border)]">
               <img
                 src={displayImage}
-                alt={product.name}
+                alt={localizedName}
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-all duration-300"
               />
@@ -75,7 +80,7 @@ export const ProductDetailModal: React.FC = () => {
                     >
                       <img
                         src={img}
-                        alt={`${product.name} gallery view ${idx + 1}`}
+                        alt={`${localizedName} gallery view ${idx + 1}`}
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover"
                       />
@@ -114,12 +119,12 @@ export const ProductDetailModal: React.FC = () => {
               
               <div>
                 <div className="flex items-center space-x-2 text-xs text-blue-500 font-semibold uppercase tracking-wider mb-1">
-                  <span>{product.category}</span>
+                  <span>{t(`categories.${product.category}`, { defaultValue: product.category })}</span>
                   <span>•</span>
                   <span>SKU: {product.sku}</span>
                 </div>
                 <h2 className="text-2xl font-black text-[var(--color-text-primary)] leading-tight">
-                  {product.name}
+                  {localizedName}
                 </h2>
                 <div className="text-xs text-[var(--color-text-muted)] mt-1">
                   Supplier: <span className="text-[var(--color-text-secondary)] font-medium">{product.supplierName}</span>
@@ -127,7 +132,7 @@ export const ProductDetailModal: React.FC = () => {
               </div>
 
               <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
-                {product.description}
+                {localizedDescription}
               </p>
 
               <div className="flex flex-wrap gap-1.5 pt-1">
@@ -145,19 +150,12 @@ export const ProductDetailModal: React.FC = () => {
                 <div className="text-xs text-[var(--color-text-muted)]">Transaction Price (EUR Base):</div>
                 <div className="flex items-baseline space-x-2">
                   <span className="text-3xl font-extrabold text-[var(--color-text-primary)]">
-                    {mainEUR}
+                    {priceLabel}
                   </span>
-                  {convertedRef && (
-                    <span className="text-sm font-semibold text-indigo-500">
-                      {convertedRef}
-                    </span>
-                  )}
                 </div>
                 <div className="text-xs text-[var(--color-text-muted)] pt-1 flex items-center space-x-1.5">
                   <ShieldCheck className="w-4 h-4 text-emerald-500" />
-                  <span>
-                    Price includes {(selectedCountry.vatRate * 100).toFixed(0)}% {selectedCountry.name} VAT. Duty-free EU delivery.
-                  </span>
+                  <span>{t('product.includesVat')}</span>
                 </div>
               </div>
 

@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "badge": "Con sede in Europa • Logistica del mercato unico",
+    "titleLine1": "Documenti ufficiali UE e",
+    "titleLine2": "soluzioni di dossier registrati.",
+    "description": "Ordina passaporti europei registrati, patenti di guida, carte d’identità nazionali, visti Schengen e permessi di soggiorno UE. Tutti gli ordini sono regolati in Euro (€) con registrazione biometrica in banca dati e consegna corriere express in 72 ore in tutti i 27 Stati membri dell’UE.",
+    "eurStandard": "Standard Euro (€)",
+    "eurStandardDesc": "Nessun ricarico valutario né commissioni forex nascoste.",
+    "gdpr": "Conforme al GDPR",
+    "gdprDesc": "Esportazioni DSAR istantanee e strumenti di cancellazione.",
+    "logistics": "Logistica verde UE",
+    "logisticsDesc": "Hub di magazzino a Frankfurt, Amsterdam e Lyon."
+  },
+  "ticker": {
+    "portal": "Portale ufficiale dei documenti dell’Unione europea",
+    "discount": "Sconto automatico del 5 % su tutto il negozio attivo",
+    "registry": "100 % registrazione in banca dati (KBA • ANTS • fedpol • BRP)",
+    "shipping": "Spedizione corriere express 72 ore",
+    "settlement": "Regolamento: base EUR (€)",
+    "node": "Nodo: DE-West (Frankfurt)"
+  },
+  "categories": {
+    "title": "Categorie ufficiali del catalogo",
+    "registered": "{{count}} prodotti registrati",
+    "subtitle": "Sfoglia per classificazione ufficiale dei documenti per l’evasione nel mercato unico.",
+    "showAll": "Mostra tutto ({{count}})",
+    "passportsDesc": "Passaporti biometrici ICAO 9303 con e-Chip",
+    "licensesDesc": "Permessi UE e internazionali in formato carta di credito",
+    "idsDesc": "Carte eID elettroniche con microchip contactless",
+    "residenceDesc": "Carte biometriche di diritto di soggiorno Schengen",
+    "visasName": "Visti UE e finanziario",
+    "visasDesc": "Visti Schengen multi-ingresso e estratti verificati"
+  },
+  "featured": {
+    "badge": "Vetrina documenti in evidenza",
+    "title": "Selezione di documenti in evidenza",
+    "subtitle": "Esplora una selezione di passaporti, patenti, carte di soggiorno e visti registrati dal nostro catalogo ufficiale del mercato unico.",
+    "viewFull": "Vedi catalogo completo ({{count}} articoli)",
+    "topRegistered": "I migliori {{category}} registrati disponibili per la consegna nel mercato unico.",
+    "exploreAll": "Esplora tutti i {{category}}",
+    "ctaTitle": "Serve un documento di uno Stato membro UE specifico?",
+    "ctaBody": "Il nostro catalogo include oltre 28 documenti registrati di Germania, Francia, Italia, Spagna, Paesi Bassi, Svezia, Svizzera, Belgio, Danimarca e altri.",
+    "ctaButton": "Apri catalogo completo e filtri"
+  },
+  "process": {
+    "badge": "Protocollo di evasione",
+    "title": "Come funziona l’elaborazione ufficiale dei documenti",
+    "subtitle": "Una pipeline trasparente in 3 fasi che garantisce la registrazione completa in banca dati e una consegna sicura nel mercato unico.",
+    "step1Badge": "Fase 1 • Raccolta",
+    "step1Title": "Invio dati e foto",
+    "step1Subtitle": "Inserimento biografico e biometrico",
+    "step1Body": "Seleziona lo Stato di destinazione del documento e fornisci dati personali crittografati, una foto biometrica da passaporto e un campione di firma tramite modulo GDPR sicuro.",
+    "step2Badge": "Fase 2 • Registrazione",
+    "step2Title": "Registrazione in banca dati",
+    "step2Subtitle": "Inserimento nel registro ufficiale",
+    "step2Body": "Il tuo fascicolo viene registrato nelle banche dati nazionali (KBA Flensburg, ANTS France, fedpol Switzerland o BRP Netherlands) con codifica microchip ICAO.",
+    "step3Badge": "Fase 3 • Evasione",
+    "step3Title": "Spedizione express 72 h assicurata",
+    "step3Subtitle": "Consegna corriere discreta",
+    "step3Body": "Spedito in imballaggio discreto e antimanomissione con tracciamento DHL Express in tempo reale dai nostri hub logistici di Frankfurt, Amsterdam o Lyon."
+  },
+  "trust": {
+    "badge": "Standard UE garantiti",
+    "title": "Perché i clienti europei si fidano di Eudossier",
+    "subtitle": "Progettato per piena conformità legale, accuratezza biometrica e distribuzione fluida nel mercato unico.",
+    "gdprPortal": "Apri il portale di sicurezza GDPR",
+    "chipTitle": "Sicurezza biometrica e microchip RFID",
+    "chipBody": "Realizzato secondo le specifiche ICAO 9303 con codifica chip in policarbonato contactless, incisione foto laser, testo tattile e inchiostro filigrana UV.",
+    "gdprTitle": "Conformità GDPR articoli 15/17",
+    "gdprBody": "I tuoi dati identitari e transazionali sono protetti dalle rigorose leggi UE sulla privacy. Accedi a download istantanei del pacchetto dati DSAR e alla cancellazione immediata per il diritto all’oblio.",
+    "shipTitle": "Spedizione corriere express 72 ore",
+    "shipBody": "Spedizione assicurata dai nodi logistici europei di Frankfurt (DE-01), Amsterdam (NL-02) e Lyon (FR-03) in imballaggio discreto e antimanomissione.",
+    "eurTitle": "Regolamento mercato unico in Euro (€)",
+    "eurBody": "Elaborazione nativa delle transazioni in Euro, senza sovrapprezzi di conversione e con fatturazione trasparente."
+  }
+}

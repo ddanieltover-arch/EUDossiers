@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "badge": "Sijainti Euroopassa • Sisämarkkinoiden logistiikka",
+    "titleLine1": "Viralliset EU-asiakirjat ja",
+    "titleLine2": "rekisteröidyt dossier-ratkaisut.",
+    "description": "Tilaa rekisteröityjä eurooppalaisia passeja, ajokortteja, kansallisia henkilökortteja, Schengen-viisumeita ja EU:n oleskelulupia. Kaikki tilaukset selvitetään euroina (€) biometrisellä tietokantarekisteröinnillä ja 72 tunnin express-kuriiritoimituksella kaikissa 27 EU-jäsenvaltiossa.",
+    "eurStandard": "Euro (€) -standardi",
+    "eurStandardDesc": "Ei valuuttalisiä eikä piilotettuja forex-maksuja.",
+    "gdpr": "GDPR-yhteensopiva",
+    "gdprDesc": "Välittömät DSAR-tietoviennit ja poistotyökalut.",
+    "logistics": "EU:n vihreä logistiikka",
+    "logisticsDesc": "Varastokeskukset Frankfurtissa, Amsterdamissa ja Lyonissa."
+  },
+  "ticker": {
+    "portal": "Euroopan unionin virallinen asiakirjaportaali",
+    "discount": "Automaattinen 5 %:n koko kaupan alennus käytössä",
+    "registry": "100 % tietokantarekisteröinti (KBA • ANTS • fedpol • BRP)",
+    "shipping": "Express-kuriiritoimitus 72 tunnissa",
+    "settlement": "Selvitys: EUR (€) -peruste",
+    "node": "Solmu: DE-West (Frankfurt)"
+  },
+  "categories": {
+    "title": "Viralliset luetteloluokat",
+    "registered": "{{count}} tuotetta rekisteröity",
+    "subtitle": "Selaa virallisen asiakirjaluokituksen mukaan sisämarkkinatoimitusta varten.",
+    "showAll": "Näytä kaikki ({{count}})",
+    "passportsDesc": "ICAO 9303 -biometriset passit e-Chipillä",
+    "licensesDesc": "EU- ja kansainväliset luottokorttimuotoiset luvat",
+    "idsDesc": "Sähköiset eID-kortit lähimaksu-mikrochipillä",
+    "residenceDesc": "Biometriset Schengen-oleskelukortit",
+    "visasName": "EU-viisumit ja talous",
+    "visasDesc": "Schengenin monikertaviisumit ja varmennetut tiliotteet"
+  },
+  "featured": {
+    "badge": "Esitellyt asiakirjat",
+    "title": "Valitut asiakirjakohokohdat",
+    "subtitle": "Tutustu valikoimaan rekisteröityjä passeja, ajokortteja, oleskelukortteja ja viisumeita virallisesta sisämarkkinaluettelostamme.",
+    "viewFull": "Näytä koko luettelo ({{count}} kohdetta)",
+    "topRegistered": "Parhaat rekisteröidyt {{category}} saatavilla sisämarkkinatoimitukseen.",
+    "exploreAll": "Tutustu kaikkiin: {{category}}",
+    "ctaTitle": "Tarvitsetko tietyn EU-jäsenvaltion asiakirjan?",
+    "ctaBody": "Luettelomme sisältää yli 28 rekisteröityä asiakirjaa Saksasta, Ranskasta, Italiasta, Espanjasta, Alankomaista, Ruotsista, Sveitsistä, Belgiasta, Tanskasta ja muualta.",
+    "ctaButton": "Avaa koko luettelo ja suodattimet"
+  },
+  "process": {
+    "badge": "Toimitusprotokolla",
+    "title": "Miten virallinen asiakirjakäsittely toimii",
+    "subtitle": "Läpinäkyvä 3-vaiheinen putki, joka varmistaa täydellisen tietokantarekisteröinnin ja turvallisen sisämarkkinatoimituksen.",
+    "step1Badge": "Vaihe 1 • Vastaanotto",
+    "step1Title": "Tietojen ja valokuvan toimitus",
+    "step1Subtitle": "Elämäkerrallinen ja biometrinen syöttö",
+    "step1Body": "Valitse asiakirjan kohdevaltio ja toimita salatut henkilötiedot, biometrinen passikuva ja allekirjoitusnäyte turvallisen GDPR-lomakkeen kautta.",
+    "step2Badge": "Vaihe 2 • Rekisteröinti",
+    "step2Title": "Tietokantarekisteröinti",
+    "step2Subtitle": "Virallinen rekisterimerkintä",
+    "step2Body": "Asiakirjatietueesi rekisteröidään kansallisiin tietokantoihin (KBA Flensburg, ANTS France, fedpol Switzerland tai BRP Netherlands) ICAO-mikrochip-koodauksella.",
+    "step3Badge": "Vaihe 3 • Toimitus",
+    "step3Title": "Vakuutettu 72 h express-toimitus",
+    "step3Subtitle": "Diskreetti kuriiritoimitus",
+    "step3Body": "Lähetetään diskreetissä, väärentämisen paljastavassa pakkauksessa reaaliaikaisella DHL Express -seurannalla logistiikkakeskuksistamme Frankfurtissa, Amsterdamissa tai Lyonissa."
+  },
+  "trust": {
+    "badge": "EU-standardit taattu",
+    "title": "Miksi eurooppalaiset asiakkaat luottavat Eudossieriin",
+    "subtitle": "Suunniteltu ehdottomaan lainmukaisuuteen, biometriseen tarkkuuteen ja saumattomaan sisämarkkinajakeluun.",
+    "gdprPortal": "Avaa GDPR-turvaportaali",
+    "chipTitle": "Biometrinen ja RFID-mikrochip-turvallisuus",
+    "chipBody": "Rakennettu täyteen ICAO 9303 -määrittelyyn lähimaksu-polykarbonaattisirun koodauksella, laserkuvaetsauksella, tuntotekstillä ja UV-vesileimamusteella.",
+    "gdprTitle": "GDPR-artiklojen 15/17 noudattaminen",
+    "gdprBody": "Henkilöllisyys- ja transaktiotietosi suojataan tiukoilla EU:n tietosuojalaeilla. Käytä välittömiä DSAR-tietopakettilatauksia ja välitöntä poistoa unohdetuksi tulemisen oikeuden nojalla.",
+    "shipTitle": "72 tunnin express-kuriiritoimitus",
+    "shipBody": "Vakuutettu lähetys eurooppalaisista logistiikkasolmuista Frankfurt (DE-01), Amsterdam (NL-02) ja Lyon (FR-03) diskreetissä, väärentämisen paljastavassa pakkauksessa.",
+    "eurTitle": "Sisämarkkinoiden selvitys euroina (€)",
+    "eurBody": "Natiivi eurotransaktioiden käsittely ilman valuutanmuunnoslisämaksuja ja läpinäkyvällä laskutuksella."
+  }
+}

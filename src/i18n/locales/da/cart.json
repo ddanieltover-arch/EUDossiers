@@ -1,0 +1,15 @@
+{
+  "title": "Din kurv",
+  "emptyTitle": "Din kurv er tom",
+  "emptyBody": "Gennemse kataloget og tilføj varer for at starte din ordre.",
+  "summary": "Ordresammendrag",
+  "subtotal": "Subtotal",
+  "total": "I alt",
+  "remove": "Fjern",
+  "continueShopping": "Fortsæt med at handle",
+  "itemCount": "{{count}} varer",
+  "each": "stk.",
+  "drawerTitle": "Vare tilføjet til kurven",
+  "drawerEmpty": "Din kurv er tom",
+  "estimatedTotal": "Estimeret total"
+}

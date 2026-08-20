@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "home": "Etusivu",
+    "catalogue": "Luettelo",
+    "contact": "Yhteystiedot",
+    "gdpr": "GDPR-tietosuoja",
+    "cart": "Ostoskori",
+    "admin": "Admin",
+    "changeLanguage": "Vaihda kieli",
+    "searchPlaceholder": "Hae rekisteröityjä passeja, ajokortteja, oleskelulupia, viisumeita...",
+    "clear": "Tyhjennä"
+  },
+  "footer": {
+    "tagline": "Euroopan sisämarkkinoiden verkkokauppa-alusta, jonka oletusvaluutta on euro (€), GDPR-artiklojen 15/17 noudattaminen ja kauppiaan varastotyökalut.",
+    "standardsTitle": "EU-standardit",
+    "eurSettlement": "Oletusselvitysvaluutta: EUR (€)",
+    "gdprCompliant": "GDPR-artiklojen 15/17 mukainen",
+    "warehouses": "Frankfurt • Amsterdam • Lyon -keskukset",
+    "legalTitle": "Laki ja vaatimustenmukaisuus",
+    "privacyPolicy": "Tietosuojakäytäntö ja DSAR",
+    "contactUs": "Ota yhteyttä",
+    "merchantPortal": "Kauppiaan hallintaportaali",
+    "privacyTitle": "GDPR-tietosuoja",
+    "dsar": "Lataa henkilötiedot (DSAR)",
+    "forgotten": "Oikeus tulla unohdetuksi (17 artikla)",
+    "auditLog": "Suostumuksen auditointilokin tarkastaja",
+    "hosted": "Tiedot isännöidään Frankfurtissa, Saksassa (EU-West Node).",
+    "madeWith": "Valmistettu tarkkuudella eurooppalaisia virallisia asiakirjoja ja dossier-tiedostoja varten"
+  },
+  "language": {
+    "title": "Kieliasetukset",
+    "subtitle": "Valitse haluamasi näyttökieli",
+    "info": "Kaikki kassan summat ja laskut käsitellään euroina (€). Käännökset koskevat kaupan käyttöliittymää ja tuotenimiä.",
+    "selected": "Valittu kieli",
+    "save": "Tallenna ja ota kieli käyttöön"
+  },
+  "actions": {
+    "browseCatalogue": "Selaa koko tuoteluetteloa",
+    "proceedCheckout": "Siirry kassalle",
+    "addToCart": "Lisää ostoskoriin",
+    "viewCart": "Näytä ostoskori",
+    "checkout": "Kassa",
+    "back": "Takaisin"
+  },
+  "product": {
+    "madeIn": "Valmistettu maassa {{country}}",
+    "outOfStock": "Loppu varastosta",
+    "lowStock": "Vain {{count}} jäljellä",
+    "inStock": "Varastossa ({{count}})",
+    "quickInspect": "Tarkasta tiedot nopeasti",
+    "includesVat": "Kaikki hinnat euroina (€). EU-pikatoimitus saatavilla.",
+    "soldOut": "Loppuunmyyty",
+    "notFound": "Tuotetta ei löytynyt",
+    "notFoundBody": "Etsimääsi tuotetta ei ole olemassa tai se on poistettu.",
+    "transactionPrice": "Tapahtumahinta (EUR-peruste)"
+  },
+  "gdprBanner": {
+    "title": "EU:n GDPR-tietosuojailmoitus",
+    "eurBadge": "EUR-selvitys",
+    "body": "Käsittelemme henkilötietojasi asetuksen (EU) 2016/679 mukaisesti. Kaikki hinnat näytetään oletuksena euroina (€). Voit mukauttaa evästeasetuksia tai viedä tietosi milloin tahansa.",
+    "acceptAll": "Hyväksy kaikki evästeet",
+    "essentialOnly": "Vain välttämättömät",
+    "customize": "Mukauta"
+  },
+  "categories": {
+    "All": "Kaikki",
+    "Passports": "Passit",
+    "Driver Licenses": "Ajokortit",
+    "Identity Cards": "Henkilökortit",
+    "Residence Permits": "Oleskeluluvat",
+    "EU Visas": "EU-viisumit"
+  }
+}

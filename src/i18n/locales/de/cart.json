@@ -1,0 +1,15 @@
+{
+  "title": "Ihr Warenkorb",
+  "emptyTitle": "Ihr Warenkorb ist leer",
+  "emptyBody": "Durchsuchen Sie unseren Katalog und fügen Sie Artikel hinzu, um Ihre Bestellung zu starten.",
+  "summary": "Bestellübersicht",
+  "subtotal": "Zwischensumme",
+  "total": "Gesamt",
+  "remove": "Entfernen",
+  "continueShopping": "Weiter einkaufen",
+  "itemCount": "{{count}} Artikel",
+  "each": "je",
+  "drawerTitle": "Artikel zum Warenkorb hinzugefügt",
+  "drawerEmpty": "Ihr Warenkorb ist leer",
+  "estimatedTotal": "Geschätzte Gesamtsumme"
+}

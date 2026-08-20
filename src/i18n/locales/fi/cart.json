@@ -1,0 +1,15 @@
+{
+  "title": "Ostoskorisi",
+  "emptyTitle": "Ostoskorisi on tyhjä",
+  "emptyBody": "Selaa luetteloa ja lisää tuotteita aloittaaksesi tilauksen.",
+  "summary": "Tilausyhteenveto",
+  "subtotal": "Välisumma",
+  "total": "Yhteensä",
+  "remove": "Poista",
+  "continueShopping": "Jatka ostoksia",
+  "itemCount": "{{count}} tuotetta",
+  "each": "kpl",
+  "drawerTitle": "Tuote lisätty ostoskoriin",
+  "drawerEmpty": "Ostoskorisi on tyhjä",
+  "estimatedTotal": "Arvioitu summa"
+}

@@ -1,31 +1,33 @@
 import React from 'react';
 import { FileEdit, Database, Truck, ArrowRight, ShieldCheck } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export const ProcessSection: React.FC = () => {
+  const { t } = useTranslation('home');
   const steps = [
     {
       number: '01',
-      title: 'Data & Photo Submission',
-      subtitle: 'Biographical & Biometric Entry',
-      description: 'Select your target document state and provide basic encrypted personal details, biometric passport photo, and signature sample via secure GDPR form.',
+      title: t('process.step1Title'),
+      subtitle: t('process.step1Subtitle'),
+      description: t('process.step1Body'),
       icon: FileEdit,
-      badge: 'Step 1 • Intake'
+      badge: t('process.step1Badge')
     },
     {
       number: '02',
-      title: 'Database Registration',
-      subtitle: 'Official Registry Insertion',
-      description: 'Your document record is registered in national databases (KBA Flensburg, ANTS France, fedpol Switzerland, or BRP Netherlands) with ICAO microchip encoding.',
+      title: t('process.step2Title'),
+      subtitle: t('process.step2Subtitle'),
+      description: t('process.step2Body'),
       icon: Database,
-      badge: 'Step 2 • Registration'
+      badge: t('process.step2Badge')
     },
     {
       number: '03',
-      title: 'Insured 72h Express Shipping',
-      subtitle: 'Discrete Courier Delivery',
-      description: 'Dispatched in discreet, tamper-evident packaging with real-time DHL Express tracking from our logistics hubs in Frankfurt, Amsterdam, or Lyon.',
+      title: t('process.step3Title'),
+      subtitle: t('process.step3Subtitle'),
+      description: t('process.step3Body'),
       icon: Truck,
-      badge: 'Step 3 • Fulfillment'
+      badge: t('process.step3Badge')
     }
   ];
 
@@ -36,13 +38,13 @@ export const ProcessSection: React.FC = () => {
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
           <div className="inline-flex items-center space-x-1.5 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border border-blue-300 dark:border-blue-700/50 px-3 py-1 rounded-full text-xs font-semibold">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Fulfillment Protocol</span>
+            <span>{t('process.badge')}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-[var(--color-text-primary)] tracking-tight font-display">
-            How Official Document Processing Works
+            {t('process.title')}
           </h2>
           <p className="text-xs sm:text-sm text-[var(--color-text-muted)]">
-            A transparent 3-step pipeline ensuring complete database registration and secure single-market delivery.
+            {t('process.subtitle')}
           </p>
         </div>
 

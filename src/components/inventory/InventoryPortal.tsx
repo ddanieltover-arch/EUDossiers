@@ -32,6 +32,7 @@ import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell, PieCha
 import { useStore } from '../../context/StoreContext';
 import { EXPORT_PREFIX } from '../../brand';
 import { Product, StockAdjustment, Category, Order } from '../../types';
+import { useTranslation } from 'react-i18next';
 import { EU_COUNTRIES } from '../../data/mockData';
 import { downloadOfficialEuInvoice } from '../../utils/generateInvoicePdf';
 
@@ -51,6 +52,7 @@ export const InventoryPortal: React.FC = () => {
     updateOrder,
     deleteOrder,
   } = useStore();
+  const { t } = useTranslation('admin');
 
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -292,9 +294,9 @@ export const InventoryPortal: React.FC = () => {
               <Box className="w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-2xl font-black text-[var(--color-text-primary)] tracking-tight">Executive Merchant Admin Portal</h1>
+              <h1 className="text-2xl font-black text-[var(--color-text-primary)] tracking-tight">{t('title')}</h1>
               <p className="text-xs text-[var(--color-text-muted)] mt-0.5">
-                Centralized Single Market Hub: Inventory, Regional Orders, GDPR Privacy Suite &amp; Multi-Hub Warehouse Ops.
+                {t('subtitle')}
               </p>
             </div>
           </div>
@@ -307,7 +309,7 @@ export const InventoryPortal: React.FC = () => {
             className="bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-bg-card-hover)] text-[var(--color-text-secondary)] border border-[var(--color-border)] text-xs font-semibold px-3.5 py-2 rounded-xl flex items-center space-x-1.5 transition-all shadow-xs"
           >
             <Download className="w-4 h-4 text-emerald-400" />
-            <span>Export CSV Report</span>
+            <span>{t('exportCsv')}</span>
           </button>
 
           <button
@@ -315,7 +317,7 @@ export const InventoryPortal: React.FC = () => {
             className="bg-blue-600 hover:bg-blue-500 text-[var(--color-text-primary)] text-xs font-bold px-4 py-2 rounded-xl flex items-center space-x-1.5 transition-all shadow-md shadow-blue-600/20"
           >
             <Plus className="w-4 h-4" />
-            <span>Add New Product SKU</span>
+            <span>{t('addSku')}</span>
           </button>
 
         </div>
@@ -326,50 +328,50 @@ export const InventoryPortal: React.FC = () => {
         
         <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-4 space-y-1.5 relative overflow-hidden group">
           <div className="flex justify-between items-center text-xs text-[var(--color-text-muted)] font-medium">
-            <span>Gross Order Revenue</span>
+            <span>{t('grossRevenue')}</span>
             <Euro className="w-4 h-4 text-emerald-400" />
           </div>
           <div className="text-2xl font-black text-emerald-400">{formatPriceEUR(totalGrossRevenueEUR)}</div>
           <div className="text-[11px] text-[var(--color-text-muted)] flex items-center space-x-1">
             <TrendingUp className="w-3 h-3 text-emerald-400 inline" />
-            <span>{completedOrdersCount} EU Orders Processed</span>
+            <span>{t('ordersProcessed', { count: completedOrdersCount })}</span>
           </div>
         </div>
 
         <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-4 space-y-1.5">
           <div className="flex justify-between items-center text-xs text-[var(--color-text-muted)] font-medium">
-            <span>Total Catalog SKUs</span>
+            <span>{t('totalSkus')}</span>
             <Box className="w-4 h-4 text-blue-400" />
           </div>
-          <div className="text-2xl font-black text-[var(--color-text-primary)]">{totalSkus} SKUs</div>
-          <div className="text-[11px] text-[var(--color-text-muted)]">{totalUnitsInStock} total units across hubs</div>
+          <div className="text-2xl font-black text-[var(--color-text-primary)]">{t('skus', { count: totalSkus })}</div>
+          <div className="text-[11px] text-[var(--color-text-muted)]">{t('unitsHubs', { count: totalUnitsInStock })}</div>
         </div>
 
         <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-4 space-y-1.5">
           <div className="flex justify-between items-center text-xs text-[var(--color-text-muted)] font-medium">
-            <span>Inventory Valuation</span>
+            <span>{t('valuation')}</span>
             <Layers className="w-4 h-4 text-indigo-400" />
           </div>
           <div className="text-2xl font-black text-indigo-300">{formatPriceEUR(totalInventoryValueEUR)}</div>
-          <div className="text-[11px] text-[var(--color-text-muted)]">Base EUR asset valuation</div>
+          <div className="text-[11px] text-[var(--color-text-muted)]">{t('valuationHint')}</div>
         </div>
 
         <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-4 space-y-1.5">
           <div className="flex justify-between items-center text-xs text-[var(--color-text-muted)] font-medium">
-            <span>Low Stock Alerts</span>
+            <span>{t('lowStock')}</span>
             <AlertTriangle className="w-4 h-4 text-amber-400" />
           </div>
-          <div className="text-2xl font-black text-amber-400">{lowStockProducts.length} Items</div>
-          <div className="text-[11px] text-[var(--color-text-muted)]">{outOfStockProducts.length} items out of stock</div>
+          <div className="text-2xl font-black text-amber-400">{t('lowStockItems', { count: lowStockProducts.length })}</div>
+          <div className="text-[11px] text-[var(--color-text-muted)]">{t('outOfStock', { count: outOfStockProducts.length })}</div>
         </div>
 
         <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-4 space-y-1.5">
           <div className="flex justify-between items-center text-xs text-[var(--color-text-muted)] font-medium">
-            <span>GDPR Compliance</span>
+            <span>{t('gdpr')}</span>
             <ShieldCheck className="w-4 h-4 text-blue-400" />
           </div>
-          <div className="text-2xl font-black text-blue-400">100% Score</div>
-          <div className="text-[11px] text-emerald-400 font-semibold">Art. 15/17 Single Market Compliant</div>
+          <div className="text-2xl font-black text-blue-400">{t('gdprScore')}</div>
+          <div className="text-[11px] text-emerald-400 font-semibold">{t('gdprHint')}</div>
         </div>
 
       </div>
@@ -384,7 +386,7 @@ export const InventoryPortal: React.FC = () => {
           }`}
         >
           <BarChart3 className="w-4 h-4" />
-          <span>Dashboard Overview</span>
+          <span>{t('tabOverview')}</span>
         </button>
 
         <button
@@ -394,7 +396,7 @@ export const InventoryPortal: React.FC = () => {
           }`}
         >
           <Box className="w-4 h-4" />
-          <span>Inventory Stock Table ({products.length})</span>
+          <span>{t('tabInventory', { count: products.length })}</span>
         </button>
 
         <button
@@ -404,7 +406,7 @@ export const InventoryPortal: React.FC = () => {
           }`}
         >
           <ShoppingBag className="w-4 h-4" />
-          <span>Order Fulfillment Ledger ({orderList.length})</span>
+          <span>{t('tabOrders', { count: orderList.length })}</span>
         </button>
 
         <button
@@ -414,7 +416,7 @@ export const InventoryPortal: React.FC = () => {
           }`}
         >
           <ShieldCheck className="w-4 h-4" />
-          <span>GDPR Privacy Suite</span>
+          <span>{t('tabPrivacy')}</span>
         </button>
 
         <button
@@ -424,7 +426,7 @@ export const InventoryPortal: React.FC = () => {
           }`}
         >
           <History className="w-4 h-4" />
-          <span>Audit Log &amp; Import</span>
+          <span>{t('tabAudit')}</span>
         </button>
 
       </div>
@@ -537,7 +539,7 @@ export const InventoryPortal: React.FC = () => {
                             </span>
                           </div>
                           <div className="text-[11px] text-[var(--color-text-muted)] mt-0.5">
-                            {order.items.length} {order.items.length === 1 ? 'item' : 'items'} • VAT ({countryObj?.name}): €{order.vatAmountEUR.toFixed(2)}
+                            {order.items.length} {order.items.length === 1 ? 'item' : 'items'} • {countryObj?.name || order.destinationCountry}
                           </div>
                         </div>
                       </div>
@@ -802,7 +804,6 @@ export const InventoryPortal: React.FC = () => {
                           <span>{countryObj?.flag || '🇪🇺'}</span>
                           <span>{countryObj?.name || order.destinationCountry}</span>
                         </div>
-                        <div className="text-[10px] text-[var(--color-text-muted)]">VAT ({(order.vatRate * 100).toFixed(0)}%): €{order.vatAmountEUR.toFixed(2)}</div>
                       </td>
                       <td className="p-3">
                         <div className="font-semibold text-[var(--color-text-primary)]">{order.items.map(i => `${i.quantity}x ${i.name}`).join(', ')}</div>
@@ -1275,8 +1276,6 @@ export const InventoryPortal: React.FC = () => {
 
               <div className="border-t border-[var(--color-border)] pt-3 space-y-1.5">
                 <div className="flex justify-between"><span className="text-[var(--color-text-muted)]">Subtotal</span><span className="text-[var(--color-text-primary)]">{formatPriceEUR(selectedOrderForDetail.subtotalEUR)}</span></div>
-                <div className="flex justify-between"><span className="text-[var(--color-text-muted)]">VAT ({(selectedOrderForDetail.vatRate * 100).toFixed(0)}%)</span><span className="text-[var(--color-text-primary)]">{formatPriceEUR(selectedOrderForDetail.vatAmountEUR)}</span></div>
-                <div className="flex justify-between"><span className="text-[var(--color-text-muted)]">Shipping</span><span className="text-[var(--color-text-primary)]">{selectedOrderForDetail.shippingFeeEUR === 0 ? 'Free' : formatPriceEUR(selectedOrderForDetail.shippingFeeEUR)}</span></div>
                 {selectedOrderForDetail.cryptoDiscountEUR && selectedOrderForDetail.cryptoDiscountEUR > 0 && (
                   <div className="flex justify-between"><span className="text-[var(--color-text-muted)]">Crypto Discount (5%)</span><span className="text-emerald-400">-{formatPriceEUR(selectedOrderForDetail.cryptoDiscountEUR)}</span></div>
                 )}

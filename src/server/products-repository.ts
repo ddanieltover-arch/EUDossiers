@@ -1,11 +1,15 @@
 import { Product, WarehouseStock } from '../types';
 import { localCatalogueImages, withLocalCatalogueImages } from '../data/catalogueAssets';
+import { buildNameTranslationsForProduct } from '../data/productNameTranslations';
+import { buildDescriptionTranslationsForProduct } from '../data/productDescriptionTranslations';
 import { getSql } from './db';
 
 type ProductRow = {
   id: string;
   sku: string;
   name: string;
+  name_translations: Record<string, string> | null;
+  description_translations: Record<string, string> | null;
   category: Product['category'];
   description: string;
   price_eur: string | number;
@@ -25,10 +29,13 @@ type ProductRow = {
 };
 
 export function mapProductRow(row: ProductRow): Product {
+  const translations = row.name_translations ?? {};
   return withLocalCatalogueImages({
     id: row.id,
     sku: row.sku,
     name: row.name,
+    nameTranslations: translations,
+    descriptionTranslations: row.description_translations ?? {},
     category: row.category,
     description: row.description,
     priceEUR: Number(row.price_eur),
@@ -76,9 +83,18 @@ export async function ensureProductsTable(): Promise<void> {
       updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
     )
   `;
+  await sql`
+    ALTER TABLE products
+    ADD COLUMN IF NOT EXISTS name_translations JSONB NOT NULL DEFAULT '{}'::jsonb
+  `;
+  await sql`
+    ALTER TABLE products
+    ADD COLUMN IF NOT EXISTS description_translations JSONB NOT NULL DEFAULT '{}'::jsonb
+  `;
 }
 
 export async function listProducts(): Promise<Product[]> {
+  await ensureProductsTable();
   const sql = getSql();
   const rows = await sql`
     SELECT *
@@ -104,10 +120,13 @@ export async function getProductById(id: string): Promise<Product | null> {
 
 async function insertProduct(product: Product): Promise<Product> {
   const localProduct = withLocalCatalogueImages(product);
+  const nameTranslations = localProduct.nameTranslations ?? buildNameTranslationsForProduct(localProduct.id);
+  const descriptionTranslations =
+    localProduct.descriptionTranslations ?? buildDescriptionTranslationsForProduct(localProduct.id);
   const sql = getSql();
   const rows = await sql`
     INSERT INTO products (
-      id, sku, name, category, description,
+      id, sku, name, name_translations, description_translations, category, description,
       price_eur, original_price_eur, origin_country, origin_flag,
       image_url, gallery_images, total_stock, low_stock_threshold,
       warehouses, vat_rate_category, weight_kg, supplier_name, tags, last_restocked
@@ -115,6 +134,8 @@ async function insertProduct(product: Product): Promise<Product> {
       ${localProduct.id},
       ${localProduct.sku},
       ${localProduct.name},
+      ${JSON.stringify(nameTranslations)}::jsonb,
+      ${JSON.stringify(descriptionTranslations)}::jsonb,
       ${localProduct.category},
       ${localProduct.description},
       ${localProduct.priceEUR},
@@ -187,6 +208,8 @@ export async function updateProduct(
     ...existing,
     ...updates,
     id: existing.id,
+    nameTranslations: updates.nameTranslations ?? existing.nameTranslations,
+    descriptionTranslations: updates.descriptionTranslations ?? existing.descriptionTranslations,
     galleryImages: updates.galleryImages ?? existing.galleryImages,
     warehouses: updates.warehouses ?? existing.warehouses,
     tags: updates.tags ?? existing.tags,
@@ -197,6 +220,8 @@ export async function updateProduct(
     UPDATE products SET
       sku = ${next.sku},
       name = ${next.name},
+      name_translations = ${JSON.stringify(next.nameTranslations ?? buildNameTranslationsForProduct(next.id))}::jsonb,
+      description_translations = ${JSON.stringify(next.descriptionTranslations ?? buildDescriptionTranslationsForProduct(next.id))}::jsonb,
       category = ${next.category},
       description = ${next.description},
       price_eur = ${next.priceEUR},
@@ -271,4 +296,25 @@ export async function applyStockChange(
     totalStock: nextTotal,
     warehouses,
   });
+}
+
+export async function syncProductNameTranslations(): Promise<number> {
+  await ensureProductsTable();
+  const sql = getSql();
+  const rows = (await sql`SELECT id FROM products`) as { id: string }[];
+  let updated = 0;
+  for (const row of rows) {
+    const translations = buildNameTranslationsForProduct(row.id);
+    const descriptionTranslations = buildDescriptionTranslationsForProduct(row.id);
+    if (Object.keys(translations).length === 0 && Object.keys(descriptionTranslations).length === 0) continue;
+    await sql`
+      UPDATE products SET
+        name_translations = ${JSON.stringify(translations)}::jsonb,
+        description_translations = ${JSON.stringify(descriptionTranslations)}::jsonb,
+        updated_at = NOW()
+      WHERE id = ${row.id}
+    `;
+    updated += 1;
+  }
+  return updated;
 }

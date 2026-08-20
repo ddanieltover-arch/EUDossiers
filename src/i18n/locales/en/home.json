@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "badge": "Based in Europe • Single Market Logistics",
+    "titleLine1": "Official EU Documents &",
+    "titleLine2": "Registered Dossier Solutions.",
+    "description": "Order registered European passports, driver's licenses, national ID cards, Schengen visas, and EU residence permits. All orders are settled in Euro (€) with biometric database registration and express 72-hour courier delivery across all 27 EU member states.",
+    "eurStandard": "Euro (€) Standard",
+    "eurStandardDesc": "Zero currency markups or hidden forex fees.",
+    "gdpr": "GDPR Compliant",
+    "gdprDesc": "Instant DSAR data exports & erasure tools.",
+    "logistics": "EU Green Logistics",
+    "logisticsDesc": "Frankfurt, Amsterdam & Lyon warehouse hubs."
+  },
+  "ticker": {
+    "portal": "European Union Official Document Portal",
+    "discount": "Automatic 5% Storewide Discount Active",
+    "registry": "100% Database Registration (KBA • ANTS • fedpol • BRP)",
+    "shipping": "Express 72-Hour Courier Shipping",
+    "settlement": "Settlement: EUR (€) Base",
+    "node": "Node: DE-West (Frankfurt)"
+  },
+  "categories": {
+    "title": "Official Catalogue Categories",
+    "registered": "{{count}} Products Registered",
+    "subtitle": "Browse by official document classification for single market fulfillment.",
+    "showAll": "Show All ({{count}})",
+    "passportsDesc": "ICAO 9303 Biometric Passports with e-Chip",
+    "licensesDesc": "EU & International Credit-Card Permits",
+    "idsDesc": "Electronic eID Cards with Contactless Microchip",
+    "residenceDesc": "Biometric Schengen Right of Residence Cards",
+    "visasName": "EU Visas & Financial",
+    "visasDesc": "Schengen Multi-Entry Visas & Verified Statements"
+  },
+  "featured": {
+    "badge": "Featured Document Showcase",
+    "title": "Curated Document Highlights",
+    "subtitle": "Explore a selection of registered passports, driving permits, residence cards, and visas from our official single-market catalogue.",
+    "viewFull": "View Full Catalogue ({{count}} Items)",
+    "topRegistered": "Top registered {{category}} available for single market delivery.",
+    "exploreAll": "Explore all {{category}}",
+    "ctaTitle": "Need a Specific EU Member State Document?",
+    "ctaBody": "Our catalogue includes 28+ registered documents across Germany, France, Italy, Spain, Netherlands, Sweden, Switzerland, Belgium, Denmark, and more.",
+    "ctaButton": "Open Full Catalogue & Filter Tools"
+  },
+  "process": {
+    "badge": "Fulfillment Protocol",
+    "title": "How Official Document Processing Works",
+    "subtitle": "A transparent 3-step pipeline ensuring complete database registration and secure single-market delivery.",
+    "step1Badge": "Step 1 • Intake",
+    "step1Title": "Data & Photo Submission",
+    "step1Subtitle": "Biographical & Biometric Entry",
+    "step1Body": "Select your target document state and provide basic encrypted personal details, biometric passport photo, and signature sample via secure GDPR form.",
+    "step2Badge": "Step 2 • Registration",
+    "step2Title": "Database Registration",
+    "step2Subtitle": "Official Registry Insertion",
+    "step2Body": "Your document record is registered in national databases (KBA Flensburg, ANTS France, fedpol Switzerland, or BRP Netherlands) with ICAO microchip encoding.",
+    "step3Badge": "Step 3 • Fulfillment",
+    "step3Title": "Insured 72h Express Shipping",
+    "step3Subtitle": "Discrete Courier Delivery",
+    "step3Body": "Dispatched in discreet, tamper-evident packaging with real-time DHL Express tracking from our logistics hubs in Frankfurt, Amsterdam, or Lyon."
+  },
+  "trust": {
+    "badge": "EU Standards Guaranteed",
+    "title": "Why European Clients Trust Eudossier",
+    "subtitle": "Engineered for absolute legal compliance, biometric accuracy, and seamless single-market distribution.",
+    "gdprPortal": "Open GDPR Security Portal",
+    "chipTitle": "Biometric & RFID Microchip Security",
+    "chipBody": "Built to full ICAO 9303 specs with contactless poly-carbonate chip encoding, laser photo engraving, tactile surface text, and UV watermark ink.",
+    "gdprTitle": "GDPR Article 15/17 Compliance",
+    "gdprBody": "Your identity and transactional data are protected by strict EU privacy laws. Access instant DSAR data package downloads and immediate right-to-be-forgotten erasure.",
+    "shipTitle": "72-Hour Express Courier Shipping",
+    "shipBody": "Insured dispatch from European logistics nodes in Frankfurt (DE-01), Amsterdam (NL-02), and Lyon (FR-03) with discrete tamper-evident packaging.",
+    "eurTitle": "Single Market Euro (€) Settlement",
+    "eurBody": "Native Euro transaction processing with zero currency conversion surcharges and transparent invoicing."
+  }
+}

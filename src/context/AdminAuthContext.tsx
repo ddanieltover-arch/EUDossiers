@@ -70,7 +70,7 @@ export const AdminAuthProvider: React.FC<{ children: ReactNode }> = ({ children 
       setIsLoginModalOpen(false);
       return true;
     }
-    setLoginError('Invalid admin credentials. Access restricted to authorised personnel.');
+    setLoginError('invalidCredentials');
     return false;
   };
 

@@ -1,0 +1,15 @@
+{
+  "title": "Votre panier",
+  "emptyTitle": "Votre panier est vide",
+  "emptyBody": "Parcourez notre catalogue et ajoutez des articles pour commencer votre commande.",
+  "summary": "Récapitulatif de commande",
+  "subtotal": "Sous-total",
+  "total": "Total",
+  "remove": "Retirer",
+  "continueShopping": "Continuer les achats",
+  "itemCount": "{{count}} articles",
+  "each": "l’unité",
+  "drawerTitle": "Article ajouté au panier",
+  "drawerEmpty": "Votre panier est vide",
+  "estimatedTotal": "Total estimé"
+}

@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ShoppingBag, ShieldCheck, Warehouse, MapPin, ArrowLeft, AlertTriangle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useStore } from '../context/StoreContext';
+import { getLocalizedProductName } from '../data/productNameTranslations';
+import { getLocalizedProductDescription } from '../data/productDescriptionTranslations';
 
 const ProductPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
-  const { products, addToCart, getConvertedPriceString, selectedCountry, setSearchQuery } = useStore();
+  const { products, addToCart, formatPriceEUR, setSearchQuery } = useStore();
+  const { t, i18n } = useTranslation('common');
 
   const [quantity, setQuantity] = useState<number>(1);
   const [activeImage, setActiveImage] = useState<string | null>(null);
@@ -17,10 +21,10 @@ const ProductPage: React.FC = () => {
     return (
       <div className="max-w-md mx-auto text-center py-24 space-y-4">
         <AlertTriangle className="w-12 h-12 text-amber-500 mx-auto" />
-        <h2 className="text-xl font-black text-[var(--color-text-primary)]">Product Not Found</h2>
-        <p className="text-sm text-[var(--color-text-muted)]">The product you're looking for doesn't exist or has been removed.</p>
+        <h2 className="text-xl font-black text-[var(--color-text-primary)]">{t('product.notFound')}</h2>
+        <p className="text-sm text-[var(--color-text-muted)]">{t('product.notFoundBody')}</p>
         <Link to="/catalogue" className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition-all shadow-md">
-          Browse Catalogue
+          {t('actions.browseCatalogue')}
         </Link>
       </div>
     );
@@ -35,7 +39,8 @@ const ProductPage: React.FC = () => {
   }, [product.id]);
 
   const originalPrice = product.priceEUR / (1 - discountPercent / 100);
-  const { mainEUR, convertedRef } = getConvertedPriceString(product.priceEUR);
+  const localizedName = getLocalizedProductName(product, i18n.language);
+  const localizedDescription = getLocalizedProductDescription(product, i18n.language);
   const displayImage = activeImage || product.imageUrl;
   const allImages = [product.imageUrl, ...(product.galleryImages || [])].filter(
     (img, idx, arr) => arr.indexOf(img) === idx
@@ -57,10 +62,10 @@ const ProductPage: React.FC = () => {
 
         <div className="md:col-span-5 space-y-4">
           <div className="relative aspect-square rounded-2xl overflow-hidden bg-[var(--color-bg-tertiary)] border border-[var(--color-border)]">
-            <img src={displayImage} alt={product.name} referrerPolicy="no-referrer" className="w-full h-full object-cover" />
+            <img src={displayImage} alt={localizedName} referrerPolicy="no-referrer" className="w-full h-full object-cover" />
             <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-lg border border-white/20 flex items-center space-x-1.5">
               <span>{product.originFlag}</span>
-              <span>Made in {product.originCountry}</span>
+              <span>{t('product.madeIn', { country: product.originCountry })}</span>
             </div>
           </div>
 
@@ -110,17 +115,17 @@ const ProductPage: React.FC = () => {
           <div className="space-y-4">
             <div>
               <div className="flex items-center space-x-2 text-xs text-blue-500 font-semibold uppercase tracking-wider mb-1">
-                <span>{product.category}</span>
+                <span>{t(`categories.${product.category}`, { defaultValue: product.category })}</span>
                 <span>•</span>
                 <span>SKU: {product.sku}</span>
               </div>
-              <h1 className="text-2xl sm:text-3xl font-black text-[var(--color-text-primary)] leading-tight">{product.name}</h1>
+              <h1 className="text-2xl sm:text-3xl font-black text-[var(--color-text-primary)] leading-tight">{localizedName}</h1>
               <div className="text-xs text-[var(--color-text-muted)] mt-1">
                 Supplier: <span className="text-[var(--color-text-secondary)] font-medium">{product.supplierName}</span>
               </div>
             </div>
 
-            <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">{product.description}</p>
+            <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">{localizedDescription}</p>
 
             <div className="flex flex-wrap gap-1.5 pt-1">
               {product.tags.map((tag, idx) => (
@@ -142,12 +147,11 @@ const ProductPage: React.FC = () => {
                 <span className="text-[10px] font-black text-rose-500 bg-rose-50 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 px-1.5 py-0.5 rounded">{discountPercent}% OFF</span>
               </div>
               <div className="flex items-baseline space-x-2">
-                <span className="text-3xl font-extrabold text-[var(--color-text-primary)]">{mainEUR}</span>
-                {convertedRef && <span className="text-sm font-semibold text-indigo-500">{convertedRef}</span>}
+                <span className="text-3xl font-extrabold text-[var(--color-text-primary)]">{formatPriceEUR(product.priceEUR)}</span>
               </div>
               <div className="text-xs text-[var(--color-text-muted)] pt-1 flex items-center space-x-1.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-500" />
-                <span>Price includes {(selectedCountry.vatRate * 100).toFixed(0)}% {selectedCountry.name} VAT. Duty-free EU delivery.</span>
+                <span>{t('product.includesVat')}</span>
               </div>
               <div className={`text-xs font-bold pt-1 ${isOutOfStock ? 'text-rose-500' : product.totalStock <= product.lowStockThreshold ? 'text-amber-500' : 'text-emerald-500'}`}>
                 {isOutOfStock ? 'Currently Out of Stock' : `${product.totalStock} units in stock`}

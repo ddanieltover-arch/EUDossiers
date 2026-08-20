@@ -1,0 +1,15 @@
+{
+  "title": "O seu carrinho",
+  "emptyTitle": "O seu carrinho está vazio",
+  "emptyBody": "Explore o nosso catálogo e adicione artigos para iniciar a encomenda.",
+  "summary": "Resumo da encomenda",
+  "subtotal": "Subtotal",
+  "total": "Total",
+  "remove": "Remover",
+  "continueShopping": "Continuar a comprar",
+  "itemCount": "{{count}} artigos",
+  "each": "unid.",
+  "drawerTitle": "Artigo adicionado ao carrinho",
+  "drawerEmpty": "O seu carrinho está vazio",
+  "estimatedTotal": "Total estimado"
+}

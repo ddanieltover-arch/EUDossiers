@@ -1,0 +1,14 @@
+{
+  "title": "Katalog över europeiska officiella dokument och dossier",
+  "subtitle": "Registrerade EU- och internationella pass, körkort, uppehållskort, ID-handlingar och visumhantering med avräkning i Euro (€).",
+  "items": "{{count}} artiklar",
+  "allOrigins": "Alla EU-ursprung",
+  "inStockOnly": "Endast i lager",
+  "reset": "Återställ",
+  "popularTags": "Populära taggar:",
+  "filtering": "Filtrerar efter nyckelord/tagg: \"{{query}}\" ({{count}} träffar)",
+  "clearSearch": "Rensa sökning",
+  "emptyTitle": "Inga matchande europeiska produkter",
+  "emptyBody": "Försök återställa sökningen eller välj ett annat EU-ursprungsland.",
+  "clearFilters": "Rensa alla filter"
+}

@@ -1,0 +1,14 @@
+{
+  "title": "Katalog europäischer Amtspapiere & Dossiers",
+  "subtitle": "Registrierte EU- und internationale Pässe, Führerscheine, Aufenthaltskarten, Ausweise und Visa-Bearbeitung mit Euro (€)-Abrechnung.",
+  "items": "{{count}} Artikel",
+  "allOrigins": "Alle EU-Herkunftsländer",
+  "inStockOnly": "Nur auf Lager",
+  "reset": "Zurücksetzen",
+  "popularTags": "Beliebte Tags:",
+  "filtering": "Filter nach Stichwort/Tag: \"{{query}}\" ({{count}} Treffer)",
+  "clearSearch": "Suche löschen",
+  "emptyTitle": "Keine passenden europäischen Produkte",
+  "emptyBody": "Setzen Sie Ihre Suche zurück oder wählen Sie ein anderes EU-Herkunftsland.",
+  "clearFilters": "Alle Filter löschen"
+}

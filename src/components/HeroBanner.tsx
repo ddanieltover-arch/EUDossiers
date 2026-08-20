@@ -1,8 +1,12 @@
 import React from 'react';
 import { ShieldCheck, Truck, ArrowRight, Euro } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const HeroBanner: React.FC = () => {
+  const { t } = useTranslation('home');
+  const { t: tc } = useTranslation('common');
+
   return (
     <div className="relative text-white overflow-hidden border-b border-[var(--color-ink-700)]">
       <div className="absolute inset-0">
@@ -29,22 +33,21 @@ export const HeroBanner: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-14 relative z-10">
         <div className="space-y-5">
-            
             <div className="inline-flex items-center space-x-2 bg-[var(--color-accent-800)]/40 border border-[var(--color-accent-700)]/60 px-3 py-1 rounded-full text-xs font-semibold text-[var(--color-accent-200)]">
               <span>🇪🇺</span>
-              <span>Based in Europe • Single Market Logistics</span>
+              <span>{t('hero.badge')}</span>
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight font-display">
-              Official EU Documents &amp; <br />
+              {t('hero.titleLine1')} <br />
               <span className="bg-gradient-to-r from-[var(--color-accent-500)] via-[var(--color-accent-200)] to-[var(--color-paper-100)] bg-clip-text text-transparent">
-                Registered Dossier Solutions.
+                {t('hero.titleLine2')}
               </span>
             </h1>
 
             <p className="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed">
-              Order registered European passports, driver's licenses, national ID cards, Schengen visas, and EU residence permits. All orders are settled in <strong>Euro (€)</strong> with biometric database registration and express 72-hour courier delivery across all 27 EU member states.
+              {t('hero.description')}
             </p>
 
             <div className="flex flex-wrap items-center gap-3 pt-1">
@@ -52,21 +55,19 @@ export const HeroBanner: React.FC = () => {
                 to="/catalogue"
                 className="bg-[var(--color-accent-600)] hover:bg-[var(--color-accent-500)] text-white font-bold text-xs sm:text-sm px-5 py-3 rounded-xl shadow-lg shadow-[var(--color-accent-600)]/30 flex items-center space-x-2 transition-all"
               >
-                <span>Browse Full Product Catalogue</span>
+                <span>{tc('actions.browseCatalogue')}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
-            {/* Feature Highlights Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-              
               <div className="bg-slate-950/55 backdrop-blur-md border border-white/10 rounded-xl p-3 flex items-start space-x-2.5">
                 <div className="p-2 bg-[var(--color-accent-600)]/20 text-[var(--color-accent-500)] rounded-lg shrink-0">
                   <Euro className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white">Euro (€) Standard</h4>
-                  <p className="text-[11px] text-slate-400">Zero currency markups or hidden forex fees.</p>
+                  <h4 className="text-xs font-bold text-white">{t('hero.eurStandard')}</h4>
+                  <p className="text-[11px] text-slate-400">{t('hero.eurStandardDesc')}</p>
                 </div>
               </div>
 
@@ -75,8 +76,8 @@ export const HeroBanner: React.FC = () => {
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white">GDPR Compliant</h4>
-                  <p className="text-[11px] text-slate-400">Instant DSAR data exports & erasure tools.</p>
+                  <h4 className="text-xs font-bold text-white">{t('hero.gdpr')}</h4>
+                  <p className="text-[11px] text-slate-400">{t('hero.gdprDesc')}</p>
                 </div>
               </div>
 
@@ -85,13 +86,11 @@ export const HeroBanner: React.FC = () => {
                   <Truck className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white">EU Green Logistics</h4>
-                  <p className="text-[11px] text-slate-400">Frankfurt, Amsterdam & Lyon warehouse hubs.</p>
+                  <h4 className="text-xs font-bold text-white">{t('hero.logistics')}</h4>
+                  <p className="text-[11px] text-slate-400">{t('hero.logisticsDesc')}</p>
                 </div>
               </div>
-
             </div>
-
         </div>
       </div>
     </div>

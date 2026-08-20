@@ -26,10 +26,14 @@ export interface WarehouseStock {
   quantity: number;
 }
 
+export type ProductLocale = 'de' | 'fr' | 'es' | 'it' | 'nl' | 'pl' | 'pt' | 'sv' | 'da' | 'fi' | 'el';
+
 export interface Product {
   id: string;
   sku: string;
   name: string;
+  nameTranslations?: Partial<Record<ProductLocale, string>>;
+  descriptionTranslations?: Partial<Record<ProductLocale, string>>;
   category: Category;
   description: string;
   priceEUR: number; // All base prices stored strictly in EUR (5% discount applied)

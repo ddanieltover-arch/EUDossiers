@@ -1,6 +1,7 @@
 import React from 'react';
 import { CreditCard, FileText, Globe, Award, Shield, CheckCircle2 } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
+import { useTranslation } from 'react-i18next';
 
 interface CategoryItem {
   id: string;
@@ -14,50 +15,51 @@ interface CategoryItem {
 
 export const CategoryShowcase: React.FC = () => {
   const { selectedCategory, setSelectedCategory, products } = useStore();
+  const { t } = useTranslation();
 
   const categories: CategoryItem[] = [
     {
       id: 'Passports',
-      name: 'Passports',
+      name: t('categories.Passports'),
       count: products.filter(p => p.category === 'Passports').length,
       icon: Globe,
-      description: 'ICAO 9303 Biometric Passports with e-Chip',
+      description: t('home:categories.passportsDesc'),
       gradient: 'from-amber-500/20 via-[var(--color-bg-tertiary)] to-[var(--color-bg-card)]',
       borderGlow: 'hover:border-amber-500/50 hover:shadow-amber-500/10'
     },
     {
       id: 'Driver Licenses',
-      name: 'Driver Licenses',
+      name: t('categories.Driver Licenses'),
       count: products.filter(p => p.category === 'Driver Licenses').length,
       icon: CreditCard,
-      description: 'EU & International Credit-Card Permite',
+      description: t('home:categories.licensesDesc'),
       gradient: 'from-blue-500/20 via-[var(--color-bg-tertiary)] to-[var(--color-bg-card)]',
       borderGlow: 'hover:border-blue-500/50 hover:shadow-blue-500/10'
     },
     {
       id: 'Identity Cards',
-      name: 'Identity Cards',
+      name: t('categories.Identity Cards'),
       count: products.filter(p => p.category === 'Identity Cards').length,
       icon: Award,
-      description: 'Electronic eID Cards with Contactless Microchip',
+      description: t('home:categories.idsDesc'),
       gradient: 'from-emerald-500/20 via-[var(--color-bg-tertiary)] to-[var(--color-bg-card)]',
       borderGlow: 'hover:border-emerald-500/50 hover:shadow-emerald-500/10'
     },
     {
       id: 'Residence Permits',
-      name: 'Residence Permits',
+      name: t('categories.Residence Permits'),
       count: products.filter(p => p.category === 'Residence Permits').length,
       icon: Shield,
-      description: 'Biometric Schengen Right of Residence Cards',
+      description: t('home:categories.residenceDesc'),
       gradient: 'from-purple-500/20 via-[var(--color-bg-tertiary)] to-[var(--color-bg-card)]',
       borderGlow: 'hover:border-purple-500/50 hover:shadow-purple-500/10'
     },
     {
       id: 'EU Visas',
-      name: 'EU Visas & Financial',
+      name: t('home:categories.visasName'),
       count: products.filter(p => p.category === 'EU Visas').length,
       icon: FileText,
-      description: 'Schengen Multi-Entry Visas & Verified Statements',
+      description: t('home:categories.visasDesc'),
       gradient: 'from-cyan-500/20 via-[var(--color-bg-tertiary)] to-[var(--color-bg-card)]',
       borderGlow: 'hover:border-cyan-500/50 hover:shadow-cyan-500/10'
     }
@@ -68,13 +70,13 @@ export const CategoryShowcase: React.FC = () => {
       <div className="flex items-center justify-between mb-4">
         <div>
           <h3 className="text-lg font-bold text-[var(--color-text-primary)] tracking-tight flex items-center space-x-2">
-            <span>Official Catalogue Categories</span>
+            <span>{t('home:categories.title')}</span>
             <span className="text-xs bg-[var(--color-accent-600)]/20 text-[var(--color-accent-600)] border border-[var(--color-accent-600)]/40 px-2 py-0.5 rounded-full font-normal">
-              {products.length} Products Registered
+              {t('home:categories.registered', { count: products.length })}
             </span>
           </h3>
           <p className="text-xs text-[var(--color-text-muted)]">
-            Browse by official document classification for single market fulfillment.
+            {t('home:categories.subtitle')}
           </p>
         </div>
         
@@ -83,7 +85,7 @@ export const CategoryShowcase: React.FC = () => {
             onClick={() => setSelectedCategory('All')}
             className="text-xs text-blue-500 hover:text-blue-400 font-semibold underline transition-colors"
           >
-            Show All ({products.length})
+            {t('home:categories.showAll', { count: products.length })}
           </button>
         )}
       </div>

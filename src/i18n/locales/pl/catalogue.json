@@ -1,0 +1,14 @@
+{
+  "title": "Katalog europejskich dokumentów urzędowych i dossier",
+  "subtitle": "Zarejestrowane paszporty UE i międzynarodowe, prawa jazdy, karty pobytu, dowody tożsamości i przetwarzanie wiz z rozliczeniem w Euro (€).",
+  "items": "{{count}} pozycji",
+  "allOrigins": "Wszystkie pochodzenia UE",
+  "inStockOnly": "Tylko w magazynie",
+  "reset": "Resetuj",
+  "popularTags": "Popularne tagi:",
+  "filtering": "Filtrowanie według słowa kluczowego/tagu: \"{{query}}\" ({{count}} wyników)",
+  "clearSearch": "Wyczyść wyszukiwanie",
+  "emptyTitle": "Brak pasujących produktów europejskich",
+  "emptyBody": "Spróbuj zresetować zapytanie lub wybrać inny filtr kraju pochodzenia UE.",
+  "clearFilters": "Wyczyść wszystkie filtry"
+}

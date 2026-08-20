@@ -1,7 +1,10 @@
 import React from 'react';
-import { Filter, Check, RotateCcw, AlertCircle, Search } from 'lucide-react';
+import { Check, RotateCcw, AlertCircle, Search } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useStore } from '../context/StoreContext';
 import { ProductCard } from './ProductCard';
+import { getLocalizedProductName } from '../data/productNameTranslations';
+import { getLocalizedProductDescription } from '../data/productDescriptionTranslations';
 
 const CATEGORIES = [
   'All',
@@ -33,6 +36,7 @@ const ORIGINS = [
 ];
 
 export const ProductGrid: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const { 
     products, 
     isLoadingProducts, 
@@ -50,11 +54,13 @@ export const ProductGrid: React.FC = () => {
     if (searchQuery) {
       const q = searchQuery.toLowerCase().trim();
       const cleanQ = q.startsWith('#') ? q.slice(1) : q;
-      const matchName = p.name.toLowerCase().includes(cleanQ);
-      const matchDesc = p.description.toLowerCase().includes(cleanQ);
+      const localizedName = getLocalizedProductName(p, i18n.language).toLowerCase();
+      const localizedDesc = getLocalizedProductDescription(p, i18n.language).toLowerCase();
+      const matchName = p.name.toLowerCase().includes(cleanQ) || localizedName.includes(cleanQ);
+      const matchDesc = p.description.toLowerCase().includes(cleanQ) || localizedDesc.includes(cleanQ);
       const matchSku = p.sku.toLowerCase().includes(cleanQ);
       const matchSupplier = p.supplierName.toLowerCase().includes(cleanQ);
-      const matchTags = p.tags.some(t => t.toLowerCase().includes(cleanQ));
+      const matchTags = p.tags.some(tag => tag.toLowerCase().includes(cleanQ));
       if (!matchName && !matchDesc && !matchSku && !matchSupplier && !matchTags) return false;
     }
     if (selectedCategory !== 'All' && p.category !== selectedCategory) return false;
@@ -80,13 +86,13 @@ export const ProductGrid: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[var(--color-border)] pb-4">
           <div>
             <h2 className="text-xl font-black text-[var(--color-text-primary)] flex items-center space-x-2">
-              <span>European Official Documents &amp; Dossier Catalogue</span>
+              <span>{t('catalogue:title')}</span>
               <span className="text-xs bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] font-normal px-2.5 py-0.5 rounded-full border border-[var(--color-border)]">
-                {filteredProducts.length} Items
+                {t('catalogue:items', { count: filteredProducts.length })}
               </span>
             </h2>
             <p className="text-xs text-[var(--color-text-muted)] mt-0.5">
-              Registered EU &amp; international passports, driving permits, residence cards, IDs and visa processing with Euro (€) settlement.
+              {t('catalogue:subtitle')}
             </p>
           </div>
 
@@ -97,9 +103,9 @@ export const ProductGrid: React.FC = () => {
               onChange={e => setSelectedOriginCountry(e.target.value)}
               className="bg-[var(--color-bg-input)] text-[var(--color-text-primary)] border border-[var(--color-border)] px-3 py-2 rounded-xl focus:outline-none focus:border-blue-500 font-medium"
             >
-              <option value="All">All EU Origins</option>
+              <option value="All">{t('catalogue:allOrigins')}</option>
               {ORIGINS.filter(o => o !== 'All').map(country => (
-                <option key={country} value={country}>Made in {country}</option>
+                <option key={country} value={country}>{t('product.madeIn', { country })}</option>
               ))}
             </select>
 
@@ -114,7 +120,7 @@ export const ProductGrid: React.FC = () => {
               <div className={`w-3.5 h-3.5 rounded-md flex items-center justify-center border ${showOnlyInStock ? 'bg-emerald-500 border-emerald-400 text-white' : 'border-[var(--color-text-muted)]'}`}>
                 {showOnlyInStock && <Check className="w-3 h-3 stroke-[3]" />}
               </div>
-              <span>In Stock Only</span>
+              <span>{t('catalogue:inStockOnly')}</span>
             </button>
 
             {(selectedCategory !== 'All' || selectedOriginCountry !== 'All' || showOnlyInStock || searchQuery) && (
@@ -123,7 +129,7 @@ export const ProductGrid: React.FC = () => {
                 className="flex items-center space-x-1 bg-[var(--color-bg-input)] hover:bg-[var(--color-bg-card-hover)] text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] px-3 py-2 rounded-xl border border-[var(--color-border)] transition-colors"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
-                <span>Reset</span>
+                <span>{t('catalogue:reset')}</span>
               </button>
             )}
 
@@ -143,14 +149,14 @@ export const ProductGrid: React.FC = () => {
                     : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-card-hover)] hover:text-[var(--color-text-primary)] border border-[var(--color-border-subtle)]'
                 }`}
               >
-                {cat}
+                {t(`categories.${cat}`, { defaultValue: cat })}
               </button>
             );
           })}
         </div>
 
         <div className="flex items-center space-x-2 pt-1 overflow-x-auto custom-scrollbar">
-          <span className="text-[11px] font-medium text-[var(--color-text-muted)] shrink-0">Popular Tags:</span>
+          <span className="text-[11px] font-medium text-[var(--color-text-muted)] shrink-0">{t('catalogue:popularTags')}</span>
           {popularTags.map(tag => {
             const isTagActive = searchQuery.toLowerCase().includes(tag.toLowerCase());
             return (
@@ -176,14 +182,14 @@ export const ProductGrid: React.FC = () => {
           <div className="flex items-center space-x-2">
             <Search className="w-4 h-4 text-blue-500 shrink-0" />
             <span>
-              Filtering by keyword/tag: <strong className="text-[var(--color-text-primary)] font-bold">&quot;{searchQuery}&quot;</strong> ({filteredProducts.length} {filteredProducts.length === 1 ? 'match' : 'matches'})
+              {t('catalogue:filtering', { query: searchQuery, count: filteredProducts.length })}
             </span>
           </div>
           <button
             onClick={() => setSearchQuery('')}
             className="text-blue-500 hover:text-blue-700 dark:hover:text-white font-medium underline transition-colors"
           >
-            Clear Search
+            {t('catalogue:clearSearch')}
           </button>
         </div>
       )}
@@ -197,15 +203,15 @@ export const ProductGrid: React.FC = () => {
       ) : filteredProducts.length === 0 ? (
         <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-3xl p-12 text-center max-w-md mx-auto space-y-3">
           <AlertCircle className="w-10 h-10 text-amber-500 mx-auto" />
-          <h3 className="text-lg font-bold text-[var(--color-text-primary)]">No Matching European Products</h3>
+          <h3 className="text-lg font-bold text-[var(--color-text-primary)]">{t('catalogue:emptyTitle')}</h3>
           <p className="text-xs text-[var(--color-text-muted)]">
-            Try resetting your search query or selecting a different EU origin country filter.
+            {t('catalogue:emptyBody')}
           </p>
           <button
             onClick={resetFilters}
             className="bg-blue-600 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all"
           >
-            Clear All Filters
+            {t('catalogue:clearFilters')}
           </button>
         </div>
       ) : (

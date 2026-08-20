@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "home": "Home",
+    "catalogue": "Catalogus",
+    "contact": "Contact",
+    "gdpr": "GDPR-privacy",
+    "cart": "Winkelwagen",
+    "admin": "Admin",
+    "changeLanguage": "Taal wijzigen",
+    "searchPlaceholder": "Zoek geregistreerde paspoorten, rijbewijzen, verblijfsvergunningen, visa...",
+    "clear": "Wissen"
+  },
+  "footer": {
+    "tagline": "E-commerceplatform voor de Europese interne markt met standaardafrekening in Euro (€), naleving van GDPR-artikelen 15/17 en handelsinventaristools.",
+    "standardsTitle": "EU-normen",
+    "eurSettlement": "Standaardafrekeningsvaluta: EUR (€)",
+    "gdprCompliant": "GDPR-artikel 15/17-conform",
+    "warehouses": "Frankfurt • Amsterdam • Lyon hubs",
+    "legalTitle": "Juridisch & compliance",
+    "privacyPolicy": "Privacybeleid & DSAR",
+    "contactUs": "Contact",
+    "merchantPortal": "Handelsadminportaal",
+    "privacyTitle": "GDPR-gegevensprivacy",
+    "dsar": "Persoonsgegevens downloaden (DSAR)",
+    "forgotten": "Recht om vergeten te worden (art. 17)",
+    "auditLog": "Inspecteur van het toestemmingsauditlogboek",
+    "hosted": "Gegevens gehost in Frankfurt, Duitsland (EU-West Node).",
+    "madeWith": "Met precisie gemaakt voor Europese officiële documenten en dossiers"
+  },
+  "language": {
+    "title": "Taalinstellingen",
+    "subtitle": "Kies uw voorkeurstaal voor weergave",
+    "info": "Alle checkouttotalen en facturen worden in Euro (€) verwerkt. Vertalingen gelden voor de winkelinterface en productnamen.",
+    "selected": "Geselecteerde taal",
+    "save": "Opslaan en taal toepassen"
+  },
+  "actions": {
+    "browseCatalogue": "Volledige productcatalogus bekijken",
+    "proceedCheckout": "Naar checkout",
+    "addToCart": "In winkelwagen",
+    "viewCart": "Winkelwagen bekijken",
+    "checkout": "Afrekenen",
+    "back": "Terug"
+  },
+  "product": {
+    "madeIn": "Gemaakt in {{country}}",
+    "outOfStock": "Niet op voorraad",
+    "lowStock": "Nog maar {{count}} over",
+    "inStock": "Op voorraad ({{count}})",
+    "quickInspect": "Specificaties snel bekijken",
+    "includesVat": "Alle prijzen in Euro (€). Express EU-levering beschikbaar.",
+    "soldOut": "Uitverkocht",
+    "notFound": "Product niet gevonden",
+    "notFoundBody": "Het gezochte product bestaat niet of is verwijderd.",
+    "transactionPrice": "Transactieprijs (EUR-basis)"
+  },
+  "gdprBanner": {
+    "title": "EU-GDPR-gegevensbeschermingsbericht",
+    "eurBadge": "EUR-afrekening",
+    "body": "Wij verwerken uw persoonsgegevens op grond van Verordening (EU) 2016/679. Alle prijzen worden standaard in Euro (€) weergegeven. U kunt cookievoorkeuren aanpassen of uw gegevens op elk moment exporteren.",
+    "acceptAll": "Alle cookies accepteren",
+    "essentialOnly": "Alleen essentieel",
+    "customize": "Aanpassen"
+  },
+  "categories": {
+    "All": "Alles",
+    "Passports": "Paspoorten",
+    "Driver Licenses": "Rijbewijzen",
+    "Identity Cards": "Identiteitskaarten",
+    "Residence Permits": "Verblijfsvergunningen",
+    "EU Visas": "EU-visa"
+  }
+}

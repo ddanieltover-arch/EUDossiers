@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Lock, ShieldCheck, ArrowLeft, ShoppingBag, Truck, CreditCard, Bitcoin, CheckCircle2, Mail, ArrowRight, Copy } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useStore } from '../context/StoreContext';
+import { getLocalizedProductName } from '../data/productNameTranslations';
 import { EU_COUNTRIES } from '../data/mockData';
 import { EUCountryCode } from '../types';
 import { SITE_NAME } from '../brand';
@@ -13,14 +15,12 @@ const CheckoutPage: React.FC = () => {
     cart,
     selectedCountry,
     setSelectedCountryByCode,
-    selectedCurrency,
     formatPriceEUR,
     cartSubtotalEUR,
-    cartVATAmountEUR,
-    cartShippingFeeEUR,
     cartTotalEUR,
     placeOrder,
   } = useStore();
+  const { t, i18n } = useTranslation('checkout');
 
   const [customerName, setCustomerName] = useState('');
   const [customerEmail, setCustomerEmail] = useState('');
@@ -36,16 +36,15 @@ const CheckoutPage: React.FC = () => {
   const cryptoDiscount = paymentMethod === 'crypto' ? 0.05 : 0;
   const discountAmountEUR = cartTotalEUR * cryptoDiscount;
   const finalTotalEUR = cartTotalEUR - discountAmountEUR;
-  const convertedTotal = finalTotalEUR * selectedCurrency.rateToEUR;
 
   if (cart.length === 0 && !orderSuccess) {
     return (
       <div className="max-w-lg mx-auto text-center py-24 space-y-4">
         <ShoppingBag className="w-16 h-16 text-[var(--color-text-muted)] mx-auto" />
-        <h1 className="text-2xl font-black text-[var(--color-text-primary)]">Nothing to Checkout</h1>
-        <p className="text-sm text-[var(--color-text-muted)]">Add items to your cart first.</p>
+        <h1 className="text-2xl font-black text-[var(--color-text-primary)]">{t('emptyTitle')}</h1>
+        <p className="text-sm text-[var(--color-text-muted)]">{t('emptyBody')}</p>
         <Link to="/catalogue" className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs px-5 py-2.5 rounded-xl transition-all shadow-md">
-          Browse Catalogue
+          {t('browseCatalogue')}
         </Link>
       </div>
     );
@@ -65,7 +64,7 @@ const CheckoutPage: React.FC = () => {
     });
     setIsSubmitting(false);
     if (!created) {
-      setCheckoutError(error || 'We could not place your order. Please check your details and try again.');
+      setCheckoutError(error || t('errorGeneric'));
       return;
     }
     setOrderSuccess(true);
@@ -86,16 +85,16 @@ const CheckoutPage: React.FC = () => {
           </div>
 
           <div className="space-y-2">
-            <h1 className="text-2xl font-black text-[var(--color-text-primary)]">Order Confirmed!</h1>
+            <h1 className="text-2xl font-black text-[var(--color-text-primary)]">{t('successTitle')}</h1>
             <p className="text-sm text-[var(--color-text-muted)] leading-relaxed">
-              Thank you for your order. A confirmation has been sent to your email. To complete payment, please follow the instructions in that email or contact our admin team.
+              {t('successThanks')}
             </p>
           </div>
 
           <div className="bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-2xl p-5 space-y-3 text-left">
             <div className="text-xs font-bold text-[var(--color-text-primary)] uppercase tracking-wider flex items-center space-x-2">
               <Mail className="w-4 h-4 text-blue-500" />
-              <span>Contact Admin for Payment Details</span>
+              <span>{t('contactAdmin')}</span>
             </div>
             <div className="flex items-center justify-between bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-xl px-4 py-3">
               <span className="text-sm font-bold text-blue-500">{ADMIN_EMAIL}</span>
@@ -104,13 +103,13 @@ const CheckoutPage: React.FC = () => {
                 className="text-xs text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)] flex items-center space-x-1 transition-colors"
               >
                 {copiedEmail ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copiedEmail ? 'Copied!' : 'Copy'}</span>
+                <span>{copiedEmail ? t('copied') : t('copy')}</span>
               </button>
             </div>
             <div className="text-xs text-[var(--color-text-muted)] space-y-1">
-              <p><strong className="text-[var(--color-text-secondary)]">Payment Method:</strong> {paymentMethod === 'crypto' ? 'Cryptocurrency (5% discount applied)' : 'Bank Transfer'}</p>
-              <p><strong className="text-[var(--color-text-secondary)]">Amount Due:</strong> {formatPriceEUR(finalTotalEUR)}</p>
-              <p>Please include your name (<strong className="text-[var(--color-text-secondary)]">{customerName}</strong>) in the payment reference.</p>
+              <p><strong className="text-[var(--color-text-secondary)]">{t('paymentMethodLabel')}</strong> {paymentMethod === 'crypto' ? t('cryptoApplied') : t('bankTransfer')}</p>
+              <p><strong className="text-[var(--color-text-secondary)]">{t('amountDue')}</strong> {formatPriceEUR(finalTotalEUR)}</p>
+              <p>{t('includeName', { name: customerName })}</p>
             </div>
           </div>
 
@@ -120,19 +119,19 @@ const CheckoutPage: React.FC = () => {
               className="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center space-x-2 transition-all shadow-lg shadow-blue-600/20"
             >
               <Mail className="w-4 h-4" />
-              <span>Email Admin Now</span>
+              <span>{t('emailAdmin')}</span>
             </a>
             <Link
               to="/catalogue"
               className="flex-1 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-bg-card-hover)] text-[var(--color-text-secondary)] border border-[var(--color-border)] font-bold py-3 rounded-xl text-xs flex items-center justify-center space-x-2 transition-all"
             >
-              <span>Continue Shopping</span>
+              <span>{t('continueShopping')}</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
           <Link to="/" className="text-[10px] text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)] transition-colors block">
-            Return to Homepage
+            {t('returnHome')}
           </Link>
         </div>
       </div>
@@ -144,12 +143,12 @@ const CheckoutPage: React.FC = () => {
 
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-black text-[var(--color-text-primary)]">Checkout</h1>
-          <p className="text-xs text-[var(--color-text-muted)]">Complete your order · Transactions settled in Euro (€)</p>
+          <h1 className="text-2xl font-black text-[var(--color-text-primary)]">{t('title')}</h1>
+          <p className="text-xs text-[var(--color-text-muted)]">{t('subtitle')}</p>
         </div>
         <Link to="/cart" className="text-xs text-blue-500 hover:text-blue-400 font-semibold flex items-center space-x-1">
           <ArrowLeft className="w-3.5 h-3.5" />
-          <span>Back to Cart</span>
+          <span>{t('backToCart')}</span>
         </Link>
       </div>
 
@@ -157,16 +156,15 @@ const CheckoutPage: React.FC = () => {
 
         <form onSubmit={handleCheckout} className="lg:col-span-2 space-y-6">
 
-          {/* Delivery & VAT */}
+          {/* Delivery */}
           <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-5 space-y-4">
             <h3 className="font-bold text-sm text-[var(--color-text-primary)] flex items-center space-x-2">
               <Truck className="w-4 h-4 text-blue-500" />
-              <span>Delivery &amp; VAT</span>
+              <span>{t('delivery')}</span>
             </h3>
             <div>
-              <label className="text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wider flex items-center justify-between">
-                <span>Destination Country (VAT)</span>
-                <span className="text-blue-500 font-bold normal-case">{(selectedCountry.vatRate * 100).toFixed(0)}% Tax</span>
+              <label className="text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">
+                {t('destinationCountry')}
               </label>
               <select
                 value={selectedCountry.code}
@@ -175,7 +173,7 @@ const CheckoutPage: React.FC = () => {
               >
                 {EU_COUNTRIES.map(c => (
                   <option key={c.code} value={c.code}>
-                    {c.flag} {c.name} — {(c.vatRate * 100).toFixed(0)}% VAT
+                    {c.flag} {c.name}
                   </option>
                 ))}
               </select>
@@ -186,22 +184,22 @@ const CheckoutPage: React.FC = () => {
           <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-5 space-y-4">
             <h3 className="font-bold text-sm text-[var(--color-text-primary)] flex items-center space-x-2">
               <ShieldCheck className="w-4 h-4 text-emerald-500" />
-              <span>Customer Information</span>
+              <span>{t('customerInfo')}</span>
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Full Name</label>
+                <label className="text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">{t('fullName')}</label>
                 <input
                   type="text"
                   required
-                  placeholder="Your full name"
+                  placeholder={t('namePlaceholder')}
                   value={customerName}
                   onChange={e => setCustomerName(e.target.value)}
                   className="w-full bg-[var(--color-bg-input)] text-sm text-[var(--color-text-primary)] border border-[var(--color-border)] rounded-xl px-3 py-2.5 mt-1 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder-[var(--color-text-muted)]"
                 />
               </div>
               <div>
-                <label className="text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Email Address</label>
+                <label className="text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">{t('email')}</label>
                 <input
                   type="email"
                   required
@@ -212,7 +210,7 @@ const CheckoutPage: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Phone Number</label>
+                <label className="text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">{t('phone')}</label>
                 <input
                   type="tel"
                   required
@@ -223,11 +221,11 @@ const CheckoutPage: React.FC = () => {
                 />
               </div>
               <div>
-                <label className="text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Delivery Address</label>
+                <label className="text-[10px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">{t('address')}</label>
                 <input
                   type="text"
                   required
-                  placeholder="Street, City, Postal Code, Country"
+                  placeholder={t('addressPlaceholder')}
                   value={customerAddress}
                   onChange={e => setCustomerAddress(e.target.value)}
                   className="w-full bg-[var(--color-bg-input)] text-sm text-[var(--color-text-primary)] border border-[var(--color-border)] rounded-xl px-3 py-2.5 mt-1 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 placeholder-[var(--color-text-muted)]"
@@ -240,7 +238,7 @@ const CheckoutPage: React.FC = () => {
           <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-5 space-y-4">
             <h3 className="font-bold text-sm text-[var(--color-text-primary)] flex items-center space-x-2">
               <CreditCard className="w-4 h-4 text-indigo-500" />
-              <span>Payment Method</span>
+              <span>{t('payment')}</span>
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <button
@@ -257,14 +255,14 @@ const CheckoutPage: React.FC = () => {
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${paymentMethod === 'bank' ? 'bg-blue-500 text-white' : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]'}`}>
                       <CreditCard className="w-4 h-4" />
                     </div>
-                    <span className="font-bold text-sm text-[var(--color-text-primary)]">Bank Transfer</span>
+                    <span className="font-bold text-sm text-[var(--color-text-primary)]">{t('bankTransfer')}</span>
                   </div>
                   <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${paymentMethod === 'bank' ? 'border-blue-500 bg-blue-500' : 'border-[var(--color-border)]'}`}>
                     {paymentMethod === 'bank' && <div className="w-2 h-2 bg-white rounded-full" />}
                   </div>
                 </div>
                 <p className="text-[10px] text-[var(--color-text-muted)] leading-relaxed">
-                  SEPA / International wire transfer. Payment details provided after order confirmation.
+                  {t('paymentAfter')}
                 </p>
               </button>
 
@@ -287,14 +285,14 @@ const CheckoutPage: React.FC = () => {
                     <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${paymentMethod === 'crypto' ? 'bg-amber-500 text-white' : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]'}`}>
                       <Bitcoin className="w-4 h-4" />
                     </div>
-                    <span className="font-bold text-sm text-[var(--color-text-primary)]">Cryptocurrency</span>
+                    <span className="font-bold text-sm text-[var(--color-text-primary)]">{t('crypto')}</span>
                   </div>
                   <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${paymentMethod === 'crypto' ? 'border-amber-500 bg-amber-500' : 'border-[var(--color-border)]'}`}>
                     {paymentMethod === 'crypto' && <div className="w-2 h-2 bg-white rounded-full" />}
                   </div>
                 </div>
                 <p className="text-[10px] text-[var(--color-text-muted)] leading-relaxed">
-                  BTC, ETH, USDT accepted. <strong className="text-emerald-500">Save 5%</strong> on your total order.
+                  {t('cryptoHint')}
                 </p>
               </button>
             </div>
@@ -310,7 +308,7 @@ const CheckoutPage: React.FC = () => {
               className="mt-0.5 rounded border-[var(--color-border)] text-blue-600 focus:ring-blue-500 bg-[var(--color-bg-input)]"
             />
             <span className="leading-relaxed text-[var(--color-text-muted)]">
-              I agree to {SITE_NAME} terms and consent to essential order processing under <strong className="text-[var(--color-text-secondary)]">GDPR (EU) 2016/679</strong>. My data will be processed in accordance with EU data protection regulations.
+              {t('gdprConsent', { site: SITE_NAME })}
             </span>
           </label>
 
@@ -325,7 +323,7 @@ const CheckoutPage: React.FC = () => {
             className="w-full bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-bold py-4 rounded-xl text-sm flex items-center justify-center space-x-2 transition-all shadow-lg shadow-blue-600/20"
           >
             <Lock className="w-4 h-4" />
-            <span>{isSubmitting ? 'Processing...' : `Confirm Order · ${formatPriceEUR(finalTotalEUR)}`}</span>
+            <span>{isSubmitting ? t('processing') : `${t('placeOrder')} · ${formatPriceEUR(finalTotalEUR)}`}</span>
           </button>
 
         </form>
@@ -333,14 +331,14 @@ const CheckoutPage: React.FC = () => {
         {/* Order Summary Sidebar */}
         <div className="lg:col-span-1">
           <div className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-5 space-y-4 sticky top-24">
-            <h3 className="font-bold text-sm text-[var(--color-text-primary)]">Order Summary</h3>
+            <h3 className="font-bold text-sm text-[var(--color-text-primary)]">{t('orderSummary')}</h3>
 
             <div className="space-y-2.5 max-h-60 overflow-y-auto custom-scrollbar">
               {cart.map(item => (
                 <div key={item.product.id} className="flex items-center space-x-3 text-xs">
                   <img src={item.product.imageUrl} alt={item.product.name} referrerPolicy="no-referrer" className="w-12 h-12 object-cover rounded-lg bg-[var(--color-bg-tertiary)] shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <div className="font-bold text-[var(--color-text-primary)] truncate">{item.product.name}</div>
+                    <div className="font-bold text-[var(--color-text-primary)] truncate">{getLocalizedProductName(item.product, i18n.language)}</div>
                     <div className="text-[10px] text-[var(--color-text-muted)]">x{item.quantity}</div>
                   </div>
                   <span className="font-bold text-[var(--color-text-primary)] shrink-0">{formatPriceEUR(item.product.priceEUR * item.quantity)}</span>
@@ -350,46 +348,31 @@ const CheckoutPage: React.FC = () => {
 
             <div className="space-y-2 text-xs border-t border-[var(--color-border)] pt-3">
               <div className="flex justify-between text-[var(--color-text-muted)]">
-                <span>Subtotal</span>
+                <span>{t('cart:subtotal')}</span>
                 <span className="text-[var(--color-text-secondary)] font-medium">{formatPriceEUR(cartSubtotalEUR)}</span>
-              </div>
-              <div className="flex justify-between text-[var(--color-text-muted)]">
-                <span>{selectedCountry.name} VAT ({(selectedCountry.vatRate * 100).toFixed(0)}%)</span>
-                <span className="text-[var(--color-text-secondary)] font-medium">{formatPriceEUR(cartVATAmountEUR)}</span>
-              </div>
-              <div className="flex justify-between text-[var(--color-text-muted)]">
-                <span>Shipping</span>
-                <span className={cartShippingFeeEUR === 0 ? 'text-emerald-500 font-bold' : 'text-[var(--color-text-secondary)] font-medium'}>
-                  {cartShippingFeeEUR === 0 ? 'FREE' : formatPriceEUR(cartShippingFeeEUR)}
-                </span>
               </div>
 
               {paymentMethod === 'crypto' && (
                 <div className="flex justify-between text-emerald-500 font-bold">
-                  <span>Crypto Discount (5%)</span>
+                  <span>{t('cryptoDiscount')}</span>
                   <span>-{formatPriceEUR(discountAmountEUR)}</span>
                 </div>
               )}
 
               <div className="flex justify-between items-baseline pt-3 border-t border-[var(--color-border)] font-bold">
-                <span className="text-[var(--color-text-primary)] text-sm">Total</span>
+                <span className="text-[var(--color-text-primary)] text-sm">{t('cart:total')}</span>
                 <div className="text-right">
                   {paymentMethod === 'crypto' && (
                     <div className="text-[10px] text-[var(--color-text-muted)] line-through">{formatPriceEUR(cartTotalEUR)}</div>
                   )}
                   <div className="text-lg text-[var(--color-text-primary)] font-black">{formatPriceEUR(finalTotalEUR)}</div>
-                  {selectedCurrency.code !== 'EUR' && (
-                    <div className="text-[10px] text-indigo-500 font-semibold">
-                      (~ {selectedCurrency.symbol}{convertedTotal.toFixed(2)} {selectedCurrency.code})
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
 
             <div className="text-[10px] text-[var(--color-text-muted)] flex items-center space-x-1.5 pt-1">
               <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-              <span>Payment details provided after order confirmation</span>
+              <span>{t('paymentAfter')}</span>
             </div>
 
           </div>

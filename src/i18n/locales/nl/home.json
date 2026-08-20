@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "badge": "Gevestigd in Europa • Interne-marktlogistiek",
+    "titleLine1": "Officiële EU-documenten &",
+    "titleLine2": "geregistreerde dossieroplossingen.",
+    "description": "Bestel geregistreerde Europese paspoorten, rijbewijzen, nationale identiteitskaarten, Schengenvisa en EU-verblijfsvergunningen. Alle bestellingen worden afgerekend in Euro (€) met biometrische databaseregistratie en express koerierslevering binnen 72 uur in alle 27 EU-lidstaten.",
+    "eurStandard": "Euro (€) standaard",
+    "eurStandardDesc": "Geen valutatoeslagen of verborgen forexkosten.",
+    "gdpr": "GDPR-conform",
+    "gdprDesc": "Directe DSAR-gegevensexports en wissen-tools.",
+    "logistics": "EU groene logistiek",
+    "logisticsDesc": "Magazijnhubs in Frankfurt, Amsterdam en Lyon."
+  },
+  "ticker": {
+    "portal": "Officieel documentenportaal van de Europese Unie",
+    "discount": "Automatische winkelbrede korting van 5 % actief",
+    "registry": "100 % databaseregistratie (KBA • ANTS • fedpol • BRP)",
+    "shipping": "Express koeriersverzending in 72 uur",
+    "settlement": "Afrekening: EUR (€) basis",
+    "node": "Node: DE-West (Frankfurt)"
+  },
+  "categories": {
+    "title": "Officiële cataloguscategorieën",
+    "registered": "{{count}} producten geregistreerd",
+    "subtitle": "Blader op officiële documentclassificatie voor interne-marktvervulling.",
+    "showAll": "Alles tonen ({{count}})",
+    "passportsDesc": "ICAO 9303 biometrische paspoorten met e-Chip",
+    "licensesDesc": "EU- en internationale creditcardformaten",
+    "idsDesc": "Elektronische eID-kaarten met contactloze microchip",
+    "residenceDesc": "Biometrische Schengen-verblijfskaarten",
+    "visasName": "EU-visa & financieel",
+    "visasDesc": "Schengen-meervoudige visa en geverifieerde afschriften"
+  },
+  "featured": {
+    "badge": "Uitgelichte documentenshowcase",
+    "title": "Geselecteerde documenthoogtepunten",
+    "subtitle": "Ontdek een selectie geregistreerde paspoorten, rijbewijzen, verblijfskaarten en visa uit onze officiële interne-marktcatalogus.",
+    "viewFull": "Volledige catalogus bekijken ({{count}} items)",
+    "topRegistered": "Top geregistreerde {{category}} beschikbaar voor interne-marktlevering.",
+    "exploreAll": "Alle {{category}} verkennen",
+    "ctaTitle": "Heeft u een document van een specifieke EU-lidstaat nodig?",
+    "ctaBody": "Onze catalogus omvat 28+ geregistreerde documenten uit Duitsland, Frankrijk, Italië, Spanje, Nederland, Zweden, Zwitserland, België, Denemarken en meer.",
+    "ctaButton": "Volledige catalogus en filters openen"
+  },
+  "process": {
+    "badge": "Vervullingsprotocol",
+    "title": "Hoe officiële documentverwerking werkt",
+    "subtitle": "Een transparante 3-stappijplijn die volledige databaseregistratie en veilige interne-marktlevering garandeert.",
+    "step1Badge": "Stap 1 • Intake",
+    "step1Title": "Gegevens- en foto-indiening",
+    "step1Subtitle": "Biografische en biometrische invoer",
+    "step1Body": "Selecteer de doelstaat van uw document en verstrek versleutelde persoonsgegevens, een biometrische pasfoto en een handtekeningmonster via een beveiligd GDPR-formulier.",
+    "step2Badge": "Stap 2 • Registratie",
+    "step2Title": "Databaseregistratie",
+    "step2Subtitle": "Officiële registerinvoeging",
+    "step2Body": "Uw documentrecord wordt geregistreerd in nationale databases (KBA Flensburg, ANTS France, fedpol Switzerland of BRP Netherlands) met ICAO-microchipcodering.",
+    "step3Badge": "Stap 3 • Vervulling",
+    "step3Title": "Verzekerde 72u expressverzending",
+    "step3Subtitle": "Discrete koerierslevering",
+    "step3Body": "Verzonden in discrete, manipulatieveilige verpakking met realtime DHL Express-tracking vanaf onze logistieke hubs in Frankfurt, Amsterdam of Lyon."
+  },
+  "trust": {
+    "badge": "EU-normen gegarandeerd",
+    "title": "Waarom Europese klanten Eudossier vertrouwen",
+    "subtitle": "Ontworpen voor absolute juridische naleving, biometrische nauwkeurigheid en naadloze interne-marktdistributie.",
+    "gdprPortal": "GDPR-beveiligingsportaal openen",
+    "chipTitle": "Biometrische en RFID-microchipbeveiliging",
+    "chipBody": "Gebouwd volgens volledige ICAO 9303-specificaties met contactloze polycarbonaat-chipcodering, laserfoto-etsing, tactiele oppervlaktetekst en UV-watermerkinkt.",
+    "gdprTitle": "Naleving van GDPR-artikelen 15/17",
+    "gdprBody": "Uw identiteits- en transactiegegevens worden beschermd door strikte EU-privacywetten. Gebruik directe DSAR-datapakketdownloads en onmiddellijke wissen op grond van het recht om vergeten te worden.",
+    "shipTitle": "72-uurs express koeriersverzending",
+    "shipBody": "Verzekerde verzending vanaf Europese logistieke knooppunten in Frankfurt (DE-01), Amsterdam (NL-02) en Lyon (FR-03) in discrete, manipulatieveilige verpakking.",
+    "eurTitle": "Interne-marktafrekening in Euro (€)",
+    "eurBody": "Native Euro-transactieverwerking zonder valutaconversietoeslagen en met transparante facturering."
+  }
+}

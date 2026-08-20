@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "home": "Hem",
+    "catalogue": "Katalog",
+    "contact": "Kontakt",
+    "gdpr": "GDPR-integritet",
+    "cart": "Varukorg",
+    "admin": "Admin",
+    "changeLanguage": "Byt språk",
+    "searchPlaceholder": "Sök registrerade pass, körkort, uppehållstillstånd, visum...",
+    "clear": "Rensa"
+  },
+  "footer": {
+    "tagline": "E-handelsplattform för den europeiska inre marknaden med Euro (€) som standardavräkning, efterlevnad av GDPR artiklarna 15/17 och inventeringsverktyg för handlare.",
+    "standardsTitle": "EU-standarder",
+    "eurSettlement": "Standardavräkningsvaluta: EUR (€)",
+    "gdprCompliant": "Förenlig med GDPR artiklarna 15/17",
+    "warehouses": "Frankfurt • Amsterdam • Lyon-hubbar",
+    "legalTitle": "Juridik och efterlevnad",
+    "privacyPolicy": "Integritetspolicy och DSAR",
+    "contactUs": "Kontakta oss",
+    "merchantPortal": "Handlarens adminportal",
+    "privacyTitle": "GDPR-dataintegritet",
+    "dsar": "Ladda ner personuppgifter (DSAR)",
+    "forgotten": "Rätt att bli glömd (art. 17)",
+    "auditLog": "Inspektör för samtyckesrevisionslogg",
+    "hosted": "Data hostas i Frankfurt, Tyskland (EU-West Node).",
+    "madeWith": "Tillverkat med precision för europeiska officiella dokument och dossier"
+  },
+  "language": {
+    "title": "Språkinställningar",
+    "subtitle": "Välj ditt föredragna visningsspråk",
+    "info": "Alla kassatotaler och fakturor behandlas i Euro (€). Översättningar gäller butiksgränssnittet och produktnamn.",
+    "selected": "Valt språk",
+    "save": "Spara och tillämpa språk"
+  },
+  "actions": {
+    "browseCatalogue": "Bläddra i hela produktkatalogen",
+    "proceedCheckout": "Gå till kassan",
+    "addToCart": "Lägg i varukorg",
+    "viewCart": "Visa varukorg",
+    "checkout": "Kassa",
+    "back": "Tillbaka"
+  },
+  "product": {
+    "madeIn": "Tillverkad i {{country}}",
+    "outOfStock": "Slut i lager",
+    "lowStock": "Endast {{count}} kvar",
+    "inStock": "I lager ({{count}})",
+    "quickInspect": "Snabbgranska specifikationer",
+    "includesVat": "Alla priser i Euro (€). Expressleverans inom EU tillgänglig.",
+    "soldOut": "Slutsåld",
+    "notFound": "Produkten hittades inte",
+    "notFoundBody": "Produkten du söker finns inte eller har tagits bort.",
+    "transactionPrice": "Transaktionspris (EUR-bas)"
+  },
+  "gdprBanner": {
+    "title": "EU GDPR-dataskyddsmeddelande",
+    "eurBadge": "EUR-avräkning",
+    "body": "Vi behandlar dina personuppgifter enligt förordning (EU) 2016/679. Alla priser visas som standard i Euro (€). Du kan anpassa cookieinställningar eller exportera dina uppgifter när som helst.",
+    "acceptAll": "Acceptera alla cookies",
+    "essentialOnly": "Endast nödvändiga",
+    "customize": "Anpassa"
+  },
+  "categories": {
+    "All": "Alla",
+    "Passports": "Pass",
+    "Driver Licenses": "Körkort",
+    "Identity Cards": "Identitetskort",
+    "Residence Permits": "Uppehållstillstånd",
+    "EU Visas": "EU-visum"
+  }
+}

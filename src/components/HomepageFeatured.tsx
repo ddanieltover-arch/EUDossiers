@@ -3,17 +3,19 @@ import { ProductCard } from './ProductCard';
 import { useStore } from '../context/StoreContext';
 import { ArrowRight, Sparkles, Globe, CreditCard, Award, Shield, FileText } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const HomepageFeatured: React.FC = () => {
   const { products, setSelectedCategory } = useStore();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const categories = [
-    { id: 'Passports', name: 'Passports', icon: Globe, color: 'text-amber-500', badgeBg: 'bg-amber-50 dark:bg-amber-950/60 border-amber-300 dark:border-amber-800/80 text-amber-700 dark:text-amber-300' },
-    { id: 'Driver Licenses', name: 'Driver Licenses', icon: CreditCard, color: 'text-blue-500', badgeBg: 'bg-blue-50 dark:bg-blue-950/60 border-blue-300 dark:border-blue-800/80 text-blue-700 dark:text-blue-300' },
-    { id: 'Identity Cards', name: 'Identity Cards', icon: Award, color: 'text-emerald-500', badgeBg: 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-300 dark:border-emerald-800/80 text-emerald-700 dark:text-emerald-300' },
-    { id: 'Residence Permits', name: 'Residence Permits', icon: Shield, color: 'text-purple-500', badgeBg: 'bg-purple-50 dark:bg-purple-950/60 border-purple-300 dark:border-purple-800/80 text-purple-700 dark:text-purple-300' },
-    { id: 'EU Visas', name: 'EU Visas & Financial Proof', icon: FileText, color: 'text-cyan-500', badgeBg: 'bg-cyan-50 dark:bg-cyan-950/60 border-cyan-300 dark:border-cyan-800/80 text-cyan-700 dark:text-cyan-300' },
+    { id: 'Passports', name: t('categories.Passports'), icon: Globe, color: 'text-amber-500', badgeBg: 'bg-amber-50 dark:bg-amber-950/60 border-amber-300 dark:border-amber-800/80 text-amber-700 dark:text-amber-300' },
+    { id: 'Driver Licenses', name: t('categories.Driver Licenses'), icon: CreditCard, color: 'text-blue-500', badgeBg: 'bg-blue-50 dark:bg-blue-950/60 border-blue-300 dark:border-blue-800/80 text-blue-700 dark:text-blue-300' },
+    { id: 'Identity Cards', name: t('categories.Identity Cards'), icon: Award, color: 'text-emerald-500', badgeBg: 'bg-emerald-50 dark:bg-emerald-950/60 border-emerald-300 dark:border-emerald-800/80 text-emerald-700 dark:text-emerald-300' },
+    { id: 'Residence Permits', name: t('categories.Residence Permits'), icon: Shield, color: 'text-purple-500', badgeBg: 'bg-purple-50 dark:bg-purple-950/60 border-purple-300 dark:border-purple-800/80 text-purple-700 dark:text-purple-300' },
+    { id: 'EU Visas', name: t('home:categories.visasName'), icon: FileText, color: 'text-cyan-500', badgeBg: 'bg-cyan-50 dark:bg-cyan-950/60 border-cyan-300 dark:border-cyan-800/80 text-cyan-700 dark:text-cyan-300' },
   ];
 
   const handleCategoryClick = (categoryId: string) => {
@@ -29,13 +31,13 @@ export const HomepageFeatured: React.FC = () => {
         <div>
           <div className="inline-flex items-center space-x-1.5 bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-300 dark:border-blue-800/60 px-3 py-1 rounded-full text-xs font-semibold mb-2">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Featured Document Showcase</span>
+            <span>{t('home:featured.badge')}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-[var(--color-text-primary)] tracking-tight font-display">
-            Curated Document Highlights
+            {t('home:featured.title')}
           </h2>
           <p className="text-xs sm:text-sm text-[var(--color-text-muted)] mt-1 max-w-xl">
-            Explore a selection of registered passports, driving permits, residence cards, and visas from our official single-market catalogue.
+            {t('home:featured.subtitle')}
           </p>
         </div>
 
@@ -44,7 +46,7 @@ export const HomepageFeatured: React.FC = () => {
           onClick={() => setSelectedCategory('All')}
           className="bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-all shadow-lg shadow-blue-600/20 flex items-center space-x-2 shrink-0 self-start md:self-auto"
         >
-          <span>View Full Catalogue ({products.length} Items)</span>
+          <span>{t('home:featured.viewFull', { count: products.length })}</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
@@ -69,7 +71,7 @@ export const HomepageFeatured: React.FC = () => {
                       {cat.name}
                     </h3>
                     <p className="text-xs text-[var(--color-text-muted)]">
-                      Top registered {cat.name.toLowerCase()} available for single market delivery.
+                      {t('home:featured.topRegistered', { category: cat.name })}
                     </p>
                   </div>
                 </div>
@@ -78,7 +80,7 @@ export const HomepageFeatured: React.FC = () => {
                   onClick={() => handleCategoryClick(cat.id)}
                   className="text-xs text-blue-500 hover:text-blue-400 font-semibold flex items-center space-x-1 group transition-colors"
                 >
-                  <span>Explore all {cat.name}</span>
+                  <span>{t('home:featured.exploreAll', { category: cat.name })}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </div>
@@ -97,10 +99,10 @@ export const HomepageFeatured: React.FC = () => {
       <div className="bg-gradient-to-r from-blue-100 dark:from-blue-950/80 via-[var(--color-bg-secondary)] to-indigo-100 dark:to-indigo-950/80 border border-blue-300 dark:border-blue-800/50 rounded-3xl p-8 text-center space-y-4 shadow-xl relative overflow-hidden">
         <div className="max-w-2xl mx-auto space-y-2">
           <h3 className="text-xl sm:text-2xl font-black text-[var(--color-text-primary)] tracking-tight font-display">
-            Need a Specific EU Member State Document?
+            {t('home:featured.ctaTitle')}
           </h3>
           <p className="text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed">
-            Our catalogue includes 28+ registered documents across Germany, France, Italy, Spain, Netherlands, Sweden, Switzerland, Belgium, Denmark, and more.
+            {t('home:featured.ctaBody')}
           </p>
         </div>
 
@@ -109,7 +111,7 @@ export const HomepageFeatured: React.FC = () => {
           onClick={() => setSelectedCategory('All')}
           className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm px-6 py-3 rounded-2xl shadow-lg transition-all inline-flex items-center space-x-2"
         >
-          <span>Open Full Catalogue &amp; Filter Tools</span>
+          <span>{t('home:featured.ctaButton')}</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>

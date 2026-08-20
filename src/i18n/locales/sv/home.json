@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "badge": "Baserad i Europa • Inre marknadens logistik",
+    "titleLine1": "Officiella EU-dokument och",
+    "titleLine2": "registrerade dossierlösningar.",
+    "description": "Beställ registrerade europeiska pass, körkort, nationella ID-kort, Schengenvisum och EU-uppehållstillstånd. Alla ordrar avräknas i Euro (€) med biometrisk databasregistrering och expresskurirleverans på 72 timmar i alla 27 EU-medlemsstater.",
+    "eurStandard": "Euro (€) standard",
+    "eurStandardDesc": "Inga valutapåslag eller dolda forexavgifter.",
+    "gdpr": "GDPR-förenlig",
+    "gdprDesc": "Omedelbara DSAR-dataexporter och raderingsverktyg.",
+    "logistics": "EU grön logistik",
+    "logisticsDesc": "Lagerhubbar i Frankfurt, Amsterdam och Lyon."
+  },
+  "ticker": {
+    "portal": "Europeiska unionens officiella dokumentportal",
+    "discount": "Automatisk 5 % butiksrabatt aktiv",
+    "registry": "100 % databasregistrering (KBA • ANTS • fedpol • BRP)",
+    "shipping": "Expresskurirleverans 72 timmar",
+    "settlement": "Avräkning: EUR (€) bas",
+    "node": "Nod: DE-West (Frankfurt)"
+  },
+  "categories": {
+    "title": "Officiella katalogkategorier",
+    "registered": "{{count}} produkter registrerade",
+    "subtitle": "Bläddra efter officiell dokumentklassificering för leverans på den inre marknaden.",
+    "showAll": "Visa alla ({{count}})",
+    "passportsDesc": "ICAO 9303-biometriska pass med e-Chip",
+    "licensesDesc": "EU- och internationella kreditkortsformat",
+    "idsDesc": "Elektroniska eID-kort med kontaktlös mikrochip",
+    "residenceDesc": "Biometriska Schengen-uppehållskort",
+    "visasName": "EU-visum och ekonomi",
+    "visasDesc": "Schengenvisum för flera inresor och verifierade kontoutdrag"
+  },
+  "featured": {
+    "badge": "Utvald dokumentvisning",
+    "title": "Utvalda dokumenthöjdpunkter",
+    "subtitle": "Utforska ett urval av registrerade pass, körkort, uppehållskort och visum från vår officiella katalog för den inre marknaden.",
+    "viewFull": "Visa hela katalogen ({{count}} artiklar)",
+    "topRegistered": "Toppregistrerade {{category}} tillgängliga för leverans på den inre marknaden.",
+    "exploreAll": "Utforska alla {{category}}",
+    "ctaTitle": "Behöver du ett dokument från en specifik EU-medlemsstat?",
+    "ctaBody": "Vår katalog omfattar 28+ registrerade dokument från Tyskland, Frankrike, Italien, Spanien, Nederländerna, Sverige, Schweiz, Belgien, Danmark med flera.",
+    "ctaButton": "Öppna hela katalogen och filterverktyg"
+  },
+  "process": {
+    "badge": "Uppfyllnadsprotokoll",
+    "title": "Så fungerar officiell dokumenthantering",
+    "subtitle": "En transparent 3-stegspipeline som säkerställer fullständig databasregistrering och säker leverans på den inre marknaden.",
+    "step1Badge": "Steg 1 • Intag",
+    "step1Title": "Inlämning av data och foto",
+    "step1Subtitle": "Biografisk och biometrisk registrering",
+    "step1Body": "Välj dokumentets målland och lämna krypterade personuppgifter, ett biometriskt passfoto och en namnteckningsprov via ett säkert GDPR-formulär.",
+    "step2Badge": "Steg 2 • Registrering",
+    "step2Title": "Databasregistrering",
+    "step2Subtitle": "Officiell registerinföring",
+    "step2Body": "Ditt dokumentregister registreras i nationella databaser (KBA Flensburg, ANTS France, fedpol Switzerland eller BRP Netherlands) med ICAO-mikrochipkodning.",
+    "step3Badge": "Steg 3 • Uppfyllnad",
+    "step3Title": "Försäkrad 72h-expressfrakt",
+    "step3Subtitle": "Diskret kurirleverans",
+    "step3Body": "Skickas i diskret, manipulationssäker förpackning med realtidsspårning via DHL Express från våra logistiknav i Frankfurt, Amsterdam eller Lyon."
+  },
+  "trust": {
+    "badge": "EU-standarder garanteras",
+    "title": "Varför europeiska kunder litar på Eudossier",
+    "subtitle": "Utvecklad för absolut rättslig efterlevnad, biometrisk precision och sömlös distribution på den inre marknaden.",
+    "gdprPortal": "Öppna GDPR-säkerhetsportalen",
+    "chipTitle": "Biometrisk och RFID-mikrochipsäkerhet",
+    "chipBody": "Byggd enligt full ICAO 9303-specifikation med kontaktlös polykarbonat-chipkodning, laserfotoetsning, taktil yta och UV-vattenmärkesfärg.",
+    "gdprTitle": "Efterlevnad av GDPR artiklarna 15/17",
+    "gdprBody": "Din identitet och transaktionsdata skyddas av strikta EU-integritetslagar. Använd omedelbara nedladdningar av DSAR-datapaket och omedelbar radering enligt rätten att bli glömd.",
+    "shipTitle": "72-timmars expresskurirleverans",
+    "shipBody": "Försäkrad avsändning från europeiska logistiknoder i Frankfurt (DE-01), Amsterdam (NL-02) och Lyon (FR-03) i diskret, manipulationssäker förpackning.",
+    "eurTitle": "Avräkning på den inre marknaden i Euro (€)",
+    "eurBody": "Inhemsk Euro-transaktionsbehandling utan valutaväxlingspåslag och med transparent fakturering."
+  }
+}
