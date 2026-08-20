@@ -6,6 +6,7 @@ import { Product } from '../types';
 import { useStore } from '../context/StoreContext';
 import { useLocalizedProductName } from '../hooks/useLocalizedProductName';
 import { useLocalizedProductDescription } from '../hooks/useLocalizedProductDescription';
+import { getProductPath } from '../utils/productSlug';
 
 interface ProductCardProps {
   product: Product;
@@ -32,7 +33,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="group bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:border-[var(--color-border-subtle)] transition-all flex flex-col h-full">
       <Link 
-        to={`/catalogue/${product.id}`}
+        to={getProductPath(product)}
         className="relative aspect-4/3 bg-[var(--color-bg-tertiary)] overflow-hidden cursor-pointer block"
       >
         <img
@@ -86,7 +87,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </div>
 
           <Link 
-            to={`/catalogue/${product.id}`}
+            to={getProductPath(product)}
             className="font-bold text-base text-[var(--color-text-primary)] group-hover:text-blue-500 transition-colors line-clamp-2 cursor-pointer block"
           >
             {localizedName}

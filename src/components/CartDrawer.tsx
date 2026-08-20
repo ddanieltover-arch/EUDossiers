@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
 import { useTranslation } from 'react-i18next';
 import { getLocalizedProductName } from '../data/productNameTranslations';
+import { getProductPath } from '../utils/productSlug';
 
 export const CartDrawer: React.FC = () => {
   const { 
@@ -49,9 +50,11 @@ export const CartDrawer: React.FC = () => {
             ) : (
               cart.map(item => (
                 <div key={item.product.id} className="bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-xl p-3 flex items-center space-x-3">
-                  <img src={item.product.imageUrl} alt={item.product.name} referrerPolicy="no-referrer" className="w-14 h-14 object-cover rounded-lg bg-[var(--color-bg-tertiary)] shrink-0" />
+                  <Link to={getProductPath(item.product)} onClick={() => setIsCartOpen(false)} className="shrink-0">
+                    <img src={item.product.imageUrl} alt={item.product.name} referrerPolicy="no-referrer" className="w-14 h-14 object-cover rounded-lg bg-[var(--color-bg-tertiary)]" />
+                  </Link>
                   <div className="flex-1 min-w-0">
-                    <div className="text-xs font-bold text-[var(--color-text-primary)] truncate">{getLocalizedProductName(item.product, i18n.language)}</div>
+                    <Link to={getProductPath(item.product)} onClick={() => setIsCartOpen(false)} className="text-xs font-bold text-[var(--color-text-primary)] truncate hover:text-blue-500 transition-colors block">{getLocalizedProductName(item.product, i18n.language)}</Link>
                     <div className="text-[10px] text-[var(--color-text-muted)] mt-0.5">{item.product.originFlag} · {formatPriceEUR(item.product.priceEUR)}</div>
                     <div className="flex items-center mt-1.5">
                       <div className="flex items-center bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)] px-0.5">

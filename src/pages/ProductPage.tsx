@@ -1,21 +1,55 @@
-import React, { useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useParams, Link, useNavigate, Navigate } from 'react-router-dom';
 import { ShoppingBag, ShieldCheck, Warehouse, MapPin, ArrowLeft, AlertTriangle } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useStore } from '../context/StoreContext';
+import { SITE_NAME } from '../brand';
 import { getLocalizedProductName } from '../data/productNameTranslations';
 import { getLocalizedProductDescription } from '../data/productDescriptionTranslations';
+import { findProductBySlugOrId, getProductPath, getProductSlug } from '../utils/productSlug';
 
 const ProductPage: React.FC = () => {
-  const { productId } = useParams<{ productId: string }>();
+  const { productSlug } = useParams<{ productSlug: string }>();
   const navigate = useNavigate();
-  const { products, addToCart, formatPriceEUR, setSearchQuery } = useStore();
+  const { products, isLoadingProducts, addToCart, formatPriceEUR, setSearchQuery } = useStore();
   const { t, i18n } = useTranslation('common');
 
   const [quantity, setQuantity] = useState<number>(1);
   const [activeImage, setActiveImage] = useState<string | null>(null);
 
-  const product = products.find(p => p.id === productId);
+  const product = findProductBySlugOrId(products, productSlug);
+  const englishSlug = product ? getProductSlug(product) : '';
+
+  const discountPercent = useMemo(() => {
+    if (!product) return 5;
+    let hash = 0;
+    for (let i = 0; i < product.id.length; i++) hash = ((hash << 5) - hash + product.id.charCodeAt(i)) | 0;
+    return 5 + (Math.abs(hash) % 6);
+  }, [product]);
+
+  useEffect(() => {
+    if (!product) return;
+    const previous = document.title;
+    document.title = `${product.name} | ${SITE_NAME}`;
+    return () => {
+      document.title = previous;
+    };
+  }, [product]);
+
+  if (isLoadingProducts) {
+    return (
+      <div className="max-w-5xl mx-auto px-4 py-24">
+        <div className="h-8 w-40 bg-[var(--color-bg-tertiary)] rounded-lg animate-pulse mb-8" />
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          <div className="md:col-span-5 aspect-square bg-[var(--color-bg-tertiary)] rounded-2xl animate-pulse" />
+          <div className="md:col-span-7 space-y-4">
+            <div className="h-8 w-3/4 bg-[var(--color-bg-tertiary)] rounded-lg animate-pulse" />
+            <div className="h-24 w-full bg-[var(--color-bg-tertiary)] rounded-lg animate-pulse" />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -30,13 +64,11 @@ const ProductPage: React.FC = () => {
     );
   }
 
-  const isOutOfStock = product.totalStock <= 0;
+  if (productSlug !== englishSlug) {
+    return <Navigate to={getProductPath(product)} replace />;
+  }
 
-  const discountPercent = React.useMemo(() => {
-    let hash = 0;
-    for (let i = 0; i < product.id.length; i++) hash = ((hash << 5) - hash + product.id.charCodeAt(i)) | 0;
-    return 5 + (Math.abs(hash) % 6);
-  }, [product.id]);
+  const isOutOfStock = product.totalStock <= 0;
 
   const originalPrice = product.priceEUR / (1 - discountPercent / 100);
   const localizedName = getLocalizedProductName(product, i18n.language);

@@ -46,7 +46,7 @@ const AppContent: React.FC = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/catalogue" element={<CataloguePage />} />
-          <Route path="/catalogue/:productId" element={<ProductPage />} />
+          <Route path="/catalogue/:productSlug" element={<ProductPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />

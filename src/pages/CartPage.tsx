@@ -4,6 +4,7 @@ import { ShoppingBag, Trash2, ArrowRight, ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useStore } from '../context/StoreContext';
 import { getLocalizedProductName } from '../data/productNameTranslations';
+import { getProductPath } from '../utils/productSlug';
 
 const CartPage: React.FC = () => {
   const {
@@ -50,12 +51,12 @@ const CartPage: React.FC = () => {
             const localizedName = getLocalizedProductName(item.product, i18n.language);
             return (
             <div key={item.product.id} className="bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl p-4 flex items-center space-x-4">
-              <Link to={`/catalogue/${item.product.id}`} className="shrink-0">
+              <Link to={getProductPath(item.product)} className="shrink-0">
                 <img src={item.product.imageUrl} alt={localizedName} referrerPolicy="no-referrer" className="w-20 h-20 object-cover rounded-xl bg-[var(--color-bg-tertiary)]" />
               </Link>
 
               <div className="flex-1 min-w-0 space-y-1.5">
-                <Link to={`/catalogue/${item.product.id}`} className="font-bold text-sm text-[var(--color-text-primary)] hover:text-blue-500 transition-colors block truncate">
+                <Link to={getProductPath(item.product)} className="font-bold text-sm text-[var(--color-text-primary)] hover:text-blue-500 transition-colors block truncate">
                   {localizedName}
                 </Link>
                 <div className="text-[11px] text-[var(--color-text-muted)]">

@@ -12,6 +12,7 @@
   },
   "rewrites": [
     { "source": "/api/:path*", "destination": "/api/:path*" },
-    { "source": "/((?!api/|catalogue/).*)", "destination": "/index.html" }
+    { "source": "/catalogue/:file.:ext", "destination": "/catalogue/:file.:ext" },
+    { "source": "/:path*", "destination": "/index.html" }
   ]
 }
