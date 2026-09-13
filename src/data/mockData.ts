@@ -706,8 +706,11 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 290.00,
     originCountry: 'France',
     originFlag: '🇫🇷',
-    imageUrl: '',
-    galleryImages: [],
+    imageUrl: '/catalogue/doc-028.jpg',
+    galleryImages: [
+      '/catalogue/doc-028.jpg',
+      '/catalogue/doc-028-g1.jpg'
+    ],
     totalStock: 50,
     lowStockThreshold: 10,
     warehouses: [

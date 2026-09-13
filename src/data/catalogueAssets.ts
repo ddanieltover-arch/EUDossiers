@@ -15,6 +15,7 @@ const CATALOGUE_FILES: Record<string, { main: string; gallery?: string[] }> = {
   'doc-016': { main: 'doc-016.jpg' },
   'doc-019': { main: 'doc-001-g1.jpg' },
   'doc-026': { main: 'doc-002-g1.jpg', gallery: ['doc-010-g1.jpg'] },
+  'doc-028': { main: 'doc-028.jpg', gallery: ['doc-028-g1.jpg'] },
 };
 
 export function localCatalogueImages(productId: string): {
