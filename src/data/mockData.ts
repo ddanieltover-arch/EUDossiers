@@ -683,8 +683,14 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 895.00,
     originCountry: 'Switzerland',
     originFlag: '🇨🇭',
-    imageUrl: '',
-    galleryImages: [],
+    imageUrl: '/catalogue/doc-027.png',
+    galleryImages: [
+      '/catalogue/doc-027.png',
+      '/catalogue/doc-027-g1.jpg',
+      '/catalogue/doc-027-g2.jpg',
+      '/catalogue/doc-027-g3.png',
+      '/catalogue/doc-027-g4.png'
+    ],
     totalStock: 12,
     lowStockThreshold: 3,
     warehouses: [
