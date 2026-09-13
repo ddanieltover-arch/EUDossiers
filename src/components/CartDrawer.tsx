@@ -51,7 +51,13 @@ export const CartDrawer: React.FC = () => {
               cart.map(item => (
                 <div key={item.product.id} className="bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-xl p-3 flex items-center space-x-3">
                   <Link to={getProductPath(item.product)} onClick={() => setIsCartOpen(false)} className="shrink-0">
-                    <img src={item.product.imageUrl} alt={item.product.name} referrerPolicy="no-referrer" className="w-14 h-14 object-cover rounded-lg bg-[var(--color-bg-tertiary)]" />
+                    {item.product.imageUrl ? (
+                      <img src={item.product.imageUrl} alt={item.product.name} referrerPolicy="no-referrer" className="w-14 h-14 object-cover rounded-lg bg-[var(--color-bg-tertiary)]" />
+                    ) : (
+                      <div className="w-14 h-14 flex items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-lg border border-[var(--color-border)]">
+                        <span>{item.product.originFlag}</span>
+                      </div>
+                    )}
                   </Link>
                   <div className="flex-1 min-w-0">
                     <Link to={getProductPath(item.product)} onClick={() => setIsCartOpen(false)} className="text-xs font-bold text-[var(--color-text-primary)] truncate hover:text-blue-500 transition-colors block">{getLocalizedProductName(item.product, i18n.language)}</Link>
