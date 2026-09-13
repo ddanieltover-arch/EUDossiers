@@ -27,7 +27,7 @@ export const ProductDetailModal: React.FC = () => {
 
   const displayImage = activeImage || product.imageUrl;
   const allImages = [product.imageUrl, ...(product.galleryImages || [])].filter(
-    (img, idx, arr) => arr.indexOf(img) === idx
+    (img, idx, arr) => Boolean(img) && arr.indexOf(img) === idx
   );
 
   const handleAddToCart = () => {
@@ -50,12 +50,20 @@ export const ProductDetailModal: React.FC = () => {
           
           <div className="md:col-span-5 space-y-4">
             <div className="relative aspect-square rounded-2xl overflow-hidden bg-[var(--color-bg-tertiary)] border border-[var(--color-border)]">
-              <img
-                src={displayImage}
-                alt={localizedName}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover transition-all duration-300"
-              />
+              {displayImage ? (
+                <img
+                  src={displayImage}
+                  alt={localizedName}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover transition-all duration-300"
+                />
+              ) : (
+                <div className="w-full h-full flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-800 text-slate-400 p-6 text-center">
+                  <span className="text-5xl mb-3">{product.originFlag}</span>
+                  <span className="text-sm font-semibold text-slate-600 dark:text-slate-300">Image Pending Upload</span>
+                  <span className="text-xs font-mono text-slate-400 dark:text-slate-500 mt-1">SKU: {product.sku}</span>
+                </div>
+              )}
               <div className="absolute top-3 left-3 bg-black/70 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-lg border border-white/20 flex items-center space-x-1.5">
                 <span>{product.originFlag}</span>
                 <span>Made in {product.originCountry}</span>
