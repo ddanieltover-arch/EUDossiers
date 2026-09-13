@@ -1,0 +1,12 @@
+# Local secrets and runtime
+.env
+.env.*
+!.env.example
+.pytest_cache/
+.search-growth-engine/
+.tmp/
+**/__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/

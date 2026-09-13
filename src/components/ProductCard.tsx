@@ -36,12 +36,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         to={getProductPath(product)}
         className="relative aspect-4/3 bg-[var(--color-bg-tertiary)] overflow-hidden cursor-pointer block"
       >
-        <img
-          src={product.imageUrl}
-          alt={localizedName}
-          referrerPolicy="no-referrer"
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-        />
+        {product.imageUrl ? (
+          <img
+            src={product.imageUrl}
+            alt={localizedName}
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center bg-slate-100 dark:bg-slate-800/80 text-slate-400 p-4 text-center group-hover:bg-slate-200 dark:group-hover:bg-slate-800 transition-colors">
+            <span className="text-3xl mb-1.5">{product.originFlag}</span>
+            <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">Image Pending Upload</span>
+            <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 mt-0.5">{product.sku}</span>
+          </div>
+        )}
 
         <div className="absolute top-3 left-3 flex items-center space-x-1.5">
           <div className="bg-black/70 backdrop-blur-md text-white text-xs font-semibold px-2.5 py-1 rounded-lg border border-white/20 flex items-center space-x-1.5 shadow-sm">

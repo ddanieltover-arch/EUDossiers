@@ -42,10 +42,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 450.00,
     originCountry: 'Bulgaria',
     originFlag: '🇧🇬',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/apply-for-registered-bulgarian-drivers-license.webp',
+    imageUrl: '/catalogue/doc-001.webp',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/apply-for-registered-bulgarian-drivers-license.webp',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-driver-license-small-banner.jpg'
+      '/catalogue/doc-001.webp'
     ],
     totalStock: 42,
     lowStockThreshold: 10,
@@ -69,10 +68,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 490.00,
     originCountry: 'Austria',
     originFlag: '🇦🇹',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-austrian-drivers-license-1-430x323.webp',
+    imageUrl: '/catalogue/doc-002.webp',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-austrian-drivers-license-1-430x323.webp',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-driver-license-banner.jpg'
+      '/catalogue/doc-002.webp'
     ],
     totalStock: 30,
     lowStockThreshold: 8,
@@ -96,10 +94,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 520.00,
     originCountry: 'United States',
     originFlag: '🇺🇸',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-authentic-us-drivers-license.jpg',
+    imageUrl: '/catalogue/doc-003.jpg',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-authentic-us-drivers-license.jpg',
-      'https://eudocumentpro.com/wp-content/uploads/elementor/thumbs/best-fake-id-maker-online-qyfbdr4bw0nzyt1jjdhay285yifsr9o6c4159gqefa.jpg'
+      '/catalogue/doc-003.jpg'
     ],
     totalStock: 25,
     lowStockThreshold: 5,
@@ -122,10 +119,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 380.00,
     originCountry: 'Belgium',
     originFlag: '🇧🇪',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-belgian-id-card-430x323.jpg',
+    imageUrl: '/catalogue/doc-004.jpg',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-belgian-id-card-430x323.jpg',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-id-card-small-banner.jpg'
+      '/catalogue/doc-004.jpg'
     ],
     totalStock: 35,
     lowStockThreshold: 10,
@@ -148,10 +144,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 475.00,
     originCountry: 'Denmark',
     originFlag: '🇩🇰',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-danish-drivers-license-430x323.jpg',
+    imageUrl: '/catalogue/doc-005.jpg',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-danish-drivers-license-430x323.jpg',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-driver-license-small-banner.jpg'
+      '/catalogue/doc-005.jpg'
     ],
     totalStock: 18,
     lowStockThreshold: 5,
@@ -174,10 +169,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 550.00,
     originCountry: 'Germany',
     originFlag: '🇩🇪',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-eu-drivers-license-in-3-days-430x323.jpg',
+    imageUrl: '/catalogue/doc-006.jpg',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-eu-drivers-license-in-3-days-430x323.jpg',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-driver-license-banner.jpg'
+      '/catalogue/doc-006.jpg'
     ],
     totalStock: 50,
     lowStockThreshold: 10,
@@ -201,10 +195,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 440.00,
     originCountry: 'Hungary',
     originFlag: '🇭🇺',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-hungarian-drivers-license.jpg',
+    imageUrl: '/catalogue/doc-007.jpg',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-hungarian-drivers-license.jpg',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-driver-license-small-banner.jpg'
+      '/catalogue/doc-007.jpg'
     ],
     totalStock: 22,
     lowStockThreshold: 6,
@@ -227,10 +220,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 390.00,
     originCountry: 'Italy',
     originFlag: '🇮🇹',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/carta-didentita-falsa-italiana-430x323.png',
+    imageUrl: '/catalogue/doc-008.png',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/carta-didentita-falsa-italiana-430x323.png',
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-italian-id-cards-430x323.jpg'
+      '/catalogue/doc-008.png',
+      '/catalogue/doc-010.jpg'
     ],
     totalStock: 28,
     lowStockThreshold: 8,
@@ -254,10 +247,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 410.00,
     originCountry: 'Netherlands',
     originFlag: '🇳🇱',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/fake-id-netherlands.jpg',
+    imageUrl: '/catalogue/doc-009.jpg',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/fake-id-netherlands.jpg',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-id-card-small-banner.jpg'
+      '/catalogue/doc-009.jpg'
     ],
     totalStock: 32,
     lowStockThreshold: 10,
@@ -280,11 +272,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 650.00,
     originCountry: 'Italy',
     originFlag: '🇮🇹',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-italian-id-cards-430x323.jpg',
-    galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-italian-id-cards-430x323.jpg',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-residence-permit-small-banner.jpg'
-    ],
+    imageUrl: '',
+    galleryImages: [],
     totalStock: 15,
     lowStockThreshold: 5,
     warehouses: [
@@ -306,10 +295,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 680.00,
     originCountry: 'Sweden',
     originFlag: '🇸🇪',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-swedish-resident-permits.webp',
+    imageUrl: '/catalogue/doc-011.webp',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-swedish-resident-permits.webp',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-residence-permit-small-banner.jpg'
+      '/catalogue/doc-011.webp'
     ],
     totalStock: 14,
     lowStockThreshold: 5,
@@ -332,10 +320,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 850.00,
     originCountry: 'Germany',
     originFlag: '🇩🇪',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/how-to-buy-eu-passport-online-1.png',
+    imageUrl: '/catalogue/doc-012.png',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/how-to-buy-eu-passport-online-1.png',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-passport.jpg'
+      '/catalogue/doc-012.png',
+      '/catalogue/doc-012-g1.jpg'
     ],
     totalStock: 12,
     lowStockThreshold: 4,
@@ -358,11 +346,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 890.00,
     originCountry: 'United States',
     originFlag: '🇺🇸',
-    imageUrl: 'https://euroexpressdocs.com/wp-content/uploads/2026/02/passport.jpg',
-    galleryImages: [
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/passport.jpg',
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/how-to-buy-eu-passport-online-1.png'
-    ],
+    imageUrl: '',
+    galleryImages: [],
     totalStock: 10,
     lowStockThreshold: 3,
     warehouses: [
@@ -384,10 +369,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 820.00,
     originCountry: 'Netherlands',
     originFlag: '🇳🇱',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-netherland-passport-online-1.webp',
+    imageUrl: '/catalogue/doc-014.webp',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-netherland-passport-online-1.webp',
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/how-to-buy-eu-passport-online-1.png'
+      '/catalogue/doc-014.webp'
     ],
     totalStock: 16,
     lowStockThreshold: 5,
@@ -410,10 +394,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 790.00,
     originCountry: 'United Kingdom',
     originFlag: '🇬🇧',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-original-uk-passports-1.webp',
+    imageUrl: '/catalogue/doc-015.webp',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-original-uk-passports-1.webp',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/passport.jpg'
+      '/catalogue/doc-015.webp',
+      '/catalogue/doc-013.jpg'
     ],
     totalStock: 15,
     lowStockThreshold: 4,
@@ -436,10 +420,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 830.00,
     originCountry: 'Canada',
     originFlag: '🇨🇦',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-real-canadian-passports-1.jpg',
+    imageUrl: '/catalogue/doc-016.jpg',
     galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-real-canadian-passports-1.jpg',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/passport.jpg'
+      '/catalogue/doc-016.jpg'
     ],
     totalStock: 11,
     lowStockThreshold: 3,
@@ -462,11 +445,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 350.00,
     originCountry: 'France',
     originFlag: '🇫🇷',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/how-to-buy-eu-passport-online-1.png',
-    galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/how-to-buy-eu-passport-online-1.png',
-      'https://eudocumentpro.com/wp-content/uploads/2024/12/3668E0FB-40B0-4BB7-861A-EBB0A666.jpg'
-    ],
+    imageUrl: '',
+    galleryImages: [],
     totalStock: 60,
     lowStockThreshold: 15,
     warehouses: [
@@ -489,11 +469,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 480.00,
     originCountry: 'France',
     originFlag: '🇫🇷',
-    imageUrl: 'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-driver-license-small-banner.jpg',
-    galleryImages: [
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-driver-license-small-banner.jpg',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-driver-license-banner.jpg'
-    ],
+    imageUrl: '',
+    galleryImages: [],
     totalStock: 35,
     lowStockThreshold: 10,
     warehouses: [
@@ -516,10 +493,9 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 510.00,
     originCountry: 'Germany',
     originFlag: '🇩🇪',
-    imageUrl: 'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-driver-license-banner.jpg',
+    imageUrl: '/catalogue/doc-001-g1.jpg',
     galleryImages: [
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-driver-license-banner.jpg',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-driver-license-small-banner.jpg'
+      '/catalogue/doc-001-g1.jpg'
     ],
     totalStock: 40,
     lowStockThreshold: 10,
@@ -542,11 +518,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 465.00,
     originCountry: 'Spain',
     originFlag: '🇪🇸',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-portuguese-driver-s-license-430x323.jpg',
-    galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-portuguese-driver-s-license-430x323.jpg',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-driver-license-small-banner.jpg'
-    ],
+    imageUrl: '',
+    galleryImages: [],
     totalStock: 28,
     lowStockThreshold: 8,
     warehouses: [
@@ -569,11 +542,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 840.00,
     originCountry: 'France',
     originFlag: '🇫🇷',
-    imageUrl: 'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-passport.jpg',
-    galleryImages: [
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-passport.jpg',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/passport.jpg'
-    ],
+    imageUrl: '',
+    galleryImages: [],
     totalStock: 18,
     lowStockThreshold: 5,
     warehouses: [
@@ -595,11 +565,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 810.00,
     originCountry: 'Spain',
     originFlag: '🇪🇸',
-    imageUrl: 'https://euroexpressdocs.com/wp-content/uploads/2026/02/passport.jpg',
-    galleryImages: [
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/passport.jpg',
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/how-to-buy-eu-passport-online-1.png'
-    ],
+    imageUrl: '',
+    galleryImages: [],
     totalStock: 15,
     lowStockThreshold: 4,
     warehouses: [
@@ -621,11 +588,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 395.00,
     originCountry: 'France',
     originFlag: '🇫🇷',
-    imageUrl: 'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-id-card-small-banner.jpg',
-    galleryImages: [
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-id-card-small-banner.jpg',
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-belgian-id-card-430x323.jpg'
-    ],
+    imageUrl: '',
+    galleryImages: [],
     totalStock: 30,
     lowStockThreshold: 8,
     warehouses: [
@@ -647,11 +611,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 385.00,
     originCountry: 'Spain',
     originFlag: '🇪🇸',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-polish-id-card-430x323.jpg',
-    galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-polish-id-card-430x323.jpg',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-id-card-small-banner.jpg'
-    ],
+    imageUrl: '',
+    galleryImages: [],
     totalStock: 26,
     lowStockThreshold: 7,
     warehouses: [
@@ -673,11 +634,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 660.00,
     originCountry: 'France',
     originFlag: '🇫🇷',
-    imageUrl: 'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-residence-permit-small-banner.jpg',
-    galleryImages: [
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-residence-permit-small-banner.jpg',
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-swedish-resident-permits.webp'
-    ],
+    imageUrl: '',
+    galleryImages: [],
     totalStock: 16,
     lowStockThreshold: 5,
     warehouses: [
@@ -699,10 +657,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 690.00,
     originCountry: 'Germany',
     originFlag: '🇩🇪',
-    imageUrl: 'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-residence-permit-small-banner.jpg',
+    imageUrl: '/catalogue/doc-002-g1.jpg',
     galleryImages: [
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/german-residence-permit-small-banner.jpg',
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/buy-swedish-resident-permits.webp'
+      '/catalogue/doc-002-g1.jpg',
+      '/catalogue/doc-010-g1.jpg'
     ],
     totalStock: 18,
     lowStockThreshold: 5,
@@ -725,11 +683,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 895.00,
     originCountry: 'Switzerland',
     originFlag: '🇨🇭',
-    imageUrl: 'https://eudocumentllc.com/wp-content/uploads/2025/09/how-to-buy-eu-passport-online-1.png',
-    galleryImages: [
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/how-to-buy-eu-passport-online-1.png',
-      'https://euroexpressdocs.com/wp-content/uploads/2026/02/passport.jpg'
-    ],
+    imageUrl: '',
+    galleryImages: [],
     totalStock: 12,
     lowStockThreshold: 3,
     warehouses: [
@@ -751,11 +706,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 290.00,
     originCountry: 'France',
     originFlag: '🇫🇷',
-    imageUrl: 'https://eudocumentpro.com/wp-content/uploads/2024/12/3668E0FB-40B0-4BB7-861A-EBB0A666.jpg',
-    galleryImages: [
-      'https://eudocumentpro.com/wp-content/uploads/2024/12/3668E0FB-40B0-4BB7-861A-EBB0A666.jpg',
-      'https://eudocumentllc.com/wp-content/uploads/2025/09/how-to-buy-eu-passport-online-1.png'
-    ],
+    imageUrl: '',
+    galleryImages: [],
     totalStock: 50,
     lowStockThreshold: 10,
     warehouses: [
