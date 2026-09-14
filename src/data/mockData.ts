@@ -222,8 +222,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     originFlag: '🇮🇹',
     imageUrl: '/catalogue/doc-008.png',
     galleryImages: [
-      '/catalogue/doc-008.png',
-      '/catalogue/doc-010.jpg'
+      '/catalogue/doc-008.png'
     ],
     totalStock: 28,
     lowStockThreshold: 8,
@@ -272,8 +271,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 650.00,
     originCountry: 'Italy',
     originFlag: '🇮🇹',
-    imageUrl: '',
-    galleryImages: [],
+    imageUrl: '/catalogue/doc-010.jpg',
+    galleryImages: [
+      '/catalogue/doc-010.jpg'
+    ],
     totalStock: 15,
     lowStockThreshold: 5,
     warehouses: [
@@ -346,8 +347,12 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 890.00,
     originCountry: 'United States',
     originFlag: '🇺🇸',
-    imageUrl: '',
-    galleryImages: [],
+    imageUrl: '/catalogue/doc-013.png',
+    galleryImages: [
+      '/catalogue/doc-013.png',
+      '/catalogue/doc-013-g1.png',
+      '/catalogue/doc-013-g2.png'
+    ],
     totalStock: 10,
     lowStockThreshold: 3,
     warehouses: [
@@ -396,8 +401,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     originFlag: '🇬🇧',
     imageUrl: '/catalogue/doc-015.webp',
     galleryImages: [
-      '/catalogue/doc-015.webp',
-      '/catalogue/doc-013.jpg'
+      '/catalogue/doc-015.webp'
     ],
     totalStock: 15,
     lowStockThreshold: 4,
@@ -445,8 +449,11 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 350.00,
     originCountry: 'France',
     originFlag: '🇫🇷',
-    imageUrl: '',
-    galleryImages: [],
+    imageUrl: '/catalogue/doc-017.png',
+    galleryImages: [
+      '/catalogue/doc-017.png',
+      '/catalogue/doc-017-g1.png'
+    ],
     totalStock: 60,
     lowStockThreshold: 15,
     warehouses: [
@@ -469,8 +476,12 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 480.00,
     originCountry: 'France',
     originFlag: '🇫🇷',
-    imageUrl: '',
-    galleryImages: [],
+    imageUrl: '/catalogue/doc-018.jpg',
+    galleryImages: [
+      '/catalogue/doc-018.jpg',
+      '/catalogue/doc-018-g1.png',
+      '/catalogue/doc-018-g2.jpg'
+    ],
     totalStock: 35,
     lowStockThreshold: 10,
     warehouses: [
@@ -495,7 +506,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     originFlag: '🇩🇪',
     imageUrl: '/catalogue/doc-001-g1.jpg',
     galleryImages: [
-      '/catalogue/doc-001-g1.jpg'
+      '/catalogue/doc-001-g1.jpg',
+      '/catalogue/doc-019-g1.png',
+      '/catalogue/doc-019-g2.jpg',
+      '/catalogue/doc-019-g3.jpg'
     ],
     totalStock: 40,
     lowStockThreshold: 10,
@@ -518,8 +532,11 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 465.00,
     originCountry: 'Spain',
     originFlag: '🇪🇸',
-    imageUrl: '',
-    galleryImages: [],
+    imageUrl: '/catalogue/doc-020.png',
+    galleryImages: [
+      '/catalogue/doc-020.png',
+      '/catalogue/doc-020-g1.png'
+    ],
     totalStock: 28,
     lowStockThreshold: 8,
     warehouses: [
@@ -542,8 +559,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 840.00,
     originCountry: 'France',
     originFlag: '🇫🇷',
-    imageUrl: '',
-    galleryImages: [],
+    imageUrl: '/catalogue/doc-021.jpg',
+    galleryImages: [
+      '/catalogue/doc-021.jpg'
+    ],
     totalStock: 18,
     lowStockThreshold: 5,
     warehouses: [
@@ -565,8 +584,14 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 810.00,
     originCountry: 'Spain',
     originFlag: '🇪🇸',
-    imageUrl: '',
-    galleryImages: [],
+    imageUrl: '/catalogue/doc-022.jpg',
+    galleryImages: [
+      '/catalogue/doc-022.jpg',
+      '/catalogue/doc-022-g1.jpg',
+      '/catalogue/doc-022-g2.jpg',
+      '/catalogue/doc-022-g3.jpg',
+      '/catalogue/doc-022-g4.png'
+    ],
     totalStock: 15,
     lowStockThreshold: 4,
     warehouses: [
@@ -588,8 +613,11 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 395.00,
     originCountry: 'France',
     originFlag: '🇫🇷',
-    imageUrl: '',
-    galleryImages: [],
+    imageUrl: '/catalogue/doc-023.png',
+    galleryImages: [
+      '/catalogue/doc-023.png',
+      '/catalogue/doc-023-g1.png'
+    ],
     totalStock: 30,
     lowStockThreshold: 8,
     warehouses: [
@@ -611,8 +639,11 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 385.00,
     originCountry: 'Spain',
     originFlag: '🇪🇸',
-    imageUrl: '',
-    galleryImages: [],
+    imageUrl: '/catalogue/doc-024.png',
+    galleryImages: [
+      '/catalogue/doc-024.png',
+      '/catalogue/doc-024-g1.png'
+    ],
     totalStock: 26,
     lowStockThreshold: 7,
     warehouses: [
@@ -634,8 +665,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     originalPriceEUR: 660.00,
     originCountry: 'France',
     originFlag: '🇫🇷',
-    imageUrl: '',
-    galleryImages: [],
+    imageUrl: '/catalogue/doc-025.jpg',
+    galleryImages: [
+      '/catalogue/doc-025.jpg'
+    ],
     totalStock: 16,
     lowStockThreshold: 5,
     warehouses: [
