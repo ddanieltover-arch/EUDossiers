@@ -33,7 +33,7 @@ interface StoreContextType {
 
   // Cart
   cart: CartItem[];
-  addToCart: (product: Product, quantity?: number) => void;
+  addToCart: (product: Product, quantity?: number, openDrawer?: boolean) => void;
   updateCartQuantity: (productId: string, quantity: number) => void;
   removeFromCart: (productId: string) => void;
   clearCart: () => void;
@@ -201,7 +201,7 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   };
 
   // Cart Management
-  const addToCart = (product: Product, quantity = 1) => {
+  const addToCart = (product: Product, quantity = 1, openDrawer = true) => {
     if (product.totalStock <= 0) return;
     setCart(prev => {
       const existing = prev.find(item => item.product.id === product.id);
@@ -213,7 +213,9 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       }
       return [...prev, { product, quantity: Math.min(product.totalStock, quantity) }];
     });
-    setIsCartOpen(true);
+    if (openDrawer) {
+      setIsCartOpen(true);
+    }
   };
 
   const updateCartQuantity = (productId: string, quantity: number) => {

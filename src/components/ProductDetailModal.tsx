@@ -11,6 +11,7 @@ export const ProductDetailModal: React.FC = () => {
     selectedProductForDetail, 
     setSelectedProductForDetail, 
     addToCart, 
+    setIsCartOpen,
     formatPriceEUR,
   } = useStore();
   const { t, i18n } = useTranslation('common');
@@ -38,7 +39,8 @@ export const ProductDetailModal: React.FC = () => {
   };
 
   const handleBuyNow = () => {
-    addToCart(product, quantity);
+    addToCart(product, quantity, false);
+    setIsCartOpen(false);
     setSelectedProductForDetail(null);
     navigate('/checkout');
   };

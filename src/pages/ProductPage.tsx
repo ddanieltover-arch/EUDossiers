@@ -11,7 +11,15 @@ import { findProductBySlugOrId, getProductPath, getProductSlug } from '../utils/
 const ProductPage: React.FC = () => {
   const { productSlug } = useParams<{ productSlug: string }>();
   const navigate = useNavigate();
-  const { products, isLoadingProducts, addToCart, formatPriceEUR, setSearchQuery } = useStore();
+  const { products, isLoadingProducts, addToCart, setIsCartOpen, formatPriceEUR, setSearchQuery } = useStore();
+
+  // ...
+
+  const handleBuyNow = () => {
+    addToCart(product, quantity, false);
+    setIsCartOpen(false);
+    navigate('/checkout');
+  };
   const { t, i18n } = useTranslation('common');
 
   const [quantity, setQuantity] = useState<number>(1);
@@ -80,11 +88,6 @@ const ProductPage: React.FC = () => {
 
   const handleAddToCart = () => {
     addToCart(product, quantity);
-  };
-
-  const handleBuyNow = () => {
-    addToCart(product, quantity);
-    navigate('/checkout');
   };
 
   return (
