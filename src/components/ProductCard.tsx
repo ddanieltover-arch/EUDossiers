@@ -124,32 +124,35 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           )}
         </div>
 
-        <div className="pt-3 border-t border-[var(--color-border)] flex items-end justify-between">
-          <div>
-            <div className="flex items-center space-x-1.5 text-xs text-[var(--color-text-muted)]">
-              <span className="line-through text-[var(--color-text-muted)] font-mono text-[11px]">
+        <div className="pt-4 border-t border-[var(--color-border)] space-y-3">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="line-through font-mono text-[11px] text-[var(--color-text-muted)]">
                 {formatPriceEUR(originalPrice)}
               </span>
-            </div>
-            <div className="flex items-baseline space-x-1.5">
-              <span className="text-lg font-extrabold text-emerald-500">{priceLabel}</span>
-              <span className="text-[10px] font-black text-rose-500 bg-rose-50 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 px-1.5 py-0.5 rounded">
-                {discountPercent}% OFF
+              <span className="inline-flex items-center text-[10px] font-bold tracking-wide text-rose-700 dark:text-rose-200 bg-rose-100 dark:bg-rose-900/50 border border-rose-200 dark:border-rose-800/80 px-1.5 py-0.5 rounded-md">
+                −{discountPercent}%
               </span>
             </div>
-            <div className="text-[10px] text-[var(--color-text-muted)]">{t('product.includesVat')}</div>
+            <div className="text-xl font-extrabold tracking-tight text-[var(--color-text-primary)] tabular-nums">
+              {priceLabel}
+            </div>
           </div>
+
+          <p className="text-[10px] leading-snug text-[var(--color-text-muted)]">
+            {t('product.includesVat')}
+          </p>
 
           <button
             onClick={() => addToCart(product)}
             disabled={isOutOfStock}
-            className={`px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center space-x-1.5 transition-all shadow-md ${
+            className={`w-full py-2.5 px-4 rounded-xl text-xs font-semibold inline-flex items-center justify-center gap-2 whitespace-nowrap transition-all ${
               isOutOfStock
-                ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed'
-                : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-600/20'
+                ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed border border-[var(--color-border)]'
+                : 'bg-blue-600 hover:bg-blue-500 text-white shadow-md shadow-blue-600/20'
             }`}
           >
-            <ShoppingBag className="w-3.5 h-3.5" />
+            <ShoppingBag className="w-3.5 h-3.5 shrink-0" />
             <span>{isOutOfStock ? t('product.outOfStock') : t('actions.addToCart')}</span>
           </button>
         </div>
