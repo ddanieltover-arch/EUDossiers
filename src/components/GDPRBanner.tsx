@@ -62,7 +62,7 @@ export const GDPRBanner: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-xl z-40 bg-[var(--color-bg-card)]/95 border border-[var(--color-border)] text-[var(--color-text-primary)] rounded-2xl p-4 shadow-2xl backdrop-blur-md animate-in slide-in-from-bottom duration-300">
+    <div className="fixed bottom-20 md:bottom-4 left-4 right-4 md:left-auto md:right-6 md:max-w-xl z-40 bg-[var(--color-bg-card)]/95 border border-[var(--color-border)] text-[var(--color-text-primary)] rounded-2xl p-4 shadow-2xl backdrop-blur-md animate-in slide-in-from-bottom duration-300">
       <div className="flex items-start space-x-3">
         
         <div className="p-2 bg-emerald-100 dark:bg-emerald-600/20 text-emerald-600 dark:text-emerald-400 rounded-xl shrink-0 mt-0.5">

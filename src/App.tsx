@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { StoreProvider, useStore } from './context/StoreContext';
 import { TopTicker } from './components/TopTicker';
 import { Navbar } from './components/Navbar';
+import { MobileBottomNav } from './components/MobileBottomNav';
 import { CartDrawer } from './components/CartDrawer';
 import { OrderSuccessModal } from './components/OrderSuccessModal';
 import { LanguageModal } from './components/LanguageModal';
@@ -42,7 +43,7 @@ const AppContent: React.FC = () => {
       <TopTicker />
       <Navbar />
 
-      <main className="flex-1">
+      <main className="flex-1 pb-20 md:pb-0">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/catalogue" element={<CataloguePage />} />
@@ -60,8 +61,9 @@ const AppContent: React.FC = () => {
       <OrderSuccessModal />
       <LanguageModal />
       <GDPRBanner />
+      <MobileBottomNav />
 
-      <footer className="bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)] text-[var(--color-text-muted)] py-12 mt-12 text-xs transition-colors duration-200">
+      <footer className="bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)] text-[var(--color-text-muted)] py-12 mt-12 mb-16 md:mb-0 text-xs transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">

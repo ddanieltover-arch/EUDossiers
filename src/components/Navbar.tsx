@@ -87,7 +87,7 @@ export const Navbar: React.FC = () => {
 
           <div className="flex items-center space-x-2 sm:space-x-3">
             
-            <div className="bg-[var(--color-bg-tertiary)] p-1 rounded-xl border border-[var(--color-border)] flex items-center space-x-1">
+            <div className="hidden md:flex bg-[var(--color-bg-tertiary)] p-1 rounded-xl border border-[var(--color-border)] items-center space-x-1">
               <Link
                 to="/"
                 className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
