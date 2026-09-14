@@ -43,6 +43,10 @@
     "checkout": "Checkout",
     "back": "Back"
   },
+  "floating": {
+    "whatsapp": "Chat on WhatsApp",
+    "backToTop": "Back to top"
+  },
   "product": {
     "madeIn": "Made in {{country}}",
     "outOfStock": "Out of Stock",

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Clock, Phone, Send, CheckCircle, Globe } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { SITE_NAME, CONTACT_EMAIL, PRIVACY_EMAIL, ADDRESS_LINE, DOMAIN } from '../brand';
+import { SITE_NAME, CONTACT_EMAIL, PRIVACY_EMAIL, ADDRESS_LINE, DOMAIN, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_E164, WHATSAPP_URL } from '../brand';
 
 const ContactPage: React.FC = () => {
   const { t } = useTranslation('contact');
@@ -71,8 +71,21 @@ const ContactPage: React.FC = () => {
               <Phone className="w-5 h-5 text-white/90 mt-0.5 shrink-0" />
               <div>
                 <h3 className="font-semibold text-sm">{t('phone')}</h3>
-                <p className="text-sm text-white/95">+49 30 123 456 78</p>
+                <a href={`tel:${CONTACT_PHONE_E164}`} className="text-sm text-white hover:underline">
+                  {CONTACT_PHONE_DISPLAY}
+                </a>
                 <p className="text-xs text-white/75 mt-0.5">{t('phoneHours')}</p>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 mt-2 text-xs font-semibold bg-white/15 hover:bg-white/25 border border-white/25 rounded-lg px-2.5 py-1.5 transition-colors"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5" aria-hidden="true">
+                    <path d="M17.472 14.382c-.297-.139-1.633-.79-1.886-.88-.253-.09-.437-.139-.62.14-.184.279-.713.88-.873 1.061-.16.18-.32.202-.593.07-.274-.139-1.447-.533-2.757-1.7-1.019-.906-1.707-2.028-1.907-2.372-.2-.345-.021-.531.14-.7.144-.143.32-.373.48-.56.16-.187.213-.32.32-.533.107-.213.053-.4-.027-.56-.08-.16-.62-1.493-.85-2.047-.224-.535-.45-.463-.62-.472l-.527-.01c-.187 0-.49.07-.746.35-.256.28-.98.958-.98 2.34 0 1.38 1.003 2.713 1.143 2.9.14.187 1.973 3.01 4.78 4.22.668.287 1.19.458 1.597.586.67.214 1.28.183 1.763.111.538-.08 1.633-.667 1.865-1.312.23-.645.23-1.197.16-1.312-.07-.114-.255-.18-.552-.32zm-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                  </svg>
+                  WhatsApp
+                </a>
               </div>
             </div>
 
