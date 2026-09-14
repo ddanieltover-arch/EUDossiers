@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useParams, Link, useNavigate, Navigate } from 'react-router-dom';
-import { ShoppingBag, ShieldCheck, Warehouse, MapPin, ArrowLeft, AlertTriangle } from 'lucide-react';
+import { ShoppingBag, ShieldCheck, Warehouse, MapPin, ArrowLeft, AlertTriangle, Zap } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useStore } from '../context/StoreContext';
 import { SITE_NAME } from '../brand';
@@ -80,6 +80,11 @@ const ProductPage: React.FC = () => {
 
   const handleAddToCart = () => {
     addToCart(product, quantity);
+  };
+
+  const handleBuyNow = () => {
+    addToCart(product, quantity);
+    navigate('/checkout');
   };
 
   return (
@@ -211,18 +216,33 @@ const ProductPage: React.FC = () => {
               </div>
             </div>
 
-            <button
-              onClick={handleAddToCart}
-              disabled={isOutOfStock}
-              className={`w-full py-3.5 rounded-xl text-sm font-bold flex items-center justify-center space-x-2 transition-all shadow-lg ${
-                isOutOfStock
-                  ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed'
-                  : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-600/30'
-              }`}
-            >
-              <ShoppingBag className="w-4 h-4" />
-              <span>{isOutOfStock ? 'Currently Out of Stock' : `Add ${quantity} to Cart`}</span>
-            </button>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <button
+                onClick={handleAddToCart}
+                disabled={isOutOfStock}
+                className={`py-3.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center space-x-2 transition-all shadow-md ${
+                  isOutOfStock
+                    ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed'
+                    : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-600/20'
+                }`}
+              >
+                <ShoppingBag className="w-4 h-4" />
+                <span>{isOutOfStock ? t('product.outOfStock') : `Add ${quantity} to Cart`}</span>
+              </button>
+
+              <button
+                onClick={handleBuyNow}
+                disabled={isOutOfStock}
+                className={`py-3.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center space-x-2 transition-all shadow-lg ${
+                  isOutOfStock
+                    ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed'
+                    : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-600/30'
+                }`}
+              >
+                <Zap className="w-4 h-4 fill-current" />
+                <span>{isOutOfStock ? t('product.outOfStock') : t('actions.buyNow', { defaultValue: 'Buy Now' })}</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
