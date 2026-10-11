@@ -116,12 +116,13 @@ export const ProductGrid: React.FC = () => {
       const matchSupplier = p.supplierName.toLowerCase().includes(cleanQ);
       const matchTags = p.tags.some(tag => tag.toLowerCase().includes(cleanQ));
       const matchAliases = p.searchAliases?.some(alias => alias.toLowerCase().includes(cleanQ)) || false;
+      const matchSubtitle = p.buyerSubtitle?.toLowerCase().includes(cleanQ) || false;
 
       // Multimodal visual query handler (GSC #1 queries)
       const isVisualQuery = ['picture', 'photo', 'có hình ảnh ko', 'ekta chobi dekhao', 'show me a photo', 'can i see a picture', 'specimen', 'sample', 'image'].some(vq => cleanQ.includes(vq));
       const matchVisual = isVisualQuery && Boolean(p.galleryImages && p.galleryImages.length > 0);
 
-      if (!matchName && !matchDesc && !matchSku && !matchSupplier && !matchTags && !matchAliases && !matchVisual) return false;
+      if (!matchName && !matchDesc && !matchSku && !matchSupplier && !matchTags && !matchAliases && !matchSubtitle && !matchVisual) return false;
     }
     if (selectedCategory !== 'All' && p.category !== selectedCategory) return false;
     if (selectedOriginCountry !== 'All' && p.originCountry !== selectedOriginCountry) return false;
@@ -262,6 +263,34 @@ export const ProductGrid: React.FC = () => {
                 }`}
               >
                 #{tag}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* European Buyer Intent Filter Chips */}
+        <div className="flex items-center space-x-2 pt-1 overflow-x-auto custom-scrollbar">
+          <span className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 shrink-0">Buyer Inquiries:</span>
+          {[
+            { label: 'How to buy in Netherlands', q: 'Netherlands' },
+            { label: 'Where can I buy in UK', q: 'United Kingdom' },
+            { label: 'How much for in Germany', q: 'Germany' },
+            { label: 'How to buy in Italy', q: 'Italy' },
+            { label: 'Where can I buy in France', q: 'France' },
+            { label: 'Pricing in Spain', q: 'Spain' }
+          ].map((item, idx) => {
+            const isActive = searchQuery.toLowerCase().includes(item.q.toLowerCase());
+            return (
+              <button
+                key={idx}
+                onClick={() => setSearchQuery(isActive ? '' : item.q)}
+                className={`text-[11px] font-medium px-2.5 py-1 rounded-lg border transition-all shrink-0 ${
+                  isActive
+                    ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                    : 'bg-[var(--color-bg-primary)] border-[var(--color-border)] text-[var(--color-text-secondary)] hover:border-blue-400/50 hover:text-blue-600 dark:hover:text-blue-300'
+                }`}
+              >
+                {item.label}
               </button>
             );
           })}

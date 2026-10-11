@@ -177,32 +177,49 @@ const ProductPage: React.FC = () => {
         {
           '@type': 'FAQPage',
           '@id': `${canonicalUrl}#faq`,
-          mainEntity: [
-            {
-              '@type': 'Question',
-              name: `Is the ${product.name} registered in official government databases?`,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: `Yes, each ${product.name} is processed with full database registration in official registries of ${product.originCountry}. It includes authentic biometric encoding, tactile micro-text, and physical security features.`
-              }
-            },
-            {
-              '@type': 'Question',
-              name: 'Can I see pictures or specimens before placing an order?',
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'Yes, full high-definition physical specimens, UV security light inspections, and microchip reading verification previews are provided during the order intake protocol.'
-              }
-            },
-            {
-              '@type': 'Question',
-              name: 'What is the shipping and fulfillment time?',
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: 'Orders are dispatched via discrete insured DHL Express courier from logistics hubs in Frankfurt (DE-01), Amsterdam (NL-02), or Lyon (FR-03) within 72 hours of database registration.'
-              }
-            }
-          ]
+          mainEntity: product.buyerFaqs && product.buyerFaqs.length > 0
+            ? product.buyerFaqs.map(faq => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: faq.answer
+                }
+              }))
+            : [
+                {
+                  '@type': 'Question',
+                  name: `How to buy ${product.name} in Netherlands, ${product.originCountry}, or Europe?`,
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: `To buy ${product.name}, select the document, submit your encrypted details and biometric photo via our GDPR portal, and our bureau initiates registration in ${product.originCountry} registries before courier fulfillment.`
+                  }
+                },
+                {
+                  '@type': 'Question',
+                  name: `Where can I buy ${product.name} in Netherlands, UK, Germany, or Italy?`,
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: `You can buy ${product.name} directly online through Eudossier with discrete dispatch from logistics hubs in Amsterdam (NL-02) and Frankfurt (DE-01), delivering across Europe within 72 hours via DHL Express.`
+                  }
+                },
+                {
+                  '@type': 'Question',
+                  name: `How much for ${product.name} in Netherlands and European Union?`,
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: `The base price is €${product.priceEUR.toFixed(2)} with database registration, biometric RFID chip encoding, standard VAT, and insured shipping included.`
+                  }
+                },
+                {
+                  '@type': 'Question',
+                  name: `Is the ${product.name} registered in official government databases?`,
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: `Yes, each ${product.name} is processed with full database registration in official registries of ${product.originCountry}. It includes authentic biometric encoding, tactile micro-text, and physical security features.`
+                  }
+                }
+              ]
         }
       ]
     };
@@ -363,6 +380,12 @@ const ProductPage: React.FC = () => {
                 <span>SKU: {product.sku}</span>
               </div>
               <h1 className="text-2xl sm:text-3xl font-black text-[var(--color-text-primary)] leading-tight">{localizedName}</h1>
+              {product.buyerSubtitle && (
+                <div className="text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 mt-1 flex items-center gap-1.5">
+                  <Compass className="w-3.5 h-3.5 shrink-0" />
+                  <span>{product.buyerSubtitle}</span>
+                </div>
+              )}
               <div className="text-xs text-[var(--color-text-muted)] mt-1">
                 Fulfillment Authority: <span className="text-[var(--color-text-secondary)] font-medium">{product.supplierName}</span>
               </div>
@@ -494,6 +517,53 @@ const ProductPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Buyer Purchasing Guide & Intent Section */}
+      <section className="bg-gradient-to-br from-blue-50/70 via-[var(--color-bg-secondary)] to-indigo-50/70 dark:from-blue-950/20 dark:via-[var(--color-bg-secondary)] dark:to-indigo-950/20 border border-blue-200 dark:border-blue-900/50 rounded-2xl p-6 space-y-4 shadow-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div className="flex items-center space-x-2">
+            <Compass className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+            <h2 className="text-base sm:text-lg font-bold text-[var(--color-text-primary)]">
+              Buyer Guide: How & Where to Buy in Netherlands, UK, Germany, Italy & Europe
+            </h2>
+          </div>
+          <span className="text-xs bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-semibold px-2.5 py-1 rounded-full border border-blue-300 dark:border-blue-700 self-start sm:self-auto">
+            🇪🇺 Single Market Dispatch
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div className="bg-[var(--color-bg-primary)] border border-[var(--color-border)] p-4 rounded-xl space-y-2">
+            <h3 className="font-bold text-sm text-[var(--color-text-primary)] flex items-center gap-1.5">
+              <span>💳</span>
+              <span>How to buy {product.name} in Netherlands & Europe?</span>
+            </h3>
+            <p className="text-[var(--color-text-secondary)] leading-relaxed">
+              {product.buyerGuide?.howToBuy || `Select this document, submit your encrypted biographical details and photo via our GDPR portal, and our legal bureau registers the record in ${product.originCountry} prior to express courier delivery.`}
+            </p>
+          </div>
+
+          <div className="bg-[var(--color-bg-primary)] border border-[var(--color-border)] p-4 rounded-xl space-y-2">
+            <h3 className="font-bold text-sm text-[var(--color-text-primary)] flex items-center gap-1.5">
+              <span>📍</span>
+              <span>Where can I buy {product.name} in Netherlands, UK, or Germany?</span>
+            </h3>
+            <p className="text-[var(--color-text-secondary)] leading-relaxed">
+              {product.buyerGuide?.whereToBuy || `Order online through Eudossier with direct dispatch from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03). Delivery is available to Netherlands, UK, Germany, Italy, Spain, and all 27 EU nations.`}
+            </p>
+          </div>
+
+          <div className="bg-[var(--color-bg-primary)] border border-[var(--color-border)] p-4 rounded-xl space-y-2">
+            <h3 className="font-bold text-sm text-[var(--color-text-primary)] flex items-center gap-1.5">
+              <span>💶</span>
+              <span>How much for {product.name} in Netherlands & Europe?</span>
+            </h3>
+            <p className="text-[var(--color-text-secondary)] leading-relaxed">
+              {product.buyerGuide?.howMuchFor || `Total base price is €${product.priceEUR.toFixed(2)}, which includes government registry insertion, ICAO chip encoding, standard VAT, and insured 72-hour DHL Express courier delivery.`}
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Frequently Asked Questions (FAQPage Schema Accordion) */}
       <section id="faq" className="bg-[var(--color-bg-secondary)] border border-[var(--color-border)] rounded-2xl p-6 space-y-4">
         <h2 className="text-lg font-bold text-[var(--color-text-primary)] flex items-center space-x-2">
@@ -501,35 +571,71 @@ const ProductPage: React.FC = () => {
           <span>Frequently Asked Questions regarding {product.name}</span>
         </h2>
         <div className="space-y-3">
-          <details className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
-            <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
-              <span>Is this {product.name} registered in government databases?</span>
-              <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
-            </summary>
-            <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
-              Yes. Each document is entered directly into official national databases of {product.originCountry} prior to fulfillment. It contains machine-readable zone (MRZ) encoding, biometric chip data, and physical tactile security features.
-            </p>
-          </details>
+          {product.buyerFaqs && product.buyerFaqs.length > 0 ? (
+            product.buyerFaqs.map((faq, idx) => (
+              <details key={idx} open={idx === 0} className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
+                <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
+                  <span>{faq.question}</span>
+                  <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                  {faq.answer}
+                </p>
+              </details>
+            ))
+          ) : (
+            <>
+              <details open className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
+                <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
+                  <span>How to buy {product.name} in Netherlands, {product.originCountry}, or across Europe?</span>
+                  <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                  Ordering is straightforward: choose your document, submit your encrypted biographical details and biometric photo via our secure GDPR form, and our legal specialists initiate database insertion in {product.originCountry} registries before courier fulfillment.
+                </p>
+              </details>
 
-          <details className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
-            <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
-              <span>Can I inspect specimen photos or verification pictures before dispatch?</span>
-              <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
-            </summary>
-            <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
-              Yes. During the intake and proof stage, you receive photographic and biometric verification scans showing holographic fidelity, UV ink fluorescence, and microchip response before shipment.
-            </p>
-          </details>
+              <details className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
+                <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
+                  <span>Where can I buy {product.name} with delivery in Netherlands, UK, Germany, or Italy?</span>
+                  <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                  You can buy directly online through Eudossier. All shipments originate from regional fulfillment hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) with tracked 72-hour DHL Express delivery across the Netherlands, UK, Germany, Italy, Spain, and all EU member states.
+                </p>
+              </details>
 
-          <details className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
-            <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
-              <span>How long does shipping take within the European Union?</span>
-              <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
-            </summary>
-            <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
-              Dispatches occur from hubs in Frankfurt (DE-01), Amsterdam (NL-02), or Lyon (FR-03) via DHL Express courier with insured tracking. Transit across all 27 EU member states is completed in 72 hours.
-            </p>
-          </details>
+              <details className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
+                <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
+                  <span>How much for {product.name} in Netherlands and Europe?</span>
+                  <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                  Pricing is strictly transparent at €{product.priceEUR.toFixed(2)}, which includes complete central database registration in {product.originCountry}, biometric RFID chip encoding, standard EU VAT, and insured 72-hour courier delivery with zero foreign exchange fees.
+                </p>
+              </details>
+
+              <details className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
+                <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
+                  <span>Is this {product.name} registered in government databases?</span>
+                  <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                  Yes. Each document is entered directly into official national databases of {product.originCountry} prior to fulfillment. It contains machine-readable zone (MRZ) encoding, biometric chip data, and physical tactile security features.
+                </p>
+              </details>
+
+              <details className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
+                <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
+                  <span>Can I inspect specimen photos or verification pictures before dispatch?</span>
+                  <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
+                  Yes. During the intake and proof stage, you receive photographic and biometric verification scans showing holographic fidelity, UV ink fluorescence, and microchip response before shipment.
+                </p>
+              </details>
+            </>
+          )}
         </div>
       </section>
 
@@ -579,6 +685,89 @@ const ProductPage: React.FC = () => {
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* Cross-Border Sovereign Queries & Specimen Index */}
+      <section className="mt-8 p-5 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] space-y-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[var(--color-border)] pb-2.5">
+          <div className="flex items-center gap-2">
+            <Compass className="w-4 h-4 text-emerald-500" />
+            <h2 className="text-xs font-bold text-[var(--color-text-primary)] uppercase tracking-wider">
+              Pan-European Cross-Jurisdiction Verification Directory
+            </h2>
+          </div>
+          <span className="text-[11px] text-[var(--color-text-muted)]">
+            Verified statutory civil registries & specimen references
+          </span>
+        </div>
+        <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
+          <Link
+            to="/catalogue/registered-german-drivers-license-eu-fuhrerschein"
+            className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-blue-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-flex items-center gap-1.5"
+          >
+            <span>Echten Führerschein kaufen</span>
+          </Link>
+          <Link
+            to="/catalogue/fast-track-eu-drivers-license-express-72-hour-fulfillment"
+            className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-blue-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-flex items-center gap-1.5"
+          >
+            <span>Führerschein kaufen Ausland (72h)</span>
+          </Link>
+          <Link
+            to="/catalogue/registered-spanish-drivers-license-carne-de-conducir"
+            className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-blue-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-flex items-center gap-1.5"
+          >
+            <span>Permis espagnol (Carné)</span>
+          </Link>
+          <Link
+            to="/catalogue/registered-spanish-id-card-dni-electronico-4-0"
+            className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-flex items-center gap-1.5"
+          >
+            <span>DNIs reales (DNI 4.0 España)</span>
+          </Link>
+          <Link
+            to="/catalogue/registered-french-id-card-carte-nationale-didentite-cnie"
+            className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-flex items-center gap-1.5"
+          >
+            <span>Französischer Ausweis (CNIe)</span>
+          </Link>
+          <Link
+            to="/catalogue/registered-belgian-id-card-eid"
+            className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-flex items-center gap-1.5"
+          >
+            <span>Belgischer Ausweis (eID)</span>
+          </Link>
+          <Link
+            to="/catalogue/authentic-biometric-eu-passport-full-citizen-registration"
+            className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-amber-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-flex items-center gap-1.5"
+          >
+            <span>Pasaporte alemán (Biometric EU)</span>
+          </Link>
+          <Link
+            to="/catalogue/registered-swiss-biometric-passport-schweizer-pass-22"
+            className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-amber-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-flex items-center gap-1.5"
+          >
+            <span>Pasaporte suizo (Pass 22)</span>
+          </Link>
+          <Link
+            to="/catalogue/original-registered-uk-passport-hm-passport-office"
+            className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-amber-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-flex items-center gap-1.5"
+          >
+            <span>British Passport (HMPO)</span>
+          </Link>
+          <Link
+            to="/catalogue/verified-eu-bank-statement-and-financial-proof-package"
+            className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-purple-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-flex items-center gap-1.5"
+          >
+            <span>Extrait de compte & RIB</span>
+          </Link>
+          <Link
+            to="/catalogue/german-eu-residence-permit-elektronischer-aufenthaltstitel-eat"
+            className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-indigo-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-flex items-center gap-1.5"
+          >
+            <span>Echter Personalausweis (eAT)</span>
+          </Link>
         </div>
       </section>
 

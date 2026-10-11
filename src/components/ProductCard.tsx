@@ -101,6 +101,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {localizedName}
           </Link>
 
+          {product.buyerSubtitle && (
+            <div className="text-[11px] font-medium text-blue-600 dark:text-blue-400 mt-1 line-clamp-1 flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
+              <span>{product.buyerSubtitle}</span>
+            </div>
+          )}
+
           <p className="text-xs text-[var(--color-text-muted)] mt-1.5 line-clamp-2 leading-relaxed">
             {localizedDescription}
           </p>

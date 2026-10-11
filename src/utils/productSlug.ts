@@ -13,11 +13,12 @@ export function slugifyEnglishName(name: string): string {
     .slice(0, 90);
 }
 
-export function getProductSlug(product: Pick<Product, 'id' | 'name' | 'sku'>): string {
+export function getProductSlug(product: Pick<Product, 'id' | 'name' | 'sku'> & { slug?: string }): string {
+  if (product.slug) return product.slug;
   return slugifyEnglishName(product.name) || slugifyEnglishName(product.sku) || product.id;
 }
 
-export function getProductPath(product: Pick<Product, 'id' | 'name' | 'sku'>): string {
+export function getProductPath(product: Pick<Product, 'id' | 'name' | 'sku'> & { slug?: string }): string {
   return `/catalogue/${getProductSlug(product)}`;
 }
 
@@ -36,6 +37,10 @@ export function findProductBySlugOrId(
   // 1. Exact match by slug
   const bySlug = products.find((product) => getProductSlug(product).toLowerCase() === decoded);
   if (bySlug) return bySlug;
+
+  // 1b. Exact match by explicit product.slug
+  const byExplicitSlug = products.find((product) => product.slug && product.slug.toLowerCase() === decoded);
+  if (byExplicitSlug) return byExplicitSlug;
 
   // 2. Exact match by id
   const byId = products.find((product) => product.id.toLowerCase() === decoded);

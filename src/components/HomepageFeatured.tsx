@@ -37,7 +37,7 @@ export const HomepageFeatured: React.FC = () => {
             {t('home:featured.title')}
           </h2>
           <p className="text-xs sm:text-sm text-[var(--color-text-muted)] mt-1 max-w-xl">
-            {t('home:featured.subtitle')}
+            {t('home:featured.subtitle')} Discover how to buy, where to buy, and transparent pricing for registered documents across Netherlands, UK, Germany, Italy, and Europe.
           </p>
         </div>
 

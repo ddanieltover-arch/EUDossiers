@@ -1,11 +1,13 @@
 import React from 'react';
-import { ShieldCheck, Truck, ArrowRight, Euro } from 'lucide-react';
+import { ShieldCheck, Truck, ArrowRight, Euro, Search } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useStore } from '../context/StoreContext';
 
 export const HeroBanner: React.FC = () => {
   const { t } = useTranslation('home');
   const { t: tc } = useTranslation('common');
+  const { setSearchQuery } = useStore();
 
   return (
     <div className="relative text-white overflow-hidden border-b border-[var(--color-ink-700)]">
@@ -58,6 +60,33 @@ export const HeroBanner: React.FC = () => {
                 <span>{tc('actions.browseCatalogue')}</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
+            </div>
+
+            {/* High-Intent Buyer Query Discovery Chips */}
+            <div className="pt-2">
+              <div className="text-[11px] font-semibold text-slate-300 mb-1.5 flex items-center gap-1.5">
+                <Search className="w-3.5 h-3.5 text-blue-400" />
+                <span>Buyer Inquiries:</span>
+              </div>
+              <div className="flex flex-wrap items-center gap-1.5">
+                {[
+                  { text: 'How to buy in Netherlands', query: 'Netherlands' },
+                  { text: 'Where can I buy in UK', query: 'United Kingdom' },
+                  { text: 'How much for in Germany', query: 'Germany' },
+                  { text: 'How to buy in Italy', query: 'Italy' },
+                  { text: 'Where can I buy in France', query: 'France' },
+                  { text: 'Pricing & delivery in Spain', query: 'Spain' }
+                ].map((chip, idx) => (
+                  <Link
+                    key={idx}
+                    to="/catalogue"
+                    onClick={() => setSearchQuery(chip.query)}
+                    className="text-[11px] bg-slate-900/60 hover:bg-slate-800 text-slate-200 hover:text-white px-2.5 py-1 rounded-lg border border-white/10 backdrop-blur-md transition-colors"
+                  >
+                    {chip.text}
+                  </Link>
+                ))}
+              </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">

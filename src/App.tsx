@@ -72,9 +72,9 @@ const AppContent: React.FC = () => {
       <footer className="bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)] text-[var(--color-text-muted)] py-12 mt-12 mb-16 md:mb-0 text-xs transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             
-            <div className="space-y-3 md:col-span-1">
+            <div className="space-y-3 sm:col-span-2 md:col-span-1 lg:col-span-1">
               <div className="flex items-center space-x-2">
                 <span className="text-xl">🇪🇺</span>
                 <span className="font-extrabold text-lg text-[var(--color-text-primary)] tracking-tight font-display">{SITE_NAME}</span>
@@ -91,39 +91,140 @@ const AppContent: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-              <h4 className="font-bold text-[var(--color-text-primary)] uppercase tracking-wider text-[11px]">Jurisdictional Documents</h4>
+              <h4 className="font-bold text-[var(--color-text-primary)] uppercase tracking-wider text-[11px]">National ID & Ausweise</h4>
               <ul className="space-y-1.5 text-[var(--color-text-muted)]">
                 <li>
                   <Link to="/catalogue/registered-french-id-card-carte-nationale-didentite-cnie" className="hover:text-[var(--color-accent-500)] transition-colors">
-                    French ID Card (CNIe)
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/catalogue/italian-electronic-id-card-carta-didentita-cie" className="hover:text-[var(--color-accent-500)] transition-colors">
-                    Italian Electronic ID (EEA ID)
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/catalogue/german-eu-residence-permit-elektronischer-aufenthaltstitel-eat" className="hover:text-[var(--color-accent-500)] transition-colors">
-                    German eAT Residence Permit
+                    Französischer Ausweis (CNIe)
                   </Link>
                 </li>
                 <li>
                   <Link to="/catalogue/registered-spanish-id-card-dni-electronico-4-0" className="hover:text-[var(--color-accent-500)] transition-colors">
-                    Spanish DNI Electrónico 4.0
+                    DNIs reales (DNI 4.0 España)
                   </Link>
                 </li>
                 <li>
-                  <Link to="/catalogue/registered-swiss-biometric-passport-schweizer-pass-22" className="hover:text-[var(--color-accent-500)] transition-colors">
-                    Swiss Passport (Pass 22)
+                  <Link to="/catalogue/registered-belgian-id-card-eid" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Belgischer Ausweis (eID)
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/italian-electronic-id-card-carta-didentita-cie" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Italian Electronic ID (CIE)
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/german-eu-residence-permit-elektronischer-aufenthaltstitel-eat" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Echter Personalausweis (eAT)
                   </Link>
                 </li>
               </ul>
             </div>
 
             <div className="space-y-2">
-              <h4 className="font-bold text-[var(--color-text-primary)] uppercase tracking-wider text-[11px]">{t('footer.standardsTitle')}</h4>
+              <h4 className="font-bold text-[var(--color-text-primary)] uppercase tracking-wider text-[11px]">Führerschein & Permits</h4>
               <ul className="space-y-1.5 text-[var(--color-text-muted)]">
+                <li>
+                  <Link to="/catalogue/registered-german-drivers-license-eu-fuhrerschein" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Echten Führerschein kaufen
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/fast-track-eu-drivers-license-express-72-hour-fulfillment" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Führerschein kaufen Ausland
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/registered-spanish-drivers-license-carne-de-conducir" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Permis espagnol (Carné)
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/registered-french-drivers-license-permis-de-conduire" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Permis de conduire France
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/authentic-us-drivers-license-real-id-compliant" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Duplicate Driver's License (US/EU)
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-2">
+              <h4 className="font-bold text-[var(--color-text-primary)] uppercase tracking-wider text-[11px]">Passports & Travel</h4>
+              <ul className="space-y-1.5 text-[var(--color-text-muted)]">
+                <li>
+                  <Link to="/catalogue/authentic-biometric-eu-passport-full-citizen-registration" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Pasaporte alemán (EU Passport)
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/registered-swiss-biometric-passport-schweizer-pass-22" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Pasaporte suizo (Pass 22)
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/original-registered-uk-passport-hm-passport-office" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    British Passport (HMPO)
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/registered-spanish-biometric-passport-pasaporte-espanol" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Pasaporte español registrado
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/registered-french-biometric-passport-passeport-biometrique" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Passeport biométrique France
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-2">
+              <h4 className="font-bold text-[var(--color-text-primary)] uppercase tracking-wider text-[11px]">Financial & Compliance</h4>
+              <ul className="space-y-1.5 text-[var(--color-text-muted)]">
+                <li>
+                  <Link to="/catalogue/verified-eu-bank-statement-and-financial-proof-package" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Extrait de compte & RIB
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/verified-eu-bank-statement-and-financial-proof-package" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Financial Proof Package
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/privacy" className="hover:text-emerald-500 transition-colors flex items-center space-x-1">
+                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+                    <span>{t('footer.dsar')}</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/privacy" className="hover:text-emerald-500 transition-colors">
+                    {t('footer.forgotten')}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="hover:text-emerald-500 transition-colors flex items-center space-x-1">
+                    <span>{t('footer.contactUs')}</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            <div className="space-y-3">
+              <h4 className="font-bold text-[var(--color-text-primary)] uppercase tracking-wider text-[11px]">{t('language.title')}</h4>
+              <button
+                onClick={() => setIsLanguageModalOpen(true)}
+                className="bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-bg-card-hover)] text-[var(--color-text-secondary)] border border-[var(--color-border)] px-3 py-2 rounded-xl text-xs font-semibold transition-all w-full text-left flex items-center justify-between"
+              >
+                <span>{t('nav.changeLanguage')} ({currentLang})</span>
+                <Globe className="w-4 h-4 text-[var(--color-accent-500)]" />
+              </button>
+              <ul className="space-y-1.5 text-[var(--color-text-muted)] pt-1">
                 <li className="flex items-center space-x-1.5">
                   <Euro className="w-3.5 h-3.5 text-[var(--color-accent-500)]" />
                   <span>{t('footer.eurSettlement')}</span>
@@ -137,45 +238,7 @@ const AppContent: React.FC = () => {
                   <span>{t('footer.warehouses')}</span>
                 </li>
               </ul>
-            </div>
-
-            <div className="space-y-2">
-              <h4 className="font-bold text-[var(--color-text-primary)] uppercase tracking-wider text-[11px]">{t('footer.privacyTitle', 'Privacy & Compliance')}</h4>
-              <ul className="space-y-1.5 text-[var(--color-text-muted)]">
-                <li>
-                  <Link to="/privacy" className="hover:text-emerald-500 transition-colors flex items-center space-x-1">
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
-                    <span>{t('footer.dsar')}</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/privacy" className="hover:text-emerald-500 transition-colors">
-                    {t('footer.forgotten')}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/privacy" className="hover:text-emerald-500 transition-colors">
-                    {t('footer.auditLog')}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="hover:text-emerald-500 transition-colors flex items-center space-x-1">
-                    <span>{t('footer.contactUs')}</span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="space-y-2">
-              <h4 className="font-bold text-[var(--color-text-primary)] uppercase tracking-wider text-[11px]">{t('language.title')}</h4>
-              <button
-                onClick={() => setIsLanguageModalOpen(true)}
-                className="bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-bg-card-hover)] text-[var(--color-text-secondary)] border border-[var(--color-border)] px-3 py-2 rounded-xl text-xs font-semibold transition-all w-full text-left flex items-center justify-between"
-              >
-                <span>{t('nav.changeLanguage')} ({currentLang})</span>
-                <Globe className="w-4 h-4 text-[var(--color-accent-500)]" />
-              </button>
-              <p className="text-[11px] text-[var(--color-text-muted)]">
+              <p className="text-[10px] text-[var(--color-text-muted)] pt-1">
                 {t('footer.hosted')}
               </p>
             </div>

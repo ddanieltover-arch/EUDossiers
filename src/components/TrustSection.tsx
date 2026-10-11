@@ -132,37 +132,154 @@ export const TrustSection: React.FC = () => {
             ))}
           </div>
 
-          {/* Inbound Linking: Popular Sovereign Products */}
-          <div className="p-4 rounded-xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-            <span className="font-semibold text-[var(--color-text-primary)] flex items-center gap-1.5">
-              <Compass className="w-4 h-4 text-emerald-500" />
-              Verified Specimen Collections:
-            </span>
-            <div className="flex flex-wrap items-center gap-2">
-              <Link
-                to="/catalogue/registered-french-id-card-carte-nationale-didentite-cnie"
-                className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
-              >
-                French ID Card (CNIe)
-              </Link>
-              <Link
-                to="/catalogue/german-eu-residence-permit-elektronischer-aufenthaltstitel-eat"
-                className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
-              >
-                German eAT Card
-              </Link>
-              <Link
-                to="/catalogue/registered-swiss-biometric-passport-passeport-suisse"
-                className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
-              >
-                Swiss Pass 22
-              </Link>
-              <Link
-                to="/catalogue/italian-electronic-id-card-carta-didentita-cie"
-                className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
-              >
-                Italian CIE 3.0
-              </Link>
+          {/* Inbound Linking: Sovereign Jurisdiction & Verification Directory */}
+          <div className="p-5 rounded-2xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)] space-y-4 text-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[var(--color-border)] pb-3">
+              <span className="font-bold text-[var(--color-text-primary)] flex items-center gap-2 text-xs uppercase tracking-wider">
+                <Compass className="w-4 h-4 text-emerald-500" />
+                Sovereign Jurisdiction & Document Verification Index
+              </span>
+              <span className="text-[11px] text-[var(--color-text-muted)]">
+                Direct statutory catalogue links & verified specimen collections
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
+              {/* Cluster 1: Führerschein & Driving Licences */}
+              <div className="space-y-2">
+                <span className="text-[11px] font-semibold text-[var(--color-text-secondary)] uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                  Driving Licences (EU & National)
+                </span>
+                <div className="flex flex-col gap-1.5">
+                  <Link
+                    to="/catalogue/registered-german-drivers-license-eu-fuhrerschein"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-blue-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    Echten Führerschein kaufen
+                  </Link>
+                  <Link
+                    to="/catalogue/fast-track-eu-drivers-license-express-72-hour-fulfillment"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-blue-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    Führerschein kaufen Ausland (72h)
+                  </Link>
+                  <Link
+                    to="/catalogue/registered-spanish-drivers-license-carne-de-conducir"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-blue-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    Permis espagnol (Carné)
+                  </Link>
+                  <Link
+                    to="/catalogue/registered-french-drivers-license-permis-de-conduire"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-blue-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    Permis de conduire France
+                  </Link>
+                </div>
+              </div>
+
+              {/* Cluster 2: National Identity & Ausweise */}
+              <div className="space-y-2">
+                <span className="text-[11px] font-semibold text-[var(--color-text-secondary)] uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                  National ID & Ausweise
+                </span>
+                <div className="flex flex-col gap-1.5">
+                  <Link
+                    to="/catalogue/registered-spanish-id-card-dni-electronico-4-0"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    DNIs reales (DNI 4.0 España)
+                  </Link>
+                  <Link
+                    to="/catalogue/registered-french-id-card-carte-nationale-didentite-cnie"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    Französischer Ausweis (CNIe)
+                  </Link>
+                  <Link
+                    to="/catalogue/registered-belgian-id-card-eid"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    Belgischer Ausweis (eID)
+                  </Link>
+                  <Link
+                    to="/catalogue/german-eu-residence-permit-elektronischer-aufenthaltstitel-eat"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    Echter Personalausweis (German eAT)
+                  </Link>
+                </div>
+              </div>
+
+              {/* Cluster 3: Passports & Biometrics */}
+              <div className="space-y-2">
+                <span className="text-[11px] font-semibold text-[var(--color-text-secondary)] uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                  Biometric Passports
+                </span>
+                <div className="flex flex-col gap-1.5">
+                  <Link
+                    to="/catalogue/authentic-biometric-eu-passport-full-citizen-registration"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-amber-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    Pasaporte alemán (EU Passport)
+                  </Link>
+                  <Link
+                    to="/catalogue/registered-swiss-biometric-passport-schweizer-pass-22"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-amber-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    Pasaporte suizo (Pass 22)
+                  </Link>
+                  <Link
+                    to="/catalogue/original-registered-uk-passport-hm-passport-office"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-amber-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    British Passport (HMPO)
+                  </Link>
+                  <Link
+                    to="/catalogue/registered-french-biometric-passport-passeport-biometrique"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-amber-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    Passeport biométrique France
+                  </Link>
+                </div>
+              </div>
+
+              {/* Cluster 4: Financial Proof & Statements */}
+              <div className="space-y-2">
+                <span className="text-[11px] font-semibold text-[var(--color-text-secondary)] uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                  Financial Proof & Statements
+                </span>
+                <div className="flex flex-col gap-1.5">
+                  <Link
+                    to="/catalogue/verified-eu-bank-statement-and-financial-proof-package"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-purple-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    Extrait de compte & RIB
+                  </Link>
+                  <Link
+                    to="/catalogue/verified-eu-bank-statement-and-financial-proof-package"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-purple-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    Relevé d'identité bancaire allemand
+                  </Link>
+                  <Link
+                    to="/catalogue/verified-eu-bank-statement-and-financial-proof-package"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-purple-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    Relevé bancaire en espagnol
+                  </Link>
+                  <Link
+                    to="/catalogue/verified-eu-bank-statement-and-financial-proof-package"
+                    className="px-2.5 py-1.5 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-purple-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors inline-block"
+                  >
+                    EU Financial Proof Package
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </div>

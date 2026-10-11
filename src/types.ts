@@ -28,10 +28,26 @@ export interface WarehouseStock {
 
 export type ProductLocale = 'de' | 'fr' | 'es' | 'it' | 'nl' | 'pl' | 'pt' | 'sv' | 'da' | 'fi' | 'el';
 
+export interface ProductBuyerFAQ {
+  question: string;
+  answer: string;
+}
+
+export interface ProductBuyerGuide {
+  howToBuy: string;
+  whereToBuy: string;
+  howMuchFor: string;
+  deliveryAndRegistration?: string;
+}
+
 export interface Product {
   id: string;
   sku: string;
+  slug?: string;
   name: string;
+  buyerSubtitle?: string;
+  buyerGuide?: ProductBuyerGuide;
+  buyerFaqs?: ProductBuyerFAQ[];
   nameTranslations?: Partial<Record<ProductLocale, string>>;
   descriptionTranslations?: Partial<Record<ProductLocale, string>>;
   category: Category;

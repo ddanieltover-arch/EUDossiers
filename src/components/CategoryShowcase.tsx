@@ -78,7 +78,7 @@ export const CategoryShowcase: React.FC = () => {
             </span>
           </h3>
           <p className="text-xs text-[var(--color-text-muted)]">
-            {t('home:categories.subtitle')}
+            {t('home:categories.subtitle')} Looking how to buy in Netherlands, where to buy in UK or pricing in Germany & Italy? Select an official classification below.
           </p>
         </div>
         
