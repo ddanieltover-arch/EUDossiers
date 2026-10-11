@@ -44,7 +44,7 @@
 
   --color-text-primary: #071421;
   --color-text-secondary: #2a4a66;
-  --color-text-muted: #8fa8c0;
+  --color-text-muted: #526e88;
   --color-text-inverse: #ffffff;
 
   --color-shadow: rgba(0, 0, 0, 0.08);
@@ -65,7 +65,7 @@ html.dark {
 
   --color-text-primary: #f5f7fa;
   --color-text-secondary: #c5d3e0;
-  --color-text-muted: #8fa8c0;
+  --color-text-muted: #9bb3c9;
   --color-text-inverse: #071421;
 
   --color-shadow: rgba(0, 0, 0, 0.4);

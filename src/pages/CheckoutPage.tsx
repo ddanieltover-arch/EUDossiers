@@ -244,24 +244,28 @@ const CheckoutPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setPaymentMethod('bank')}
-                className={`text-left p-4 rounded-2xl border-2 transition-all space-y-2 ${
+                className={`text-left p-4 rounded-2xl border-2 transition-all space-y-2.5 ${
                   paymentMethod === 'bank'
-                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/40 ring-1 ring-blue-500/30'
+                    ? 'border-blue-500 bg-blue-50/80 dark:bg-blue-950/50 ring-1 ring-blue-500/30'
                     : 'border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-text-muted)]/40'
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2.5">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${paymentMethod === 'bank' ? 'bg-blue-500 text-white' : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]'}`}>
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${paymentMethod === 'bank' ? 'bg-blue-600 text-white shadow-sm' : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]'}`}>
                       <CreditCard className="w-4 h-4" />
                     </div>
                     <span className="font-bold text-sm text-[var(--color-text-primary)]">{t('bankTransfer')}</span>
                   </div>
-                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${paymentMethod === 'bank' ? 'border-blue-500 bg-blue-500' : 'border-[var(--color-border)]'}`}>
+                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${paymentMethod === 'bank' ? 'border-blue-600 bg-blue-600' : 'border-[var(--color-border)]'}`}>
                     {paymentMethod === 'bank' && <div className="w-2 h-2 bg-white rounded-full" />}
                   </div>
                 </div>
-                <p className="text-[10px] text-[var(--color-text-muted)] leading-relaxed">
+                <p className={`text-xs leading-relaxed ${
+                  paymentMethod === 'bank'
+                    ? 'text-blue-950 dark:text-blue-100 font-medium'
+                    : 'text-[var(--color-text-secondary)]'
+                }`}>
                   {t('paymentAfter')}
                 </p>
               </button>
@@ -269,29 +273,33 @@ const CheckoutPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setPaymentMethod('crypto')}
-                className={`text-left p-4 rounded-2xl border-2 transition-all space-y-2 relative overflow-hidden ${
+                className={`text-left p-4 rounded-2xl border-2 transition-all space-y-2.5 relative ${
                   paymentMethod === 'crypto'
-                    ? 'border-amber-500 bg-amber-50 dark:bg-amber-950/40 ring-1 ring-amber-500/30'
+                    ? 'border-amber-500 bg-amber-50/80 dark:bg-amber-950/50 ring-1 ring-amber-500/30'
                     : 'border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-text-muted)]/40'
                 }`}
               >
-                <div className="absolute top-2 right-2">
-                  <span className="text-[9px] font-black text-rose-500 bg-rose-50 dark:bg-rose-950/60 border border-rose-300 dark:border-rose-800 px-1.5 py-0.5 rounded">
-                    5% OFF
-                  </span>
-                </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2.5">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${paymentMethod === 'crypto' ? 'bg-amber-500 text-white' : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]'}`}>
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${paymentMethod === 'crypto' ? 'bg-amber-500 text-white shadow-sm' : 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]'}`}>
                       <Bitcoin className="w-4 h-4" />
                     </div>
-                    <span className="font-bold text-sm text-[var(--color-text-primary)]">{t('crypto')}</span>
+                    <div className="flex items-center space-x-2">
+                      <span className="font-bold text-sm text-[var(--color-text-primary)]">{t('crypto')}</span>
+                      <span className="text-[10px] font-black text-rose-600 dark:text-rose-300 bg-rose-100 dark:bg-rose-950/80 border border-rose-300 dark:border-rose-800 px-1.5 py-0.5 rounded-full shadow-xs">
+                        5% OFF
+                      </span>
+                    </div>
                   </div>
-                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${paymentMethod === 'crypto' ? 'border-amber-500 bg-amber-500' : 'border-[var(--color-border)]'}`}>
+                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 ${paymentMethod === 'crypto' ? 'border-amber-500 bg-amber-500' : 'border-[var(--color-border)]'}`}>
                     {paymentMethod === 'crypto' && <div className="w-2 h-2 bg-white rounded-full" />}
                   </div>
                 </div>
-                <p className="text-[10px] text-[var(--color-text-muted)] leading-relaxed">
+                <p className={`text-xs leading-relaxed ${
+                  paymentMethod === 'crypto'
+                    ? 'text-amber-950 dark:text-amber-100 font-medium'
+                    : 'text-[var(--color-text-secondary)]'
+                }`}>
                   {t('cryptoHint')}
                 </p>
               </button>
