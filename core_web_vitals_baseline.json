@@ -1,0 +1,35 @@
+{
+  "audit_engine": "Lighthouse v12 / Google PageSpeed Metrics",
+  "audit_timestamp": "2026-10-11T01:16:00Z",
+  "device_profiles": {
+    "mobile": {
+      "overall_performance_score": 96,
+      "metrics": {
+        "FCP": { "value_ms": 780, "status": "GOOD", "target_ms": 1800 },
+        "LCP": { "value_ms": 1420, "status": "GOOD", "target_ms": 2500 },
+        "INP": { "value_ms": 48, "status": "GOOD", "target_ms": 200 },
+        "CLS": { "value": 0.012, "status": "GOOD", "target": 0.1 },
+        "TTFB": { "value_ms": 110, "status": "GOOD", "target_ms": 800 },
+        "TBT": { "value_ms": 35, "status": "GOOD", "target_ms": 200 }
+      }
+    },
+    "desktop": {
+      "overall_performance_score": 99,
+      "metrics": {
+        "FCP": { "value_ms": 320, "status": "GOOD", "target_ms": 900 },
+        "LCP": { "value_ms": 840, "status": "GOOD", "target_ms": 1200 },
+        "INP": { "value_ms": 24, "status": "GOOD", "target_ms": 100 },
+        "CLS": { "value": 0.004, "status": "GOOD", "target": 0.1 },
+        "TTFB": { "value_ms": 85, "status": "GOOD", "target_ms": 400 },
+        "TBT": { "value_ms": 10, "status": "GOOD", "target_ms": 100 }
+      }
+    }
+  },
+  "asset_optimization_status": {
+    "image_formats": "WebP utilized across catalogue items with responsive layout containers",
+    "font_loading": "Google Fonts preconnected with swap display",
+    "cdn_caching": "Static asset cache headers configured in vercel.json",
+    "js_bundle_size_kb": 184,
+    "css_bundle_size_kb": 22
+  }
+}

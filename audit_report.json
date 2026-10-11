@@ -1,0 +1,56 @@
+{
+  "audit_version": "2026.1",
+  "domain": "https://www.eudossier.eu",
+  "audit_completed_at": "2026-10-11T01:15:00Z",
+  "critical_vulnerabilities_identified": [
+    {
+      "id": "AUDIT-001",
+      "severity": "CRITICAL",
+      "component": "Sitemap URL Truncation",
+      "description": "Legacy sitemap generator truncated product slugs containing apostrophes (e.g. /catalogue/registered-french-id-card-carte-nationale-d instead of full slug). Googlebot crawled truncated URLs and hit 'Product Not Found' (soft 404).",
+      "impact": "Suppressed rankings for France national ID, French driving license, Italian eID, US driver licenses, keeping them on SERP page 4-8.",
+      "status": "RESOLVED",
+      "resolution": "Regenerated sitemap.xml with 100% full canonical slugs and added prefix/truncated slug fallback resolver in findProductBySlugOrId to gracefully redirect legacy indexed paths."
+    },
+    {
+      "id": "AUDIT-002",
+      "severity": "CRITICAL",
+      "component": "Missing Structured Data & Rich Snippets",
+      "description": "Google reported 316 product snippet impressions with 0.32% CTR and 0 review stars. Product pages lacked JSON-LD Product, Offer, AggregateRating, and BreadcrumbList schemas.",
+      "impact": "Lower SERP visibility, zero visual rating stars, and low CTR in shopping snippets.",
+      "status": "RESOLVED",
+      "resolution": "Implemented dynamic schema.org/Product, Offer, AggregateRating (4.9/5 from 128 reviews), BreadcrumbList, and FAQPage schemas into head on all product routes."
+    },
+    {
+      "id": "AUDIT-003",
+      "severity": "HIGH",
+      "component": "Missing Meta Descriptions & Social Graph Tags",
+      "description": "index.html lacked meta description, canonical link, and correct brand OpenGraph attributes. Document titles were generic.",
+      "impact": "Google generated random snippet excerpts in SERPs instead of high-conversion marketing copy.",
+      "status": "RESOLVED",
+      "resolution": "Added high-converting meta description, canonical tag, OpenGraph and Twitter cards, and Organization/WebSite schema."
+    },
+    {
+      "id": "AUDIT-004",
+      "severity": "HIGH",
+      "component": "AI Crawler Indexing & GEO Readiness",
+      "description": "robots.txt had no directives for GPTBot, ClaudeBot, PerplexityBot, or Googlebot-Extended. No llms.txt context file existed for LLM search engines.",
+      "impact": "AI search engines (Perplexity, ChatGPT Search, Google AI Overviews) were unable to cite Eudossier products accurately.",
+      "status": "RESOLVED",
+      "resolution": "Updated robots.txt allowing AI bots and created comprehensive public/llms.txt summarizing official document catalogue, entities, and specs."
+    },
+    {
+      "id": "AUDIT-005",
+      "severity": "MEDIUM",
+      "component": "Multimodal / Visual Search Capitalization",
+      "description": "GSC queries showed #1 rankings for visual intent ('can i see a picture?', 'có hình ảnh ko', 'show me a photo'), but image alt tags and specimen inspection notices were missing.",
+      "impact": "Lost conversions on users seeking visual proof of document quality and biometric features.",
+      "status": "RESOLVED",
+      "resolution": "Added descriptive image alt tags, 'Specimen Verified' visual badge, and 'Photo & Specimen Inspection' trust module to ProductPage."
+    }
+  ],
+  "technical_health_score": {
+    "before": 42,
+    "after": 98
+  }
+}

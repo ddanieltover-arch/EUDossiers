@@ -233,7 +233,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     vatRateCategory: 'standard',
     weightKg: 0.05,
     supplierName: 'EU Document LLC (Rome Bureau)',
-    tags: ['Italy', 'CIE', 'Identity Card', 'Carta dIdentita'],
+    tags: ['Italy', 'EEA ID', 'Ital Card', 'Carta d\'Identità', 'Carta d\'Identità Italiana', 'CIE 3.0', 'Electronic ID', 'Ministero dell\'Interno', 'EU Identity'],
+    searchAliases: ['eea id', 'ital card', 'carta d identita', 'carta identita', 'carta d identità italiana', 'cie 3.0', 'cie', 'italian id card', 'electronic id card italy'],
     lastRestocked: '2026-08-09',
   },
   {
@@ -258,7 +259,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     vatRateCategory: 'standard',
     weightKg: 0.05,
     supplierName: 'EU Document LLC (Amsterdam Bureau)',
-    tags: ['Netherlands', 'ID-Kaart', 'Dutch ID', 'BRP Registered'],
+    tags: ['Netherlands', 'Nederlandse Identiteitskaart', 'Dutch ID', 'BRP Registered', 'ID-Kaart', 'Registratiekaart'],
+    searchAliases: ['nederlandse identiteitskaart', 'dutch id card', 'registratiekaart', 'dutch id', 'netherlands id card', 'id card netherlands', 'brp registration card'],
     lastRestocked: '2026-08-10',
   },
   {
@@ -309,6 +311,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.05,
     supplierName: 'EU Document LLC (Stockholm Bureau)',
     tags: ['Sweden', 'Uppehållstillstånd', 'Residence Permit', 'Nordic'],
+    searchAliases: ['uppehallstillstandskort', 'uppehållstillståndskort', 'eu opholdskort sverige', 'swedish residence permit', 'opholdskort'],
     lastRestocked: '2026-08-04',
   },
   {
@@ -436,7 +439,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     vatRateCategory: 'standard',
     weightKg: 0.12,
     supplierName: 'EU Document LLC (Americas Desk)',
-    tags: ['Canada', 'Canadian Passport', 'ePassport', 'Ottawa Registered'],
+    tags: ['Canada', 'Canadian Passport', 'ePassport', 'Canada ePassport', 'Passport Canada', 'Ottawa Registered'],
+    searchAliases: ['canada epassport', 'passport canada', 'canadian passport', 'canadian electronic passport', 'epassport canada'],
     lastRestocked: '2026-08-06',
   },
   {
@@ -561,7 +565,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     originFlag: '🇫🇷',
     imageUrl: '/catalogue/doc-021.jpg',
     galleryImages: [
-      '/catalogue/doc-021.jpg'
+      '/catalogue/doc-021.jpg',
+      '/catalogue/doc-021-g1.png'
     ],
     totalStock: 18,
     lowStockThreshold: 5,
@@ -571,7 +576,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     vatRateCategory: 'standard',
     weightKg: 0.12,
     supplierName: 'EuroExpressDocs (Paris Bureau)',
-    tags: ['France', 'Passeport', 'Biometric', 'EU Citizen'],
+    tags: ['France', 'Passeport Biométrique', 'Passeport Biometrique', 'Biometric Passport', 'ANTS Registered', 'EU Citizen'],
+    searchAliases: ['passeport biométrique', 'passeport biometrique', 'biométrique passeport', 'biometrique passeport', 'biometrics in french', 'french passport', 'french biometric passport'],
     lastRestocked: '2026-08-10',
   },
   {
@@ -600,7 +606,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     vatRateCategory: 'standard',
     weightKg: 0.12,
     supplierName: 'EU Document Pro (Madrid Bureau)',
-    tags: ['Spain', 'Pasaporte Español', 'Policia Nacional', 'Biometric'],
+    tags: ['Spain', 'Pasaporte Biométrico', 'Pasaporte Español', 'Spanish Biometric Passport', 'Policía Nacional', 'ICAO 9303'],
+    searchAliases: ['pasaporte biometrico', 'pasaporte biométrico', 'spanish biometric passport', 'pasaporte espanol', 'pasaporte español', 'spanish passport'],
     lastRestocked: '2026-08-08',
   },
   {
@@ -615,8 +622,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     originFlag: '🇫🇷',
     imageUrl: '/catalogue/doc-023.png',
     galleryImages: [
-      '/catalogue/doc-023.png',
-      '/catalogue/doc-023-g1.png'
+      '/catalogue/doc-023.png'
     ],
     totalStock: 30,
     lowStockThreshold: 8,
@@ -626,7 +632,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     vatRateCategory: 'standard',
     weightKg: 0.05,
     supplierName: 'EuroExpressDocs (Paris Bureau)',
-    tags: ['France', 'CNIe', 'Identity Card', 'EU Identity'],
+    tags: ['France', 'CNIe', 'Carte Nationale d\'Identité', 'French ID Card', 'French Identity Card', 'Cédula de Francia', 'Cédula de Identidad Francesa', 'Identity Card', 'EU Identity'],
+    searchAliases: ['french id card', 'france national id card', 'carte nationale d identite', 'carte d identite', 'cnie', 'cédula de francia', 'cedula de identidad francesa', 'french identity card', 'france national id', 'french identification card', 'id card france', 'id card french', 'french id'],
     lastRestocked: '2026-08-11',
   },
   {
@@ -652,7 +659,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     vatRateCategory: 'standard',
     weightKg: 0.05,
     supplierName: 'European Docs Express (Barcelona Bureau)',
-    tags: ['Spain', 'DNIe', 'DNI 4.0', 'Identity Card'],
+    tags: ['Spain', 'DNI 4.0', 'DNI Card Spain', 'Spanish ID Card', 'Documento Nacional de Identidad', 'DNIe', 'Policía Nacional'],
+    searchAliases: ['dni 4.0', 'dni electronico', 'dni electrónico', 'spanish id card', 'dni card spain', 'documento nacional de identidad', 'electronic dni'],
     lastRestocked: '2026-08-07',
   },
   {
@@ -703,7 +711,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     vatRateCategory: 'standard',
     weightKg: 0.05,
     supplierName: 'EU Document Pro (Frankfurt Bureau)',
-    tags: ['Germany', 'Aufenthaltstitel', 'eAT', 'Residence Permit'],
+    tags: ['Germany', 'Elektronischer Aufenthaltstitel', 'eAT Card', 'e Residence Permit Germany', 'Aufenthaltstitel', 'EU Residence Permit', 'BAMF Registered'],
+    searchAliases: ['eat card', 'eat germany', 'e residence permit germany', 'elektronischer aufenthaltstitel', 'aufenthaltstitel', 'german residence permit', 'eu residence permit', 'eu residence permits', 'european union residence permit'],
     lastRestocked: '2026-08-10',
   },
   {
@@ -732,7 +741,8 @@ export const INITIAL_PRODUCTS: Product[] = [
     vatRateCategory: 'standard',
     weightKg: 0.12,
     supplierName: 'European Docs Express (Zurich Bureau)',
-    tags: ['Switzerland', 'Schweizer Pass', 'fedpol Registered', 'Biometric'],
+    tags: ['Switzerland', 'Schweizer Pass', 'Biometric Passport', 'Swiss Biometric Passport', 'fedpol Registered', 'Schweizer Pass 22'],
+    searchAliases: ['schweizer pass 22', 'swiss biometric passport', 'swiss pass', 'schweizer pass', 'fedpol passport', 'biometric passport switzerland'],
     lastRestocked: '2026-08-08',
   },
   {

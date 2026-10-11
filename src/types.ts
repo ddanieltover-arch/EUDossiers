@@ -49,6 +49,7 @@ export interface Product {
   weightKg: number;
   supplierName: string;
   tags: string[];
+  searchAliases?: string[];
   lastRestocked: string;
 }
 

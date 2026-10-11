@@ -1,162 +1,235 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Core Navigation Pages -->
   <url>
     <loc>https://www.eudossier.eu/</loc>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/contact</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/privacy</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Regulatory Knowledge Hub & Guides -->
+  <url>
+    <loc>https://www.eudossier.eu/blog</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.eudossier.eu/blog/france-national-id-card-verification-guide</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.eudossier.eu/blog/biometric-passports-icao-9303-security</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.eudossier.eu/blog/eea-id-cards-travel-rights-italian-cie</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.eudossier.eu/blog/german-eat-vs-eu-residence-permit</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.eudossier.eu/blog/document-specimen-photo-verification</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Official Document Catalogue Products (All 28 Canonical URLs) -->
+  <url>
     <loc>https://www.eudossier.eu/catalogue/registered-bulgarian-drivers-license</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/registered-austrian-drivers-license</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.eudossier.eu/catalogue/authentic-us-driver</loc>
+    <loc>https://www.eudossier.eu/catalogue/authentic-us-drivers-license-real-id-compliant</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/registered-belgian-id-card-eid</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/registered-danish-drivers-license-k-rekort</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.eudossier.eu/catalogue/fast-track-eu-driver</loc>
+    <loc>https://www.eudossier.eu/catalogue/fast-track-eu-drivers-license-express-72-hour-fulfillment</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.eudossier.eu/catalogue/registered-hungarian-driver</loc>
+    <loc>https://www.eudossier.eu/catalogue/registered-hungarian-drivers-license-vezetoi-engedely</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.eudossier.eu/catalogue/italian-electronic-id-card-carta-d</loc>
+    <loc>https://www.eudossier.eu/catalogue/italian-electronic-id-card-carta-didentita-cie</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/registered-dutch-identity-card-nederlandse-identiteitskaart</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/italian-eu-residence-permit-permesso-di-soggiorno-ue</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/swedish-eu-residence-permit-uppehallstillstandskort</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/authentic-biometric-eu-passport-full-citizen-registration</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/authentic-us-passport-book-e-passport-chip-and-registration</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/registered-dutch-biometric-passport-nederlands-paspoort</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/original-registered-uk-passport-hm-passport-office</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/real-canadian-electronic-passport-passport-canada-registered</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/multi-entry-schengen-eu-visa-processing-1-5-year-visa</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.eudossier.eu/catalogue/registered-french-driver</loc>
+    <loc>https://www.eudossier.eu/catalogue/registered-french-drivers-license-permis-de-conduire</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.eudossier.eu/catalogue/registered-german-driver</loc>
+    <loc>https://www.eudossier.eu/catalogue/registered-german-drivers-license-eu-fuhrerschein</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.eudossier.eu/catalogue/registered-spanish-driver</loc>
+    <loc>https://www.eudossier.eu/catalogue/registered-spanish-drivers-license-carne-de-conducir</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/registered-french-biometric-passport-passeport-biometrique</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/registered-spanish-biometric-passport-pasaporte-espanol</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.eudossier.eu/catalogue/registered-french-id-card-carte-nationale-d</loc>
+    <loc>https://www.eudossier.eu/catalogue/registered-french-id-card-carte-nationale-didentite-cnie</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/registered-spanish-id-card-dni-electronico-4-0</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/french-eu-residence-permit-titre-de-sejour-biometrique</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/german-eu-residence-permit-elektronischer-aufenthaltstitel-eat</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/registered-swiss-biometric-passport-schweizer-pass-22</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.eudossier.eu/catalogue/verified-eu-bank-statement-and-financial-proof-package</loc>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

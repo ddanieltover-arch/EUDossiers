@@ -1,0 +1,52 @@
+# Eudossier
+> Premier European Union commerce and registered document solutions portal under Regulation (EU) 2016/679.
+
+Eudossier (eudossier.eu) provides official registered European passports, electronic identity cards (eID), EU driving licenses, residence permits (eAT), and Schengen document fulfillment with physical micro-text, ICAO 9303 microchip encoding, and direct national database registration across all 27 EU member states.
+
+## Key Pages & Navigation
+- https://www.eudossier.eu/ : Homepage — overview of single market document solutions, trust framework, and verification protocol
+- https://www.eudossier.eu/catalogue : Complete Single Market Document Catalogue — full list of 28 registered European documents with real-time stock and EUR pricing
+- https://www.eudossier.eu/blog : European Identity & Regulatory Knowledge Hub — authoritative technical and legal guides on document verification and ICAO 9303 standards
+- https://www.eudossier.eu/blog/france-national-id-card-verification-guide : Guide on French CNIe ANTS & PRADO verification protocols
+- https://www.eudossier.eu/blog/biometric-passports-icao-9303-security : Technical analysis of ICAO 9303 biometric passport microchip security
+- https://www.eudossier.eu/blog/eea-id-cards-travel-rights-italian-cie : Analysis of EEA ID travel rights and Italy's Carta d'Identità (CIE 3.0)
+- https://www.eudossier.eu/blog/german-eat-vs-eu-residence-permit : German eAT vs EU residence permit comparison & BAMF registration
+- https://www.eudossier.eu/blog/document-specimen-photo-verification : Physical document specimen inspection, UV verification, and visual proof guide
+- https://www.eudossier.eu/contact : Secure Client Communications & Encrypted Consultation Hub
+- https://www.eudossier.eu/privacy : GDPR Compliance Suite — Article 15 Data Subject Access Requests (DSAR) and Article 17 Right to Be Forgotten erasure tools
+
+## Core Product Categories & Registered Entities
+
+### 1. Electronic Identity Cards (eID / CNIe / DNI 4.0)
+- French National ID Card (CNIe - Carte Nationale d'Identité): Contactless NFC biometric chip, official France Titres database integration.
+- Spanish ID Card (DNI 4.0 - Documento Nacional de Identidad): Dual-interface chip, Casa de la Moneda cryptographic keys.
+- Belgian Electronic ID Card (eID): Federal population register entry with tactile optical security.
+- Italian Electronic ID (Carta d'Identità Elettronica - CIE): Ministry of Interior database entry with BAC/SAC chip security.
+- Dutch Identity Card (Nederlandse Identiteitskaart - NIK): BRP registered with laser-perforated ghost image.
+
+### 2. Biometric Passports (ICAO 9303 Compliant)
+- French Biometric Passport (Passeport Biométrique): 32-page booklet, biometric microchip, laser-engraved polycarbonate data page.
+- Spanish Biometric Passport (Pasaporte Biométrico): Spanish Ministry of Interior registry with encrypted facial and fingerprint biometrics.
+- Dutch Biometric Passport (Nederlands Paspoort): BRP linked, ICAO 9303 compliant e-Passport.
+- Swiss Biometric Passport (Schweizer Pass 22): Fedpol registry with high-security guilloche and UV reactive threads.
+- UK Passport (HM Passport Office): Digitally registered British citizen passport booklet.
+- US Passport Book & REAL ID Driver Licenses: Full e-Passport chip and state DMV record integration.
+
+### 3. EU Residence Permits & ePermits
+- German EU Residence Permit (Elektronischer Aufenthaltstitel - eAT): BAMF/Ausländerbehörde database entry, contactless chip.
+- Swedish EU Residence Permit (Uppehållstillståndskort / Opholdskort): Migrationsverket registered biometric residence card.
+- French EU Residence Permit (Titre de Séjour Biométrique): Prefecture integrated residence permit for non-EU nationals.
+- Italian EU Residence Permit (Permesso di Soggiorno UE): Questura registered long-term EU residence document.
+
+### 4. EU Driver Licenses (Credit-Card Format)
+- French Driver's License (Permis de Conduire Format Carte): ANTS registered with micro-text and hologram seal.
+- German Driver's License (EU-Führerschein): KBA Flensburg registered credit-card format driving permit.
+- Spanish Driver's License (Permiso de Conducción / Carné de Conducir): DGT registered with tactile surface features.
+- Bulgarian Driver's License: Ministry of Transport database registration.
+- Austrian Driver's License: Führerscheinregister registered.
+- Danish Driver's License (Kørekort): Færdselsstyrelsen compliant.
+
+## Technical & Legal Standards
+- **Currency:** Euro (€) base transaction currency with zero exchange surcharges.
+- **Privacy & Data Security:** Zero-retention policy under GDPR (Regulation (EU) 2016/679). Instant pseudonymization and erasure.
+- **Logistics Hubs:** Dispatched from Frankfurt (DE-01), Amsterdam (NL-02), and Lyon (FR-03) with tracked express courier delivery.

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Store, Mail, ShoppingBag, type LucideIcon } from 'lucide-react';
+import { Home, Store, Mail, ShoppingBag, BookOpen, type LucideIcon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useStore } from '../context/StoreContext';
@@ -22,6 +22,7 @@ export const MobileBottomNav: React.FC = () => {
   const totalCartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const isHome = location.pathname === '/';
   const isCatalogue = location.pathname.startsWith('/catalogue');
+  const isBlog = location.pathname.startsWith('/blog');
   const isContact = location.pathname === '/contact';
   const isCart = location.pathname === '/cart' || location.pathname === '/checkout';
 
@@ -37,6 +38,12 @@ export const MobileBottomNav: React.FC = () => {
       label: t('nav.catalogue'),
       icon: Store,
       active: isCatalogue,
+    },
+    {
+      to: '/blog',
+      label: t('nav.guides', 'Guides'),
+      icon: BookOpen,
+      active: isBlog,
     },
     {
       to: '/contact',
@@ -59,7 +66,7 @@ export const MobileBottomNav: React.FC = () => {
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
       aria-label="Mobile navigation"
     >
-      <div className="grid grid-cols-4 h-16 max-w-lg mx-auto">
+      <div className="grid grid-cols-5 h-16 max-w-lg mx-auto">
         {items.map(({ to, label, icon: Icon, active, badge = 0 }) => (
           <Link
             key={to}

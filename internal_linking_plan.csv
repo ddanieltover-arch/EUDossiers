@@ -1,0 +1,16 @@
+From_Page,To_Page,Anchor_Text,Link_Type,Priority
+https://www.eudossier.eu/,https://www.eudossier.eu/catalogue,Browse Full European Document Catalogue,Pillar Hub Link,High
+https://www.eudossier.eu/,https://www.eudossier.eu/catalogue/registered-french-id-card-carte-nationale-didentite-cnie,French National ID Card (CNIe),Featured Product Link,High
+https://www.eudossier.eu/,https://www.eudossier.eu/catalogue/registered-french-biometric-passport-passeport-biometrique,Registered French Biometric Passport,Featured Product Link,High
+https://www.eudossier.eu/,https://www.eudossier.eu/catalogue/registered-spanish-id-card-dni-electronico-4-0,Spanish Electronic ID (DNI 4.0),Featured Product Link,High
+https://www.eudossier.eu/,https://www.eudossier.eu/catalogue/german-eu-residence-permit-elektronischer-aufenthaltstitel-eat,German EU Residence Permit (eAT),Featured Product Link,High
+https://www.eudossier.eu/,https://www.eudossier.eu/catalogue/swedish-eu-residence-permit-uppehallstillstandskort,Swedish EU Residence Permit (Uppehållstillståndskort),Featured Product Link,High
+https://www.eudossier.eu/catalogue,https://www.eudossier.eu/catalogue/authentic-biometric-eu-passport-full-citizen-registration,Authentic Biometric EU Passport,Catalogue Grid,High
+https://www.eudossier.eu/catalogue,https://www.eudossier.eu/catalogue/registered-french-drivers-license-permis-de-conduire,Registered French Driver's License (Permis de Conduire),Catalogue Grid,High
+https://www.eudossier.eu/catalogue/registered-french-id-card-carte-nationale-didentite-cnie,https://www.eudossier.eu/catalogue/registered-french-biometric-passport-passeport-biometrique,French Biometric Passport Solutions,Cross-Sell Sibling Link,Medium
+https://www.eudossier.eu/catalogue/registered-french-id-card-carte-nationale-didentite-cnie,https://www.eudossier.eu/catalogue/registered-french-drivers-license-permis-de-conduire,French Driver's License Permis de Conduire,Cross-Sell Sibling Link,Medium
+https://www.eudossier.eu/catalogue/registered-spanish-id-card-dni-electronico-4-0,https://www.eudossier.eu/catalogue/registered-spanish-biometric-passport-pasaporte-espanol,Registered Spanish Biometric Passport (Pasaporte),Cross-Sell Sibling Link,Medium
+https://www.eudossier.eu/catalogue/registered-spanish-id-card-dni-electronico-4-0,https://www.eudossier.eu/catalogue/registered-spanish-drivers-license-carne-de-conducir,Spanish Driver's License (Carné de Conducir),Cross-Sell Sibling Link,Medium
+https://www.eudossier.eu/catalogue/german-eu-residence-permit-elektronischer-aufenthaltstitel-eat,https://www.eudossier.eu/catalogue/registered-german-drivers-license-eu-fuhrerschein,German Driver's License (EU-Führerschein),Cross-Sell Sibling Link,Medium
+https://www.eudossier.eu/privacy,https://www.eudossier.eu/catalogue,Compliant Single Market Products,Legal to Commercial,Medium
+https://www.eudossier.eu/contact,https://www.eudossier.eu/catalogue,Explore Document Verification Options,Consultation to Catalogue,Medium

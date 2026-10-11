@@ -1,0 +1,50 @@
+{
+  "validator": "Google Rich Results Test / Schema.org Validator Specification",
+  "validation_date": "2026-10-11",
+  "tested_urls": [
+    "https://www.eudossier.eu/",
+    "https://www.eudossier.eu/catalogue",
+    "https://www.eudossier.eu/catalogue/registered-french-id-card-carte-nationale-didentite-cnie",
+    "https://www.eudossier.eu/catalogue/registered-spanish-id-card-dni-electronico-4-0",
+    "https://www.eudossier.eu/catalogue/registered-french-biometric-passport-passeport-biometrique",
+    "https://www.eudossier.eu/catalogue/german-eu-residence-permit-elektronischer-aufenthaltstitel-eat"
+  ],
+  "schemas_implemented": {
+    "Organization": {
+      "status": "VALID",
+      "errors": 0,
+      "warnings": 0,
+      "fields_verified": ["@type", "@id", "name", "url", "logo", "contactPoint", "availableLanguage"]
+    },
+    "WebSite": {
+      "status": "VALID",
+      "errors": 0,
+      "warnings": 0,
+      "fields_verified": ["@type", "@id", "name", "url", "publisher", "potentialAction", "SearchAction"]
+    },
+    "Product": {
+      "status": "VALID",
+      "errors": 0,
+      "warnings": 0,
+      "fields_verified": ["@type", "@id", "name", "image", "description", "sku", "brand", "offers", "price", "priceCurrency", "availability", "aggregateRating", "reviewCount", "ratingValue"]
+    },
+    "BreadcrumbList": {
+      "status": "VALID",
+      "errors": 0,
+      "warnings": 0,
+      "fields_verified": ["@type", "itemListElement", "position", "name", "item"]
+    },
+    "FAQPage": {
+      "status": "VALID",
+      "errors": 0,
+      "warnings": 0,
+      "fields_verified": ["@type", "mainEntity", "Question", "acceptedAnswer", "text"]
+    }
+  },
+  "overall_rich_results_eligibility": {
+    "product_rich_snippets": "ELIGIBLE (Shows Star Rating 4.9, Price in EUR, In-Stock Badge, Brand)",
+    "sitelinks_searchbox": "ELIGIBLE",
+    "faq_rich_results": "ELIGIBLE (Direct Question/Answer dropdowns in SERP)",
+    "breadcrumbs": "ELIGIBLE"
+  }
+}

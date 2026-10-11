@@ -7,7 +7,8 @@ import {
   Search,
   Sun,
   Moon,
-  Mail
+  Mail,
+  BookOpen
 } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -35,6 +36,7 @@ export const Navbar: React.FC = () => {
   const totalCartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
   const isCatalogue = location.pathname.startsWith('/catalogue');
   const isHome = location.pathname === '/';
+  const isBlog = location.pathname.startsWith('/blog');
   const isContact = location.pathname === '/contact';
 
   return (
@@ -108,6 +110,17 @@ export const Navbar: React.FC = () => {
               >
                 <Store className="w-3.5 h-3.5" />
                 <span>{t('nav.catalogue')}</span>
+              </Link>
+              <Link
+                to="/blog"
+                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  isBlog
+                    ? 'bg-[var(--color-accent-600)] text-white shadow-sm'
+                    : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-card-hover)]'
+                }`}
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>{t('nav.guides', 'Guides & Laws')}</span>
               </Link>
               <Link
                 to="/contact"

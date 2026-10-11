@@ -6112,6 +6112,8 @@ import path from "path";
 var SITE_NAME = "Eudossier";
 var SITE_TAGLINE = "EU commerce & inventory portal";
 var CONTACT_EMAIL = "info@eudossier.eu";
+var CONTACT_PHONE_DIGITS = "4915510183420";
+var WHATSAPP_URL = `https://wa.me/${CONTACT_PHONE_DIGITS}`;
 var LEGAL_NAME = "Eudossier";
 var DOMAIN = "eudossier.eu";
 var LEGAL_FOOTER = `\xA9 ${(/* @__PURE__ */ new Date()).getFullYear()} ${LEGAL_NAME} \xB7 Regulation (EU) 2016/679 Compliant.`;

@@ -28,11 +28,35 @@ export function findProductBySlugOrId(
   if (!param) return undefined;
   let decoded = param;
   try {
-    decoded = decodeURIComponent(param);
+    decoded = decodeURIComponent(param).toLowerCase().trim();
   } catch {
-    decoded = param;
+    decoded = param.toLowerCase().trim();
   }
-  const bySlug = products.find((product) => getProductSlug(product) === decoded);
+
+  // 1. Exact match by slug
+  const bySlug = products.find((product) => getProductSlug(product).toLowerCase() === decoded);
   if (bySlug) return bySlug;
-  return products.find((product) => product.id === decoded);
+
+  // 2. Exact match by id
+  const byId = products.find((product) => product.id.toLowerCase() === decoded);
+  if (byId) return byId;
+
+  // 3. Fallback: match by prefix or truncated slug (e.g. from previous sitemap crawl: 'registered-french-id-card-carte-nationale-d')
+  if (decoded.length >= 8) {
+    const byPrefix = products.find((product) => {
+      const slug = getProductSlug(product).toLowerCase();
+      return slug.startsWith(decoded) || decoded.startsWith(slug);
+    });
+    if (byPrefix) return byPrefix;
+  }
+
+  // 4. Fallback: match by SKU or SKU-slugified
+  const bySku = products.find(
+    (product) =>
+      product.sku.toLowerCase() === decoded ||
+      slugifyEnglishName(product.sku) === decoded
+  );
+  if (bySku) return bySku;
+
+  return undefined;
 }

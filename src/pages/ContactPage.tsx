@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, MapPin, Clock, Phone, Send, CheckCircle, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Mail, MapPin, Clock, Phone, Send, CheckCircle, Globe, ExternalLink, BookOpen, Compass } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { SITE_NAME, CONTACT_EMAIL, PRIVACY_EMAIL, ADDRESS_LINE, DOMAIN, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_E164, WHATSAPP_URL } from '../brand';
 
@@ -210,6 +211,149 @@ const ContactPage: React.FC = () => {
           )}
         </div>
       </div>
+
+      {/* Inbound Linking: Knowledge Guides & Catalogue Navigation */}
+      <section className="pt-8 border-t border-[var(--color-border)] space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div>
+            <h3 className="text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wider flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-[#04928F]" />
+              Support & Verification Resources
+            </h3>
+            <p className="text-xs text-[var(--color-text-muted)] mt-1">
+              Before submitting an inquiry, review our detailed guides covering dispatch timelines, specimen photos, and database validation.
+            </p>
+          </div>
+          <Link
+            to="/blog"
+            className="text-xs font-semibold text-[#04928F] hover:underline inline-flex items-center gap-1 shrink-0"
+          >
+            <span>All Verification Guides</span>
+            <span>→</span>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <Link
+            to="/blog/document-specimen-photo-verification"
+            className="p-3.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[#04928F]/50 hover:bg-[var(--color-bg-tertiary)] transition-all block group"
+          >
+            <span className="text-[10px] font-mono font-semibold uppercase text-[#04928F]">Inspection</span>
+            <h4 className="font-semibold text-[var(--color-text-primary)] group-hover:text-[#04928F] transition-colors mt-1 line-clamp-1">Can I See a Photo Specimen?</h4>
+            <p className="text-[11px] text-[var(--color-text-muted)] mt-1 line-clamp-2">How we provide 1200 DPI photographic proofs and UV scans prior to courier dispatch.</p>
+          </Link>
+
+          <Link
+            to="/blog/france-national-id-card-verification-guide"
+            className="p-3.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[#04928F]/50 hover:bg-[var(--color-bg-tertiary)] transition-all block group"
+          >
+            <span className="text-[10px] font-mono font-semibold uppercase text-[#04928F]">Registry Support</span>
+            <h4 className="font-semibold text-[var(--color-text-primary)] group-hover:text-[#04928F] transition-colors mt-1 line-clamp-1">ANTS & PRADO Verification</h4>
+            <p className="text-[11px] text-[var(--color-text-muted)] mt-1 line-clamp-2">How official national registers confirm document validity across EU borders.</p>
+          </Link>
+
+          <Link
+            to="/blog/eat-card-germany-electronic-residence-permit"
+            className="p-3.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[#04928F]/50 hover:bg-[var(--color-bg-tertiary)] transition-all block group"
+          >
+            <span className="text-[10px] font-mono font-semibold uppercase text-[#04928F]">Residence Permitting</span>
+            <h4 className="font-semibold text-[var(--color-text-primary)] group-hover:text-[#04928F] transition-colors mt-1 line-clamp-1">German eAT Card & BAMF Indexing</h4>
+            <p className="text-[11px] text-[var(--color-text-muted)] mt-1 line-clamp-2">Specifications for electronic residence permits and work authorizations.</p>
+          </Link>
+        </div>
+
+        <div className="p-4 rounded-xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <span className="font-semibold text-[var(--color-text-primary)] flex items-center gap-1.5">
+            <Compass className="w-4 h-4 text-[#04928F]" />
+            Quick Navigation Links:
+          </span>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link
+              to="/catalogue"
+              className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-[#04928F] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+            >
+              Document Catalogue
+            </Link>
+            <Link
+              to="/privacy"
+              className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-[#04928F] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+            >
+              Privacy & GDPR Portal
+            </Link>
+            <Link
+              to="/catalogue?category=Passports"
+              className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-[#04928F] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+            >
+              Biometric Passports
+            </Link>
+            <Link
+              to="/catalogue?category=Identity+Cards"
+              className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-[#04928F] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+            >
+              National ID Cards
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Outbound Linking: Exactly 3 Authoritative European Logistics & Consumer Authorities */}
+      <section className="p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-tertiary)]/50 space-y-3">
+        <div className="flex items-center gap-2">
+          <ExternalLink className="w-4 h-4 text-emerald-500" />
+          <h3 className="text-xs font-bold text-[var(--color-text-primary)] uppercase tracking-wider">
+            Official European Logistics & Regulatory Authorities
+          </h3>
+        </div>
+        <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
+          For cross-border parcel delivery standards, postal compliance, and European cross-border service trade protections, consult these international bodies:
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+          <a
+            href="https://www.dhl.com/"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="p-3.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-primary)] hover:border-emerald-500/50 transition-all block group text-xs"
+          >
+            <div className="flex items-center justify-between font-bold text-[var(--color-text-primary)] group-hover:text-emerald-500">
+              <span>DHL Express Global Logistics</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[var(--color-text-muted)] group-hover:text-emerald-500 shrink-0" />
+            </div>
+            <p className="text-[11px] text-[var(--color-text-muted)] mt-1.5 leading-relaxed">
+              International express courier provider operating insured 72-hour European transit hubs.
+            </p>
+          </a>
+
+          <a
+            href="https://www.upu.int/"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="p-3.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-primary)] hover:border-emerald-500/50 transition-all block group text-xs"
+          >
+            <div className="flex items-center justify-between font-bold text-[var(--color-text-primary)] group-hover:text-emerald-500">
+              <span>Universal Postal Union (UPU)</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[var(--color-text-muted)] group-hover:text-emerald-500 shrink-0" />
+            </div>
+            <p className="text-[11px] text-[var(--color-text-muted)] mt-1.5 leading-relaxed">
+              UN specialized agency coordinating international postal policies and secure item handling.
+            </p>
+          </a>
+
+          <a
+            href="https://www.eccnet.eu/"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="p-3.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-primary)] hover:border-emerald-500/50 transition-all block group text-xs"
+          >
+            <div className="flex items-center justify-between font-bold text-[var(--color-text-primary)] group-hover:text-emerald-500">
+              <span>European Consumer Centre (ECC-Net)</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[var(--color-text-muted)] group-hover:text-emerald-500 shrink-0" />
+            </div>
+            <p className="text-[11px] text-[var(--color-text-muted)] mt-1.5 leading-relaxed">
+              EU-supported network providing guidance on consumer rights and cross-border trade in the Single Market.
+            </p>
+          </a>
+        </div>
+      </section>
     </div>
   );
 };

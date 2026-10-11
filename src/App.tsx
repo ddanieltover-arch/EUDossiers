@@ -19,6 +19,8 @@ import HomePage from './pages/HomePage';
 import CataloguePage from './pages/CataloguePage';
 import ProductPage from './pages/ProductPage';
 import PrivacyPage from './pages/PrivacyPage';
+import BlogPage from './pages/BlogPage';
+import BlogPostPage from './pages/BlogPostPage';
 import AdminLoginPage from './pages/AdminLoginPage';
 import AdminPortalPage from './pages/AdminPortalPage';
 import CartPage from './pages/CartPage';
@@ -49,6 +51,8 @@ const AppContent: React.FC = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/catalogue" element={<CataloguePage />} />
           <Route path="/catalogue/:productSlug" element={<ProductPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
@@ -68,9 +72,9 @@ const AppContent: React.FC = () => {
       <footer className="bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)] text-[var(--color-text-muted)] py-12 mt-12 mb-16 md:mb-0 text-xs transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
             
-            <div className="space-y-3">
+            <div className="space-y-3 md:col-span-1">
               <div className="flex items-center space-x-2">
                 <span className="text-xl">🇪🇺</span>
                 <span className="font-extrabold text-lg text-[var(--color-text-primary)] tracking-tight font-display">{SITE_NAME}</span>
@@ -78,6 +82,43 @@ const AppContent: React.FC = () => {
               <p className="text-[var(--color-text-muted)] leading-relaxed">
                 {t('footer.tagline')}
               </p>
+              <div className="pt-1">
+                <Link to="/blog" className="text-xs font-semibold text-[var(--color-accent-500)] hover:underline inline-flex items-center space-x-1">
+                  <span>Knowledge Center & Guides</span>
+                  <span>→</span>
+                </Link>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <h4 className="font-bold text-[var(--color-text-primary)] uppercase tracking-wider text-[11px]">Jurisdictional Documents</h4>
+              <ul className="space-y-1.5 text-[var(--color-text-muted)]">
+                <li>
+                  <Link to="/catalogue/registered-french-id-card-carte-nationale-didentite-cnie" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    French ID Card (CNIe)
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/italian-electronic-id-card-carta-didentita-cie" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Italian Electronic ID (EEA ID)
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/german-eu-residence-permit-elektronischer-aufenthaltstitel-eat" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    German eAT Residence Permit
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/registered-spanish-id-card-dni-electronico-4-0" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Spanish DNI Electrónico 4.0
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/catalogue/registered-swiss-biometric-passport-schweizer-pass-22" className="hover:text-[var(--color-accent-500)] transition-colors">
+                    Swiss Passport (Pass 22)
+                  </Link>
+                </li>
+              </ul>
             </div>
 
             <div className="space-y-2">
@@ -99,7 +140,7 @@ const AppContent: React.FC = () => {
             </div>
 
             <div className="space-y-2">
-                {t('footer.privacyTitle')}
+              <h4 className="font-bold text-[var(--color-text-primary)] uppercase tracking-wider text-[11px]">{t('footer.privacyTitle', 'Privacy & Compliance')}</h4>
               <ul className="space-y-1.5 text-[var(--color-text-muted)]">
                 <li>
                   <Link to="/privacy" className="hover:text-emerald-500 transition-colors flex items-center space-x-1">

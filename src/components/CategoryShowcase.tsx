@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CreditCard, FileText, Globe, Award, Shield, CheckCircle2 } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 import { useTranslation } from 'react-i18next';
@@ -14,6 +15,7 @@ interface CategoryItem {
 }
 
 export const CategoryShowcase: React.FC = () => {
+  const navigate = useNavigate();
   const { selectedCategory, setSelectedCategory, products } = useStore();
   const { t } = useTranslation();
 
@@ -99,9 +101,9 @@ export const CategoryShowcase: React.FC = () => {
             <button
               key={cat.id}
               onClick={() => {
-                setSelectedCategory(isSelected ? 'All' : cat.id);
-                const el = document.getElementById(`category-${cat.id.toLowerCase().replace(/\s+/g, '-')}`);
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
+                const nextCat = isSelected ? 'All' : cat.id;
+                setSelectedCategory(nextCat);
+                navigate(`/catalogue?category=${encodeURIComponent(cat.id)}`);
               }}
               className={`text-left p-4 rounded-2xl border transition-all duration-300 relative group overflow-hidden ${
                 isSelected

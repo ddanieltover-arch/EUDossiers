@@ -1,9 +1,28 @@
-# Eudossier — https://www.eudossier.eu
+# Eudossier — Official European Union Commerce & Document Portal
+# Domain: https://www.eudossier.eu
+
 User-agent: *
 Allow: /
 Disallow: /cart
 Disallow: /checkout
 Disallow: /admin
 Disallow: /admin/
+Disallow: /api/
+
+# Explicitly allow AI Web Search & Synthesis Agents (GEO / AEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Googlebot-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
 
 Sitemap: https://www.eudossier.eu/sitemap.xml

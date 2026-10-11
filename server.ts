@@ -52,8 +52,12 @@ async function startServer() {
   const app = express();
   const PORT = Number(process.env.PORT) || 3001;
 
-  await seedProductsIfEmpty(INITIAL_PRODUCTS);
-  await ensureContactTable();
+  try {
+    await seedProductsIfEmpty(INITIAL_PRODUCTS);
+    await ensureContactTable();
+  } catch (err) {
+    console.warn('Initial DB seeding skipped/failed (will retry on incoming requests):', err);
+  }
 
   app.use(express.json());
 

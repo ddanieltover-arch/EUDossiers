@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ShieldCheck, Download, Trash2, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ShieldCheck, Download, Trash2, CheckCircle2, ExternalLink, BookOpen, Compass } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useStore } from '../context/StoreContext';
 import { SITE_NAME, LEGAL_NAME, PRIVACY_EMAIL, ADDRESS_LINE } from '../brand';
@@ -204,6 +205,149 @@ const PrivacyPage: React.FC = () => {
           </div>
         )}
       </div>
+
+      {/* Inbound Linking: Knowledge Guides & Catalogue Cross-Links */}
+      <section className="pt-8 border-t border-[var(--color-border)] space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div>
+            <h3 className="text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wider flex items-center gap-2">
+              <BookOpen className="w-4 h-4 text-emerald-500" />
+              Compliance, Privacy & Verification Resources
+            </h3>
+            <p className="text-xs text-[var(--color-text-muted)] mt-1">
+              Learn how client biometric proofs, specimen photography, and encrypted data processing comply with EU privacy guidelines.
+            </p>
+          </div>
+          <Link
+            to="/blog"
+            className="text-xs font-semibold text-emerald-500 hover:underline inline-flex items-center gap-1 shrink-0"
+          >
+            <span>All Compliance Guides</span>
+            <span>→</span>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <Link
+            to="/blog/france-national-id-card-verification-guide"
+            className="p-3.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-emerald-500/50 hover:bg-[var(--color-bg-tertiary)] transition-all block group"
+          >
+            <span className="text-[10px] font-mono font-semibold uppercase text-emerald-500">Identity Security</span>
+            <h4 className="font-semibold text-[var(--color-text-primary)] group-hover:text-emerald-500 transition-colors mt-1 line-clamp-1">French ID Card (CNIe) Encryption</h4>
+            <p className="text-[11px] text-[var(--color-text-muted)] mt-1 line-clamp-2">How ANTS and PRADO databases register cryptographic public keys.</p>
+          </Link>
+
+          <Link
+            to="/blog/biometric-passports-icao-9303-security"
+            className="p-3.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-emerald-500/50 hover:bg-[var(--color-bg-tertiary)] transition-all block group"
+          >
+            <span className="text-[10px] font-mono font-semibold uppercase text-emerald-500">Biometrics</span>
+            <h4 className="font-semibold text-[var(--color-text-primary)] group-hover:text-emerald-500 transition-colors mt-1 line-clamp-1">ICAO 9303 Cryptographic Defense</h4>
+            <p className="text-[11px] text-[var(--color-text-muted)] mt-1 line-clamp-2">Passive Authentication, Basic Access Control, and chip encryption.</p>
+          </Link>
+
+          <Link
+            to="/blog/document-specimen-photo-verification"
+            className="p-3.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-emerald-500/50 hover:bg-[var(--color-bg-tertiary)] transition-all block group"
+          >
+            <span className="text-[10px] font-mono font-semibold uppercase text-emerald-500">Inspection</span>
+            <h4 className="font-semibold text-[var(--color-text-primary)] group-hover:text-emerald-500 transition-colors mt-1 line-clamp-1">Specimen Photo Proofs Protocol</h4>
+            <p className="text-[11px] text-[var(--color-text-muted)] mt-1 line-clamp-2">Strict privacy handling during pre-dispatch verification.</p>
+          </Link>
+        </div>
+
+        <div className="p-4 rounded-xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+          <span className="font-semibold text-[var(--color-text-primary)] flex items-center gap-1.5">
+            <Compass className="w-4 h-4 text-emerald-500" />
+            Quick Navigation Links:
+          </span>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link
+              to="/catalogue"
+              className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+            >
+              Browse Catalogue
+            </Link>
+            <Link
+              to="/contact"
+              className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+            >
+              Contact Privacy Officer
+            </Link>
+            <Link
+              to="/catalogue?category=Identity+Cards"
+              className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+            >
+              National ID Cards
+            </Link>
+            <Link
+              to="/catalogue?category=Passports"
+              className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-emerald-500 text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+            >
+              Biometric Passports
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Outbound Linking: Exactly 3 Authoritative European Data Protection Registers */}
+      <section className="p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-tertiary)]/50 space-y-3">
+        <div className="flex items-center gap-2">
+          <ExternalLink className="w-4 h-4 text-emerald-500" />
+          <h3 className="text-xs font-bold text-[var(--color-text-primary)] uppercase tracking-wider">
+            Official European Privacy & Regulatory Registers
+          </h3>
+        </div>
+        <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
+          For sovereign legal definitions and data subject rights under the European regulatory regime, consult these official authorities:
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+          <a
+            href="https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="p-3.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-primary)] hover:border-emerald-500/50 transition-all block group text-xs"
+          >
+            <div className="flex items-center justify-between font-bold text-[var(--color-text-primary)] group-hover:text-emerald-500">
+              <span>EUR-Lex Regulation (EU) 2016/679</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[var(--color-text-muted)] group-hover:text-emerald-500 shrink-0" />
+            </div>
+            <p className="text-[11px] text-[var(--color-text-muted)] mt-1.5 leading-relaxed">
+              Official Journal text of the General Data Protection Regulation (GDPR) governing European data rights.
+            </p>
+          </a>
+
+          <a
+            href="https://edpb.europa.eu/"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="p-3.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-primary)] hover:border-emerald-500/50 transition-all block group text-xs"
+          >
+            <div className="flex items-center justify-between font-bold text-[var(--color-text-primary)] group-hover:text-emerald-500">
+              <span>European Data Protection Board</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[var(--color-text-muted)] group-hover:text-emerald-500 shrink-0" />
+            </div>
+            <p className="text-[11px] text-[var(--color-text-muted)] mt-1.5 leading-relaxed">
+              Guidelines on data subject rights, right to erasure, and automated cross-border processing standards.
+            </p>
+          </a>
+
+          <a
+            href="https://www.cnil.fr/en"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="p-3.5 rounded-xl border border-[var(--color-border)] bg-[var(--color-bg-primary)] hover:border-emerald-500/50 transition-all block group text-xs"
+          >
+            <div className="flex items-center justify-between font-bold text-[var(--color-text-primary)] group-hover:text-emerald-500">
+              <span>CNIL Data Protection Authority</span>
+              <ExternalLink className="w-3.5 h-3.5 text-[var(--color-text-muted)] group-hover:text-emerald-500 shrink-0" />
+            </div>
+            <p className="text-[11px] text-[var(--color-text-muted)] mt-1.5 leading-relaxed">
+              Commission Nationale de l'Informatique et des Libertés guidelines on digital identity and biometric protections.
+            </p>
+          </a>
+        </div>
+      </section>
     </div>
   );
 };

@@ -1,0 +1,104 @@
+{
+  "audit_date": "2026-10-11",
+  "data_period": "2026-09-12 to 2026-10-06",
+  "domain": "eudossier.eu",
+  "search_console_summary": {
+    "total_impressions": 367,
+    "total_clicks": 3,
+    "average_ctr": "0.82%",
+    "average_position": 48.45
+  },
+  "search_appearance": {
+    "product_snippets": {
+      "impressions": 316,
+      "clicks": 1,
+      "ctr": "0.32%",
+      "average_position": 52.63
+    }
+  },
+  "device_performance": {
+    "mobile": {
+      "clicks": 2,
+      "impressions": 55,
+      "ctr": "3.64%",
+      "average_position": 24.18,
+      "insight": "High engagement and 2x higher ranking position than desktop. Primary conversion driver."
+    },
+    "desktop": {
+      "clicks": 1,
+      "impressions": 311,
+      "ctr": "0.32%",
+      "average_position": 52.76,
+      "insight": "Highest impression volume but depressed CTR due to page 5-6 SERP placement and missing Rich Snippet stars."
+    },
+    "tablet": {
+      "clicks": 0,
+      "impressions": 1,
+      "ctr": "0.00%",
+      "average_position": 8.00
+    }
+  },
+  "top_country_markets": [
+    { "country": "United States", "impressions": 71, "clicks": 0, "avg_position": 48.35 },
+    { "country": "France", "impressions": 45, "clicks": 0, "avg_position": 60.84 },
+    { "country": "Spain", "impressions": 43, "clicks": 0, "avg_position": 55.19 },
+    { "country": "India", "impressions": 35, "clicks": 0, "avg_position": 68.86 },
+    { "country": "Germany", "impressions": 27, "clicks": 0, "avg_position": 40.78 },
+    { "country": "United Kingdom", "impressions": 19, "clicks": 0, "avg_position": 51.16 },
+    { "country": "Netherlands", "impressions": 14, "clicks": 0, "avg_position": 39.43 },
+    { "country": "Denmark", "impressions": 14, "clicks": 0, "avg_position": 43.21 },
+    { "country": "Canada", "impressions": 11, "clicks": 0, "avg_position": 52.82 },
+    { "country": "Cameroon", "impressions": 8, "clicks": 1, "avg_position": 4.50 },
+    { "country": "Sweden", "impressions": 4, "clicks": 0, "avg_position": 2.50 },
+    { "country": "Benin", "impressions": 1, "clicks": 1, "avg_position": 7.00 },
+    { "country": "Morocco", "impressions": 1, "clicks": 1, "avg_position": 159.00 }
+  ],
+  "top_performing_query_clusters": {
+    "visual_specimen_intent": {
+      "queries": [
+        "can i see a picture?",
+        "có hình ảnh ko",
+        "ekta chobi dekhao",
+        "show me a photo",
+        "اعطني صورته",
+        "फोटो भेजो",
+        "can you show me how it will look like"
+      ],
+      "average_rank": 1.4,
+      "finding": "Eudossier achieved rank #1 to #5 in conversational and multilingual visual searches for document samples and pictures."
+    },
+    "french_identity_and_biometrics": {
+      "queries": [
+        "france fingerprint scanner market",
+        "france fingerprint biometrics market",
+        "france national id card",
+        "france passport reader market",
+        "french id card",
+        "id card france",
+        "cnie",
+        "cni francia"
+      ],
+      "impressions_share": "42%",
+      "average_rank": 48.2
+    },
+    "spanish_identity_and_registry": {
+      "queries": [
+        "spanish registry",
+        "spain id card",
+        "dni card spain",
+        "dni 4.0",
+        "chip pasaporte español"
+      ],
+      "impressions_share": "18%",
+      "average_rank": 62.1
+    },
+    "nordic_residence_permits": {
+      "queries": [
+        "eu opholdskort sverige",
+        "opholdskort sverige"
+      ],
+      "average_rank": 33.5,
+      "country_sweden_rank": 2.5
+    }
+  }
+}
