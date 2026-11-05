@@ -95,3 +95,21 @@ html.dark {
     transition: background-color 0.2s ease, color 0.2s ease;
   }
 }
+
+/**
+ * Tawk.to mobile widget bottom offset override:
+ * Keeps the minimized chat bubble, badge, and greeting card lifted above
+ * the fixed mobile bottom navigation bar (64px + safe area padding).
+ * Does not restrict the chat when maximized (height: 100%).
+ */
+@media screen and (max-width: 768px) {
+  #tawkchat-container:not([style*="height: 100%"]),
+  #tawkchat-minified-box:not([style*="height: 100%"]),
+  div[id^="tawk"]:not([style*="height: 100%"]):not([style*="height:100%"]),
+  div[class*="tawk-minified"]:not([style*="height: 100%"]),
+  iframe[src*="tawk.to"]:not([style*="height: 100%"]):not([style*="height:100%"]):not([style*="height: 100vh"]),
+  iframe[src*="embed.tawk.to"]:not([style*="height: 100%"]):not([style*="height:100%"]):not([style*="height: 100vh"]) {
+    bottom: calc(110px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}
+

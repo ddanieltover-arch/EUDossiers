@@ -6,7 +6,7 @@ export const TAWK_PROPERTY_ID: string =
 export const TAWK_WIDGET_ID: string =
   import.meta.env.VITE_TAWK_WIDGET_ID || '1jp9ajrpi';
 export const TAWK_MOBILE_OFFSET_Y: number = Number.parseInt(
-  import.meta.env.VITE_TAWK_MOBILE_OFFSET_Y || '88',
+  import.meta.env.VITE_TAWK_MOBILE_OFFSET_Y || '110',
   10
 );
 
@@ -49,7 +49,9 @@ export const TawkWidget: React.FC = () => {
     window.Tawk_API = window.Tawk_API || {};
     window.Tawk_LoadStart = new Date();
 
-    const mobileY = Number.isNaN(TAWK_MOBILE_OFFSET_Y) ? 88 : TAWK_MOBILE_OFFSET_Y;
+    const mobileY = Number.isNaN(TAWK_MOBILE_OFFSET_Y)
+      ? 110
+      : Math.max(TAWK_MOBILE_OFFSET_Y, 100);
 
     window.Tawk_API.customStyle = {
       visibility: {
@@ -66,15 +68,37 @@ export const TawkWidget: React.FC = () => {
       },
     };
 
-    if (isAdmin) {
-      window.Tawk_API.onLoad = () => {
+    // Helper to reinforce mobile offset on DOM elements if Tawk overrides it
+    const enforceMobileOffset = () => {
+      if (typeof window === 'undefined' || window.innerWidth > 768) return;
+      const selector = 'iframe[src*="tawk.to"], iframe[src*="embed.tawk.to"], div[id^="tawk"]';
+      const elements = document.querySelectorAll<HTMLElement>(selector);
+      elements.forEach(el => {
+        const height = el.offsetHeight || 0;
+        // Only target minimized bubble/teaser (not maximized full-screen modal)
+        if (height < 300) {
+          el.style.setProperty('bottom', `calc(${mobileY}px + env(safe-area-inset-bottom, 0px))`, 'important');
+        }
+      });
+    };
+
+    window.Tawk_API.onLoad = () => {
+      if (isAdmin) {
         try {
           window.Tawk_API?.hideWidget?.();
         } catch {
           // ignore
         }
-      };
-    }
+      }
+      enforceMobileOffset();
+    };
+
+    // Also observe DOM additions to apply offset as soon as iframes are inserted
+    const observer = new MutationObserver(() => {
+      enforceMobileOffset();
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
 
     const scriptId = 'tawk-to-script';
     if (!document.getElementById(scriptId)) {
@@ -92,6 +116,10 @@ export const TawkWidget: React.FC = () => {
         document.head.appendChild(s1);
       }
     }
+
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   // Update widget visibility when transitioning between admin and storefront routes

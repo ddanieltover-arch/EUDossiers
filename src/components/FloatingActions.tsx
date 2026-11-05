@@ -3,7 +3,6 @@ import { ArrowUp } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CONTACT_PHONE_DISPLAY, WHATSAPP_URL } from '../brand';
-import { isTawkConfigured } from './TawkWidget';
 
 const WhatsAppIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
@@ -31,16 +30,14 @@ export const FloatingActions: React.FC = () => {
 
   return (
     <div
-      className={`fixed right-4 z-50 flex flex-col items-end gap-3 ${
-        isTawkConfigured ? 'bottom-44 md:bottom-24' : 'bottom-24 md:bottom-6'
-      }`}
+      className="fixed left-4 md:left-6 z-50 flex flex-col items-start gap-3 bottom-24 md:bottom-6"
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
       {showBackToTop && (
         <button
           type="button"
           onClick={scrollToTop}
-          className="w-11 h-11 rounded-full bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] border border-[var(--color-border)] shadow-lg hover:bg-[var(--color-bg-card-hover)] hover:border-[var(--color-accent-500)]/50 transition-all flex items-center justify-center"
+          className="w-11 h-11 rounded-full bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] border border-[var(--color-border)] shadow-lg hover:bg-[var(--color-bg-card-hover)] hover:border-[var(--color-accent-500)]/50 transition-all flex items-center justify-center cursor-pointer"
           aria-label={t('floating.backToTop', { defaultValue: 'Back to top' })}
           title={t('floating.backToTop', { defaultValue: 'Back to top' })}
         >
@@ -57,7 +54,7 @@ export const FloatingActions: React.FC = () => {
         title={`${t('floating.whatsapp', { defaultValue: 'Chat on WhatsApp' })} · ${CONTACT_PHONE_DISPLAY}`}
       >
         <WhatsAppIcon className="w-6 h-6" />
-        <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] border border-[var(--color-border)] px-2.5 py-1.5 text-[11px] font-semibold opacity-0 translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all shadow-md">
+        <span className="pointer-events-none absolute left-full ml-3 whitespace-nowrap rounded-lg bg-[var(--color-bg-secondary)] text-[var(--color-text-primary)] border border-[var(--color-border)] px-2.5 py-1.5 text-[11px] font-semibold opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all shadow-md">
           {CONTACT_PHONE_DISPLAY}
         </span>
       </a>
