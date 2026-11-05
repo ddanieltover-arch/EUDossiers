@@ -3,6 +3,7 @@ import { ArrowUp } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { CONTACT_PHONE_DISPLAY, WHATSAPP_URL } from '../brand';
+import { isTawkConfigured } from './TawkWidget';
 
 const WhatsAppIcon: React.FC<{ className?: string }> = ({ className }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
@@ -30,7 +31,9 @@ export const FloatingActions: React.FC = () => {
 
   return (
     <div
-      className="fixed right-4 z-50 flex flex-col items-end gap-3 bottom-24 md:bottom-6"
+      className={`fixed right-4 z-50 flex flex-col items-end gap-3 ${
+        isTawkConfigured ? 'bottom-44 md:bottom-24' : 'bottom-24 md:bottom-6'
+      }`}
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
       {showBackToTop && (

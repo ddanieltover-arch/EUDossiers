@@ -10,6 +10,7 @@ import { OrderSuccessModal } from './components/OrderSuccessModal';
 import { LanguageModal } from './components/LanguageModal';
 import { GDPRBanner } from './components/GDPRBanner';
 import { FloatingActions } from './components/FloatingActions';
+import { TawkWidget } from './components/TawkWidget';
 import { useAdminAuth } from './context/AdminAuthContext';
 import { ShieldCheck, Globe, Euro, Warehouse, Heart } from 'lucide-react';
 import { SITE_NAME, LEGAL_FOOTER } from './brand';
@@ -67,6 +68,7 @@ const AppContent: React.FC = () => {
       <LanguageModal />
       <GDPRBanner />
       <FloatingActions />
+      <TawkWidget />
       <MobileBottomNav />
 
       <footer className="bg-[var(--color-bg-secondary)] border-t border-[var(--color-border)] text-[var(--color-text-muted)] py-12 mt-12 mb-16 md:mb-0 text-xs transition-colors duration-200">
