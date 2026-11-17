@@ -13,7 +13,11 @@ import { useSeoMeta } from '../utils/seo';
 const ADMIN_EMAIL = 'info@eudossier.eu';
 
 const CheckoutPage: React.FC = () => {
-  useSeoMeta({ title: 'Checkout | Eudossier', robots: 'noindex, follow' });
+  useSeoMeta({
+    title: 'Checkout | Eudossier',
+    canonical: 'https://eudossier.eu/checkout',
+    robots: 'noindex, follow',
+  });
   const {
     cart,
     selectedCountry,

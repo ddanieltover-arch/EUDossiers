@@ -19,7 +19,11 @@ const CartPage: React.FC = () => {
   const { t, i18n } = useTranslation('cart');
   const { t: tc } = useTranslation('common');
 
-  useSeoMeta({ title: 'Shopping Cart | Eudossier', robots: 'noindex, follow' });
+  useSeoMeta({
+    title: 'Shopping Cart | Eudossier',
+    canonical: 'https://eudossier.eu/cart',
+    robots: 'noindex, follow',
+  });
 
   if (cart.length === 0) {
     return (

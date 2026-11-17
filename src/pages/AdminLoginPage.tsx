@@ -12,7 +12,11 @@ const AdminLoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  useSeoMeta({ title: 'Admin Login | Eudossier', robots: 'noindex, follow' });
+  useSeoMeta({
+    title: 'Admin Login | Eudossier',
+    canonical: 'https://eudossier.eu/admin',
+    robots: 'noindex, follow',
+  });
 
   useEffect(() => {
     if (isAdminAuthenticated) {

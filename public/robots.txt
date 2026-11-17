@@ -1,4 +1,4 @@
-# Eudossier — Official European Union Commerce & Document Portal
+# Eudossier — Website crawler instructions
 User-agent: *
 Allow: /
 Disallow: /api/

@@ -8,7 +8,11 @@ const AdminPortalPage: React.FC = () => {
   const { isAdminAuthenticated } = useAdminAuth();
   const navigate = useNavigate();
 
-  useSeoMeta({ title: 'Admin Inventory Portal | Eudossier', robots: 'noindex, follow' });
+  useSeoMeta({
+    title: 'Admin Inventory Portal | Eudossier',
+    canonical: 'https://eudossier.eu/admin/portal',
+    robots: 'noindex, follow',
+  });
 
   useEffect(() => {
     if (!isAdminAuthenticated) {
