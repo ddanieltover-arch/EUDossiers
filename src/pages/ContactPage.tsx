@@ -4,6 +4,7 @@ import { Mail, MapPin, Clock, Phone, Send, CheckCircle, Globe, ExternalLink, Boo
 import { useTranslation } from 'react-i18next';
 import { SITE_NAME, CONTACT_EMAIL, PRIVACY_EMAIL, ADDRESS_LINE, DOMAIN, CONTACT_PHONE_DISPLAY, CONTACT_PHONE_E164, WHATSAPP_URL } from '../brand';
 import { openTawkChat, isTawkConfigured } from '../components/TawkWidget';
+import { useSeoMeta } from '../utils/seo';
 
 const ContactPage: React.FC = () => {
   const { t } = useTranslation('contact');
@@ -11,6 +12,12 @@ const ContactPage: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useSeoMeta({
+    title: 'Contact Eudossier — Customer Support & EU Document Enquiries',
+    description: 'Contact Eudossier for enquiries about European identity documents, biometric passports, residence permits, and document verification services.',
+    canonical: 'https://eudossier.eu/contact',
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));

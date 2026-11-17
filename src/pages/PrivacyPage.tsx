@@ -4,6 +4,7 @@ import { ShieldCheck, Download, Trash2, CheckCircle2, ExternalLink, BookOpen, Co
 import { useTranslation } from 'react-i18next';
 import { useStore } from '../context/StoreContext';
 import { SITE_NAME, LEGAL_NAME, PRIVACY_EMAIL, ADDRESS_LINE } from '../brand';
+import { useSeoMeta } from '../utils/seo';
 
 const PrivacyPage: React.FC = () => {
   const { t } = useTranslation('privacy');
@@ -14,6 +15,12 @@ const PrivacyPage: React.FC = () => {
     downloadDSARPackage,
     requestRightToBeForgotten,
   } = useStore();
+
+  useSeoMeta({
+    title: 'Privacy & GDPR — Eudossier Data Protection Centre',
+    description: 'Eudossier privacy policy, GDPR consent management, data subject access requests (DSAR), and right to erasure under EU data protection regulations.',
+    canonical: 'https://eudossier.eu/privacy',
+  });
 
   const [activeTab, setActiveTab] = useState<'consent' | 'dsar' | 'erasure' | 'logs' | 'policy'>('policy');
   const [showErasureConfirm, setShowErasureConfirm] = useState(false);

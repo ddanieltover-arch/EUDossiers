@@ -8,10 +8,12 @@ import { EU_COUNTRIES } from '../data/mockData';
 import { CONTINENT_COUNTRIES } from '../data/countriesData';
 import { EUCountryCode } from '../types';
 import { SITE_NAME } from '../brand';
+import { useSeoMeta } from '../utils/seo';
 
 const ADMIN_EMAIL = 'info@eudossier.eu';
 
 const CheckoutPage: React.FC = () => {
+  useSeoMeta({ title: 'Checkout | Eudossier', robots: 'noindex, nofollow' });
   const {
     cart,
     selectedCountry,

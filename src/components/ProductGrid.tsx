@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useNavigate } from 'react-router-dom';
 import { Check, RotateCcw, AlertCircle, Search, ShieldCheck, Tag, BookOpen, ExternalLink } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useStore } from '../context/StoreContext';
@@ -69,6 +69,7 @@ const ORIGINS = [
 export const ProductGrid: React.FC = () => {
   const { t, i18n } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
   const { 
     products, 
     isLoadingProducts, 
@@ -81,6 +82,46 @@ export const ProductGrid: React.FC = () => {
     showOnlyInStock,
     setShowOnlyInStock
   } = useStore();
+
+  // Sanitize malformed search placeholders (GSC: {search_term_string})
+  useEffect(() => {
+    const rawSearch = searchParams.get('search');
+    if (rawSearch && /\{.*\}/.test(decodeURIComponent(rawSearch))) {
+      // Strip the broken placeholder and redirect to clean /catalogue
+      navigate('/catalogue', { replace: true });
+      return;
+    }
+    // Sync legitimate ?search= param into store
+    if (rawSearch && rawSearch !== searchQuery) {
+      setSearchQuery(rawSearch);
+    }
+  }, [searchParams]);
+
+  // SEO: set canonical to /catalogue (without query params) and noindex for filtered views
+  useEffect(() => {
+    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.rel = 'canonical';
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.href = 'https://eudossier.eu/catalogue';
+
+    let metaRobots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
+    if (!metaRobots) {
+      metaRobots = document.createElement('meta');
+      metaRobots.setAttribute('name', 'robots');
+      document.head.appendChild(metaRobots);
+    }
+    const hasFilters = searchQuery || selectedCategory !== 'All' || selectedOriginCountry !== 'All';
+    metaRobots.content = hasFilters ? 'noindex, follow' : 'index, follow';
+
+    return () => {
+      // Restore on unmount
+      const r = document.querySelector('meta[name="robots"]');
+      if (r) r.setAttribute('content', 'index, follow');
+    };
+  }, [searchQuery, selectedCategory, selectedOriginCountry]);
 
   // URL Sync with Category param
   useEffect(() => {

@@ -135,13 +135,6 @@ const ProductPage: React.FC = () => {
               name: SITE_NAME,
               url: 'https://eudossier.eu'
             }
-          },
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: '4.9',
-            reviewCount: '128',
-            bestRating: '5',
-            worstRating: '1'
           }
         },
         {

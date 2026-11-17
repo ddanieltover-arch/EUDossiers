@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Lock, ShieldCheck, AlertTriangle } from 'lucide-react';
 import { useAdminAuth } from '../context/AdminAuthContext';
 import { useTranslation } from 'react-i18next';
+import { useSeoMeta } from '../utils/seo';
 
 const AdminLoginPage: React.FC = () => {
   const { isAdminAuthenticated, login, loginError } = useAdminAuth();
@@ -10,6 +11,8 @@ const AdminLoginPage: React.FC = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  useSeoMeta({ title: 'Admin Login | Eudossier', robots: 'noindex, nofollow' });
 
   useEffect(() => {
     if (isAdminAuthenticated) {

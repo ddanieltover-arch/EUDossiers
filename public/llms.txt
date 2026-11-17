@@ -4,16 +4,16 @@
 Eudossier (eudossier.eu) provides official registered European passports, electronic identity cards (eID), EU driving licenses, residence permits (eAT), and Schengen document fulfillment with physical micro-text, ICAO 9303 microchip encoding, and direct national database registration across all 27 EU member states.
 
 ## Key Pages & Navigation
-- https://www.eudossier.eu/ : Homepage — overview of single market document solutions, trust framework, and verification protocol
-- https://www.eudossier.eu/catalogue : Complete Single Market Document Catalogue — full list of 28 registered European documents with real-time stock and EUR pricing
-- https://www.eudossier.eu/blog : European Identity & Regulatory Knowledge Hub — authoritative technical and legal guides on document verification and ICAO 9303 standards
-- https://www.eudossier.eu/blog/france-national-id-card-verification-guide : Guide on French CNIe ANTS & PRADO verification protocols
-- https://www.eudossier.eu/blog/biometric-passports-icao-9303-security : Technical analysis of ICAO 9303 biometric passport microchip security
-- https://www.eudossier.eu/blog/eea-id-cards-travel-rights-italian-cie : Analysis of EEA ID travel rights and Italy's Carta d'Identità (CIE 3.0)
-- https://www.eudossier.eu/blog/german-eat-vs-eu-residence-permit : German eAT vs EU residence permit comparison & BAMF registration
-- https://www.eudossier.eu/blog/document-specimen-photo-verification : Physical document specimen inspection, UV verification, and visual proof guide
-- https://www.eudossier.eu/contact : Secure Client Communications & Encrypted Consultation Hub
-- https://www.eudossier.eu/privacy : GDPR Compliance Suite — Article 15 Data Subject Access Requests (DSAR) and Article 17 Right to Be Forgotten erasure tools
+- https://eudossier.eu/ : Homepage — overview of single market document solutions, trust framework, and verification protocol
+- https://eudossier.eu/catalogue : Complete Single Market Document Catalogue — full list of 28 registered European documents with real-time stock and EUR pricing
+- https://eudossier.eu/blog : European Identity & Regulatory Knowledge Hub — authoritative technical and legal guides on document verification and ICAO 9303 standards
+- https://eudossier.eu/blog/france-national-id-card-verification-guide : Guide on French CNIe ANTS & PRADO verification protocols
+- https://eudossier.eu/blog/biometric-passports-icao-9303-security : Technical analysis of ICAO 9303 biometric passport microchip security
+- https://eudossier.eu/blog/eea-id-cards-travel-rights-italian-cie : Analysis of EEA ID travel rights and Italy's Carta d'Identità (CIE 3.0)
+- https://eudossier.eu/blog/german-eat-vs-eu-residence-permit : German eAT vs EU residence permit comparison & BAMF registration
+- https://eudossier.eu/blog/document-specimen-photo-verification : Physical document specimen inspection, UV verification, and visual proof guide
+- https://eudossier.eu/contact : Secure Client Communications & Encrypted Consultation Hub
+- https://eudossier.eu/privacy : GDPR Compliance Suite — Article 15 Data Subject Access Requests (DSAR) and Article 17 Right to Be Forgotten erasure tools
 
 ## Core Product Categories & Registered Entities
 

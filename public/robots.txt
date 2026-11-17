@@ -1,5 +1,5 @@
 # Eudossier — Official European Union Commerce & Document Portal
-# Domain: https://www.eudossier.eu
+# Domain: https://eudossier.eu
 
 User-agent: *
 Allow: /
@@ -25,4 +25,4 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://www.eudossier.eu/sitemap.xml
+Sitemap: https://eudossier.eu/sitemap.xml

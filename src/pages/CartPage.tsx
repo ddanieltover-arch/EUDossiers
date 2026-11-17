@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useStore } from '../context/StoreContext';
 import { getLocalizedProductName } from '../data/productNameTranslations';
 import { getProductPath } from '../utils/productSlug';
+import { useSeoMeta } from '../utils/seo';
 
 const CartPage: React.FC = () => {
   const {
@@ -17,6 +18,8 @@ const CartPage: React.FC = () => {
   } = useStore();
   const { t, i18n } = useTranslation('cart');
   const { t: tc } = useTranslation('common');
+
+  useSeoMeta({ title: 'Shopping Cart | Eudossier', robots: 'noindex, follow' });
 
   if (cart.length === 0) {
     return (
