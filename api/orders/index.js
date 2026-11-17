@@ -6909,6 +6909,33 @@ function buildNameTranslationsForProduct(id) {
   return { ...entry };
 }
 
+// src/data/compliancePolicy.ts
+var COMPLIANCE_REVIEW_PRODUCT_IDS = /* @__PURE__ */ new Set([
+  "doc-006",
+  // Fast-Track EU Driver's License (Express 72-Hour Fulfillment)
+  "doc-009",
+  // Registered Dutch Identity Card (Nederlandse Identiteitskaart)
+  "doc-013",
+  // Authentic US Passport Book (e-Passport Chip & Registration)
+  "doc-027",
+  // Registered Swiss Biometric Passport (Schweizer Pass 22)
+  "doc-028"
+  // Verified EU Bank Statement & Financial Proof Package
+]);
+function isProductUnderComplianceReview(productOrId) {
+  if (!productOrId) return false;
+  if (typeof productOrId === "string") {
+    return COMPLIANCE_REVIEW_PRODUCT_IDS.has(productOrId);
+  }
+  if (productOrId.complianceReviewPending === true) {
+    return true;
+  }
+  if (productOrId.id && COMPLIANCE_REVIEW_PRODUCT_IDS.has(productOrId.id)) {
+    return true;
+  }
+  return false;
+}
+
 // src/server/products-repository.ts
 function mapProductRow(row) {
   const translations = row.name_translations ?? {};
@@ -6933,7 +6960,8 @@ function mapProductRow(row) {
     weightKg: Number(row.weight_kg),
     supplierName: row.supplier_name,
     tags: row.tags ?? [],
-    lastRestocked: row.last_restocked
+    lastRestocked: row.last_restocked,
+    complianceReviewPending: isProductUnderComplianceReview(row.id)
   });
 }
 async function getProductById(id) {

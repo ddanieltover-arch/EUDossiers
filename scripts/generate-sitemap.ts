@@ -2,6 +2,7 @@ import fs from 'fs';
 import { INITIAL_PRODUCTS } from '../src/data/mockData';
 import { getProductSlug } from '../src/utils/productSlug';
 import { BLOG_POSTS } from '../src/data/blogData';
+import { isProductUnderComplianceReview } from '../src/data/compliancePolicy';
 
 interface SitemapEntry {
   loc: string;
@@ -42,7 +43,7 @@ entries.push({
 });
 
 // 2. Active, Verified Products (Exclude complianceReviewPending: true)
-const indexableProducts = INITIAL_PRODUCTS.filter(p => !p.complianceReviewPending);
+const indexableProducts = INITIAL_PRODUCTS.filter(p => !isProductUnderComplianceReview(p));
 for (const p of indexableProducts) {
   const slug = getProductSlug(p);
   entries.push({

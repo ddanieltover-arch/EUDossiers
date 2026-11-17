@@ -11,6 +11,7 @@ import {
 } from '../types';
 import { EU_COUNTRIES, INITIAL_PRODUCTS } from '../data/mockData';
 import { withLocalCatalogueImages } from '../data/catalogueAssets';
+import { isProductUnderComplianceReview } from '../data/compliancePolicy';
 import { EXPORT_PREFIX } from '../brand';
 
 interface StoreContextType {
@@ -124,7 +125,10 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   }, []);
 
   const fetchProducts = async () => {
-    const localCatalogue = INITIAL_PRODUCTS.map(withLocalCatalogueImages);
+    const localCatalogue = INITIAL_PRODUCTS.map(p => ({
+      ...withLocalCatalogueImages(p),
+      complianceReviewPending: isProductUnderComplianceReview(p),
+    }));
     try {
       setIsLoadingProducts(true);
       const res = await fetch('/api/products');
@@ -132,7 +136,12 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       if (res.ok && contentType.includes('application/json')) {
         const data = await res.json();
         if (Array.isArray(data) && data.length > 0) {
-          setProducts(data.map(withLocalCatalogueImages));
+          setProducts(
+            data.map((p: Product) => ({
+              ...withLocalCatalogueImages(p),
+              complianceReviewPending: isProductUnderComplianceReview(p),
+            }))
+          );
           return;
         }
       }

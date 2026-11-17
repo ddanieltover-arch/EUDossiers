@@ -9,6 +9,7 @@ import { getLocalizedProductDescription } from '../data/productDescriptionTransl
 import { findProductBySlugOrId, getProductPath, getProductSlug } from '../utils/productSlug';
 import { BLOG_POSTS } from '../data/blogData';
 import { setCanonical, setMetaDescription, setRobots } from '../utils/seo';
+import { isProductUnderComplianceReview } from '../data/compliancePolicy';
 
 const ProductPage: React.FC = () => {
   const { productSlug } = useParams<{ productSlug: string }>();
@@ -89,7 +90,7 @@ const ProductPage: React.FC = () => {
     setMeta('twitter:title', pageTitle);
     setMeta('twitter:description', metaDescContent);
 
-    const isUnderReview = Boolean(product.complianceReviewPending);
+    const isUnderReview = isProductUnderComplianceReview(product);
 
     // Canonical Link & Robots (Strictly 1 deduplicated tag)
     setCanonical(canonicalUrl);

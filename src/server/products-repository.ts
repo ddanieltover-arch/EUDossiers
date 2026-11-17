@@ -2,6 +2,7 @@ import { Product, WarehouseStock } from '../types';
 import { localCatalogueImages, withLocalCatalogueImages } from '../data/catalogueAssets';
 import { buildNameTranslationsForProduct } from '../data/productNameTranslations';
 import { buildDescriptionTranslationsForProduct } from '../data/productDescriptionTranslations';
+import { isProductUnderComplianceReview } from '../data/compliancePolicy';
 import { getSql } from './db';
 
 type ProductRow = {
@@ -53,6 +54,7 @@ export function mapProductRow(row: ProductRow): Product {
     supplierName: row.supplier_name,
     tags: row.tags ?? [],
     lastRestocked: row.last_restocked,
+    complianceReviewPending: isProductUnderComplianceReview(row.id),
   });
 }
 
