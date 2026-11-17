@@ -1,9 +1,9 @@
 export type Category = 'Passports' | 'Driver Licenses' | 'Identity Cards' | 'Residence Permits' | 'EU Visas';
 
-export type EUCountryCode = 'DE' | 'FR' | 'IT' | 'ES' | 'NL' | 'BE' | 'SE' | 'AT' | 'IE' | 'PL' | 'DK' | 'FI' | 'PT' | 'GR' | 'CZ' | 'CH' | 'GB';
+export type EUCountryCode = string;
 
 export interface EUCountryVAT {
-  code: EUCountryCode;
+  code: string;
   name: string;
   flag: string;
   vatRate: number; // e.g. 0.19 for 19%

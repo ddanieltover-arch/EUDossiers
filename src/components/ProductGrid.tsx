@@ -7,6 +7,7 @@ import { ProductCard } from './ProductCard';
 import { getLocalizedProductName } from '../data/productNameTranslations';
 import { getLocalizedProductDescription } from '../data/productDescriptionTranslations';
 import { BLOG_POSTS } from '../data/blogData';
+import { CONTINENT_COUNTRIES } from '../data/countriesData';
 
 const CATEGORIES = [
   'All',
@@ -197,9 +198,19 @@ export const ProductGrid: React.FC = () => {
               className="bg-[var(--color-bg-input)] text-[var(--color-text-primary)] border border-[var(--color-border)] px-3 py-2 rounded-xl focus:outline-none focus:border-blue-500 font-medium"
             >
               <option value="All">{t('catalogue:allOrigins')}</option>
-              {ORIGINS.filter(o => o !== 'All').map(country => (
-                <option key={country} value={country}>{t('product.madeIn', { country })}</option>
-              ))}
+              {CONTINENT_COUNTRIES.map(group => {
+                const groupCountries = group.countries.filter(c => ORIGINS.includes(c.name));
+                if (groupCountries.length === 0) return null;
+                return (
+                  <optgroup key={group.continent} label={`── ${group.continent} ──`} className="bg-[var(--color-bg-secondary)] font-bold text-[var(--color-text-primary)]">
+                    {groupCountries.map(c => (
+                      <option key={c.code} value={c.name} className="bg-[var(--color-bg-input)] font-normal text-[var(--color-text-primary)]">
+                        {c.code} {c.name}
+                      </option>
+                    ))}
+                  </optgroup>
+                );
+              })}
             </select>
 
             <button

@@ -1,24 +1,7 @@
 import { EUCountryVAT, Currency, Product, StockAdjustment, GDPRPreferences, ConsentLog } from '../types';
+import { ALL_COUNTRIES } from './countriesData';
 
-export const EU_COUNTRIES: EUCountryVAT[] = [
-  { code: 'DE', name: 'Germany', flag: '🇩🇪', vatRate: 0.19, standardCurrency: 'EUR', language: 'Deutsch' },
-  { code: 'FR', name: 'France', flag: '🇫🇷', vatRate: 0.20, standardCurrency: 'EUR', language: 'Français' },
-  { code: 'IT', name: 'Italy', flag: '🇮🇹', vatRate: 0.22, standardCurrency: 'EUR', language: 'Italiano' },
-  { code: 'ES', name: 'Spain', flag: '🇪🇸', vatRate: 0.21, standardCurrency: 'EUR', language: 'Español' },
-  { code: 'NL', name: 'Netherlands', flag: '🇳🇱', vatRate: 0.21, standardCurrency: 'EUR', language: 'Nederlands' },
-  { code: 'BE', name: 'Belgium', flag: '🇧🇪', vatRate: 0.21, standardCurrency: 'EUR', language: 'Français / Nederlands' },
-  { code: 'AT', name: 'Austria', flag: '🇦🇹', vatRate: 0.20, standardCurrency: 'EUR', language: 'Deutsch' },
-  { code: 'SE', name: 'Sweden', flag: '🇸🇪', vatRate: 0.25, standardCurrency: 'SEK', language: 'Svenska' },
-  { code: 'DK', name: 'Denmark', flag: '🇩🇰', vatRate: 0.25, standardCurrency: 'DKK', language: 'Dansk' },
-  { code: 'FI', name: 'Finland', flag: '🇫🇮', vatRate: 0.255, standardCurrency: 'EUR', language: 'Suomi' },
-  { code: 'IE', name: 'Ireland', flag: '🇮🇪', vatRate: 0.23, standardCurrency: 'EUR', language: 'English' },
-  { code: 'PL', name: 'Poland', flag: '🇵🇱', vatRate: 0.23, standardCurrency: 'PLN', language: 'Polski' },
-  { code: 'PT', name: 'Portugal', flag: '🇵🇹', vatRate: 0.23, standardCurrency: 'EUR', language: 'Português' },
-  { code: 'CZ', name: 'Czechia', flag: '🇨🇿', vatRate: 0.21, standardCurrency: 'CZK', language: 'Čeština' },
-  { code: 'GR', name: 'Greece', flag: '🇬🇷', vatRate: 0.24, standardCurrency: 'EUR', language: 'Ελληνικά' },
-  { code: 'CH', name: 'Switzerland', flag: '🇨🇭', vatRate: 0.081, standardCurrency: 'CHF', language: 'Deutsch / Français / Italiano' },
-  { code: 'GB', name: 'United Kingdom', flag: '🇬🇧', vatRate: 0.20, standardCurrency: 'GBP', language: 'English' },
-];
+export const EU_COUNTRIES: EUCountryVAT[] = ALL_COUNTRIES;
 
 export const SUPPORTED_CURRENCIES: Currency[] = [
   { code: 'EUR', symbol: '€', name: 'Euro (Base Transaction Currency)', rateToEUR: 1.0, flag: '🇪🇺' },

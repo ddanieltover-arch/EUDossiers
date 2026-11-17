@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useStore } from '../context/StoreContext';
 import { getLocalizedProductName } from '../data/productNameTranslations';
 import { EU_COUNTRIES } from '../data/mockData';
+import { CONTINENT_COUNTRIES } from '../data/countriesData';
 import { EUCountryCode } from '../types';
 import { SITE_NAME } from '../brand';
 
@@ -169,12 +170,16 @@ const CheckoutPage: React.FC = () => {
               <select
                 value={selectedCountry.code}
                 onChange={e => setSelectedCountryByCode(e.target.value as EUCountryCode)}
-                className="w-full bg-[var(--color-bg-input)] text-xs text-[var(--color-text-primary)] border border-[var(--color-border)] rounded-xl px-3 py-2.5 mt-1 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                className="w-full bg-[var(--color-bg-input)] text-xs text-[var(--color-text-primary)] border border-[var(--color-border)] rounded-xl px-3 py-2.5 mt-1 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 font-medium"
               >
-                {EU_COUNTRIES.map(c => (
-                  <option key={c.code} value={c.code}>
-                    {c.flag} {c.name}
-                  </option>
+                {CONTINENT_COUNTRIES.map(group => (
+                  <optgroup key={group.continent} label={`── ${group.continent} ──`} className="bg-[var(--color-bg-secondary)] font-bold text-[var(--color-text-primary)]">
+                    {group.countries.map(c => (
+                      <option key={c.code} value={c.code} className="bg-[var(--color-bg-input)] font-normal text-[var(--color-text-primary)]">
+                        {c.code} {c.name}
+                      </option>
+                    ))}
+                  </optgroup>
                 ))}
               </select>
             </div>
