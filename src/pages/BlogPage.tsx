@@ -59,16 +59,18 @@ export const BlogPage: React.FC = () => {
           url: 'https://eudossier.eu/logo.png',
         },
       },
-      blogPost: BLOG_POSTS.map((post) => ({
-        '@type': 'BlogPosting',
-        headline: post.title,
-        url: `https://eudossier.eu/blog/${post.slug}`,
-        datePublished: post.publishDate,
-        author: {
-          '@type': 'Person',
-          name: post.author.name,
-        },
-      })),
+      blogPost: [...BLOG_POSTS]
+        .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
+        .map((post) => ({
+          '@type': 'BlogPosting',
+          headline: post.title,
+          url: `https://eudossier.eu/blog/${post.slug}`,
+          datePublished: post.publishDate,
+          author: {
+            '@type': 'Person',
+            name: post.author.name,
+          },
+        })),
     });
 
     const prevSchema = document.getElementById('blog-schema-jsonld');
@@ -80,20 +82,22 @@ export const BlogPage: React.FC = () => {
     };
   }, []);
 
-  const filteredPosts = BLOG_POSTS.filter((post) => {
-    const postLang = post.language || 'en';
-    const matchesLang = selectedLanguage === 'All' || postLang === selectedLanguage;
-    const matchesCategory =
-      selectedCategory === 'All' || post.category === selectedCategory;
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.primaryKeyword.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.secondaryKeywords.some((k) =>
-        k.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-    return matchesLang && matchesCategory && matchesSearch;
-  });
+  const filteredPosts = BLOG_POSTS
+    .filter((post) => {
+      const postLang = post.language || 'en';
+      const matchesLang = selectedLanguage === 'All' || postLang === selectedLanguage;
+      const matchesCategory =
+        selectedCategory === 'All' || post.category === selectedCategory;
+      const matchesSearch =
+        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.primaryKeyword.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.secondaryKeywords.some((k) =>
+          k.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      return matchesLang && matchesCategory && matchesSearch;
+    })
+    .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 
   return (
     <div className="min-h-screen bg-[var(--color-bg-primary)] text-[var(--color-text-primary)] py-10 px-4 sm:px-6 lg:px-8">
