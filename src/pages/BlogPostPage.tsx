@@ -53,7 +53,7 @@ export const BlogPostPage: React.FC = () => {
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute('href', `https://www.eudossier.eu/blog/${post.slug}`);
+    canonical.setAttribute('href', `https://eudossier.eu/blog/${post.slug}`);
 
     // Inject BlogPosting and FAQPage JSON-LD Schemas
     const schemaScript = document.createElement('script');
@@ -66,10 +66,10 @@ export const BlogPostPage: React.FC = () => {
           '@type': 'BlogPosting',
           headline: post.title,
           description: post.excerpt,
-          url: `https://www.eudossier.eu/blog/${post.slug}`,
+          url: `https://eudossier.eu/blog/${post.slug}`,
           datePublished: post.publishDate,
           dateModified: post.publishDate,
-          image: `https://www.eudossier.eu${post.coverImage}`,
+          image: `https://eudossier.eu${post.coverImage}`,
           author: {
             '@type': 'Person',
             name: post.author.name,
@@ -78,15 +78,15 @@ export const BlogPostPage: React.FC = () => {
           publisher: {
             '@type': 'Organization',
             name: 'Eudossier Europe',
-            url: 'https://www.eudossier.eu',
+            url: 'https://eudossier.eu',
             logo: {
               '@type': 'ImageObject',
-              url: 'https://www.eudossier.eu/logo.png',
+              url: 'https://eudossier.eu/logo.png',
             },
           },
           mainEntityOfPage: {
             '@type': 'WebPage',
-            '@id': `https://www.eudossier.eu/blog/${post.slug}`,
+            '@id': `https://eudossier.eu/blog/${post.slug}`,
           },
         },
         {

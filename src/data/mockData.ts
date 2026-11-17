@@ -348,7 +348,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'doc-009',
     slug: 'registered-dutch-identity-card-nederlandse-identiteitskaart',
-    buyerSubtitle: 'Where Can I Buy, How to Buy & How Much for a Dutch ID Card in Netherlands & UK',
+    buyerSubtitle: 'Official Dutch ID Card (Nederlandse Identiteitskaart) · Europe Identity Card & EEA National ID',
     sku: 'NL-IDC-009',
     name: 'Registered Dutch Identity Card (Nederlandse Identiteitskaart)',
     category: 'Identity Cards',
@@ -377,7 +377,11 @@ export const INITIAL_PRODUCTS: Product[] = [
     },
     buyerFaqs: [
       {
-        question: 'How to buy dutch identity card in Netherlands, Netherlands, or Europe?',
+        question: 'Is the Dutch ID card accepted as an official Europe Identity Card and EEA national ID across all EU member states?',
+        answer: 'Yes. Under EU Directive 2004/38/EC, the Nederlandse Identiteitskaart is recognized as a full Europe Identity Card across all 27 EU member states, the Schengen Area, and European Economic Area (EEA) nations, allowing automated border clearance without a passport.'
+      },
+      {
+        question: 'How to buy dutch identity card in Netherlands, Belgium, or Europe?',
         answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Basisregistratie Personen (BRP) prior to discrete courier dispatch.'
       },
       {
@@ -393,8 +397,36 @@ export const INITIAL_PRODUCTS: Product[] = [
         answer: 'Yes, full database registration is processed in Basisregistratie Personen (BRP) with matching machine-readable MRZ records and biometric chip verification.'
       }
     ],
-    tags: ['Netherlands', 'Nederlandse Identiteitskaart', 'Dutch ID', 'BRP Registered', 'ID-Kaart', 'Registratiekaart'],
-    searchAliases: ['nederlandse identiteitskaart', 'dutch id card', 'registratiekaart', 'dutch id', 'netherlands id card', 'id card netherlands', 'brp registration card', 'how to buy dutch identity card in netherlands', 'where can i buy dutch identity card in netherlands', 'how much for dutch identity card in netherlands', 'how to buy in netherlands', 'where can i buy in uk', 'how much for in germany', 'how to buy in italy', 'where can i buy in europe', 'how much for dutch identity card in uk', 'where can i buy dutch identity card in germany'],
+    tags: [
+      'Netherlands',
+      'Nederlandse Identiteitskaart',
+      'Dutch ID',
+      'Europe Identity Card',
+      'European Identity Card',
+      'EEA Identity Card',
+      'EEA National ID Card',
+      'EEA ID Card',
+      'BRP Registered',
+      'ID-Kaart',
+      'Registratiekaart'
+    ],
+    searchAliases: [
+      'nederlandse identiteitskaart',
+      'dutch id card',
+      'registratiekaart',
+      'dutch id',
+      'netherlands id card',
+      'id card netherlands',
+      'europe identity card',
+      'european identity card',
+      'eea identity card',
+      'eea national id card',
+      'eea id card',
+      'brp registration card',
+      'how to buy dutch identity card in netherlands',
+      'where can i buy dutch identity card in belgium',
+      'how much for dutch identity card in netherlands'
+    ],
     lastRestocked: '2026-08-10',
   },
   {
@@ -1012,10 +1044,12 @@ export const INITIAL_PRODUCTS: Product[] = [
   },
   {
     id: 'doc-023',
+    slug: 'registered-french-id-card-carte-nationale-didentite-cnie',
+    buyerSubtitle: 'Official French ID Card (CNIe) · Registered in ANTS & PRADO with Biometric RFID Microchip',
     sku: 'FR-IDC-023',
     name: 'Registered French ID Card (Carte Nationale d\'Identité CNIe)',
     category: 'Identity Cards',
-    description: 'New electronic French identity card (CNIe) format equipped with secure dual microchip, transparent window security feature, and ANTS database validation.',
+    description: 'Official electronic French identity card (Carte Nationale d\'Identité - CNIe) format equipped with secure dual microchip, laser-engraved polycarbonate substrate, transparent window security feature, and ANTS central registry validation for unrestricted European travel.',
     priceEUR: 375.25,
     originalPriceEUR: 395.00,
     originCountry: 'France',
@@ -1032,8 +1066,74 @@ export const INITIAL_PRODUCTS: Product[] = [
     vatRateCategory: 'standard',
     weightKg: 0.05,
     supplierName: 'EuroExpressDocs (Paris Bureau)',
-    tags: ['France', 'CNIe', 'Carte Nationale d\'Identité', 'French ID Card', 'French Identity Card', 'Cédula de Francia', 'Cédula de Identidad Francesa', 'Identity Card', 'EU Identity'],
-    searchAliases: ['french id card', 'france national id card', 'carte nationale d identite', 'carte d identite', 'cnie', 'cédula de francia', 'cedula de identidad francesa', 'french identity card', 'france national id', 'french identification card', 'id card france', 'id card french', 'french id'],
+    buyerGuide: {
+      howToBuy: 'To order an official French ID card (Carte Nationale d\'Identité - CNIe) with delivery to France, Spain, the UK, Germany, the Netherlands, or the US, select your options and submit your biographical details. Our legal desk registers the record in the national ANTS database prior to dispatch.',
+      whereToBuy: 'Order directly online on Eudossier. Fulfillment is managed via Lyon Fulfillment (FR-03) and Amsterdam Logistics (NL-02) with 72-hour DHL Express delivery across France, Europe, the UK, and international destinations.',
+      howMuchFor: 'Transparent pricing of €375.25 with 5% store discount applied, inclusive of ANTS registry insertion, ICAO Doc 9303 dual-interface microchip encoding, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Fully registered in the French Ministry of the Interior ANTS system with matching machine-readable zone (MRZ), ICAO 9303 biometric chip encoding, and automated Schengen e-Gate compatibility.',
+    },
+    buyerFaqs: [
+      {
+        question: 'What is a French national identity card (CNIe) and can it be used as a French ID card across Europe?',
+        answer: 'The French Carte Nationale d\'Identité (CNIe) is an official European Economic Area (EEA) national identity document compliant with EU Regulation 2019/1157. It grants full freedom of movement and entry across all 27 EU member states, Schengen nations, and Switzerland without requiring a passport.'
+      },
+      {
+        question: 'How is the French ID card verified in official ANTS and PRADO government databases?',
+        answer: 'Each French ID card is recorded in the Agence Nationale des Titres Sécurisés (ANTS) central system and conforms to PRADO Council of the European Union specimens, ensuring optical, biometric, and cryptographic verification at all European border control points.'
+      },
+      {
+        question: 'Can I travel within the Schengen Area using a French identification card?',
+        answer: 'Yes. Under EU Directive 2004/38/EC, an authentic French national identity card is legally recognized as a standalone travel document across the entire Schengen Zone, allowing expedited automated biometric border clearance at airport e-Gates.'
+      },
+      {
+        question: 'Where can I buy a registered French ID card with delivery to France, Spain, UK, Germany, or the US?',
+        answer: 'You can order securely online directly through Eudossier. Your document is prepared with laser-engraved polycarbonate substrate and shipped via discrete, insured courier from our Lyon or Amsterdam logistics hubs within 72 hours.'
+      },
+      {
+        question: 'What physical and digital security features are embedded on the French CNIe?',
+        answer: 'The card includes a secure transparent window with ghost portrait, optically variable ink (OVI), tactile Guilloche engraving, a 3-line ICAO TD1 Machine Readable Zone (MRZ), and a contactless RFID microchip storing encrypted facial biometrics.'
+      }
+    ],
+    tags: [
+      'France',
+      'CNIe',
+      'Carte Nationale d\'Identité',
+      'French ID Card',
+      'French Identity Card',
+      'French ID',
+      'ID Card France',
+      'ID Card French',
+      'French Identification Card',
+      'National Identity Card France',
+      'French National Identity Card',
+      'EEA National ID',
+      'Europe Identity Card',
+      'Cédula de Francia',
+      'EU Identity'
+    ],
+    searchAliases: [
+      'french id card',
+      'france national id card',
+      'carte nationale d identite',
+      'carte d identite',
+      'cnie',
+      'french id',
+      'id card france',
+      'id card french',
+      'french identification card',
+      'national identity card france',
+      'french national identity card',
+      'french national id card',
+      'id card in france',
+      'france national identity card',
+      'cédula de francia',
+      'cedula de identidad francesa',
+      'french identity card',
+      'france national id',
+      'how to buy french id card in france',
+      'where can i buy french id card in spain',
+      'how much for french id card in uk'
+    ],
     lastRestocked: '2026-08-11',
   },
   {

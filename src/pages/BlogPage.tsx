@@ -37,7 +37,7 @@ export const BlogPage: React.FC = () => {
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute('href', 'https://www.eudossier.eu/blog');
+    canonical.setAttribute('href', 'https://eudossier.eu/blog');
 
     // JSON-LD Schema for Blog
     const schemaScript = document.createElement('script');
@@ -48,20 +48,20 @@ export const BlogPage: React.FC = () => {
       '@type': 'Blog',
       name: 'Eudossier Regulatory & Identity Knowledge Hub',
       description: 'Technical analyses and European regulatory guides on biometric travel documents and national ID verification.',
-      url: 'https://www.eudossier.eu/blog',
+      url: 'https://eudossier.eu/blog',
       publisher: {
         '@type': 'Organization',
         name: 'Eudossier Europe',
-        url: 'https://www.eudossier.eu',
+        url: 'https://eudossier.eu',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://www.eudossier.eu/logo.png',
+          url: 'https://eudossier.eu/logo.png',
         },
       },
       blogPost: BLOG_POSTS.map((post) => ({
         '@type': 'BlogPosting',
         headline: post.title,
-        url: `https://www.eudossier.eu/blog/${post.slug}`,
+        url: `https://eudossier.eu/blog/${post.slug}`,
         datePublished: post.publishDate,
         author: {
           '@type': 'Person',

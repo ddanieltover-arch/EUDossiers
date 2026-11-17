@@ -202,26 +202,76 @@ The Swiss Pass 22 represents a state-of-the-art leap in identity design. Issued 
     },
     coverImage: '/catalogue/doc-008.png',
     primaryKeyword: 'eea id',
-    secondaryKeywords: ['carta d identità italiana', 'ital card', 'cie 3.0', 'ministero dell interno', 'european economic area id'],
+    secondaryKeywords: [
+      'eea national id',
+      'eea id card',
+      'eea identity card',
+      'europe identity card',
+      'european identity card',
+      'carta d identità italiana',
+      'french id card',
+      'cie 3.0',
+      'ministero dell interno',
+      'european economic area id'
+    ],
     targetProductSlug: 'italian-electronic-id-card-carta-didentita-cie',
     targetProductName: 'Italian Electronic ID Card (Carta d\'Identità CIE)',
     content: `
 ### What is an "EEA ID" and What Rights Does It Grant?
 
-An **EEA ID** is an official national identity card issued by any member state of the European Economic Area—comprising all 27 European Union member states plus Iceland, Liechtenstein, and Norway.
+An **EEA ID** (or *EEA national identity card*) is an official electronic travel and identification document issued by any sovereign member state of the European Economic Area—uniting all 27 European Union member states with Iceland, Liechtenstein, and Norway.
 
-Under **Directive 2004/38/EC on Freedom of Movement**, any EEA citizen possessing a valid national ID card enjoys unconditional entry, residence, and labor rights throughout the single market without obtaining a visa or residency permit.
+Under **Directive 2004/38/EC on Freedom of Movement**, any EEA citizen possessing a valid national ID card enjoys unconditional entry, residence, banking, and employment rights across the entire European single market without requiring a separate passport or visa.
 
 ---
 
-### The Italian Carta d'Identità Elettronica (CIE 3.0)
+### Top 4 EEA National Identity Cards for Travel & Settlement
 
-Italy's **CIE 3.0** issued under the auspices of the *Ministero dell'Interno* (Ministry of the Interior) and minted by the *Istituto Poligrafico e Zecca dello Stato* (IPZS) is one of the most widely searched identity documents across Europe, Australia, and the Americas:
+Across the European Union, four electronic national identity cards stand out for their technical sophistication, biometric e-Gate compatibility, and widespread international recognition:
 
-* **Dual-Interface Microchip:** Operates at 13.56 MHz compliant with ISO/IEC 7816 and 14443 Type A/B protocols.
-* **SPID & CIE ID Digital Identity:** Acts as Level 3 high-security digital credential for authenticating with public administration systems across Italy and the EU.
-* **Polycarbonate Substrate with Holographic Stripe:** Houses tactile micro-lettering, optically variable ink, and high-definition rainbow printing.
-* **Full ICAO 9303 Compliance:** Enables European and Schengen border clearance at automated e-Gates.
+#### 1. French National ID Card (Carte Nationale d'Identité - CNIe)
+* **Issuing Authority:** French Republic (*Ministère de l'Intérieur* & ANTS)
+* **Substrate & Form Factor:** ISO/IEC 7810 ID-1 laser-engraved polycarbonate with transparent ghost window.
+* **Microprocessor:** Dual-interface ICAO 9303 contactless chip with encrypted facial biometric template.
+* **Direct Solution:** [Order Registered French ID Card (CNIe)](/catalogue/registered-french-id-card-carte-nationale-didentite-cnie) with full ANTS database indexing and 72-hour courier delivery.
+
+#### 2. Italian Carta d'Identità Elettronica (CIE 3.0)
+* **Issuing Authority:** Italian Ministry of the Interior (*Ministero dell'Interno* / IPZS)
+* **Substrate & Form Factor:** Polycarbonate card with holographic optical variable stripe and tactile relief lettering.
+* **Microprocessor:** Contactless 13.56 MHz chip compliant with ISO 14443 Type A/B, powering SPID and Level 3 digital identity.
+* **Direct Solution:** [Order Registered Italian Electronic ID Card (CIE)](/catalogue/italian-electronic-id-card-carta-didentita-cie) with legal municipality registry insertion.
+
+#### 3. Dutch Identity Card (Nederlandse Identiteitskaart / Europe Identity Card)
+* **Issuing Authority:** Kingdom of the Netherlands (BRP / Ministry of the Interior)
+* **Substrate & Form Factor:** High-durability polycarbonate embedded with Kinegram optical features.
+* **Microprocessor:** ICAO Doc 9303 LDS1 chip recognized across all 30 EEA territories as an official *Europe Identity Card*.
+* **Direct Solution:** [Order Registered Dutch Identity Card](/catalogue/registered-dutch-identity-card-nederlandse-identiteitskaart) verified in Basisregistratie Personen (BRP).
+
+#### 4. Spanish Documento Nacional de Identidad (DNI 4.0)
+* **Issuing Authority:** Kingdom of Spain (*Policía Nacional* & FNMT)
+* **Substrate & Form Factor:** Polycarbonate structure equipped with micro-engraved dual laser portrait and tactile MLI (Multiple Laser Image).
+* **Direct Solution:** [Order Registered Spanish DNI 4.0](/catalogue/registered-spanish-id-card-dni-electronico-4-0) with official police database registration.
+
+---
+
+### Comparative Architecture: EEA National ID Specifications
+
+| Specification | French CNIe | Italian CIE 3.0 | Dutch eID Card | Spanish DNI 4.0 |
+| :--- | :--- | :--- | :--- | :--- |
+| **Document Classification** | EEA National ID | EEA National ID | EEA National ID | EEA National ID |
+| **Material Base** | Polycarbonate (Fused) | Polycarbonate | Polycarbonate | Polycarbonate |
+| **Biometric Chip** | ICAO 9303 LDS1 | ICAO 9303 + SPID | ICAO 9303 LDS1 | ICAO 9303 + FNMT |
+| **Schengen Border e-Gates** | Instant Clearance | Instant Clearance | Instant Clearance | Instant Clearance |
+| **Central Registry** | ANTS (France) | IPZS / Interior (Italy) | BRP (Netherlands) | Policía Nacional (Spain) |
+| **Validity (Adults)** | 10 Years | 10 Years | 10 Years | 10 Years |
+
+---
+
+### Border Clearance & International Travel Protocol
+
+Under European law, holding an authentic **EEA national identity card** replaces the requirement to carry a passport booklet when traveling within the Schengen Area, Switzerland, the Balkans, and EU outward territories.
+
+At airport automated border e-Gates, the inspection reader initiates a cryptographic challenge-response protocol (PACE / BAC) with the card's contactless microchip. Upon reading the ICAO Logical Data Structure, the passenger's live biometric scan is verified in under 5 seconds, providing friction-free European transit.
     `,
     faqs: [
       {
@@ -229,8 +279,16 @@ Italy's **CIE 3.0** issued under the auspices of the *Ministero dell'Interno* (M
         answer: 'The European Union (EU) consists of 27 countries, whereas the European Economic Area (EEA) unites the 27 EU nations with Iceland, Liechtenstein, and Norway into the internal single market. An EEA ID refers to national identity documents valid across all 30 EEA territories.'
       },
       {
-        question: 'Can non-EU residents hold an Italian CIE?',
-        answer: 'Foreign citizens legally residing in Italy are issued a CIE for domestic identification, which is marked as not valid for foreign travel. Italian citizens receive a CIE valid for travel across all EU, EEA, and partner nations.'
+        question: 'Can an EEA identity card be used to enter the United Kingdom post-Brexit?',
+        answer: 'Under post-Brexit UK border rules, EEA identity cards are valid for UK entry for citizens who hold settled or pre-settled status under the EU Settlement Scheme (EUSS), frontier workers, and transit passengers with eligible documentation.'
+      },
+      {
+        question: 'Which EEA national ID card provides the fastest verification across European e-Gates?',
+        answer: 'Both the French CNIe and the Italian CIE 3.0 feature dual-band RFID microprocessors meeting ICAO 9303 TD1 specifications, allowing rapid 3-to-5 second automated biometric e-Gate clearance at major European hubs including Paris CDG, Frankfurt, Amsterdam Schiphol, and Rome Fiumicino.'
+      },
+      {
+        question: 'Can non-EU residents hold an Italian CIE or French CNIe?',
+        answer: 'Foreign residents in Italy or France receive resident-designated identity cards. Full EU citizen national ID cards granting unrestricted European travel rights require registration in national population registers such as ANTS or IPZS.'
       }
     ],
     outboundLinks: [

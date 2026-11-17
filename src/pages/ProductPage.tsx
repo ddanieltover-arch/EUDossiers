@@ -63,7 +63,7 @@ const ProductPage: React.FC = () => {
     const pageTitle = `${product.name} | Official ${product.originCountry} Registered Document | ${SITE_NAME}`;
     document.title = pageTitle;
 
-    const canonicalUrl = `https://www.eudossier.eu${getProductPath(product)}`;
+    const canonicalUrl = `https://eudossier.eu${getProductPath(product)}`;
     const metaDescContent = `${product.description.slice(0, 150)}... Official registration in ${product.originCountry} databases. Order securely with 72h EU courier delivery.`;
 
     // Helper to set or create meta tags
@@ -82,7 +82,7 @@ const ProductPage: React.FC = () => {
     setMeta('og:title', pageTitle, true);
     setMeta('og:description', metaDescContent, true);
     setMeta('og:url', canonicalUrl, true);
-    setMeta('og:image', product.imageUrl.startsWith('http') ? product.imageUrl : `https://www.eudossier.eu${product.imageUrl}`, true);
+    setMeta('og:image', product.imageUrl.startsWith('http') ? product.imageUrl : `https://eudossier.eu${product.imageUrl}`, true);
     setMeta('og:type', 'product', true);
     setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', pageTitle);
@@ -114,7 +114,7 @@ const ProductPage: React.FC = () => {
           '@id': `${canonicalUrl}#product`,
           name: product.name,
           image: [
-            product.imageUrl.startsWith('http') ? product.imageUrl : `https://www.eudossier.eu${product.imageUrl}`
+            product.imageUrl.startsWith('http') ? product.imageUrl : `https://eudossier.eu${product.imageUrl}`
           ],
           description: product.description,
           sku: product.sku,
@@ -133,7 +133,7 @@ const ProductPage: React.FC = () => {
             seller: {
               '@type': 'Organization',
               name: SITE_NAME,
-              url: 'https://www.eudossier.eu'
+              url: 'https://eudossier.eu'
             }
           },
           aggregateRating: {
@@ -152,19 +152,19 @@ const ProductPage: React.FC = () => {
               '@type': 'ListItem',
               position: 1,
               name: 'Home',
-              item: 'https://www.eudossier.eu/'
+              item: 'https://eudossier.eu/'
             },
             {
               '@type': 'ListItem',
               position: 2,
               name: 'Catalogue',
-              item: 'https://www.eudossier.eu/catalogue'
+              item: 'https://eudossier.eu/catalogue'
             },
             {
               '@type': 'ListItem',
               position: 3,
               name: product.category,
-              item: `https://www.eudossier.eu/catalogue?category=${encodeURIComponent(product.category)}`
+              item: `https://eudossier.eu/catalogue?category=${encodeURIComponent(product.category)}`
             },
             {
               '@type': 'ListItem',
