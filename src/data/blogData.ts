@@ -38,7 +38,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'An authoritative technical guide explaining the security architecture, dual microchip structure, and official database validation mechanisms of the electronic French identity card (Carte Nationale d\'Identité - CNIe).',
     category: 'Identity Cards',
     readTime: '7 min read',
-    publishDate: '2026-10-15',
+    publishDate: '2026-09-24',
     author: {
       name: 'Dr. Jean-Marc Laurent',
       role: 'Senior EU Regulatory Analyst',
@@ -121,7 +121,7 @@ To ensure travel validity across the 30 European Economic Area (EEA) member stat
     excerpt: 'A comprehensive comparative analysis of modern biometric e-passports, examining contactless cryptographic chips, Basic Access Control (BAC), and Switzerland’s Pass 22 Fedpol standards.',
     category: 'Passports',
     readTime: '9 min read',
-    publishDate: '2026-10-22',
+    publishDate: '2026-09-27',
     author: {
       name: 'Sophie Van Der Meer',
       role: 'Security Engineering Lead',
@@ -196,7 +196,7 @@ The Swiss Pass 22 represents a state-of-the-art leap in identity design. Issued 
     excerpt: 'Everything you need to know about European Economic Area (EEA) identity documents, freedom of movement rights, and Italy\'s Carta d\'Identità Elettronica (CIE 3.0).',
     category: 'Identity Cards',
     readTime: '6 min read',
-    publishDate: '2026-10-29',
+    publishDate: '2026-09-29',
     author: {
       name: 'Marco Bellini',
       role: 'European Legal Specialist',
@@ -317,7 +317,7 @@ At airport automated border e-Gates, the inspection reader initiates a cryptogra
     excerpt: 'Detailed comparison between Germany\'s Elektronischer Aufenthaltstitel (eAT) and European standard biometric residence cards, including BAMF registry specifications.',
     category: 'Residence Permits',
     readTime: '8 min read',
-    publishDate: '2026-11-05',
+    publishDate: '2026-10-01',
     author: {
       name: 'Dr. Jean-Marc Laurent',
       role: 'Senior EU Regulatory Analyst',
@@ -380,7 +380,7 @@ Governed by the Federal Office for Migration and Refugees (*Bundesamt für Migra
     excerpt: 'Addressing our most frequent customer visual inquiry: how to inspect high-resolution physical specimens, UV micro-printing, and tactile laser engraving before ordering.',
     category: 'Inspection & FAQs',
     readTime: '5 min read',
-    publishDate: '2026-11-19',
+    publishDate: '2026-10-04',
     author: {
       name: 'Sophie Van Der Meer',
       role: 'Customer Success & Verification Director',
@@ -450,7 +450,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Understand EEA and EU national identity cards, who issues them, where they can be used for travel, and how to apply through official authorities.",
     category: "Identity Cards",
     readTime: "7 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-10-06",
     author: {
       "name": "Eudossier Editorial Team",
       "role": "European Document & Regulatory Analysts"
@@ -510,7 +510,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "A practical guide to the French national identity card: eligibility, first applications, renewals in France or abroad, and official application routes.",
     category: "Identity Cards",
     readTime: "8 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-10-08",
     author: {
       "name": "Eudossier Editorial Team",
       "role": "European Document & Regulatory Analysts"
@@ -570,7 +570,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Learn who can get a Dutch identity card, where Dutch citizens apply, what to bring, how long it is valid and how it can be used for travel.",
     category: "Identity Cards",
     readTime: "6 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-10-11",
     author: {
       "name": "Eudossier Editorial Team",
       "role": "European Document & Regulatory Analysts"
@@ -625,7 +625,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Find out what a biometric passport is, what information its chip stores, how security checks work and how to apply through an official passport authority.",
     category: "Passports",
     readTime: "9 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-10-13",
     author: {
       "name": "Eudossier Editorial Team",
       "role": "European Document & Regulatory Analysts"
@@ -685,7 +685,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Understand Spain’s DNI, including the modern electronic and digital versions, eligibility, first-time applications, renewals and official appointment steps.",
     category: "Identity Cards",
     readTime: "7 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-10-15",
     author: {
       "name": "Eudossier Editorial Team",
       "role": "European Document & Regulatory Analysts"
@@ -745,7 +745,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Learn what Germany’s electronic residence permit (eAT) is, who needs one, where to apply, biometric requirements and how long it remains valid.",
     category: "Residence Permits",
     readTime: "8 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-10-18",
     author: {
       "name": "Eudossier Editorial Team",
       "role": "European Document & Regulatory Analysts"
@@ -806,7 +806,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Comprendre les cartes nationales d’identité dans l’UE et l’EEE : pays émetteurs, règles de voyage, sécurité et démarches auprès des autorités officielles.",
     category: "Identity Cards",
     readTime: "7 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-10-20",
     author: {
       name: "Eudossier Editorial Team",
       role: "European Document & Regulatory Analysts",
@@ -836,7 +836,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Was ein nationaler EU- oder EWR-Identitätsausweis ist, wo er gilt, wer ihn ausstellt und welche Sicherheits- und Reisebestimmungen wichtig sind.",
     category: "Identity Cards",
     readTime: "7 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-10-22",
     author: {
       name: "Eudossier Editorial Team",
       role: "European Document & Regulatory Analysts",
@@ -866,7 +866,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Lees wat met een Europese identiteitskaart wordt bedoeld, waar een nationale identiteitskaart geldig is en hoe EU- en EER-reisregels werken.",
     category: "Identity Cards",
     readTime: "7 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-10-25",
     author: {
       name: "Eudossier Editorial Team",
       role: "European Document & Regulatory Analysts",
@@ -896,7 +896,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Qué significa tarjeta de identidad europea, qué documentos nacionales se aceptan para viajar y cómo se aplican las normas de la UE y del EEE.",
     category: "Identity Cards",
     readTime: "7 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-10-27",
     author: {
       name: "Eudossier Editorial Team",
       role: "European Document & Regulatory Analysts",
@@ -926,7 +926,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Guide de la CNI française : personnes éligibles, première demande, renouvellement en France ou à l’étranger, pièces à préparer et démarches officielles.",
     category: "Identity Cards",
     readTime: "8 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-10-29",
     author: {
       name: "Eudossier Editorial Team",
       role: "European Document & Regulatory Analysts",
@@ -960,7 +960,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Découvrez le fonctionnement d’un passeport biométrique, les données de sa puce, les contrôles de sécurité et les démarches auprès des autorités compétentes.",
     category: "Passports",
     readTime: "8 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-11-01",
     author: {
       name: "Eudossier Editorial Team",
       role: "European Document & Regulatory Analysts",
@@ -992,7 +992,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Erfahren Sie, welche Daten ein biometrischer Reisepass enthält, wie die elektronische Prüfung funktioniert und wo Sie ein offizielles Reisedokument beantragen.",
     category: "Passports",
     readTime: "7 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-11-03",
     author: {
       name: "Eudossier Editorial Team",
       role: "European Document & Regulatory Analysts",
@@ -1023,7 +1023,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Lees welke gegevens op de chip van een biometrisch paspoort staan, hoe documentcontrole werkt en waar u een officieel paspoort aanvraagt.",
     category: "Passports",
     readTime: "7 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-11-05",
     author: {
       name: "Eudossier Editorial Team",
       role: "European Document & Regulatory Analysts",
@@ -1054,7 +1054,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Qué es un pasaporte biométrico, qué datos contiene su chip, cómo se verifica y cómo solicitarlo ante la autoridad competente.",
     category: "Passports",
     readTime: "7 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-11-08",
     author: {
       name: "Eudossier Editorial Team",
       role: "European Document & Regulatory Analysts",
@@ -1085,7 +1085,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Was der elektronische Aufenthaltstitel in Deutschland nachweist, wer ihn benötigt, welche Chipfunktionen er hat und wo der Antrag gestellt wird.",
     category: "Residence Permits",
     readTime: "7 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-11-10",
     author: {
       name: "Eudossier Editorial Team",
       role: "European Document & Regulatory Analysts",
@@ -1117,7 +1117,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Wie een Nederlandse identiteitskaart kan aanvragen, waar u dat doet, welke documenten u meeneemt en hoe lang de kaart geldig is.",
     category: "Identity Cards",
     readTime: "7 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-11-12",
     author: {
       name: "Eudossier Editorial Team",
       role: "European Document & Regulatory Analysts",
@@ -1148,7 +1148,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
     excerpt: "Guía del DNI 4.0 en España: qué significa el formato electrónico, quién debe obtenerlo, cómo pedir cita y dónde consultar los requisitos oficiales.",
     category: "Identity Cards",
     readTime: "7 min read",
-    publishDate: "2026-11-17",
+    publishDate: "2026-11-15",
     author: {
       name: "Eudossier Editorial Team",
       role: "European Document & Regulatory Analysts",
