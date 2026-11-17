@@ -223,15 +223,18 @@ export const BlogPostPage: React.FC = () => {
         </div>
 
         {/* Article Body */}
-        <div className="prose prose-invert max-w-none text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed space-y-6">
+        <div className="prose prose-invert max-w-none text-xs sm:text-sm text-[var(--color-text-secondary)] leading-relaxed">
           <div 
+            className="prose-article space-y-4"
             dangerouslySetInnerHTML={{ 
-              __html: post.content
-                .replace(/### (.*)/g, '<h3 class="text-base sm:text-lg font-bold text-[var(--color-text-primary)] font-display mt-8 mb-3">$1</h3>')
-                .replace(/\*\*([^*]+)\*\*/g, '<strong class="text-[var(--color-text-primary)] font-semibold">$1</strong>')
-                .replace(/\* (.*)/g, '<li class="ml-4 list-disc text-[var(--color-text-muted)] my-1">$1</li>')
-                .replace(/---/g, '<hr class="border-[var(--color-border)] my-6" />')
-                .replace(/\n\n/g, '<p class="my-3 text-[var(--color-text-muted)] leading-relaxed"></p>')
+              __html: post.content.includes('<p>') || post.content.includes('<h2>')
+                ? post.content
+                : post.content
+                    .replace(/### (.*)/g, '<h3 class="text-base sm:text-lg font-bold text-[var(--color-text-primary)] font-display mt-8 mb-3">$1</h3>')
+                    .replace(/\*\*([^*]+)\*\*/g, '<strong class="text-[var(--color-text-primary)] font-semibold">$1</strong>')
+                    .replace(/\* (.*)/g, '<li class="ml-4 list-disc text-[var(--color-text-muted)] my-1">$1</li>')
+                    .replace(/---/g, '<hr class="border-[var(--color-border)] my-6" />')
+                    .replace(/\n\n/g, '<p class="my-3 text-[var(--color-text-muted)] leading-relaxed"></p>')
             }} 
           />
         </div>
