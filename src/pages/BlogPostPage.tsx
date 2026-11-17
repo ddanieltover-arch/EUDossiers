@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { BLOG_POSTS, BlogPost } from '../data/blogData';
+import { BLOG_HREFLANGS } from '../data/hreflangData';
 import { useStore } from '../context/StoreContext';
 import { 
   Calendar, 
@@ -54,6 +55,19 @@ export const BlogPostPage: React.FC = () => {
       document.head.appendChild(canonical);
     }
     canonical.setAttribute('href', `https://eudossier.eu/blog/${post.slug}`);
+
+    // Inject hreflang alternate links
+    const currentAlternates = BLOG_HREFLANGS[post.slug] || [];
+    // Remove previous hreflang tags injected by this component
+    document.querySelectorAll('link[rel="alternate"][data-blog-hreflang]').forEach(el => el.remove());
+    currentAlternates.forEach(alt => {
+      const link = document.createElement('link');
+      link.setAttribute('rel', 'alternate');
+      link.setAttribute('hreflang', alt.hreflang);
+      link.setAttribute('href', alt.href);
+      link.setAttribute('data-blog-hreflang', 'true');
+      document.head.appendChild(link);
+    });
 
     // Inject BlogPosting and FAQPage JSON-LD Schemas
     const schemaScript = document.createElement('script');
@@ -109,6 +123,7 @@ export const BlogPostPage: React.FC = () => {
 
     return () => {
       schemaScript.remove();
+      document.querySelectorAll('link[rel="alternate"][data-blog-hreflang]').forEach(el => el.remove());
     };
   }, [post]);
 
@@ -206,6 +221,52 @@ export const BlogPostPage: React.FC = () => {
               <Clock className="w-3.5 h-3.5 text-[var(--color-accent-500)]" />
               <span>{post.readTime}</span>
             </div>
+
+            {/* Language Switcher if alternates exist */}
+            {(() => {
+              const alts = BLOG_HREFLANGS[post.slug]?.filter(a => a.hreflang !== 'x-default') || [];
+              if (alts.length <= 1) return null;
+              const langLabels: Record<string, string> = {
+                'en': 'English',
+                'fr-FR': 'Français',
+                'de-DE': 'Deutsch',
+                'nl-NL': 'Nederlands',
+                'es-ES': 'Español',
+                'it-IT': 'Italiano',
+              };
+              return (
+                <>
+                  <span className="text-neutral-500">•</span>
+                  <div className="flex items-center space-x-1 text-xs">
+                    <span className="text-[var(--color-text-muted)]">Read in:</span>
+                    <div className="inline-flex flex-wrap gap-1">
+                      {alts.map(alt => {
+                        const m = alt.href.match(/https:\/\/eudossier\.eu(?:\/[a-z]{2})?\/blog\/([a-z0-9-]+)/);
+                        const targetSlug = m ? m[1] : '';
+                        const isCurrent = targetSlug === post.slug;
+                        const label = langLabels[alt.hreflang] || alt.hreflang;
+                        if (isCurrent) {
+                          return (
+                            <span key={alt.hreflang} className="px-2 py-0.5 rounded text-[11px] font-bold bg-[var(--color-accent-600)] text-white">
+                              {label}
+                            </span>
+                          );
+                        }
+                        return (
+                          <Link
+                            key={alt.hreflang}
+                            to={`/blog/${targetSlug}`}
+                            className="px-2 py-0.5 rounded text-[11px] font-medium bg-[var(--color-bg-secondary)] border border-[var(--color-border)] text-[var(--color-text-muted)] hover:text-[var(--color-accent-500)] hover:border-[var(--color-accent-500)]/40 transition-colors"
+                          >
+                            {label}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </>
+              );
+            })()}
           </div>
         </header>
 

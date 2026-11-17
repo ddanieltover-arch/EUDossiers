@@ -14,6 +14,7 @@ const CATEGORIES = [
 
 export const BlogPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [selectedLanguage, setSelectedLanguage] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   useEffect(() => {
@@ -80,6 +81,8 @@ export const BlogPage: React.FC = () => {
   }, []);
 
   const filteredPosts = BLOG_POSTS.filter((post) => {
+    const postLang = post.language || 'en';
+    const matchesLang = selectedLanguage === 'All' || postLang === selectedLanguage;
     const matchesCategory =
       selectedCategory === 'All' || post.category === selectedCategory;
     const matchesSearch =
@@ -89,7 +92,7 @@ export const BlogPage: React.FC = () => {
       post.secondaryKeywords.some((k) =>
         k.toLowerCase().includes(searchQuery.toLowerCase())
       );
-    return matchesCategory && matchesSearch;
+    return matchesLang && matchesCategory && matchesSearch;
   });
 
   return (
@@ -132,21 +135,48 @@ export const BlogPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Category Chips */}
-          <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`text-xs px-3.5 py-1.5 rounded-full font-medium whitespace-nowrap transition-all ${
-                  selectedCategory === cat
-                    ? 'bg-[var(--color-accent-600)] text-white shadow-md'
-                    : 'bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] border border-[var(--color-border)] hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)]'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* Category & Language Chips */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center space-x-2 overflow-x-auto pb-1 scrollbar-none">
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`text-xs px-3.5 py-1.5 rounded-full font-medium whitespace-nowrap transition-all ${
+                    selectedCategory === cat
+                      ? 'bg-[var(--color-accent-600)] text-white shadow-md'
+                      : 'bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] border border-[var(--color-border)] hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)]'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex items-center space-x-1.5 shrink-0">
+              <span className="text-[11px] font-semibold text-[var(--color-text-muted)] uppercase tracking-wider">Lang:</span>
+              {[
+                { code: 'All', label: 'All' },
+                { code: 'en', label: 'EN' },
+                { code: 'fr', label: 'FR' },
+                { code: 'de', label: 'DE' },
+                { code: 'nl', label: 'NL' },
+                { code: 'es', label: 'ES' },
+                { code: 'it', label: 'IT' },
+              ].map(lang => (
+                <button
+                  key={lang.code}
+                  onClick={() => setSelectedLanguage(lang.code)}
+                  className={`text-[11px] px-2 py-0.5 rounded font-bold transition-all ${
+                    selectedLanguage === lang.code
+                      ? 'bg-[var(--color-accent-600)] text-white'
+                      : 'bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] border border-[var(--color-border)] hover:text-[var(--color-text-primary)]'
+                  }`}
+                >
+                  {lang.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
