@@ -8,8 +8,66 @@ export interface SeoMetaOptions {
 }
 
 /**
- * Custom React hook to set document title, description, canonical link, and robots meta tag.
+ * Sets exactly one canonical URL in document.head, removing any duplicates.
+ */
+export function setCanonical(canonicalUrl: string) {
+  if (typeof document === 'undefined') return;
+  const canonicalLinks = document.querySelectorAll('link[rel="canonical"]');
+  if (canonicalLinks.length > 0) {
+    canonicalLinks[0].setAttribute('href', canonicalUrl);
+    for (let i = 1; i < canonicalLinks.length; i++) {
+      canonicalLinks[i].remove();
+    }
+  } else {
+    const linkCanonical = document.createElement('link');
+    linkCanonical.setAttribute('rel', 'canonical');
+    linkCanonical.setAttribute('href', canonicalUrl);
+    document.head.appendChild(linkCanonical);
+  }
+}
+
+/**
+ * Sets exactly one meta description in document.head, removing any duplicates.
+ */
+export function setMetaDescription(description: string) {
+  if (typeof document === 'undefined') return;
+  const descElements = document.querySelectorAll('meta[name="description"]');
+  if (descElements.length > 0) {
+    descElements[0].setAttribute('content', description);
+    for (let i = 1; i < descElements.length; i++) {
+      descElements[i].remove();
+    }
+  } else {
+    const metaDesc = document.createElement('meta');
+    metaDesc.setAttribute('name', 'description');
+    metaDesc.setAttribute('content', description);
+    document.head.appendChild(metaDesc);
+  }
+}
+
+/**
+ * Sets exactly one meta robots directive in document.head, removing any duplicates.
+ */
+export function setRobots(robots: 'index, follow' | 'noindex, follow' | 'noindex, nofollow') {
+  if (typeof document === 'undefined') return;
+  const robotsElements = document.querySelectorAll('meta[name="robots"]');
+  if (robotsElements.length > 0) {
+    robotsElements[0].setAttribute('content', robots);
+    for (let i = 1; i < robotsElements.length; i++) {
+      robotsElements[i].remove();
+    }
+  } else {
+    const metaRobots = document.createElement('meta');
+    metaRobots.setAttribute('name', 'robots');
+    metaRobots.setAttribute('content', robots);
+    document.head.appendChild(metaRobots);
+  }
+}
+
+/**
+ * Custom React hook to reliably set document title, description, canonical link, and robots meta tag.
  * Always ensures canonical URLs use the preferred HTTPS apex domain (https://eudossier.eu).
+ * Strictly removes any duplicate canonical or meta tags on route transitions.
  */
 export function useSeoMeta({ title, description, canonical, robots = 'index, follow' }: SeoMetaOptions) {
   useEffect(() => {
@@ -18,38 +76,19 @@ export function useSeoMeta({ title, description, canonical, robots = 'index, fol
     }
 
     if (description) {
-      let metaDesc = document.querySelector('meta[name="description"]');
-      if (!metaDesc) {
-        metaDesc = document.createElement('meta');
-        metaDesc.setAttribute('name', 'description');
-        document.head.appendChild(metaDesc);
-      }
-      metaDesc.setAttribute('content', description);
+      setMetaDescription(description);
     }
 
     if (canonical) {
-      let linkCanonical = document.querySelector('link[rel="canonical"]');
-      if (!linkCanonical) {
-        linkCanonical = document.createElement('link');
-        linkCanonical.setAttribute('rel', 'canonical');
-        document.head.appendChild(linkCanonical);
-      }
-      linkCanonical.setAttribute('href', canonical);
+      setCanonical(canonical);
     }
 
-    let metaRobots = document.querySelector('meta[name="robots"]');
-    if (!metaRobots) {
-      metaRobots = document.createElement('meta');
-      metaRobots.setAttribute('name', 'robots');
-      document.head.appendChild(metaRobots);
-    }
-    metaRobots.setAttribute('content', robots);
+    setRobots(robots);
 
     return () => {
       // Cleanup on unmount: restore robots to index, follow if page was noindex
       if (robots !== 'index, follow') {
-        const r = document.querySelector('meta[name="robots"]');
-        if (r) r.setAttribute('content', 'index, follow');
+        setRobots('index, follow');
       }
     };
   }, [title, description, canonical, robots]);

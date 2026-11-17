@@ -8,6 +8,7 @@ import { getLocalizedProductName } from '../data/productNameTranslations';
 import { getLocalizedProductDescription } from '../data/productDescriptionTranslations';
 import { findProductBySlugOrId, getProductPath, getProductSlug } from '../utils/productSlug';
 import { BLOG_POSTS } from '../data/blogData';
+import { setCanonical, setMetaDescription, setRobots } from '../utils/seo';
 
 const ProductPage: React.FC = () => {
   const { productSlug } = useParams<{ productSlug: string }>();
@@ -78,7 +79,7 @@ const ProductPage: React.FC = () => {
       el.content = content;
     };
 
-    setMeta('description', metaDescContent);
+    setMetaDescription(metaDescContent);
     setMeta('og:title', pageTitle, true);
     setMeta('og:description', metaDescContent, true);
     setMeta('og:url', canonicalUrl, true);
@@ -88,14 +89,9 @@ const ProductPage: React.FC = () => {
     setMeta('twitter:title', pageTitle);
     setMeta('twitter:description', metaDescContent);
 
-    // Canonical Link
-    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link');
-      canonicalLink.rel = 'canonical';
-      document.head.appendChild(canonicalLink);
-    }
-    canonicalLink.href = canonicalUrl;
+    // Canonical Link & Robots (Strictly 1 deduplicated tag)
+    setCanonical(canonicalUrl);
+    setRobots('index, follow');
 
     // Structured Data (Product + BreadcrumbList + FAQPage)
     let scriptTag = document.getElementById('product-schema-jsonld') as HTMLScriptElement | null;

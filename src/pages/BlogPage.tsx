@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BLOG_POSTS, BlogPost } from '../data/blogData';
 import { BookOpen, Calendar, Clock, User, ArrowRight, Search, ShieldCheck, ExternalLink, Compass } from 'lucide-react';
+import { useSeoMeta } from '../utils/seo';
 
 const CATEGORIES = [
   'All',
@@ -17,29 +18,14 @@ export const BlogPage: React.FC = () => {
   const [selectedLanguage, setSelectedLanguage] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
+  useSeoMeta({
+    title: 'European Identity & Document Regulations Blog | Eudossier Regulatory Hub',
+    description: 'Authoritative technical guides on EU national identity cards (CNIe, CIE, DNI 4.0), biometric passports (ICAO 9303, Swiss Pass 22), and residence permit verification in PRADO, ANTS, and BAMF.',
+    canonical: 'https://eudossier.eu/blog',
+    robots: 'index, follow',
+  });
+
   useEffect(() => {
-    // Dynamic Head Metadata
-    document.title = 'European Identity & Document Regulations Blog | Eudossier Regulatory Hub';
-    
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute(
-      'content',
-      'Authoritative technical guides on EU national identity cards (CNIe, CIE, DNI 4.0), biometric passports (ICAO 9303, Swiss Pass 22), and residence permit verification in PRADO, ANTS, and BAMF.'
-    );
-
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', 'https://eudossier.eu/blog');
-
     // JSON-LD Schema for Blog
     const schemaScript = document.createElement('script');
     schemaScript.type = 'application/ld+json';

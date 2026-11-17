@@ -8,6 +8,7 @@ import { getLocalizedProductName } from '../data/productNameTranslations';
 import { getLocalizedProductDescription } from '../data/productDescriptionTranslations';
 import { BLOG_POSTS } from '../data/blogData';
 import { CONTINENT_COUNTRIES } from '../data/countriesData';
+import { useSeoMeta } from '../utils/seo';
 
 const CATEGORIES = [
   'All',
@@ -97,31 +98,24 @@ export const ProductGrid: React.FC = () => {
     }
   }, [searchParams]);
 
-  // SEO: set canonical to /catalogue (without query params) and noindex for filtered views
-  useEffect(() => {
-    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link');
-      canonicalLink.rel = 'canonical';
-      document.head.appendChild(canonicalLink);
-    }
-    canonicalLink.href = 'https://eudossier.eu/catalogue';
+  const hasFilters = Boolean(
+    searchQuery.trim() || 
+    (selectedCategory && selectedCategory !== 'All') || 
+    (selectedOriginCountry && selectedOriginCountry !== 'All') ||
+    searchParams.has('search') ||
+    searchParams.has('q')
+  );
 
-    let metaRobots = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null;
-    if (!metaRobots) {
-      metaRobots = document.createElement('meta');
-      metaRobots.setAttribute('name', 'robots');
-      document.head.appendChild(metaRobots);
-    }
-    const hasFilters = searchQuery || selectedCategory !== 'All' || selectedOriginCountry !== 'All';
-    metaRobots.content = hasFilters ? 'noindex, follow' : 'index, follow';
+  const catalogueTitle = selectedCategory && selectedCategory !== 'All'
+    ? `${selectedCategory} Catalogue | Eudossier Europe`
+    : 'Official European Document Catalogue | Eudossier Europe';
 
-    return () => {
-      // Restore on unmount
-      const r = document.querySelector('meta[name="robots"]');
-      if (r) r.setAttribute('content', 'index, follow');
-    };
-  }, [searchQuery, selectedCategory, selectedOriginCountry]);
+  useSeoMeta({
+    title: catalogueTitle,
+    description: 'Explore the full Eudossier catalogue of European electronic identity cards, biometric passports, Schengen visas, and residence permits.',
+    canonical: 'https://eudossier.eu/catalogue',
+    robots: hasFilters ? 'noindex, follow' : 'index, follow',
+  });
 
   // URL Sync with Category param
   useEffect(() => {

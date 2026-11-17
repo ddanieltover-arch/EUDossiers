@@ -4,6 +4,7 @@ import { BLOG_POSTS, BlogPost } from '../data/blogData';
 import { BLOG_HREFLANGS } from '../data/hreflangData';
 import { renderMarkdown } from '../utils/markdownRenderer';
 import { useStore } from '../context/StoreContext';
+import { setCanonical, setMetaDescription, setRobots } from '../utils/seo';
 import { 
   Calendar, 
   Clock, 
@@ -40,22 +41,9 @@ export const BlogPostPage: React.FC = () => {
 
     // Dynamic Metadata
     document.title = `${post.title} | Eudossier Regulatory Hub`;
-
-    let metaDesc = document.querySelector('meta[name="description"]');
-    if (!metaDesc) {
-      metaDesc = document.createElement('meta');
-      metaDesc.setAttribute('name', 'description');
-      document.head.appendChild(metaDesc);
-    }
-    metaDesc.setAttribute('content', post.excerpt);
-
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', `https://eudossier.eu/blog/${post.slug}`);
+    setMetaDescription(post.excerpt);
+    setCanonical(`https://eudossier.eu/blog/${post.slug}`);
+    setRobots('index, follow');
 
     // Inject hreflang alternate links
     const currentAlternates = BLOG_HREFLANGS[post.slug] || [];

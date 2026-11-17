@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { StoreProvider, useStore } from './context/StoreContext';
@@ -16,17 +16,26 @@ import { ShieldCheck, Globe, Euro, Warehouse, Heart } from 'lucide-react';
 import { SITE_NAME, LEGAL_FOOTER } from './brand';
 import { Link } from 'react-router-dom';
 
+// Eager load primary landing page for zero-delay initial render
 import HomePage from './pages/HomePage';
-import CataloguePage from './pages/CataloguePage';
-import ProductPage from './pages/ProductPage';
-import PrivacyPage from './pages/PrivacyPage';
-import BlogPage from './pages/BlogPage';
-import BlogPostPage from './pages/BlogPostPage';
-import AdminLoginPage from './pages/AdminLoginPage';
-import AdminPortalPage from './pages/AdminPortalPage';
-import CartPage from './pages/CartPage';
-import CheckoutPage from './pages/CheckoutPage';
-import ContactPage from './pages/ContactPage';
+
+// Lazy-load secondary and admin routes to optimize initial bundle performance
+const CataloguePage = lazy(() => import('./pages/CataloguePage'));
+const ProductPage = lazy(() => import('./pages/ProductPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage'));
+const AdminLoginPage = lazy(() => import('./pages/AdminLoginPage'));
+const AdminPortalPage = lazy(() => import('./pages/AdminPortalPage'));
+const CartPage = lazy(() => import('./pages/CartPage'));
+const CheckoutPage = lazy(() => import('./pages/CheckoutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+
+const RouteLoading: React.FC = () => (
+  <div className="min-h-[50vh] flex items-center justify-center">
+    <div className="w-8 h-8 border-3 border-[var(--color-accent-500)] border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -48,20 +57,22 @@ const AppContent: React.FC = () => {
       <Navbar />
 
       <main className="flex-1 pb-20 md:pb-0">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/catalogue" element={<CataloguePage />} />
-          <Route path="/catalogue/:productSlug" element={<ProductPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/:lang/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/cart" element={<CartPage />} />
-          <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/admin" element={<AdminLoginPage />} />
-          <Route path="/admin/portal" element={<AdminPortalPage />} />
-        </Routes>
+        <Suspense fallback={<RouteLoading />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/catalogue" element={<CataloguePage />} />
+            <Route path="/catalogue/:productSlug" element={<ProductPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/:lang/blog/:slug" element={<BlogPostPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/admin" element={<AdminLoginPage />} />
+            <Route path="/admin/portal" element={<AdminPortalPage />} />
+          </Routes>
+        </Suspense>
       </main>
 
       <CartDrawer />
