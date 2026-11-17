@@ -255,11 +255,10 @@ const CheckoutPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setPaymentMethod('bank')}
-                className={`text-left p-4 rounded-2xl border-2 transition-all space-y-2.5 ${
-                  paymentMethod === 'bank'
-                    ? 'border-blue-500 bg-blue-50/80 dark:bg-blue-950/50 ring-1 ring-blue-500/30'
-                    : 'border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-text-muted)]/40'
-                }`}
+                className={`text-left p-4 rounded-2xl border-2 transition-all space-y-2.5 ${paymentMethod === 'bank'
+                  ? 'border-blue-500 bg-blue-50/80 dark:bg-blue-950/50 ring-1 ring-blue-500/30'
+                  : 'border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-text-muted)]/40'
+                  }`}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2.5">
@@ -272,11 +271,10 @@ const CheckoutPage: React.FC = () => {
                     {paymentMethod === 'bank' && <div className="w-2 h-2 bg-white rounded-full" />}
                   </div>
                 </div>
-                <p className={`text-xs leading-relaxed ${
-                  paymentMethod === 'bank'
-                    ? 'text-blue-950 dark:text-blue-100 font-medium'
-                    : 'text-[var(--color-text-secondary)]'
-                }`}>
+                <p className={`text-xs leading-relaxed ${paymentMethod === 'bank'
+                  ? 'text-blue-950 dark:text-blue-100 font-medium'
+                  : 'text-[var(--color-text-secondary)]'
+                  }`}>
                   {t('paymentAfter')}
                 </p>
               </button>
@@ -284,11 +282,10 @@ const CheckoutPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setPaymentMethod('crypto')}
-                className={`text-left p-4 rounded-2xl border-2 transition-all space-y-2.5 relative ${
-                  paymentMethod === 'crypto'
-                    ? 'border-amber-500 bg-amber-50/80 dark:bg-amber-950/50 ring-1 ring-amber-500/30'
-                    : 'border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-text-muted)]/40'
-                }`}
+                className={`text-left p-4 rounded-2xl border-2 transition-all space-y-2.5 relative ${paymentMethod === 'crypto'
+                  ? 'border-amber-500 bg-amber-50/80 dark:bg-amber-950/50 ring-1 ring-amber-500/30'
+                  : 'border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-text-muted)]/40'
+                  }`}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2.5">
@@ -306,11 +303,10 @@ const CheckoutPage: React.FC = () => {
                     {paymentMethod === 'crypto' && <div className="w-2 h-2 bg-white rounded-full" />}
                   </div>
                 </div>
-                <p className={`text-xs leading-relaxed ${
-                  paymentMethod === 'crypto'
-                    ? 'text-amber-950 dark:text-amber-100 font-medium'
-                    : 'text-[var(--color-text-secondary)]'
-                }`}>
+                <p className={`text-xs leading-relaxed ${paymentMethod === 'crypto'
+                  ? 'text-amber-950 dark:text-amber-100 font-medium'
+                  : 'text-[var(--color-text-secondary)]'
+                  }`}>
                   {t('cryptoHint')}
                 </p>
               </button>

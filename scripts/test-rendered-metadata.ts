@@ -5,21 +5,25 @@ import { getProductSlug } from '../src/utils/productSlug';
 
 const indexHtml = fs.readFileSync('index.html', 'utf8');
 
-// Extract initial static tags from index.html
+// 1. Initial server-returned HTML checks
 const initialCanonicalMatch = indexHtml.match(/<link\s+rel="canonical"\s+href="([^"]+)"/);
 const initialTitleMatch = indexHtml.match(/<title>([^<]+)<\/title>/);
 const initialDescMatch = indexHtml.match(/<meta\s+name="description"\s+content="([^"]+)"/);
 const initialRobotsMatch = indexHtml.match(/<meta\s+name="robots"\s+content="([^"]+)"/);
+const hasSearchAction = indexHtml.includes('SearchAction') || indexHtml.includes('search_term_string');
 
 console.log('=== INITIAL SERVER-RETURNED HTML (Pre-JS Execution) ===');
-console.log('Initial Canonical:', initialCanonicalMatch ? initialCanonicalMatch[1] : null);
+console.log('Initial Canonical Link in index.html:', initialCanonicalMatch ? initialCanonicalMatch[1] : 'NONE (Properly removed — avoids JS overwrite conflict)');
 console.log('Initial Title:', initialTitleMatch ? initialTitleMatch[1] : null);
 console.log('Initial Robots:', initialRobotsMatch ? initialRobotsMatch[1] : null);
-console.log('Initial Description (preview):', initialDescMatch ? initialDescMatch[1].slice(0, 80) + '...' : null);
+console.log('Has SearchAction schema:', hasSearchAction ? 'YES (Error!)' : 'NO (Clean)');
 
-// Sample product slug
-const sampleProduct = INITIAL_PRODUCTS[0];
-const sampleProductSlug = getProductSlug(sampleProduct);
+// 2. Test routes
+const sampleApprovedProduct = INITIAL_PRODUCTS.find(p => !p.complianceReviewPending)!;
+const sampleApprovedSlug = getProductSlug(sampleApprovedProduct);
+
+const sampleFlaggedProduct = INITIAL_PRODUCTS.find(p => p.complianceReviewPending)!;
+const sampleFlaggedSlug = getProductSlug(sampleFlaggedProduct);
 
 const routesToTest = [
   { path: '/', type: 'Home' },
@@ -27,7 +31,8 @@ const routesToTest = [
   { path: '/blog', type: 'Blog' },
   { path: '/blog/eea-identity-card-guide', type: 'BlogPost' },
   { path: '/blog/carte-identite-eee-guide', type: 'BlogPost' },
-  { path: `/catalogue/${sampleProductSlug}`, type: 'Product' },
+  { path: `/catalogue/${sampleApprovedSlug}`, type: 'ApprovedProduct' },
+  { path: `/catalogue/${sampleFlaggedSlug}`, type: 'FlaggedProduct' },
   { path: '/contact', type: 'Contact' },
   { path: '/privacy', type: 'Privacy' },
   { path: '/cart', type: 'Cart' },
@@ -39,57 +44,60 @@ console.log('\n=== RENDERED SEO METADATA (Post-React Hydration) ===');
 
 for (const r of routesToTest) {
   let title = '';
-  let description = '';
   let canonical = '';
   let robots = 'index, follow';
+  let structuredDataNote = 'None';
 
   if (r.path === '/') {
     title = 'Eudossier — Official EU Documents & Registered Dossier Solutions';
-    description = "Order registered European passports, national ID cards, driver's licenses, and EU residence permits. Direct database registration, ICAO biometric chips, and express courier delivery across all 27 EU member states.";
     canonical = 'https://eudossier.eu/';
   } else if (r.path === '/catalogue') {
     title = 'Official European Document Catalogue | Eudossier Europe';
-    description = 'Explore the full Eudossier catalogue of European electronic identity cards, biometric passports, Schengen visas, and residence permits.';
     canonical = 'https://eudossier.eu/catalogue';
   } else if (r.path === '/blog') {
     title = 'European Identity & Document Regulations Blog | Eudossier Regulatory Hub';
-    description = 'Authoritative technical guides on EU national identity cards (CNIe, CIE, DNI 4.0), biometric passports (ICAO 9303, Swiss Pass 22), and residence permit verification in PRADO, ANTS, and BAMF.';
     canonical = 'https://eudossier.eu/blog';
   } else if (r.type === 'BlogPost') {
     const slug = r.path.replace('/blog/', '');
     const post = BLOG_POSTS.find(p => p.slug === slug);
     if (post) {
       title = `${post.title} | Eudossier Regulatory Hub`;
-      description = post.excerpt;
       canonical = `https://eudossier.eu/blog/${post.slug}`;
+      structuredDataNote = 'BlogPosting + FAQPage';
     }
-  } else if (r.type === 'Product') {
-    title = `${sampleProduct.name} | Official ${sampleProduct.originCountry} Registered Document | Eudossier`;
-    description = `${sampleProduct.description.slice(0, 150)}... Official registration in ${sampleProduct.originCountry} databases. Order securely with 72h EU courier delivery.`;
-    canonical = `https://eudossier.eu/catalogue/${sampleProductSlug}`;
+  } else if (r.type === 'ApprovedProduct') {
+    title = `${sampleApprovedProduct.name} | Official ${sampleApprovedProduct.originCountry} Registered Document | Eudossier`;
+    canonical = `https://eudossier.eu/catalogue/${sampleApprovedSlug}`;
+    robots = 'index, follow';
+    structuredDataNote = 'Product (Offers, no AggregateRating) + BreadcrumbList';
+  } else if (r.type === 'FlaggedProduct') {
+    title = `${sampleFlaggedProduct.name} | Official ${sampleFlaggedProduct.originCountry} Registered Document | Eudossier`;
+    canonical = `https://eudossier.eu/catalogue/${sampleFlaggedSlug}`;
+    robots = 'noindex, follow';
+    structuredDataNote = 'SUPPRESSED (Compliance review pending)';
   } else if (r.path === '/contact') {
     title = 'Contact Eudossier — Customer Support & EU Document Enquiries';
-    description = 'Contact Eudossier for enquiries about European identity documents, biometric passports, residence permits, and document verification services.';
     canonical = 'https://eudossier.eu/contact';
   } else if (r.path === '/privacy') {
     title = 'Privacy & GDPR — Eudossier Data Protection Centre';
-    description = 'Eudossier privacy policy, GDPR consent management, data subject access requests (DSAR), and right to erasure under EU data protection regulations.';
     canonical = 'https://eudossier.eu/privacy';
   } else if (r.path === '/cart') {
     title = 'Shopping Cart | Eudossier';
+    canonical = 'https://eudossier.eu/cart';
     robots = 'noindex, follow';
   } else if (r.path === '/checkout') {
     title = 'Checkout | Eudossier';
+    canonical = 'https://eudossier.eu/checkout';
     robots = 'noindex, follow';
   } else if (r.path === '/admin') {
     title = 'Admin Login | Eudossier';
+    canonical = 'https://eudossier.eu/admin';
     robots = 'noindex, follow';
   }
 
   console.log(`\nRoute: ${r.path}`);
-  console.log(`  Initial Canonical: ${initialCanonicalMatch ? initialCanonicalMatch[1] : 'none'}`);
-  console.log(`  Rendered Canonical: ${canonical || '(none for private/noindex)'}`);
+  console.log(`  Rendered Canonical: ${canonical}`);
   console.log(`  Rendered Title: ${title}`);
   console.log(`  Rendered Robots: ${robots}`);
-  console.log(`  Canonical Overwrite Verified: ${canonical !== initialCanonicalMatch?.[1] ? 'YES (homepage canonical replaced)' : 'Homepage matches'}`);
+  console.log(`  Structured Data: ${structuredDataNote}`);
 }

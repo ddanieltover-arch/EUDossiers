@@ -253,6 +253,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'doc-006',
     sku: 'EU-DRV-006',
+    complianceReviewPending: true,
     name: 'Fast-Track EU Driver\'s License (Express 72-Hour Fulfillment)',
     category: 'Driver Licenses',
     description: 'Accelerated EU driving permit processing with priority registry insertion and 72-hour DHL Express insured delivery across all 27 EU member states.',
@@ -331,6 +332,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'doc-009',
     slug: 'registered-dutch-identity-card-nederlandse-identiteitskaart',
+    complianceReviewPending: true,
     buyerSubtitle: 'Official Dutch ID Card (Nederlandse Identiteitskaart) · Europe Identity Card & EEA National ID',
     sku: 'NL-IDC-009',
     name: 'Registered Dutch Identity Card (Nederlandse Identiteitskaart)',
@@ -572,6 +574,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'doc-013',
     slug: 'authentic-us-passport-book-e-passport-chip-and-registration',
+    complianceReviewPending: true,
     buyerSubtitle: 'Where Can I Buy & How Much for a US Biometric Passport Book in Europe & UK',
     sku: 'US-PAS-013',
     name: 'Authentic US Passport Book (e-Passport Chip & Registration)',
@@ -1280,6 +1283,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'doc-027',
     slug: 'registered-swiss-biometric-passport-schweizer-pass-22',
+    complianceReviewPending: true,
     buyerSubtitle: 'How to Buy & Where Can I Buy a Swiss Biometric Passport in Switzerland & Europe',
     sku: 'CH-PAS-027',
     name: 'Registered Swiss Biometric Passport (Schweizer Pass 22)',
@@ -1336,6 +1340,7 @@ export const INITIAL_PRODUCTS: Product[] = [
   {
     id: 'doc-028',
     slug: 'verified-eu-bank-statement-and-financial-proof-package',
+    complianceReviewPending: true,
     buyerSubtitle: 'How to Buy & How Much for Verified EU Bank Statements in Netherlands & UK',
     sku: 'EU-BNK-028',
     name: 'Verified EU Bank Statement & Financial Proof Package',

@@ -67,6 +67,7 @@ export interface Product {
   tags: string[];
   searchAliases?: string[];
   lastRestocked: string;
+  complianceReviewPending?: boolean; // Temporary compliance review flag: controls noindex and sitemap exclusion
 }
 
 export interface StockAdjustment {

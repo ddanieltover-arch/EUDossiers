@@ -89,18 +89,23 @@ const ProductPage: React.FC = () => {
     setMeta('twitter:title', pageTitle);
     setMeta('twitter:description', metaDescContent);
 
+    const isUnderReview = Boolean(product.complianceReviewPending);
+
     // Canonical Link & Robots (Strictly 1 deduplicated tag)
     setCanonical(canonicalUrl);
-    setRobots('index, follow');
+    setRobots(isUnderReview ? 'noindex, follow' : 'index, follow');
 
-    // Structured Data (Product + BreadcrumbList + FAQPage)
+    // Structured Data: Suppress promotional Product & Offer schema if compliance review is pending
     let scriptTag = document.getElementById('product-schema-jsonld') as HTMLScriptElement | null;
-    if (!scriptTag) {
-      scriptTag = document.createElement('script');
-      scriptTag.id = 'product-schema-jsonld';
-      scriptTag.type = 'application/ld+json';
-      document.head.appendChild(scriptTag);
-    }
+    if (isUnderReview) {
+      if (scriptTag) scriptTag.remove();
+    } else {
+      if (!scriptTag) {
+        scriptTag = document.createElement('script');
+        scriptTag.id = 'product-schema-jsonld';
+        scriptTag.type = 'application/ld+json';
+        document.head.appendChild(scriptTag);
+      }
 
     const schemaData = {
       '@context': 'https://schema.org',
@@ -213,7 +218,8 @@ const ProductPage: React.FC = () => {
       ]
     };
 
-    scriptTag.textContent = JSON.stringify(schemaData);
+      scriptTag.textContent = JSON.stringify(schemaData);
+    }
 
     return () => {
       document.title = previousTitle;

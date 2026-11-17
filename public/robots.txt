@@ -1,6 +1,16 @@
 # Eudossier — Website crawler instructions
 User-agent: *
 Allow: /
+
+# Allow public read-only endpoints required for dynamic client-side rendering
+Allow: /api/products$
+Allow: /api/products/
+Allow: /api/health
+
+# Disallow private, administrative, and transactional API endpoints
+Disallow: /api/orders
+Disallow: /api/contact
+Disallow: /api/inventory
 Disallow: /api/
 
 # Explicitly allow AI Web Search & Synthesis Agents (GEO / AEO)
