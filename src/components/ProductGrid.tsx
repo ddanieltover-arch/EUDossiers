@@ -131,12 +131,12 @@ export const ProductGrid: React.FC = () => {
       const newParams = new URLSearchParams(searchParams);
       newParams.set('category', selectedCategory);
       setSearchParams(newParams, { replace: true });
-      document.title = `${selectedCategory} Catalogue | Eudossier Europe`;
+      document.title = `${selectedCategory} Information & Services | Eudossier`;
     } else if (searchParams.has('category')) {
       const newParams = new URLSearchParams(searchParams);
       newParams.delete('category');
       setSearchParams(newParams, { replace: true });
-      document.title = 'Official European Document Catalogue | Eudossier Europe';
+      document.title = 'European Document Information & Services | Eudossier';
     }
   }, [selectedCategory]);
 
@@ -221,7 +221,7 @@ export const ProductGrid: React.FC = () => {
               </span>
             </h2>
             <p className="text-xs text-[var(--color-text-muted)] mt-0.5">
-              {activeCategoryDesc ? 'Browsing authentic specimens registered with issuing state registries.' : t('catalogue:subtitle')}
+              {activeCategoryDesc ? activeCategoryDesc.subtitle : t('catalogue:subtitle')}
             </p>
           </div>
 

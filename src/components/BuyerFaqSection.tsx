@@ -42,7 +42,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     question: 'Where can I find detailed guides on European document verification and specifications?',
-    answer: 'Eudossier maintains a comprehensive library of 24 educational and technical guides authored by regulatory specialists. Explore our Regulatory Hub to review biometric security features, optical variable ink, and European civil document standards.',
+    answer: 'Eudossier maintains a comprehensive library of 30 educational and technical guides authored by regulatory specialists. Explore our Regulatory Hub to review biometric security features, optical variable ink, and European civil document standards.',
     countryBadge: '📚 Regulatory Hub',
     category: 'Guides'
   }

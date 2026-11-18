@@ -99,7 +99,7 @@ export const BlogPage: React.FC = () => {
             European Identity & Document Regulations
           </h1>
           <p className="text-sm sm:text-base text-[var(--color-text-muted)] leading-relaxed">
-            In-depth technical guides, ICAO 9303 compliance breakdowns, and official database registration analysis covering European national ID cards, biometric passports, and Schengen residence permits.
+            In-depth technical guides, ICAO 9303 compliance breakdowns, and official statutory procedures covering European national ID cards, biometric passports, and Schengen residence permits.
           </p>
         </div>
 

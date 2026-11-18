@@ -26,7 +26,8 @@ import {
   Sparkles,
   Check,
   Eye,
-  Edit2
+  Edit2,
+  Scale
 } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell, PieChart, Pie } from 'recharts';
 import { useStore } from '../../context/StoreContext';
@@ -35,6 +36,7 @@ import { Product, StockAdjustment, Category, Order } from '../../types';
 import { useTranslation } from 'react-i18next';
 import { EU_COUNTRIES } from '../../data/mockData';
 import { downloadOfficialEuInvoice } from '../../utils/generateInvoicePdf';
+import { ComplianceRegisterView } from './ComplianceRegisterView';
 
 export const InventoryPortal: React.FC = () => {
   const { 
@@ -59,7 +61,7 @@ export const InventoryPortal: React.FC = () => {
   const [selectedStockFilter, setSelectedStockFilter] = useState<'all' | 'low' | 'out'>('all');
 
   // Admin Portal Tab Navigation
-  const [activeTab, setActiveTab] = useState<'overview' | 'inventory' | 'orders' | 'privacy' | 'audit'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'inventory' | 'orders' | 'privacy' | 'audit' | 'compliance'>('overview');
 
   // Orders Ledger state
   const [orderList, setOrderList] = useState<Order[]>(orders);
@@ -427,6 +429,16 @@ export const InventoryPortal: React.FC = () => {
         >
           <History className="w-4 h-4" />
           <span>{t('tabAudit')}</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('compliance')}
+          className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
+            activeTab === 'compliance' ? 'bg-blue-600 text-[var(--color-text-primary)] shadow-md' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
+          }`}
+        >
+          <Scale className="w-4 h-4" />
+          <span>Compliance Register</span>
         </button>
 
       </div>
@@ -990,6 +1002,13 @@ export const InventoryPortal: React.FC = () => {
           </div>
 
         </div>
+      )}
+
+      {/* ========================================================================= */}
+      {/* TAB 6: COMPLIANCE REGISTER (28 Commercial Listings) */}
+      {/* ========================================================================= */}
+      {activeTab === 'compliance' && (
+        <ComplianceRegisterView />
       )}
 
       {/* MODAL 1: QUICK STOCK ADJUSTMENT */}

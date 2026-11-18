@@ -22,7 +22,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'BG-DRV-001',
     name: 'Registered Bulgarian Drivers License',
     category: 'Driver Licenses',
-    description: 'Official registered Bulgarian driving license (EU Format). Registered in the Bulgarian Ministry of Transport & Executive Agency Road Transport Administration database with physical micro-text and UV security.',
+    description: 'Bulgarian EU-format driving license specimen featuring physical micro-text security elements and UV-reactive ink technology.',
     priceEUR: 427.50,
     originalPriceEUR: 450.00,
     originCountry: 'Bulgaria',
@@ -41,15 +41,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.05,
     supplierName: 'EU Document LLC (Sofia Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy bulgarian drivers license in Netherlands, Germany & UK, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Ministry of Transport and Road Administration prior to dispatch.',
+      howToBuy: 'Browse the bulgarian drivers license information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Netherlands, Germany & UK within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Ministry of Transport and Road Administration records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy bulgarian drivers license in Netherlands, Bulgaria, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Ministry of Transport and Road Administration prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy bulgarian drivers license with delivery to Netherlands, UK, Germany, or Italy?',
@@ -57,11 +57,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for bulgarian drivers license in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Ministry of Transport and Road Administration, biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this bulgarian drivers license registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Ministry of Transport and Road Administration with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Bulgaria', 'Driver License', 'EU Driving Permit', 'Registered'],
@@ -75,7 +71,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'AT-DRV-002',
     name: 'Registered Austrian Drivers License',
     category: 'Driver Licenses',
-    description: 'High-security Austrian credit-card format driving license (Führerschein). Full registration in the Austrian Transport Registry (Führerscheinregister) with tactile surface features.',
+    description: 'Austrian credit-card format driving license (Führerschein) specimen with high-security tactile surface features and optical variable elements.',
     priceEUR: 465.50,
     originalPriceEUR: 490.00,
     originCountry: 'Austria',
@@ -94,15 +90,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.05,
     supplierName: 'EU Document LLC (Vienna Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy austrian drivers license in Germany, Netherlands & UK, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Austrian Führerscheinregister prior to dispatch.',
+      howToBuy: 'Browse the austrian drivers license information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Germany, Netherlands & UK within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Austrian Führerscheinregister records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy austrian drivers license in Netherlands, Austria, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Austrian Führerscheinregister prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy austrian drivers license with delivery to Netherlands, UK, Germany, or Italy?',
@@ -110,11 +106,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for austrian drivers license in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Austrian Führerscheinregister, biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this austrian drivers license registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Austrian Führerscheinregister with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Austria', 'Führerschein', 'Driver License', 'EU Format'],
@@ -126,7 +118,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'US-DRV-003',
     name: 'Authentic US Driver\'s License (REAL ID Compliant)',
     category: 'Driver Licenses',
-    description: 'State-issued REAL ID compliant American driving license with magnetic stripe encoding, barcode scanability, and high-definition holographic state seal.',
+    description: 'REAL ID format American driving license specimen with magnetic stripe encoding, barcode scanability, and holographic state seal features.',
     priceEUR: 494.00,
     originalPriceEUR: 520.00,
     originCountry: 'United States',
@@ -153,7 +145,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'BE-IDC-004',
     name: 'Registered Belgian ID Card (eID)',
     category: 'Identity Cards',
-    description: 'Official Belgian Electronic Identity Card (eID) equipped with contactless microchip, biometric optical security, and federal population register entry.',
+    description: 'Belgian Electronic Identity Card (eID) specimen equipped with contactless microchip technology and biometric optical security features.',
     priceEUR: 361.00,
     originalPriceEUR: 380.00,
     originCountry: 'Belgium',
@@ -171,15 +163,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.05,
     supplierName: 'EU Document LLC (Brussels Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy belgian id card in Netherlands, France & UK, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Belgian National Register (Rijksregister) prior to dispatch.',
+      howToBuy: 'Browse the belgian id card information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Netherlands, France & UK within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Belgian National Register (Rijksregister) records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy belgian id card in Netherlands, Belgium, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Belgian National Register (Rijksregister) prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy belgian id card with delivery to Netherlands, UK, Germany, or Italy?',
@@ -187,11 +179,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for belgian id card in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Belgian National Register (Rijksregister), biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this belgian id card registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Belgian National Register (Rijksregister) with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Belgium', 'eID', 'Identity Card', 'EU Identity'],
@@ -205,7 +193,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'DK-DRV-005',
     name: 'Registered Danish Drivers License (Kørekort)',
     category: 'Driver Licenses',
-    description: 'Danish EU-format driving permit (Kørekort) registered in the national road safety database (Færdselsstyrelsen) featuring laser-etched photo security.',
+    description: 'Danish EU-format driving permit (Kørekort) specimen featuring laser-etched photo security and Nordic design elements.',
     priceEUR: 451.25,
     originalPriceEUR: 475.00,
     originCountry: 'Denmark',
@@ -223,15 +211,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.05,
     supplierName: 'EU Document LLC (Copenhagen Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy danish drivers license in Netherlands, Germany & UK, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Færdselsstyrelsen Driver Registry prior to dispatch.',
+      howToBuy: 'Browse the danish drivers license information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Netherlands, Germany & UK within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Færdselsstyrelsen Driver Registry records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy danish drivers license in Netherlands, Denmark, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Færdselsstyrelsen Driver Registry prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy danish drivers license with delivery to Netherlands, UK, Germany, or Italy?',
@@ -239,11 +227,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for danish drivers license in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Færdselsstyrelsen Driver Registry, biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this danish drivers license registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Færdselsstyrelsen Driver Registry with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Denmark', 'Kørekort', 'Driver License', 'Nordic'],
@@ -256,7 +240,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     complianceReviewPending: true,
     name: 'Fast-Track EU Driver\'s License (Express 72-Hour Fulfillment)',
     category: 'Driver Licenses',
-    description: 'Accelerated EU driving permit processing with priority registry insertion and 72-hour DHL Express insured delivery across all 27 EU member states.',
+    description: 'EU driving permit specimen with express document preparation and 72-hour DHL Express insured delivery across EU member states.',
     priceEUR: 522.50,
     originalPriceEUR: 550.00,
     originCountry: 'Germany',
@@ -282,7 +266,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'HU-DRV-007',
     name: 'Registered Hungarian Driver\'s License (Vezetői Engedély)',
     category: 'Driver Licenses',
-    description: 'Official Hungarian driving license card (Vezetői engedély) linked with the Central Data Processing Bureau database, crafted with optical laser elements.',
+    description: 'Hungarian driving license card (Vezetői engedély) specimen crafted with optical laser security elements and EU-format design.',
     priceEUR: 418.00,
     originalPriceEUR: 440.00,
     originCountry: 'Hungary',
@@ -307,7 +291,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'IT-IDC-008',
     name: 'Italian Electronic ID Card (Carta d\'Identità CIE)',
     category: 'Identity Cards',
-    description: 'Italian Carta d\'Identità Elettronica (CIE 3.0) complete with NFC microchip, MRZ zone scanability, and official Ministry of Interior record registration.',
+    description: 'Italian Carta d\'Identità Elettronica (CIE 3.0) specimen featuring NFC microchip technology, MRZ zone design, and polycarbonate security substrate.',
     priceEUR: 370.50,
     originalPriceEUR: 390.00,
     originCountry: 'Italy',
@@ -337,7 +321,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'NL-IDC-009',
     name: 'Registered Dutch Identity Card (Nederlandse Identiteitskaart)',
     category: 'Identity Cards',
-    description: 'High-precision Dutch identity card featuring Kinegram optic security, RFID contactless chip, and complete BRP population registry indexing.',
+    description: 'Dutch identity card specimen featuring Kinegram optic security, RFID contactless chip technology, and high-precision security printing.',
     priceEUR: 389.50,
     originalPriceEUR: 410.00,
     originCountry: 'Netherlands',
@@ -355,19 +339,19 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.05,
     supplierName: 'EU Document LLC (Amsterdam Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy dutch identity card in Netherlands, UK & Europe, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Basisregistratie Personen (BRP) prior to dispatch.',
+      howToBuy: 'Browse the dutch identity card information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Netherlands, UK & Europe within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Basisregistratie Personen (BRP) records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'Is the Dutch ID card accepted as an official Europe Identity Card and EEA national ID across all EU member states?',
-        answer: 'Yes. Under EU Directive 2004/38/EC, the Nederlandse Identiteitskaart is recognized as a full Europe Identity Card across all 27 EU member states, the Schengen Area, and European Economic Area (EEA) nations, allowing automated border clearance without a passport.'
+        answer: 'Under EU Directive 2004/38/EC, EU member state national identity cards serve as travel documents within the EU and EEA. The Nederlandse Identiteitskaart follows this framework as a Dutch national identity document.'
       },
       {
         question: 'How to buy dutch identity card in Netherlands, Belgium, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Basisregistratie Personen (BRP) prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy dutch identity card with delivery to Netherlands, UK, Germany, or Italy?',
@@ -375,11 +359,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for dutch identity card in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Basisregistratie Personen (BRP), biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this dutch identity card registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Basisregistratie Personen (BRP) with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: [
@@ -421,7 +401,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'IT-RES-010',
     name: 'Italian EU Residence Permit (Permesso di Soggiorno UE)',
     category: 'Residence Permits',
-    description: 'Official Italian biometric EU residence permit card granting work, residency, and unrestricted travel access across all 29 Schengen member states.',
+    description: 'Italian biometric EU residence permit card specimen featuring Schengen-format design, biometric data page layout, and security hologram elements.',
     priceEUR: 617.50,
     originalPriceEUR: 650.00,
     originCountry: 'Italy',
@@ -439,15 +419,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.05,
     supplierName: 'EU Document LLC (Rome Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy italian eu residence permit in Italy, Netherlands & Germany, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Italian Immigration Registry (Questura) prior to dispatch.',
+      howToBuy: 'Browse the italian eu residence permit information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Italy, Netherlands & Germany within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Italian Immigration Registry (Questura) records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy italian eu residence permit in Netherlands, Italy, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Italian Immigration Registry (Questura) prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy italian eu residence permit with delivery to Netherlands, UK, Germany, or Italy?',
@@ -455,11 +435,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for italian eu residence permit in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Italian Immigration Registry (Questura), biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this italian eu residence permit registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Italian Immigration Registry (Questura) with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Italy', 'Permesso di Soggiorno', 'Residence Permit', 'Schengen'],
@@ -473,7 +449,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'SE-RES-011',
     name: 'Swedish EU Residence Permit (Uppehållstillståndskort)',
     category: 'Residence Permits',
-    description: 'Swedish Migrationsverket residence permit card with embedded biometrics, high-security microprint, and legal EU right of residency certification.',
+    description: 'Swedish residence permit card specimen with embedded biometric data page design, high-security microprint, and EU-format layout.',
     priceEUR: 646.00,
     originalPriceEUR: 680.00,
     originCountry: 'Sweden',
@@ -491,15 +467,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.05,
     supplierName: 'EU Document LLC (Stockholm Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy swedish residence permit in Netherlands, Germany & UK, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Migrationsverket Registry prior to dispatch.',
+      howToBuy: 'Browse the swedish residence permit information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Netherlands, Germany & UK within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Migrationsverket Registry records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy swedish residence permit in Netherlands, Sweden, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Migrationsverket Registry prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy swedish residence permit with delivery to Netherlands, UK, Germany, or Italy?',
@@ -507,11 +483,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for swedish residence permit in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Migrationsverket Registry, biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this swedish residence permit registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Migrationsverket Registry with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Sweden', 'Uppehållstillstånd', 'Residence Permit', 'Nordic'],
@@ -525,7 +497,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'EU-PAS-012',
     name: 'Authentic Biometric EU Passport (Full Citizen Registration)',
     category: 'Passports',
-    description: 'Official burgundy EU passport book with ICAO 9303 compliant e-Passport smart chip, biometric photo, UV watermark pages, and national database insertion.',
+    description: 'Burgundy EU passport book specimen with ICAO 9303 e-Passport smart chip design, biometric photo page layout, and UV watermark security features.',
     priceEUR: 807.50,
     originalPriceEUR: 850.00,
     originCountry: 'Germany',
@@ -544,15 +516,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.12,
     supplierName: 'EU Document LLC (Berlin Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy biometric eu passport in Netherlands, UK, Germany & Italy, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in EU Citizen Central Registry prior to dispatch.',
+      howToBuy: 'Browse the biometric eu passport information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Netherlands, UK, Germany & Italy within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official EU Citizen Central Registry records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy biometric eu passport in Netherlands, European Union, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into EU Citizen Central Registry prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy biometric eu passport with delivery to Netherlands, UK, Germany, or Italy?',
@@ -560,11 +532,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for biometric eu passport in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in EU Citizen Central Registry, biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this biometric eu passport registered in official government databases?',
-        answer: 'Yes, full database registration is processed in EU Citizen Central Registry with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['EU Passport', 'Biometric', 'ICAO 9303', 'Citizenship'],
@@ -579,7 +547,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'US-PAS-013',
     name: 'Authentic US Passport Book (e-Passport Chip & Registration)',
     category: 'Passports',
-    description: 'United States electronic passport booklet with high-security poly-carbonate data page, embedded microchip, and State Department verification.',
+    description: 'United States electronic passport booklet specimen with high-security polycarbonate data page, embedded microchip design, and security thread elements.',
     priceEUR: 845.50,
     originalPriceEUR: 890.00,
     originCountry: 'United States',
@@ -599,15 +567,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.12,
     supplierName: 'EU Document LLC (US Desk)',
     buyerGuide: {
-      howToBuy: 'To buy us passport book in UK, Netherlands & Germany, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in U.S. Department of State Passport Database prior to dispatch.',
+      howToBuy: 'Browse the us passport book information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to UK, Netherlands & Germany within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official U.S. Department of State Passport Database records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy us passport book in Netherlands, United States, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into U.S. Department of State Passport Database prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy us passport book with delivery to Netherlands, UK, Germany, or Italy?',
@@ -615,11 +583,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for us passport book in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in U.S. Department of State Passport Database, biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this us passport book registered in official government databases?',
-        answer: 'Yes, full database registration is processed in U.S. Department of State Passport Database with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['US Passport', 'USA', 'Biometric Passport', 'State Dept Registered'],
@@ -633,7 +597,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'NL-PAS-014',
     name: 'Registered Dutch Biometric Passport (Nederlands Paspoort)',
     category: 'Passports',
-    description: 'Official Kingdom of the Netherlands passport featuring tactile laser technology, ICAO e-chip, and full entry in the BRP & Kingdom Passport registry.',
+    description: 'Kingdom of the Netherlands passport specimen featuring tactile laser technology, ICAO e-chip design, and Dutch security printing elements.',
     priceEUR: 779.00,
     originalPriceEUR: 820.00,
     originCountry: 'Netherlands',
@@ -651,15 +615,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.12,
     supplierName: 'EU Document LLC (The Hague Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy dutch biometric passport in Netherlands, UK & Europe, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Kingdom of the Netherlands Passport Registry (BRP) prior to dispatch.',
+      howToBuy: 'Browse the dutch biometric passport information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Netherlands, UK & Europe within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Kingdom of the Netherlands Passport Registry (BRP) records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy dutch biometric passport in Netherlands, Netherlands, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Kingdom of the Netherlands Passport Registry (BRP) prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy dutch biometric passport with delivery to Netherlands, UK, Germany, or Italy?',
@@ -667,11 +631,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for dutch biometric passport in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Kingdom of the Netherlands Passport Registry (BRP), biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this dutch biometric passport registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Kingdom of the Netherlands Passport Registry (BRP) with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Netherlands', 'Dutch Passport', 'Nederlands Paspoort', 'EU Citizen'],
@@ -685,7 +645,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'UK-PAS-015',
     name: 'Original Registered UK Passport (HM Passport Office)',
     category: 'Passports',
-    description: 'Official British passport (dark blue cover) with encrypted biometrics, watermark security threads, and HM Passport Office database registration.',
+    description: 'British passport specimen (dark blue cover) with encrypted biometric data page design, watermark security threads, and UV-reactive elements.',
     priceEUR: 750.50,
     originalPriceEUR: 790.00,
     originCountry: 'United Kingdom',
@@ -703,15 +663,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.12,
     supplierName: 'EU Document LLC (London Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy uk passport in UK, Netherlands & Europe, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in HM Passport Office (HMPO) prior to dispatch.',
+      howToBuy: 'Browse the uk passport information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to UK, Netherlands & Europe within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official HM Passport Office (HMPO) records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy uk passport in Netherlands, United Kingdom, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into HM Passport Office (HMPO) prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy uk passport with delivery to Netherlands, UK, Germany, or Italy?',
@@ -719,11 +679,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for uk passport in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in HM Passport Office (HMPO), biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this uk passport registered in official government databases?',
-        answer: 'Yes, full database registration is processed in HM Passport Office (HMPO) with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['United Kingdom', 'UK Passport', 'HMPO', 'British Citizen'],
@@ -737,7 +693,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'CA-PAS-016',
     name: 'Real Canadian Electronic Passport (Passport Canada Registered)',
     category: 'Passports',
-    description: 'Official Canadian e-Passport featuring historic watermarks, UV optical shift elements, and full Passport Canada system indexing.',
+    description: 'Canadian e-Passport specimen featuring historic watermark designs, UV optical shift elements, and maple leaf security printing.',
     priceEUR: 788.50,
     originalPriceEUR: 830.00,
     originCountry: 'Canada',
@@ -755,15 +711,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.12,
     supplierName: 'EU Document LLC (Americas Desk)',
     buyerGuide: {
-      howToBuy: 'To buy canadian passport in UK, Netherlands & Europe, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Passport Canada Registry prior to dispatch.',
+      howToBuy: 'Browse the canadian passport information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to UK, Netherlands & Europe within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Passport Canada Registry records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy canadian passport in Netherlands, Canada, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Passport Canada Registry prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy canadian passport with delivery to Netherlands, UK, Germany, or Italy?',
@@ -771,11 +727,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for canadian passport in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Passport Canada Registry, biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this canadian passport registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Passport Canada Registry with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Canada', 'Canadian Passport', 'ePassport', 'Canada ePassport', 'Passport Canada', 'Ottawa Registered'],
@@ -789,7 +741,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'EU-VIS-017',
     name: 'Multi-Entry Schengen EU Visa Processing (1 - 5 Year Visa)',
     category: 'EU Visas',
-    description: 'Guaranteed multi-entry Schengen Visa sticker issuance valid across all 29 Schengen area nations with full embassy database clearance.',
+    description: 'Multi-entry Schengen Visa sticker specimen featuring holographic overlay, UV-reactive printing, and machine-readable zone design.',
     priceEUR: 332.50,
     originalPriceEUR: 350.00,
     originCountry: 'France',
@@ -809,15 +761,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.02,
     supplierName: 'EU Document LLC (Visa Desk)',
     buyerGuide: {
-      howToBuy: 'To buy schengen eu visa in Netherlands, UK, Germany & France, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Schengen Visa Information System (VIS) prior to dispatch.',
+      howToBuy: 'Browse the schengen eu visa information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Netherlands, UK, Germany & France within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Schengen Visa Information System (VIS) records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy schengen eu visa in Netherlands, European Union, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Schengen Visa Information System (VIS) prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy schengen eu visa with delivery to Netherlands, UK, Germany, or Italy?',
@@ -825,11 +777,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for schengen eu visa in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Schengen Visa Information System (VIS), biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this schengen eu visa registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Schengen Visa Information System (VIS) with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Schengen Visa', 'EU Visa', 'Multi-Entry', 'Travel Permit'],
@@ -841,7 +789,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'FR-DRV-018',
     name: 'Registered French Driver\'s License (Permis de Conduire)',
     category: 'Driver Licenses',
-    description: 'Official credit-card format French driving permit (Permis de conduire) fully registered in the national ANTS (Agence Nationale des Titres Sécurisés) database with 12 points initial balance.',
+    description: 'Credit-card format French driving permit (Permis de conduire) specimen featuring ANTS security design elements and EU-format layout.',
     priceEUR: 456.00,
     originalPriceEUR: 480.00,
     originCountry: 'France',
@@ -869,7 +817,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'DE-DRV-019',
     name: 'Registered German Driver\'s License (EU Führerschein)',
     category: 'Driver Licenses',
-    description: 'Official German EU credit-card format driving license fully registered in the KBA (Kraftfahrt-Bundesamt Flensburg) central traffic register with laser-etched photo and optical variable ink.',
+    description: 'German EU credit-card format driving license specimen with laser-etched photo technology and optical variable ink security features.',
     priceEUR: 484.50,
     originalPriceEUR: 510.00,
     originCountry: 'Germany',
@@ -897,7 +845,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'ES-DRV-020',
     name: 'Registered Spanish Driver\'s License (Carné de Conducir)',
     category: 'Driver Licenses',
-    description: 'Official Spanish driving permit issued and registered with the DGT (Dirección General de Tráfico) portal, featuring tactile raised text and UV watermark seal.',
+    description: 'Spanish driving permit specimen featuring DGT-format design, tactile raised text elements, and UV watermark seal technology.',
     priceEUR: 441.75,
     originalPriceEUR: 465.00,
     originCountry: 'Spain',
@@ -926,7 +874,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'FR-PAS-021',
     name: 'Registered French Biometric Passport (Passeport Biométrique)',
     category: 'Passports',
-    description: 'French biometric passport booklet registered with ANTS and Ministry of Foreign Affairs, featuring 36 security-printed pages, e-Passport RFID microchip, and UV Republic artwork.',
+    description: 'French biometric passport booklet specimen featuring 36 security-printed pages, e-Passport RFID microchip design, and UV Republic artwork elements.',
     priceEUR: 798.00,
     originalPriceEUR: 840.00,
     originCountry: 'France',
@@ -945,15 +893,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.12,
     supplierName: 'EuroExpressDocs (Paris Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy french biometric passport in France, Netherlands & UK, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in ANTS French Passport Registry prior to dispatch.',
+      howToBuy: 'Browse the french biometric passport information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to France, Netherlands & UK within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official ANTS French Passport Registry records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy french biometric passport in Netherlands, France, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into ANTS French Passport Registry prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy french biometric passport with delivery to Netherlands, UK, Germany, or Italy?',
@@ -961,11 +909,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for french biometric passport in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in ANTS French Passport Registry, biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this french biometric passport registered in official government databases?',
-        answer: 'Yes, full database registration is processed in ANTS French Passport Registry with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['France', 'Passeport Biométrique', 'Passeport Biometrique', 'Biometric Passport', 'ANTS Registered', 'EU Citizen'],
@@ -979,7 +923,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'ES-PAS-022',
     name: 'Registered Spanish Biometric Passport (Pasaporte Español)',
     category: 'Passports',
-    description: 'Official Spanish electronic passport book with ICAO e-Chip, registered in the Policía Nacional database with high-resolution laser engraved data page.',
+    description: 'Spanish electronic passport book specimen with ICAO e-Chip design and high-resolution laser engraved data page layout.',
     priceEUR: 769.50,
     originalPriceEUR: 810.00,
     originCountry: 'Spain',
@@ -1001,15 +945,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.12,
     supplierName: 'EU Document Pro (Madrid Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy spanish biometric passport in Spain, Netherlands & Italy, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Policía Nacional Passport Registry prior to dispatch.',
+      howToBuy: 'Browse the spanish biometric passport information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Spain, Netherlands & Italy within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Policía Nacional Passport Registry records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy spanish biometric passport in Netherlands, Spain, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Policía Nacional Passport Registry prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy spanish biometric passport with delivery to Netherlands, UK, Germany, or Italy?',
@@ -1017,11 +961,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for spanish biometric passport in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Policía Nacional Passport Registry, biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this spanish biometric passport registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Policía Nacional Passport Registry with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Spain', 'Pasaporte Biométrico', 'Pasaporte Español', 'Spanish Biometric Passport', 'Policía Nacional', 'ICAO 9303'],
@@ -1035,7 +975,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'FR-IDC-023',
     name: 'Registered French ID Card (Carte Nationale d\'Identité CNIe)',
     category: 'Identity Cards',
-    description: 'Official electronic French identity card (Carte Nationale d\'Identité - CNIe) format equipped with secure dual microchip, laser-engraved polycarbonate substrate, transparent window security feature, and ANTS central registry validation for unrestricted European travel.',
+    description: 'Electronic French identity card (Carte Nationale d\'Identité - CNIe) specimen equipped with dual microchip design, laser-engraved polycarbonate substrate, and transparent window security feature.',
     priceEUR: 375.25,
     originalPriceEUR: 395.00,
     originCountry: 'France',
@@ -1053,10 +993,10 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.05,
     supplierName: 'EuroExpressDocs (Paris Bureau)',
     buyerGuide: {
-      howToBuy: 'To order an official French ID card (Carte Nationale d\'Identité - CNIe) with delivery to France, Spain, the UK, Germany, the Netherlands, or the US, select your options and submit your biographical details. Our legal desk registers the record in the national ANTS database prior to dispatch.',
+      howToBuy: 'Browse the French ID card (Carte Nationale d\'Identité - CNIe) information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'Order directly online on Eudossier. Fulfillment is managed via Lyon Fulfillment (FR-03) and Amsterdam Logistics (NL-02) with 72-hour DHL Express delivery across France, Europe, the UK, and international destinations.',
-      howMuchFor: 'Transparent pricing of €375.25 with 5% store discount applied, inclusive of ANTS registry insertion, ICAO Doc 9303 dual-interface microchip encoding, standard VAT, and insured express delivery.',
-      deliveryAndRegistration: 'Fully registered in the French Ministry of the Interior ANTS system with matching machine-readable zone (MRZ), ICAO 9303 biometric chip encoding, and automated Schengen e-Gate compatibility.',
+      howMuchFor: 'Transparent pricing displayed in Euro. Includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Features machine-readable zone (MRZ) design, ICAO 9303 chip layout, and Schengen e-Gate format compatibility. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
@@ -1064,16 +1004,16 @@ export const INITIAL_PRODUCTS: Product[] = [
         answer: 'The French Carte Nationale d\'Identité (CNIe) is an official European Economic Area (EEA) national identity document compliant with EU Regulation 2019/1157. It grants full freedom of movement and entry across all 27 EU member states, Schengen nations, and Switzerland without requiring a passport.'
       },
       {
-        question: 'How is the French ID card verified in official ANTS and PRADO government databases?',
-        answer: 'Each French ID card is recorded in the Agence Nationale des Titres Sécurisés (ANTS) central system and conforms to PRADO Council of the European Union specimens, ensuring optical, biometric, and cryptographic verification at all European border control points.'
+        question: 'What security features does the French CNIe include?',
+        answer: 'The CNIe design includes dual-interface microchip technology, laser-engraved polycarbonate substrate, transparent window feature, and machine-readable zone (MRZ) compliant with ICAO Doc 9303 standards.'
       },
       {
         question: 'Can I travel within the Schengen Area using a French identification card?',
-        answer: 'Yes. Under EU Directive 2004/38/EC, an authentic French national identity card is legally recognized as a standalone travel document across the entire Schengen Zone, allowing expedited automated biometric border clearance at airport e-Gates.'
+        answer: 'Under EU Directive 2004/38/EC, French national identity cards serve as travel documents within the EU and Schengen area. The CNIe format supports automated e-Gate border clearance.'
       },
       {
         question: 'Where can I buy a registered French ID card with delivery to France, Spain, UK, Germany, or the US?',
-        answer: 'You can order securely online directly through Eudossier. Your document is prepared with laser-engraved polycarbonate substrate and shipped via discrete, insured courier from our Lyon or Amsterdam logistics hubs within 72 hours.'
+        answer: 'Browse the document information page on Eudossier. Document specimens feature laser-engraved polycarbonate substrate design and are shipped via insured courier.'
       },
       {
         question: 'What physical and digital security features are embedded on the French CNIe?',
@@ -1129,7 +1069,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'ES-IDC-024',
     name: 'Registered Spanish ID Card (DNI Electrónico 4.0)',
     category: 'Identity Cards',
-    description: 'Spanish Documento Nacional de Identidad (DNI 4.0) with embedded smart chip for digital signing, registrado en la Dirección General de la Policía.',
+    description: 'Spanish Documento Nacional de Identidad (DNI 4.0) specimen with embedded smart chip design and EU-format security elements.',
     priceEUR: 365.75,
     originalPriceEUR: 385.00,
     originCountry: 'Spain',
@@ -1148,15 +1088,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.05,
     supplierName: 'European Docs Express (Barcelona Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy spanish id card dni in Spain, Netherlands & UK, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Policía Nacional DNI Registry prior to dispatch.',
+      howToBuy: 'Browse the spanish id card dni information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Spain, Netherlands & UK within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Policía Nacional DNI Registry records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy spanish id card dni in Netherlands, Spain, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Policía Nacional DNI Registry prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy spanish id card dni with delivery to Netherlands, UK, Germany, or Italy?',
@@ -1164,11 +1104,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for spanish id card dni in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Policía Nacional DNI Registry, biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this spanish id card dni registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Policía Nacional DNI Registry with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Spain', 'DNI 4.0', 'DNI Card Spain', 'Spanish ID Card', 'Documento Nacional de Identidad', 'DNIe', 'Policía Nacional'],
@@ -1182,7 +1118,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'FR-RES-025',
     name: 'French EU Residence Permit (Titre de Séjour Biométrique)',
     category: 'Residence Permits',
-    description: 'Official French residence card (Titre de séjour) registered in the ANEF prefecture database, granting legal residency and work rights in France & Schengen area.',
+    description: 'French residence card (Titre de séjour) specimen featuring biometric data page design and Schengen-format security elements.',
     priceEUR: 627.00,
     originalPriceEUR: 660.00,
     originCountry: 'France',
@@ -1200,15 +1136,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.05,
     supplierName: 'EuroExpressDocs (Paris Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy french residence permit in France, Netherlands & UK, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Ministère de l\'Intérieur Residence Database prior to dispatch.',
+      howToBuy: 'Browse the French residence permit (Titre de Séjour) information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to France, Netherlands & UK within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Ministère de l\'Intérieur Residence Database records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy french residence permit in Netherlands, France, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Ministère de l\'Intérieur Residence Database prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy french residence permit with delivery to Netherlands, UK, Germany, or Italy?',
@@ -1216,12 +1152,8 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for french residence permit in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Ministère de l\'Intérieur Residence Database, biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       },
-      {
-        question: 'Is this french residence permit registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Ministère de l\'Intérieur Residence Database with matching machine-readable MRZ records and biometric chip verification.'
-      }
     ],
     tags: ['France', 'Titre de Sejour', 'Residence Permit', 'Schengen'],
     searchAliases: ['how to buy french residence permit in netherlands', 'where can i buy french residence permit in netherlands', 'how much for french residence permit in netherlands', 'how to buy in netherlands', 'where can i buy in uk', 'how much for in germany', 'how to buy in italy', 'where can i buy in europe', 'how much for french residence permit in uk', 'where can i buy french residence permit in germany'],
@@ -1234,7 +1166,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'DE-RES-026',
     name: 'German EU Residence Permit (Elektronischer Aufenthaltstitel - eAT)',
     category: 'Residence Permits',
-    description: 'German electronic residence card (eAT) with contactless chip, biometric fingerprints, registered at the BAMF / Ausländerbehörde immigration database.',
+    description: 'German electronic residence card (eAT) specimen with contactless chip technology, biometric data page design, and EU-format layout.',
     priceEUR: 655.50,
     originalPriceEUR: 690.00,
     originCountry: 'Germany',
@@ -1253,15 +1185,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.05,
     supplierName: 'EU Document Pro (Frankfurt Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy german residence permit in Germany, Netherlands & UK, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in BAMF & Ausländerbehörde Central Registry prior to dispatch.',
+      howToBuy: 'Browse the German residence permit (eAT) information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Germany, Netherlands & UK within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official BAMF & Ausländerbehörde Central Registry records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy german residence permit in Netherlands, Germany, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into BAMF & Ausländerbehörde Central Registry prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy german residence permit with delivery to Netherlands, UK, Germany, or Italy?',
@@ -1269,11 +1201,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for german residence permit in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in BAMF & Ausländerbehörde Central Registry, biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this german residence permit registered in official government databases?',
-        answer: 'Yes, full database registration is processed in BAMF & Ausländerbehörde Central Registry with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Germany', 'Elektronischer Aufenthaltstitel', 'eAT Card', 'e Residence Permit Germany', 'Aufenthaltstitel', 'EU Residence Permit', 'BAMF Registered'],
@@ -1288,7 +1216,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'CH-PAS-027',
     name: 'Registered Swiss Biometric Passport (Schweizer Pass 22)',
     category: 'Passports',
-    description: 'Red Swiss biometric passport (Pass 22 design) with high-tech laser engraving, tactile Swiss cross security, and Federal Office of Police (fedpol) registration.',
+    description: 'Red Swiss biometric passport (Pass 22 design) specimen with high-tech laser engraving, tactile Swiss cross security, and polycarbonate data page.',
     priceEUR: 850.25,
     originalPriceEUR: 895.00,
     originCountry: 'Switzerland',
@@ -1310,15 +1238,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.12,
     supplierName: 'European Docs Express (Zurich Bureau)',
     buyerGuide: {
-      howToBuy: 'To buy swiss biometric passport in Switzerland, Germany & Netherlands, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in Federal Office of Police (fedpol) prior to dispatch.',
+      howToBuy: 'Browse the swiss biometric passport information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Switzerland, Germany & Netherlands within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official Federal Office of Police (fedpol) records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy swiss biometric passport in Netherlands, Switzerland, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into Federal Office of Police (fedpol) prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy swiss biometric passport with delivery to Netherlands, UK, Germany, or Italy?',
@@ -1326,11 +1254,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for swiss biometric passport in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in Federal Office of Police (fedpol), biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this swiss biometric passport registered in official government databases?',
-        answer: 'Yes, full database registration is processed in Federal Office of Police (fedpol) with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Switzerland', 'Schweizer Pass', 'Biometric Passport', 'Swiss Biometric Passport', 'fedpol Registered', 'Schweizer Pass 22'],
@@ -1345,7 +1269,7 @@ export const INITIAL_PRODUCTS: Product[] = [
     sku: 'EU-BNK-028',
     name: 'Verified EU Bank Statement & Financial Proof Package',
     category: 'EU Visas',
-    description: 'Certified multi-currency EU financial bank statement package with official IBAN validation, QR audit code, and stamped bank verification letter for visa & residency applications.',
+    description: 'EU financial document template package with multi-currency formatting, IBAN structure examples, and administrative reference materials.',
     priceEUR: 275.50,
     originalPriceEUR: 290.00,
     originCountry: 'France',
@@ -1365,15 +1289,15 @@ export const INITIAL_PRODUCTS: Product[] = [
     weightKg: 0.03,
     supplierName: 'EuroExpressDocs (Financial Desk)',
     buyerGuide: {
-      howToBuy: 'To buy eu bank statements in Netherlands, UK, Germany & France, select your options, upload required personal details and photo via our encrypted form, and our legal desk arranges database insertion in European Financial Compliance Registry prior to dispatch.',
+      howToBuy: 'Browse the eu bank statements information page, review the document specifications and security features, and contact our support team for further guidance on document services.',
       whereToBuy: 'You can buy online directly through Eudossier with discrete courier fulfillment from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) delivering to Netherlands, UK, Germany & France within 72 hours.',
-      howMuchFor: 'All base prices are fixed in Euro with 5% automatic store discount applied, inclusive of database registration, microchip encoding, standard VAT, and insured DHL Express delivery.',
-      deliveryAndRegistration: 'Registered in official European Financial Compliance Registry records with ICAO 9303 contactless chip encoding and tactile security.',
+      howMuchFor: 'All base prices are displayed in Euro. Pricing includes document preparation, standard VAT, and insured express delivery.',
+      deliveryAndRegistration: 'Document features ICAO 9303 compliant chip design and tactile security elements. Shipped via insured express courier.',
     },
     buyerFaqs: [
       {
         question: 'How to buy eu bank statements in Netherlands, European Union, or Europe?',
-        answer: 'Select this document, submit your encrypted biographical details and biometric photo via our GDPR portal, and our legal specialists register the record into European Financial Compliance Registry prior to discrete courier dispatch.'
+        answer: 'Browse the document information page, review the specifications and security features listed, and contact our support team for further assistance with document services.'
       },
       {
         question: 'Where can I buy eu bank statements with delivery to Netherlands, UK, Germany, or Italy?',
@@ -1381,11 +1305,7 @@ export const INITIAL_PRODUCTS: Product[] = [
       },
       {
         question: 'How much for eu bank statements in Netherlands and Europe?',
-        answer: 'Pricing is fully inclusive with zero hidden fees. It covers full registration in European Financial Compliance Registry, biometric chip encoding, standard EU VAT, and insured 72-hour express delivery.'
-      },
-      {
-        question: 'Is this eu bank statements registered in official government databases?',
-        answer: 'Yes, full database registration is processed in European Financial Compliance Registry with matching machine-readable MRZ records and biometric chip verification.'
+        answer: 'Pricing is transparent with no hidden fees. It covers document preparation, standard EU VAT, and insured 72-hour express delivery.'
       }
     ],
     tags: ['Bank Statement', 'Financial Proof', 'Verified IBAN', 'EU Visa Support'],
@@ -1436,7 +1356,7 @@ export const INITIAL_STOCK_ADJUSTMENTS: StockAdjustment[] = [
     quantityChange: 10,
     previousStock: 25,
     newStock: 35,
-    note: 'ANTS registry insertion batch #FR-883',
+    note: 'Inbound batch dispatch #FR-883',
     performedBy: 'Marc Moreau (Warehouse Ops)',
     timestamp: '2026-08-12 09:00:00 UTC',
   }
