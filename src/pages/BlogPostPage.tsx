@@ -283,7 +283,7 @@ export const BlogPostPage: React.FC = () => {
         </div>
 
         {/* Product Conversion Bridge Card */}
-        {linkedProduct && (
+        {linkedProduct && post.targetProductSlug && (
           <div className="bg-gradient-to-r from-[var(--color-bg-secondary)] via-[var(--color-bg-tertiary)] to-[var(--color-bg-secondary)] border border-[var(--color-accent-500)]/40 rounded-2xl p-6 shadow-xl space-y-4">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center space-x-4">
@@ -318,8 +318,8 @@ export const BlogPostPage: React.FC = () => {
           </div>
         )}
 
-        {/* Interactive FAQ Section */}
-        {post.faqs.length > 0 && (
+        {/* Interactive FAQ Section (rendered only if not already embedded in article HTML) */}
+        {post.faqs.length > 0 && !post.content.includes('id="faq"') && !post.content.includes('aria-labelledby="faq"') && !post.content.includes('id="faq"') && (
           <section className="space-y-4 pt-6 border-t border-[var(--color-border)]">
             <h3 className="text-lg font-bold text-[var(--color-text-primary)] font-display">
               Frequently Asked Questions & Official Compliance
@@ -402,42 +402,42 @@ export const BlogPostPage: React.FC = () => {
             ))}
           </div>
 
-          {/* Inbound Linking: Category & Catalogue Cross-Links */}
+          {/* Inbound Linking: Category & Blog Guides Cross-Links */}
           <div className="p-4 rounded-xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
             <span className="font-semibold text-[var(--color-text-primary)]">
               Explore European Document Guides &amp; Specifications:
             </span>
             <div className="flex flex-wrap items-center gap-2">
               <Link
-                to="/catalogue?category=National+ID+Cards"
+                to="/blog/carte-nationale-identite-cni-guide"
                 className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-[var(--color-accent-500)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
               >
                 National ID Cards
               </Link>
               <Link
-                to="/catalogue?category=Passports"
+                to="/blog/passeport-biometrique-guide"
                 className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-[var(--color-accent-500)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
               >
                 Biometric Passports
               </Link>
               <Link
-                to="/catalogue?category=Residence+Permits"
+                to="/blog/german-eat-vs-eu-residence-permit"
                 className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-[var(--color-accent-500)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
               >
                 Residence Permits (eAT)
               </Link>
               <Link
-                to="/catalogue?category=Driver+Licenses"
+                to="/blog/carte-identite-eee-guide"
                 className="px-2.5 py-1 rounded-lg bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-[var(--color-accent-500)] text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
               >
-                Driver Licenses
+                EEA Travel Rules
               </Link>
             </div>
           </div>
         </section>
 
-        {/* Outbound Linking: Exactly 2 to 3 Authoritative Sovereign & European Registers */}
-        {post.outboundLinks && post.outboundLinks.length > 0 && (
+        {/* Outbound Linking: Exactly 2 to 3 Authoritative Sovereign & European Registers (rendered only if not already embedded in article HTML) */}
+        {post.outboundLinks && post.outboundLinks.length > 0 && !post.content.includes('id="sources"') && !post.content.includes('aria-labelledby="sources"') && !post.content.includes('Sources officielles') && !post.content.includes('Offizielle Quellen') && !post.content.includes('Officiële bronnen') && !post.content.includes('Fuentes oficiales') && !post.content.includes('Fonti ufficiali') && (
           <section className="p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-bg-tertiary)]/40 space-y-3">
             <div className="flex items-center gap-2">
               <ExternalLink className="w-4 h-4 text-emerald-500" />
