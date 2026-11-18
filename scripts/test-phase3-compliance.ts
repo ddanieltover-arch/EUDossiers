@@ -53,7 +53,8 @@ for (const p of INITIAL_PRODUCTS) {
   }
 }
 assert(!anyProductInSitemap, '3. All 28 restricted catalogue products are absent from sitemap.xml');
-assert(sitemapUrls.length === 29, '3b. Sitemap contains exactly 29 verified indexable URLs', `Got ${sitemapUrls.length}`);
+const expectedSitemapUrlsCount = 5 + BLOG_POSTS.length; // 4 core + 1 blog hub + N blog guides
+assert(sitemapUrls.length === expectedSitemapUrlsCount, `3b. Sitemap contains exactly ${expectedSitemapUrlsCount} verified indexable URLs`, `Got ${sitemapUrls.length}`);
 
 // 4. No Product or Offer promotional JSON-LD emitted for restricted products
 let allSchemaSuppressed = true;
@@ -125,8 +126,8 @@ assert(!approvedReviewStatus && approvedCanAddToCart, '7. Approved products rema
 // 8. Legitimate content pages remain indexable
 const corePages = ['https://eudossier.eu/', 'https://eudossier.eu/catalogue', 'https://eudossier.eu/contact', 'https://eudossier.eu/privacy', 'https://eudossier.eu/blog'];
 const allCorePagesInSitemap = corePages.every(p => sitemapUrls.includes(p));
-const all24BlogPostsInSitemap = BLOG_POSTS.every(b => sitemapUrls.includes(`https://eudossier.eu/blog/${b.slug}`));
-assert(allCorePagesInSitemap && all24BlogPostsInSitemap, '8. Legitimate content pages (4 core + 1 blog hub + 24 blog guides) remain indexable in sitemap');
+const allBlogPostsInSitemap = BLOG_POSTS.every(b => sitemapUrls.includes(`https://eudossier.eu/blog/${b.slug}`));
+assert(allCorePagesInSitemap && allBlogPostsInSitemap, `8. Legitimate content pages (4 core + 1 blog hub + ${BLOG_POSTS.length} blog guides) remain indexable in sitemap`);
 
 // 9. All seven hreflang clusters remain reciprocal
 let hreflangReciprocal = true;

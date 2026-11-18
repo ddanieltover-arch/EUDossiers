@@ -48,14 +48,15 @@ if (sitemapProdUrls.length > 0) {
   console.log('PASS: All 28 unverified catalogue products successfully excluded from sitemap');
 }
 
-if (urls.length !== 29) {
-  console.error(`FAIL: Expected exactly 29 URLs in sitemap, got ${urls.length}`);
+const expectedUrlCount = 5 + BLOG_POSTS.length; // 4 core + 1 blog hub + N blog guides
+if (urls.length !== expectedUrlCount) {
+  console.error(`FAIL: Expected exactly ${expectedUrlCount} URLs in sitemap, got ${urls.length}`);
   errors++;
 } else {
-  console.log('PASS: Sitemap contains exactly 29 verified indexable URLs');
+  console.log(`PASS: Sitemap contains exactly ${expectedUrlCount} verified indexable URLs`);
 }
 
-// 5. Blog posts check (all 24)
+// 5. Blog posts check (all ${BLOG_POSTS.length})
 const sitemapBlogSlugs = urls.filter(u => u.includes('/blog/')).map(u => u.replace('https://eudossier.eu/blog/', ''));
 const expectedBlogSlugs = BLOG_POSTS.map(p => p.slug);
 const missingBlogs = expectedBlogSlugs.filter(s => !sitemapBlogSlugs.includes(s));

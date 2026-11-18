@@ -1204,5 +1204,317 @@ To inspect any specimen directly, navigate to any item in our catalogue and view
       { url: "https://www.esteri.it/it/sala_stampa/archivionotizie/approfondimenti/2026/06/cessazione-della-validita-della-carta-didentita-cartacea-dal-3-agosto/", title: "Ministero degli Esteri — fine validità per l’espatrio delle carte cartacee dal 3 agosto 2026", description: "Official government / EU authority documentation" },
       { url: "https://www.viaggiaresicuri.it/approfondimenti-insights/documentidiviaggio", title: "Viaggiare Sicuri — documenti di viaggio", description: "Official government / EU authority documentation" },
     ],
-  }
+  },
+  {
+    "id": "post-025",
+    "slug": "demande-passeport-francais-etranger-pre-demande-2026",
+    "language": "fr",
+    "title": "Passeport français : première demande et renouvellement depuis l’étranger",
+    "excerpt": "Guide officiel du passeport français : pré-demande ANTS depuis l’étranger, rendez-vous consulaire, pièces à préparer et durée de validité.",
+    "category": "Passports",
+    "readTime": "7 min read",
+    "publishDate": "2026-11-18",
+    "author": {
+      "name": "Équipe éditoriale Eudossier",
+      "role": "Analystes réglementaires européens"
+    },
+    "coverImage": "/blog/french-passport-cnie-abroad.jpg",
+    "primaryKeyword": "demande passeport français à l’étranger",
+    "secondaryKeywords": [
+      "pré-demande passeport ANTS étranger",
+      "renouvellement passeport français consulat",
+      "passeport biométrique français",
+      "validité passeport français"
+    ],
+    "targetProductSlug": "",
+    "targetProductName": "",
+    "content": "<p class=\"article-intro\">Un Français qui réside à l’étranger peut préparer une première demande ou un renouvellement de passeport en utilisant les services en ligne prévus par l’administration. Depuis le 16 février 2026, la pré-demande de carte nationale d’identité et de passeport est également ouverte aux Français établis hors de France via le dispositif de l’Agence nationale des titres sécurisés (ANTS). Cette étape prépare le dossier : elle ne remplace pas le rendez-vous, les contrôles d’identité ni les formalités organisées par le consulat compétent.</p>\n<aside class=\"p-4 my-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300\"><strong>Information importante :</strong> cet article explique les procédures officielles à titre informatif. La délivrance du document et la décision sur une demande relèvent exclusivement de l’autorité publique compétente.</aside>\n<section><h2>Qui peut demander un passeport français ?</h2><p>Le passeport français est délivré aux personnes de nationalité française. La demande est personnelle : le demandeur doit suivre la procédure prévue pour son âge et sa situation. Un titre de séjour dans un autre pays, une adresse en France ou la possession d’un document étranger ne remplacent pas la preuve de la nationalité française.</p></section>\n<section><h2>La pré-demande en ligne depuis l’étranger</h2><p>Depuis le 16 février 2026, les Français établis hors de France peuvent effectuer en ligne une pré-demande pour une première délivrance ou un renouvellement de passeport, au moyen de la plateforme ANTS. Le dispositif a été annoncé par Service-Public le 24 mars 2026. La pré-demande permet de préparer les informations et de gagner du temps ; elle ne signifie pas que le passeport est délivré en ligne.</p>\n<ol><li>Consultez la page officielle du consulat français compétent dans votre pays de résidence.</li><li>Vérifiez que la pré-demande en ligne est adaptée à votre situation et suivez les instructions de l’ANTS.</li><li>Rassemblez les justificatifs demandés dans votre cas : identité, nationalité, domicile ou résidence, photographie et ancien passeport, le cas échéant.</li><li>Prenez le rendez-vous indiqué par le consulat et présentez-vous avec les originaux et justificatifs exigés.</li><li>Suivez les instructions du poste consulaire pour le retrait ou la réception du nouveau passeport.</li></ol></section>\n<section><h2>Faut-il se présenter en personne ?</h2><p>En règle générale, le dépôt d’une demande de passeport implique une présentation personnelle afin que l’autorité puisse vérifier l’identité du demandeur et recueillir les données nécessaires. Les modalités exactes, notamment pour les mineurs et les demandes à l’étranger, doivent être vérifiées auprès du consulat compétent. Ne partez pas du principe qu’une pré-demande numérique dispense du rendez-vous ou de la comparution.</p></section>\n<section><h2>Durée de validité du passeport français</h2><p>Le passeport d’un majeur est généralement valable dix ans. Celui d’un mineur est valable cinq ans. Vérifiez toujours la date d’expiration inscrite sur le document et les conditions d’entrée du pays de destination : certains États exigent que le passeport reste valable plusieurs mois après la date prévue de sortie.</p></section>\n<section><h2>Documents à préparer : une liste indicative</h2><p>Les pièces exigées dépendent du motif de la demande, de l’âge, de la situation familiale et du lieu de dépôt. Le consulat peut demander une photographie conforme, un justificatif de nationalité si celle-ci ne peut être vérifiée automatiquement, un justificatif de résidence, l’ancien passeport ou une déclaration de perte ou de vol. La liste affichée par le consulat prévaut toujours sur une liste générale publiée ailleurs.</p></section>\n<section><h2>Passeport biométrique et sécurité</h2><p>Un passeport biométrique comporte un composant électronique destiné à permettre des contrôles documentaires sécurisés. Les caractéristiques techniques et les données utilisées relèvent des normes et procédures officielles. Un prestataire privé ne peut pas créer, enregistrer ou valider un passeport français à la place de l’autorité française compétente.</p></section>\n<section><h2>À ne pas confondre : pré-demande et délivrance</h2><p>La pré-demande en ligne est une étape administrative de préparation. Seule l’autorité publique compétente peut instruire la demande, accepter les justificatifs, recueillir les données nécessaires et délivrer le passeport. Méfiez-vous de toute offre qui prétend garantir un passeport officiel, une inscription dans un registre d’État ou une délivrance accélérée indépendante des autorités.</p></section>",
+    "faqs": [
+      {
+        "question": "Depuis quand la pré-demande de passeport est-elle accessible aux Français de l’étranger ?",
+        "answer": "Selon Service-Public, la pré-demande en ligne pour une première demande ou un renouvellement de passeport est accessible aux Français établis hors de France depuis le 16 février 2026."
+      },
+      {
+        "question": "La pré-demande ANTS permet-elle d’obtenir un passeport sans rendez-vous ?",
+        "answer": "Non. Elle prépare la démarche. Les formalités et la comparution demandées par le consulat restent applicables selon votre situation."
+      },
+      {
+        "question": "Combien de temps le passeport français est-il valable ?",
+        "answer": "En règle générale, dix ans pour un majeur et cinq ans pour un mineur. Vérifiez toujours les règles officielles applicables à votre situation."
+      },
+      {
+        "question": "Où déposer une demande depuis l’étranger ?",
+        "answer": "Auprès du consulat ou du poste diplomatique français compétent pour votre lieu de résidence, en suivant ses instructions officielles."
+      }
+    ],
+    "outboundLinks": [
+      {
+        "url": "https://www.service-public.gouv.fr/particuliers/actualites/A18849",
+        "title": "Service-Public : pré-demande en ligne pour les Français de l’étranger",
+        "description": "Official government / EU authority documentation"
+      },
+      {
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14929",
+        "title": "Service-Public : première demande de passeport pour un majeur",
+        "description": "Official government / EU authority documentation"
+      },
+      {
+        "url": "https://www.service-public.gouv.fr/particuliers/vosdroits/F14930",
+        "title": "Service-Public : première demande de passeport pour un mineur",
+        "description": "Official government / EU authority documentation"
+      },
+      {
+        "url": "https://www.diplomatie.gouv.fr/fr/services-aux-francaises-et-aux-francais/vie-administrative-et-elections/documents-officiels-a-l-etranger/comment-faire-une-demande-de-carte-nationale-d-identite",
+        "title": "France Diplomatie : demander une carte nationale d’identité à l’étranger",
+        "description": "Official government / EU authority documentation"
+      }
+    ]
+  },
+  {
+    "id": "post-026",
+    "slug": "personalausweis-beantragen-online-ausweisfunktion",
+    "language": "de",
+    "title": "Personalausweis beantragen: Gültigkeit und Online-Ausweisfunktion",
+    "excerpt": "Wer kann den deutschen Personalausweis beantragen? Informationen zu Bürgeramt, Unterlagen, Gültigkeit und Online-Ausweisfunktion.",
+    "category": "Identity Cards",
+    "readTime": "7 min read",
+    "publishDate": "2026-11-18",
+    "author": {
+      "name": "Eudossier Redaktionsteam",
+      "role": "Europäische Dokumenten- und Regulierungsexperten"
+    },
+    "coverImage": "/blog/german-personalausweis-online-ausweis.jpg",
+    "primaryKeyword": "Personalausweis beantragen",
+    "secondaryKeywords": [
+      "Personalausweis Gültigkeit",
+      "Online-Ausweisfunktion Personalausweis",
+      "Personalausweis Bürgeramt",
+      "deutscher Personalausweis online ausweisen"
+    ],
+    "targetProductSlug": "",
+    "targetProductName": "",
+    "content": "<p class=\"article-intro\">Der deutsche Personalausweis ist ein amtliches Identitätsdokument für deutsche Staatsangehörige. Er dient im Inland als Identitätsnachweis und kann – abhängig vom Reiseziel – auch als Reisedokument verwendet werden. Der Antrag wird bei der zuständigen Personalausweisbehörde gestellt. Dieser Beitrag erklärt die grundlegenden Schritte und ordnet die Online-Ausweisfunktion ein.</p>\n<aside class=\"p-4 my-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300\"><strong>Information importante :</strong> cet article explique les procédures officielles à titre informatif. La délivrance du document et la décision sur une demande relèvent exclusivement de l’autorité publique compétente.</aside>\n<section><h2>Wer kann einen deutschen Personalausweis beantragen?</h2><p>Einen Personalausweis können Personen mit deutscher Staatsangehörigkeit beantragen. Zuständig ist in der Regel das Bürgeramt beziehungsweise die örtliche Personalausweisbehörde am Wohnort. Welche Stelle zuständig ist und welche Terminmöglichkeiten bestehen, richtet sich nach dem jeweiligen Bundesland und der Kommune.</p></section>\n<section><h2>Wie läuft die Antragstellung ab?</h2><ol><li>Informieren Sie sich auf der Website Ihrer zuständigen Kommune über Termin, Gebühren und erforderliche Unterlagen.</li><li>Vereinbaren Sie den vorgesehenen Termin beim Bürgeramt.</li><li>Erscheinen Sie persönlich und legen Sie die verlangten Nachweise vor. Dazu gehören je nach Fall ein bisheriger Ausweis oder Reisepass, ein geeigneter Identitätsnachweis und ein biometrisches Lichtbild.</li><li>Die Behörde prüft Ihre Identität und nimmt die für das Dokument erforderlichen Daten auf.</li><li>Bewahren Sie die Abholinformation und – falls ausgehändigt – den PIN-Brief sorgfältig auf. Folgen Sie den Hinweisen zur Abholung oder Zustellung.</li></ol></section>\n<section><h2>Wie lange ist der Personalausweis gültig?</h2><p>Die Gültigkeitsdauer hängt vom Alter bei der Antragstellung ab: Für Personen unter 24 Jahren beträgt sie grundsätzlich sechs Jahre; ab 24 Jahren grundsätzlich zehn Jahre. Ein vorläufiger Personalausweis ist ein gesondertes Dokument mit deutlich kürzerer Gültigkeit. Prüfen Sie die Angaben auf dem ausgestellten Dokument und die aktuellen Informationen Ihrer Behörde.</p></section>\n<section><h2>Was bedeutet Online-Ausweisfunktion?</h2><p>Der Personalausweis kann eine Online-Ausweisfunktion enthalten. Damit lässt sich die Identität bei teilnehmenden Behörden und Unternehmen elektronisch nachweisen. Die Funktion wird nicht automatisch bei jedem Online-Dienst akzeptiert; der jeweilige Dienst muss sie unterstützen. Für die Nutzung werden unter anderem die aktivierte Funktion, die PIN und eine geeignete technische Umgebung benötigt.</p></section>\n<section><h2>Ab welchem Alter kann die Online-Ausweisfunktion verwendet werden?</h2><p>Die Online-Ausweisfunktion kann ab dem 16. Geburtstag genutzt werden. Bei jüngeren Personen wird der Ausweis ohne die Funktion zum elektronischen Identitätsnachweis ausgegeben. Die aktuellen technischen Voraussetzungen und Hinweise zur PIN-Verwaltung finden Sie beim offiziellen Ausweis-Portal und in der AusweisApp.</p></section>\n<section><h2>Personalausweis oder Reisepass: Was ist der Unterschied?</h2><p>Der Personalausweis ist ein nationales Identitätsdokument und wird für Reisen in zahlreiche europäische Staaten akzeptiert. Ein Reisepass ist ein eigenständiges Reisedokument, das für Reisen in viele Staaten außerhalb Europas benötigt wird. Die Einreisebedingungen hängen vom Zielland, der Staatsangehörigkeit und dem Reisezweck ab. Prüfen Sie diese vor der Abreise.</p></section>\n<section><h2>Personalausweis und elektronischer Aufenthaltstitel (eAT) sind nicht dasselbe</h2><p>Der Personalausweis ist für deutsche Staatsangehörige bestimmt. Der elektronische Aufenthaltstitel (eAT) dokumentiert dagegen einen Aufenthaltstitel für bestimmte ausländische Staatsangehörige, insbesondere Menschen aus Staaten außerhalb der EU, die in Deutschland leben dürfen. Ein eAT macht seinen Inhaber nicht zum deutschen Staatsangehörigen und ersetzt keinen deutschen Personalausweis.</p></section>\n<section><h2>Wo finden Sie verbindliche Informationen?</h2><p>Gebühren, Terminvergabe, digitale Lichtbildanforderungen und die örtliche Bearbeitung können sich ändern. Maßgeblich sind das Bundesportal und die Informationen Ihres Bürgeramts. Verwenden Sie für PIN- und Online-Ausweisfragen die offiziellen Informationsangebote zur Online-Ausweisfunktion.</p></section>",
+    "faqs": [
+      {
+        "question": "Wer darf einen deutschen Personalausweis beantragen?",
+        "answer": "Personen mit deutscher Staatsangehörigkeit können einen Personalausweis bei der zuständigen Behörde beantragen."
+      },
+      {
+        "question": "Wie lange ist ein deutscher Personalausweis gültig?",
+        "answer": "Grundsätzlich sechs Jahre bei Antragstellung vor dem 24. Geburtstag und zehn Jahre ab dem 24. Geburtstag."
+      },
+      {
+        "question": "Kann ich mit dem Personalausweis in andere Länder reisen?",
+        "answer": "Ein gültiger deutscher Personalausweis wird für die Einreise in viele europäische Staaten akzeptiert, darunter EU-Staaten sowie Island, Liechtenstein, Norwegen und die Schweiz. Prüfen Sie die Bedingungen des Ziellandes."
+      },
+      {
+        "question": "Ist der eAT ein deutscher Personalausweis?",
+        "answer": "Nein. Der eAT dokumentiert einen deutschen Aufenthaltstitel für bestimmte ausländische Staatsangehörige. Der Personalausweis ist ein Identitätsdokument für deutsche Staatsangehörige."
+      }
+    ],
+    "outboundLinks": [
+      {
+        "url": "https://verwaltung.bund.de/leistungsverzeichnis/de/leistung/99008001012000/herausgeber/BB-109331308/region/120520000000",
+        "title": "Bundesportal: Personalausweis beantragen",
+        "description": "Official government / EU authority documentation"
+      },
+      {
+        "url": "https://verwaltung.bund.de/leistungsverzeichnis/DE/leistung/99008001012001/herausgeber/TH-213495492/region/16",
+        "title": "Bundesportal: Personalausweis und Online-Ausweisfunktion",
+        "description": "Official government / EU authority documentation"
+      },
+      {
+        "url": "https://www.personalausweisportal.de/",
+        "title": "Offizielles Portal zur Online-Ausweisfunktion",
+        "description": "Official government / EU authority documentation"
+      },
+      {
+        "url": "https://www.ausweisapp.bund.de/",
+        "title": "AusweisApp: Informationen und Nutzung",
+        "description": "Official government / EU authority documentation"
+      }
+    ]
+  },
+  {
+    "id": "post-027",
+    "slug": "nederlands-paspoort-aanvragen-buitenland-vernieuwen",
+    "language": "nl",
+    "title": "Nederlands paspoort aanvragen of vernieuwen, ook vanuit het buitenland",
+    "excerpt": "Lees wie een Nederlands paspoort kan aanvragen, waar u dit doet in Nederland of het buitenland en hoe lang het document geldig is.",
+    "category": "Passports",
+    "readTime": "6 min read",
+    "publishDate": "2026-11-18",
+    "author": {
+      "name": "Eudossier Redactieteam",
+      "role": "Europese document- en compliance-analisten"
+    },
+    "coverImage": "/blog/dutch-paspoort-travel.jpg",
+    "primaryKeyword": "Nederlands paspoort aanvragen",
+    "secondaryKeywords": [
+      "Nederlands paspoort vernieuwen",
+      "paspoort aanvragen buitenland Nederland",
+      "Nederlands paspoort geldigheid",
+      "paspoort ambassade consulaat"
+    ],
+    "targetProductSlug": "",
+    "targetProductName": "",
+    "content": "<p class=\"article-intro\">Een Nederlands paspoort is een officieel identiteits- en reisdocument voor Nederlandse staatsburgers. Woont u in Nederland, dan vraagt u het document doorgaans aan bij de gemeente waar u staat ingeschreven. Woont u buiten Nederland, dan kunt u in veel gevallen terecht bij een Nederlandse ambassade of consulaat. De precieze afspraak- en documentvereisten verschillen per locatie.</p>\n<aside class=\"p-4 my-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300\"><strong>Information importante :</strong> cet article explique les procédures officielles à titre informatif. La délivrance du document et la décision sur une demande relèvent exclusivement de l’autorité publique compétente.</aside>\n<section><h2>Wie kan een Nederlands paspoort aanvragen?</h2><p>Een Nederlands paspoort wordt aangevraagd door iemand met de Nederlandse nationaliteit. Het document is persoonlijk en kan niet door een andere persoon worden gebruikt. Voor kinderen moet een eigen reisdocument worden aangevraagd; zij kunnen niet zonder meer op het paspoort van een ouder meereizen.</p></section>\n<section><h2>Aanvragen in Nederland</h2><p>Als u in Nederland woont en bij een gemeente bent ingeschreven, vraagt u een paspoort aan bij die gemeente. Controleer vooraf de gemeentelijke website voor de afspraak, actuele kosten, vereiste pasfoto en eventuele aanvullende documenten. U moet in beginsel persoonlijk verschijnen zodat de gemeente uw identiteit kan controleren en de aanvraag kan verwerken.</p></section>\n<section><h2>Een paspoort aanvragen vanuit het buitenland</h2><p>Nederlandse burgers die buiten Nederland wonen, kunnen een nieuw paspoort of identiteitskaart aanvragen bij de meeste Nederlandse ambassades en consulaten en bij een aantal aangewezen gemeenten in Nederland. U moet doorgaans vooraf een afspraak maken. De bevoegde post publiceert de actuele aanvraagroute, checklist, foto-eisen, kosten en wijze van afhalen.</p>\n<ol><li>Zoek de Nederlandse ambassade of het consulaat dat bevoegd is voor uw woonland.</li><li>Lees de lokale instructies voor paspoortaanvragen en maak de vereiste afspraak.</li><li>Bereid de originele bewijsstukken en een pasfoto voor die aan de officiële eisen voldoet.</li><li>Verschijn persoonlijk op de afspraak, zodat de identiteit kan worden gecontroleerd en de aanvraag kan worden opgenomen.</li><li>Volg de instructies van de ambassade, het consulaat of de aangewezen uitgiftelocatie voor het ophalen van het document.</li></ol></section>\n<section><h2>Geldigheidsduur</h2><p>Een Nederlands paspoort is voor volwassenen in het algemeen tien jaar geldig. Voor kinderen en jongeren onder de 18 jaar is de geldigheidsduur vijf jaar. Controleer de vervaldatum op het document en de geldigheidseisen van het land waar u naartoe reist.</p></section>\n<section><h2>Vingerafdrukken en biometrische gegevens</h2><p>Bij een paspoortaanvraag worden vingerafdrukken opgenomen. Kinderen jonger dan twaalf jaar zijn hiervan uitgezonderd. Volgens Government.nl worden vingerafdrukken na uitgifte alleen in het paspoort opgeslagen. Voor een Nederlandse identiteitskaart gelden andere regels: bij de aanvraag van een identiteitskaart worden geen vingerafdrukken opgenomen.</p></section>\n<section><h2>Paspoort of Nederlandse identiteitskaart?</h2><p>Een paspoort is een reisdocument voor internationale reizen en kan, afhankelijk van het land, visa bevatten. Een Nederlandse identiteitskaart is een identiteitsbewijs en kan door Nederlanders worden gebruikt om naar EU-lidstaten en een aantal andere Europese landen te reizen. Een identiteitskaart is niet voor iedere bestemming voldoende. Controleer altijd de officiële reisadviezen en toelatingseisen.</p></section>\n<section><h2>Wat als uw document verloren of gestolen is?</h2><p>Volg de officiële procedure voor verlies of diefstal bij de bevoegde gemeente, ambassade of het consulaat. De melding en de aanvraag van een vervangend document zijn afzonderlijke stappen. Gebruik de contactgegevens op Government.nl of de website van de Nederlandse vertegenwoordiging in uw land.</p></section>",
+    "faqs": [
+      {
+        "question": "Waar vraag ik een Nederlands paspoort aan als ik in Nederland woon?",
+        "answer": "Bij de gemeente waar u staat ingeschreven. Controleer de gemeentelijke website voor afspraken en de actuele documentenlijst."
+      },
+      {
+        "question": "Kan ik een Nederlands paspoort vanuit het buitenland aanvragen?",
+        "answer": "Ja. Nederlandse burgers in het buitenland kunnen bij de meeste Nederlandse ambassades en consulaten en bij enkele aangewezen gemeenten in Nederland een aanvraag indienen."
+      },
+      {
+        "question": "Hoe lang is een Nederlands paspoort geldig?",
+        "answer": "Tien jaar voor volwassenen en vijf jaar voor kinderen onder de 18 jaar."
+      },
+      {
+        "question": "Worden vingerafdrukken opgenomen?",
+        "answer": "Bij een paspoort wel, behalve bij kinderen jonger dan twaalf jaar. Bij een Nederlandse identiteitskaart worden geen vingerafdrukken opgenomen."
+      }
+    ],
+    "outboundLinks": [
+      {
+        "url": "https://www.government.nl/themes/justice-security-and-defence/identification-documents/passports-identity-cards-and-dutch-nationality-certificates",
+        "title": "Government.nl: paspoorten en identiteitskaarten",
+        "description": "Official government / EU authority documentation"
+      },
+      {
+        "url": "https://www.government.nl/themes/justice-security-and-defence/identification-documents/passports-identity-cards-and-dutch-nationality-certificates/applying-for-a-dutch-passport-abroad",
+        "title": "Government.nl: Nederlands paspoort aanvragen vanuit het buitenland",
+        "description": "Official government / EU authority documentation"
+      }
+    ]
+  },
+  {
+    "id": "post-028",
+    "slug": "pasaporte-espanol-solicitud-validez-renovacion",
+    "language": "es",
+    "title": "Pasaporte español: cómo solicitarlo, renovarlo y comprobar su validez",
+    "excerpt": "Guía del pasaporte español: cita previa, documentación, presencia personal y duración de la validez según la edad.",
+    "category": "Passports",
+    "readTime": "6 min read",
+    "publishDate": "2026-11-18",
+    "author": {
+      "name": "Equipo Editorial Eudossier",
+      "role": "Analistas normativos europeos"
+    },
+    "coverImage": "/blog/spanish-pasaporte-dni.jpg",
+    "primaryKeyword": "pasaporte español",
+    "secondaryKeywords": [
+      "solicitar pasaporte español",
+      "renovar pasaporte español",
+      "validez pasaporte español",
+      "cita previa pasaporte",
+      "documentación pasaporte España"
+    ],
+    "targetProductSlug": "",
+    "targetProductName": "",
+    "content": "<p class=\"article-intro\">El pasaporte ordinario español es un documento público, personal, individual e intransferible expedido por los órganos competentes de la Administración General del Estado. Acredita la identidad y la nacionalidad de los ciudadanos españoles fuera de España. La solicitud exige seguir el procedimiento oficial, comparecer ante una Unidad de Documentación y aportar la documentación correspondiente.</p>\n<aside class=\"p-4 my-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300\"><strong>Information importante :</strong> cet article explique les procédures officielles à titre informatif. La délivrance du document et la décision sur une demande relèvent exclusivement de l’autorité publique compétente.</aside>\n<section><h2>¿Quién puede solicitar un pasaporte español?</h2><p>El pasaporte ordinario español se expide a ciudadanos españoles por las autoridades competentes. La solicitud es personal y debe realizarse conforme a las reglas aplicables a la edad y circunstancias de la persona solicitante. Para menores de edad pueden ser necesarios documentos y consentimientos de quienes ejerzan la patria potestad o tutela.</p></section>\n<section><h2>Cómo solicitar o renovar el pasaporte</h2><p>La tramitación se realiza en una Unidad de Documentación habilitada, normalmente con cita previa. El Ministerio del Interior indica que la cita puede solicitarse por internet en el sistema oficial o por teléfono a través del 060. Antes de acudir, consulte la lista de documentos exigidos para su caso.</p>\n<ol><li>Compruebe el procedimiento vigente en la web del Ministerio del Interior.</li><li>Solicite una cita previa por el canal oficial indicado.</li><li>Prepare su DNI en vigor, una fotografía reciente que cumpla las especificaciones y los demás justificantes que correspondan.</li><li>Acuda personalmente a la Unidad de Documentación. La presencia de la persona a quien se expide el pasaporte es imprescindible.</li><li>Abone la tasa legal por el medio admitido y siga las instrucciones para la expedición y recogida.</li></ol></section>\n<section><h2>Documentación habitual</h2><p>Para una solicitud ordinaria, el Ministerio del Interior indica la presentación del DNI en vigor y una fotografía reciente en color con las dimensiones y características oficiales, además del pago de la tasa correspondiente. En determinados supuestos de renovación, pérdida, sustracción, deterioro o solicitud para menores pueden exigirse documentos adicionales. La lista aplicable debe comprobarse en el momento de pedir la cita.</p></section>\n<section><h2>Validez del pasaporte español</h2><p>La validez ordinaria depende de la edad del titular en la fecha de expedición: dos años si todavía no ha cumplido cinco años; cinco años si es menor de treinta; y diez años desde los treinta años. En casos de menores o personas sujetas a tutela, la validez puede limitarse en las circunstancias previstas por la normativa.</p></section>\n<section><h2>Pasaporte y DNI: documentos diferentes</h2><p>El pasaporte es un documento de viaje utilizado para acreditar la identidad y nacionalidad fuera de España. El Documento Nacional de Identidad (DNI) es el documento nacional de identificación y puede incorporar funciones de identificación electrónica. No son documentos intercambiables en todos los procedimientos ni para todos los destinos. Consulte los requisitos del país al que viaja.</p></section>\n<section><h2>¿Es necesario acudir personalmente?</h2><p>Sí. La información oficial del Ministerio del Interior señala que la persona a quien se expide el pasaporte debe comparecer en la Unidad de Documentación. La cita, la comprobación de identidad y las formalidades presenciales forman parte del procedimiento. Una solicitud preparatoria o una ayuda administrativa no sustituye la expedición por la autoridad competente.</p></section>\n<section><h2>Antes de viajar</h2><p>Compruebe que el pasaporte estará vigente durante todo el viaje y revise los requisitos de entrada del país de destino. Algunos países exigen una validez mínima adicional, páginas libres o visado. La aceptación de un documento depende de las reglas oficiales del país de destino, no de una afirmación comercial de un tercero.</p></section>",
+    "faqs": [
+      {
+        "question": "¿Dónde se solicita el pasaporte español?",
+        "answer": "En una Unidad de Documentación habilitada, normalmente con cita previa a través de los canales oficiales del Ministerio del Interior."
+      },
+      {
+        "question": "¿Tengo que acudir personalmente?",
+        "answer": "Sí. La persona a quien se expide el pasaporte debe comparecer personalmente en la Unidad de Documentación."
+      },
+      {
+        "question": "¿Cuánto dura el pasaporte español?",
+        "answer": "Dos años para menores de cinco años; cinco años para titulares menores de treinta; y diez años desde los treinta años, con posibles excepciones previstas en la normativa."
+      },
+      {
+        "question": "¿Qué documentos suelen pedir?",
+        "answer": "El Ministerio indica el DNI en vigor, una fotografía reciente que cumpla las especificaciones y el pago de la tasa. Puede haber requisitos adicionales según el caso."
+      }
+    ],
+    "outboundLinks": [
+      {
+        "url": "https://www.interior.gob.es/opencms/es/servicios-al-ciudadano/tramites-y-gestiones/pasaporte/procedimiento-de-expedicion",
+        "title": "Ministerio del Interior: procedimiento de expedición del pasaporte",
+        "description": "Official government / EU authority documentation"
+      },
+      {
+        "url": "https://www.interior.gob.es/opencms/es/servicios-al-ciudadano/tramites-y-gestiones/pasaporte/validez/",
+        "title": "Ministerio del Interior: validez del pasaporte",
+        "description": "Official government / EU authority documentation"
+      },
+      {
+        "url": "https://www.interior.gob.es/opencms/es/servicios-al-ciudadano/tramites-y-gestiones/dni/documentacion-necesaria-para-su-tramitacion/",
+        "title": "Ministerio del Interior: DNI, documentación necesaria",
+        "description": "Official government / EU authority documentation"
+      }
+    ]
+  },
+  {
+    "id": "post-029",
+    "slug": "cie-identita-digitale-cieid-attivazione-servizi-online",
+    "language": "it",
+    "title": "CIE e identità digitale: attivare CieID e accedere ai servizi online",
+    "excerpt": "Come usare la Carta d’Identità Elettronica per accedere ai servizi online: livelli 1, 2 e 3, app CieID, PIN, PUK e lettore NFC.",
+    "category": "Identity Cards",
+    "readTime": "7 min read",
+    "publishDate": "2026-11-18",
+    "author": {
+      "name": "Team Editoriale Eudossier",
+      "role": "Analisti regolatori europei"
+    },
+    "coverImage": "/catalogue/doc-008.png",
+    "primaryKeyword": "CIE identità digitale",
+    "secondaryKeywords": [
+      "attivare CIE online",
+      "CieID app",
+      "accesso con CIE livello 3",
+      "PIN PUK CIE",
+      "Carta d’Identità Elettronica servizi online"
+    ],
+    "targetProductSlug": "",
+    "targetProductName": "",
+    "content": "<p class=\"article-intro\">La Carta d’Identità Elettronica (CIE) non è soltanto un documento fisico: può essere utilizzata anche per accedere ai servizi online delle pubbliche amministrazioni e degli altri gestori che hanno abilitato questa modalità. Per usare la CIE come identità digitale è necessario attivare le credenziali e scegliere il livello di autenticazione supportato dal servizio.</p>\n<aside class=\"p-4 my-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300\"><strong>Information importante :</strong> cet article explique les procédures officielles à titre informatif. La délivrance du document et la décision sur une demande relèvent exclusivement de l’autorité publique compétente.</aside>\n<section><h2>Che cosa permette di fare l’identità digitale CIE?</h2><p>La CIE consente al titolare di autenticarsi presso i servizi online che accettano questa modalità. Il servizio ufficiale del Ministero dell’Interno distingue diversi livelli di autenticazione. La disponibilità effettiva dipende dal portale al quale si desidera accedere e dal livello richiesto.</p></section>\n<section><h2>Livelli 1 e 2: credenziali CIE</h2><p>Per attivare le credenziali CIE di livello 1 e 2, il portale ufficiale richiede di confermare i recapiti e scegliere come autorizzare l’accesso, ad esempio tramite l’app CieID o un codice temporaneo OTP ricevuto via SMS. Seguire la procedura descritta dal portale CIE e custodire con attenzione i codici personali.</p></section>\n<section><h2>Livello 3: smartphone NFC o lettore di smart card</h2><p>Per il livello 3 è richiesto un metodo di lettura della carta. Con uno smartphone dotato di tecnologia NFC si può utilizzare l’app CieID. Da computer può essere necessario un lettore NFC compatibile e il software CIE ufficiale. Non tutti i telefoni o computer supportano le stesse modalità: verificare i requisiti prima di iniziare.</p></section>\n<section><h2>PIN e PUK: perché sono importanti</h2><p>I codici PIN e PUK sono associati alla CIE e servono per le operazioni di attivazione, accesso o gestione delle credenziali secondo la procedura prevista. Le parti dei codici vengono consegnate nelle fasi indicate dal Comune. Conservare i codici in un luogo sicuro e non condividerli con persone o siti non ufficiali. Se i codici vengono smarriti o bloccati, seguire la procedura di recupero pubblicata dal portale ufficiale.</p></section>\n<section><h2>Come iniziare</h2><ol><li>Verificare che la carta sia una CIE e avere a disposizione i codici consegnati al momento della richiesta o del ritiro.</li><li>Consultare il sito ufficiale CIE e aprire la sezione dedicata all’attivazione.</li><li>Per i livelli 1 e 2, confermare i recapiti e configurare il metodo di autorizzazione richiesto.</li><li>Per il livello 3, installare l’app CieID su uno smartphone NFC compatibile oppure predisporre lettore e software CIE su computer.</li><li>Effettuare una prova di accesso soltanto su un sito che espone il pulsante ufficiale “Entra con CIE”.</li></ol></section>\n<section><h2>La CIE è anche un documento di viaggio?</h2><p>La CIE può essere utilizzata come documento di viaggio nei Paesi che accettano una carta d’identità nazionale valida. La possibilità di viaggiare dipende dalla validità del documento e dalle regole del Paese di destinazione. Dal 3 agosto 2026, secondo il Ministero degli Affari Esteri, la carta d’identità cartacea non è più valida per l’espatrio, indipendentemente dalla data di scadenza stampata; per viaggiare occorre quindi una CIE valida o un passaporto valido.</p></section>\n<section><h2>Come richiedere la CIE</h2><p>La CIE si richiede presso il Comune di residenza o domicilio. I cittadini italiani residenti all’estero e iscritti all’AIRE possono rivolgersi al consolato competente; il Ministero degli Affari Esteri indica inoltre la possibilità di richiederla presso un Comune in Italia. Le modalità di prenotazione e i documenti richiesti devono essere verificati presso il Comune o il consolato.</p></section>\n<section><h2>Attenzione a PIN, PUK e tentativi di frode</h2><p>Non inviare fotografie della carta, PIN, PUK o codici OTP a soggetti non verificati. L’attivazione dell’identità digitale deve essere effettuata attraverso i canali istituzionali. Un intermediario privato non può creare una CIE, attivare una credenziale statale al posto dell’amministrazione o garantire l’accesso a servizi che non hanno abilitato la CIE.</p></section>",
+    "faqs": [
+      {
+        "question": "A cosa serve la CIE come identità digitale?",
+        "answer": "Consente di autenticarsi presso i servizi online delle amministrazioni e degli altri gestori che accettano la Carta d’Identità Elettronica."
+      },
+      {
+        "question": "Come si attiva la CIE per i livelli 1 e 2?",
+        "answer": "Attraverso il portale ufficiale CIE, confermando i recapiti e configurando l’app CieID o il codice temporaneo OTP secondo le istruzioni."
+      },
+      {
+        "question": "Che cosa serve per usare il livello 3?",
+        "answer": "Uno smartphone compatibile con NFC e l’app CieID oppure un lettore di smart card compatibile e il software CIE su computer."
+      },
+      {
+        "question": "La carta d’identità cartacea è ancora valida per viaggiare?",
+        "answer": "No. Dal 3 agosto 2026 la versione cartacea non è più valida per l’espatrio, indipendentemente dalla scadenza stampata. È necessario un documento di viaggio valido, come la CIE o il passaporto."
+      }
+    ],
+    "outboundLinks": [
+      {
+        "url": "https://www.cartaidentita.interno.gov.it/attiva/",
+        "title": "Portale ufficiale CIE: attivare l’identità digitale",
+        "description": "Official government / EU authority documentation"
+      },
+      {
+        "url": "https://www.cartaidentita.interno.gov.it/richiedi/",
+        "title": "Portale ufficiale CIE: richiedere o rinnovare la carta",
+        "description": "Official government / EU authority documentation"
+      },
+      {
+        "url": "https://www.esteri.it/it/servizi-opportunita/italiani-all-estero/documenti_di_viaggio/carta_identita/",
+        "title": "Ministero degli Affari Esteri: carta d’identità per cittadini all’estero",
+        "description": "Official government / EU authority documentation"
+      },
+      {
+        "url": "https://www.esteri.it/it/sala_stampa/archivionotizie/approfondimenti/2026/06/cessazione-della-validita-della-carta-didentita-cartacea-dal-3-agosto/",
+        "title": "Ministero degli Affari Esteri: fine della validità per l’espatrio della carta cartacea dal 3 agosto 2026",
+        "description": "Official government / EU authority documentation"
+      }
+    ]
+  },
 ];
