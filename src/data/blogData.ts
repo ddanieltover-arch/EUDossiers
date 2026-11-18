@@ -1517,4 +1517,89 @@ To inspect any specimen directly, navigate to any item in our catalogue and view
       }
     ]
   },
+  {
+    "id": "post-030",
+    "slug": "renouvellement-passeport-biometrique-algerien-france",
+    "language": "fr",
+    "title": "Renouvellement du passeport biométrique algérien en France : démarches et suivi",
+    "excerpt": "Guide informatif pour renouveler un passeport biométrique algérien depuis la France : démarches consulaires, documents, service en ligne lancé à Paris et suivi officiel.",
+    "category": "Passports",
+    "readTime": "8 min read",
+    "publishDate": "2026-11-18",
+    "author": {
+      "name": "Rédaction Eudossier",
+      "role": "Analystes réglementaires européens"
+    },
+    "coverImage": "/blog/french-passport-cnie-abroad.jpg",
+    "primaryKeyword": "renouvellement passeport biométrique algérien en ligne",
+    "secondaryKeywords": [
+      "passeport biométrique algérien en France",
+      "passeport algérien biométrique",
+      "consulat dAlgérie passeport biométrique rendez-vous",
+      "consulat dAlgérie passeport biométrique suivi",
+      "suivi passeport biométrique algérien",
+      "documents renouvellement passeport algérien"
+    ],
+    "targetProductSlug": "",
+    "targetProductName": "",
+    "content": "<p class=\"article-intro\">Vous résidez en France et devez renouveler votre passeport biométrique algérien ? La démarche relève des autorités consulaires algériennes compétentes pour votre lieu de résidence. Ce guide explique comment identifier le bon poste consulaire, préparer les justificatifs, vérifier si le renouvellement à distance est disponible et suivre votre demande auprès des services officiels.</p>\n<aside class=\"p-4 my-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-300\"><strong>À retenir :</strong> le service numérique de renouvellement à distance a été lancé en juin 2026 dans une première phase au Consulat général d’Algérie à Paris. Les autorités ont annoncé une extension progressive à d’autres représentations. Ne supposez donc pas que cette procédure est déjà ouverte dans chaque consulat de France : vérifiez sa disponibilité auprès de votre poste consulaire.</aside>\n<section><h2>Qui doit s’adresser au consulat pour renouveler un passeport algérien ?</h2><p>Les ressortissants algériens qui résident à l’étranger déposent normalement leur demande auprès du service consulaire compétent pour leur lieu de résidence. Le ministère algérien de l’Intérieur indique que le dépôt d’un dossier depuis l’étranger s’effectue auprès du poste diplomatique ou consulaire du lieu de résidence.</p>\n<p>En France, commencez par identifier votre circonscription consulaire. Le consulat compétent dépend de votre adresse et non simplement du consulat dont le nom apparaît dans une recherche Internet. Utilisez l’annuaire officiel des représentations diplomatiques et consulaires algériennes, puis consultez les instructions du poste concerné.</p>\n<p>Si vous avez déménagé et que votre dossier consulaire est encore suivi par un autre poste, renseignez-vous sur le transfert de dossier avant de déposer une nouvelle demande. Le Consulat général d’Algérie à Paris décrit sa procédure de transfert consulaire à titre d’exemple ; les modalités peuvent différer dans une autre circonscription.</p></section>\n<section><h2>Renouvellement du passeport biométrique algérien en ligne depuis la France</h2><p>Le 24 juin 2026, les autorités algériennes ont annoncé le lancement d’un service numérique permettant aux membres de la communauté nationale établis à l’étranger de déposer à distance une demande de <strong>renouvellement</strong> de passeport biométrique. La première phase a été lancée au niveau du Consulat général d’Algérie à Paris. Le communiqué officiel précise que le dispositif doit être étendu progressivement aux autres représentations diplomatiques et consulaires.</p>\n<p>Le parcours annoncé repose sur un espace personnel sécurisé. Il permet au demandeur de déposer une demande de renouvellement, de transmettre les documents requis et de suivre en ligne l’évolution du dossier. Le communiqué porte sur le renouvellement : ne déduisez pas que la première délivrance d’un passeport peut être effectuée selon exactement la même procédure.</p>\n<p><strong>Avant de commencer :</strong></p>\n<ol><li>Vérifiez que votre dossier dépend bien du Consulat général de Paris ou du poste concerné.</li><li>Consultez le site officiel de ce consulat pour confirmer que le renouvellement à distance est effectivement disponible pour sa circonscription.</li><li>Utilisez uniquement le lien vers la plateforme communiqué par le ministère ou le consulat officiel.</li><li>Préparez les justificatifs demandés et conservez la confirmation de dépôt ainsi que le numéro de dossier.</li></ol></section>\n<section><h2>Quels documents préparer pour un renouvellement depuis l’étranger ?</h2><p>La liste exacte dépend de la procédure utilisée et des instructions du poste consulaire compétent. Dans sa présentation générale du dossier destiné aux demandeurs résidant à l’étranger, le ministère algérien de l’Intérieur mentionne notamment les pièces suivantes :</p>\n<ul><li>le formulaire de demande rempli et signé par l’intéressé ou par le représentant légal pour un mineur ;</li><li>l’extrait d’acte de naissance spécial n° 12-S ;</li><li>une carte d’immatriculation consulaire en cours de validité ;</li><li>un justificatif de résidence à l’étranger ;</li><li>une attestation de travail ou un certificat de scolarité, selon la situation ;</li><li>des photographies d’identité récentes, identiques et conformes aux normes biométriques ;</li><li>la quittance ou le timbre fiscal correspondant à la demande ;</li><li>une copie de la carte du groupe sanguin ;</li><li>pour un renouvellement, le passeport arrivé à expiration ou, en cas de perte ou de vol, la déclaration correspondante.</li></ul>\n<p>Cette liste reprend les indications générales du ministère algérien de l’Intérieur. Elle ne remplace pas la liste publiée par votre consulat. Le nombre de photos, les justificatifs supplémentaires, le mode de paiement et les modalités de dépôt peuvent varier selon le poste et la situation du demandeur.</p></section>\n<section><h2>Exemple : les indications publiées par le Consulat général d’Algérie à Paris</h2><p>La page officielle de renouvellement du Consulat général à Paris présente sa propre liste de pièces. Elle mentionne notamment la carte d’immatriculation consulaire, le formulaire signé, une copie de la première page du passeport arrivé à expiration, un titre de séjour ou une pièce d’identité française dans certaines situations, un justificatif de domicile dans la circonscription, un justificatif d’activité et deux photos identiques.</p>\n<p>La page indique également des droits de chancellerie de 60 € pour les adultes et de 30 € pour les mineurs ou certains étudiants sur présentation du justificatif demandé. Elle précise qu’un acte de naissance 12-S original accompagné d’une copie est requis dans certains cas, notamment lorsqu’il s’agit de renouveler un passeport établi par un autre consulat.</p>\n<p><strong>Ces indications concernent la page du Consulat général à Paris.</strong> Elles ne doivent pas être appliquées automatiquement à Lille, Marseille, Bobigny, Nanterre, Toulouse, Bordeaux, Metz ou à une autre circonscription. Vérifiez toujours le tarif et la liste de pièces sur le site officiel de votre propre poste consulaire avant de payer ou de vous déplacer.</p></section>\n<section><h2>Les principales étapes d’une demande</h2><ol><li><strong>Identifier le consulat compétent.</strong> Vérifiez la circonscription correspondant à votre domicile en France.</li><li><strong>Vérifier votre situation consulaire.</strong> Assurez-vous que votre immatriculation est valide et que votre dossier est suivi par le bon poste.</li><li><strong>Consulter la procédure applicable.</strong> Demandez si le renouvellement à distance est ouvert dans votre circonscription ou si un dépôt au consulat reste nécessaire.</li><li><strong>Préparer les pièces.</strong> Utilisez la liste officielle correspondant à votre situation : adulte, mineur, renouvellement normal, perte ou détérioration.</li><li><strong>Déposer la demande par le canal officiel.</strong> Suivez les instructions du consulat concernant le rendez-vous, l’envoi numérique, la présence et les données biométriques.</li><li><strong>Conserver le récépissé ou le numéro de dossier.</strong> Ces références sont nécessaires pour consulter le suivi lorsque le service est disponible.</li><li><strong>Suivre les instructions de retrait.</strong> Le consulat vous indique quand et comment récupérer le document.</li></ol></section>\n<section><h2>Comment suivre une demande de passeport biométrique algérien ?</h2><p>Le ministère algérien de l’Intérieur met à disposition un service officiel de suivi de demande. Le formulaire de suivi demande notamment les informations relatives au dépôt et le numéro de dossier. Sélectionnez la situation correspondant à un dépôt à l’étranger lorsque cette option est proposée.</p>\n<p>Pour les dossiers relevant de Paris, le consulat propose également une page permettant de vérifier si le passeport est prêt à partir du numéro d’inscription figurant sur le récépissé. Ne publiez jamais votre numéro de dossier, votre numéro d’identification national ou une copie de votre passeport sur un forum ou un réseau social.</p></section>\n<section><h2>Délais, validité et retrait du passeport</h2><p>La présentation générale du ministère algérien de l’Intérieur indique une durée de validité de dix ans pour les adultes et de cinq ans pour les mineurs. Concernant les délais, aucune durée universelle garantie n’est annoncée dans les sources officielles : le délai dépend du traitement du dossier, de la fabrication du document, du transport et de l’organisation du poste consulaire. Utilisez le service de suivi et les communications de votre consulat.</p></section>",
+    "faqs": [
+      {
+        "question": "Peut-on renouveler un passeport biométrique algérien en ligne depuis la France ?",
+        "answer": "Un service numérique de renouvellement à distance a été lancé en juin 2026 dans une première phase au Consulat général d’Algérie à Paris. Les autorités ont annoncé une extension progressive. Vérifiez la disponibilité auprès du consulat dont dépend votre domicile avant de commencer."
+      },
+      {
+        "question": "Le renouvellement en ligne concerne-t-il une première demande ?",
+        "answer": "Le communiqué officiel de lancement décrit un service de renouvellement à distance. Il ne permet pas de conclure que la première délivrance du passeport suit la même procédure. Consultez la rubrique « première délivrance » de votre consulat si vous demandez un passeport pour la première fois."
+      },
+      {
+        "question": "Quels documents faut-il pour renouveler un passeport algérien à l’étranger ?",
+        "answer": "Les exigences générales comprennent notamment un formulaire signé, un extrait de naissance 12-S, une immatriculation consulaire valide, un justificatif de résidence à l’étranger, des photographies conformes et le passeport à renouveler. Le consulat peut demander des pièces complémentaires."
+      },
+      {
+        "question": "Comment savoir si mon passeport algérien est prêt ?",
+        "answer": "Utilisez le service de suivi du ministère ou le service de disponibilité proposé par votre consulat. Le numéro de dossier figurant sur le récépissé est généralement nécessaire."
+      },
+      {
+        "question": "Le service en ligne est-il disponible dans tous les consulats algériens de France ?",
+        "answer": "Le lancement officiel a commencé au Consulat général d’Algérie à Paris, avec une extension progressive annoncée. Il faut vérifier la situation actuelle auprès de chaque poste consulaire."
+      },
+      {
+        "question": "Quelle est la durée de validité du passeport biométrique algérien ?",
+        "answer": "La durée indiquée par le ministère est de dix ans pour les adultes et de cinq ans pour les mineurs."
+      }
+    ],
+    "outboundLinks": [
+      {
+        "url": "https://interieur.gov.dz/accueil_fr/passeport-biometrique/",
+        "title": "Ministère algérien de l’Intérieur — Passeport biométrique",
+        "description": "Official government documentation"
+      },
+      {
+        "url": "https://passeport.interieur.gov.dz/fr/Informations_Fr/Proc%C3%A9dures",
+        "title": "Portail officiel du passeport biométrique — Procédures",
+        "description": "Official government documentation"
+      },
+      {
+        "url": "https://interieur.gov.dz/2026/06/25/communique-de-presse-conjoint/",
+        "title": "Communiqué conjoint sur le renouvellement à distance (2026)",
+        "description": "Official government press release"
+      },
+      {
+        "url": "https://cgparis.mfa.gov.dz/fr/consular-services/passport-renewal",
+        "title": "Consulat général d’Algérie à Paris — Renouvellement",
+        "description": "Consulate official guidelines"
+      },
+      {
+        "url": "https://cgparis.mfa.gov.dz/fr/consular-services/online-service",
+        "title": "Consulat général d’Algérie à Paris — Disponibilité du passeport",
+        "description": "Consulate tracking tool"
+      },
+      {
+        "url": "https://www.mfa.gov.dz/fr/embassys-locations-list",
+        "title": "Ministère algérien des Affaires étrangères — Annuaire consulaire",
+        "description": "Directory of consular posts"
+      }
+    ]
+  },
 ];
