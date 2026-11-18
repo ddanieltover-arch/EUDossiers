@@ -36,8 +36,7 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     id: 'post-001',
     country: 'France',
-    lastReviewed: '2026-11-15',
-    slug: 'france-national-id-card-verification-guide',
+        slug: 'france-national-id-card-verification-guide',
     title: 'How French National ID Cards (CNIe) Are Verified in ANTS & PRADO',
     excerpt: 'An authoritative technical guide explaining the security architecture, dual microchip structure, and official database validation mechanisms of the electronic French identity card (Carte Nationale d\'Identité - CNIe).',
     category: 'Identity Cards',
@@ -121,8 +120,7 @@ To ensure travel validity across the 30 European Economic Area (EEA) member stat
   {
     id: 'post-002',
     country: 'International',
-    lastReviewed: '2026-11-12',
-    slug: 'biometric-passports-icao-9303-security',
+        slug: 'biometric-passports-icao-9303-security',
     title: 'Biometric Passports Compared: ICAO 9303 Microchip Security, RFID & Fedpol Standards',
     excerpt: 'A comprehensive comparative analysis of modern biometric e-passports, examining contactless cryptographic chips, Basic Access Control (BAC), and Switzerland’s Pass 22 Fedpol standards.',
     category: 'Passports',
@@ -198,8 +196,7 @@ The Swiss Pass 22 represents a state-of-the-art leap in identity design. Issued 
   {
     id: 'post-003',
     country: 'Italy',
-    lastReviewed: '2026-11-10',
-    slug: 'eea-id-cards-travel-rights-italian-cie',
+        slug: 'eea-id-cards-travel-rights-italian-cie',
     title: 'EEA ID Cards Explained: Travel Rights, Italian CIE 3.0 & Directive 2004/38/EC',
     excerpt: 'Everything you need to know about European Economic Area (EEA) identity documents, freedom of movement rights, and Italy\'s Carta d\'Identità Elettronica (CIE 3.0).',
     category: 'Identity Cards',
@@ -321,8 +318,7 @@ At airport automated border e-Gates, the inspection reader initiates a cryptogra
   {
     id: 'post-004',
     country: 'Germany',
-    lastReviewed: '2026-11-14',
-    slug: 'german-eat-vs-eu-residence-permit',
+        slug: 'german-eat-vs-eu-residence-permit',
     title: 'German eAT vs Standard EU Residence Permits: Full Comparison & BAMF Indexing',
     excerpt: 'Detailed comparison between Germany\'s Elektronischer Aufenthaltstitel (eAT) and European standard biometric residence cards, including BAMF registry specifications.',
     category: 'Residence Permits',
@@ -386,8 +382,7 @@ Governed by the Federal Office for Migration and Refugees (*Bundesamt für Migra
   {
     id: 'post-005',
     country: 'International',
-    lastReviewed: '2026-11-08',
-    slug: 'document-specimen-photo-verification',
+        slug: 'document-specimen-photo-verification',
     title: 'Can I Inspect Document Specimens & Format Specifications? Physical Verification & Security Features Guide',
     excerpt: 'Addressing our most frequent customer visual inquiry: how to inspect high-resolution physical specimens, UV micro-printing, and tactile laser engraving specifications.',
     category: 'Inspection & FAQs',
@@ -1223,8 +1218,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and view
   {
     id: 'post-025',
     country: 'France',
-    lastReviewed: '2026-11-18',
-    slug: 'demande-passeport-francais-etranger-pre-demande-2026',
+        slug: 'demande-passeport-francais-etranger-pre-demande-2026',
     language: 'fr',
     title: "Passeport français : première demande et renouvellement depuis l’étranger",
     excerpt: "Guide officiel du passeport français : pré-demande ANTS depuis l’étranger, rendez-vous consulaire, pièces à préparer et durée de validité.",
@@ -1264,8 +1258,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and view
   {
     id: 'post-026',
     country: 'Germany',
-    lastReviewed: '2026-11-18',
-    slug: 'personalausweis-beantragen-online-ausweisfunktion',
+        slug: 'personalausweis-beantragen-online-ausweisfunktion',
     language: 'de',
     title: "Personalausweis beantragen: Gültigkeit und Online-Ausweisfunktion",
     excerpt: "Wer kann den deutschen Personalausweis beantragen? Informationen zu Bürgeramt, Unterlagen, Gültigkeit und Online-Ausweisfunktion.",
@@ -1305,8 +1298,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and view
   {
     id: 'post-027',
     country: 'Netherlands',
-    lastReviewed: '2026-11-18',
-    slug: 'nederlands-paspoort-aanvragen-buitenland-vernieuwen',
+        slug: 'nederlands-paspoort-aanvragen-buitenland-vernieuwen',
     language: 'nl',
     title: "Nederlands paspoort aanvragen of vernieuwen, ook vanuit het buitenland",
     excerpt: "Lees wie een Nederlands paspoort kan aanvragen, waar u dit doet in Nederland of het buitenland en hoe lang het document geldig is.",
@@ -1346,8 +1338,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and view
   {
     id: 'post-028',
     country: 'Spain',
-    lastReviewed: '2026-11-18',
-    slug: 'pasaporte-espanol-solicitud-validez-renovacion',
+        slug: 'pasaporte-espanol-solicitud-validez-renovacion',
     language: 'es',
     title: "Pasaporte español: cómo solicitarlo, renovarlo y comprobar su validez",
     excerpt: "Guía del pasaporte español: cita previa, documentación, presencia personal y duración de la validez según la edad.",
@@ -1387,8 +1378,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and view
   {
     id: 'post-029',
     country: 'Italy',
-    lastReviewed: '2026-11-18',
-    slug: 'cie-identita-digitale-cieid-attivazione-servizi-online',
+        slug: 'cie-identita-digitale-cieid-attivazione-servizi-online',
     language: 'it',
     title: "CIE e identità digitale: attivare CieID e accedere ai servizi online",
     excerpt: "Come usare la Carta d’Identità Elettronica per accedere ai servizi online: livelli 1, 2 e 3, app CieID, PIN, PUK e lettore NFC.",
@@ -1428,8 +1418,7 @@ To inspect any specimen directly, navigate to any item in our catalogue and view
   {
     id: 'post-030',
     country: 'France',
-    lastReviewed: '2026-11-18',
-    slug: 'renouvellement-passeport-biometrique-algerien-france',
+        slug: 'renouvellement-passeport-biometrique-algerien-france',
     language: 'fr',
     title: "Renouvellement du passeport biométrique algérien en France : démarches, documents et suivi",
     excerpt: "Guide informatif pour renouveler un passeport biométrique algérien depuis la France : démarches consulaires, documents, service en ligne lancé à Paris et suivi officiel.",
