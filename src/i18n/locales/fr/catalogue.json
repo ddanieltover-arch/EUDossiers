@@ -1,6 +1,6 @@
 {
-  "title": "Catalogue de documents officiels européens et dossiers",
-  "subtitle": "Passeports UE et internationaux enregistrés, permis de conduire, cartes de séjour, pièces d’identité et traitement de visas avec règlement en Euro (€).",
+  "title": "Informations et services de documents européens",
+  "subtitle": "Explorez les formats de documents européens, spécifications administratives, directives de conformité et ressources d'appui aux dossiers.",
   "items": "{{count}} articles",
   "allOrigins": "Toutes origines UE",
   "inStockOnly": "En stock uniquement",
@@ -8,7 +8,7 @@
   "popularTags": "Tags populaires :",
   "filtering": "Filtrage par mot-clé/tag : \"{{query}}\" ({{count}} correspondances)",
   "clearSearch": "Effacer la recherche",
-  "emptyTitle": "Aucun produit européen correspondant",
-  "emptyBody": "Essayez de réinitialiser votre recherche ou de sélectionner un autre pays d’origine UE.",
+  "emptyTitle": "Aucune spécification européenne correspondante",
+  "emptyBody": "Essayez de réinitialiser votre recherche ou de sélectionner un autre pays d'origine de l'UE.",
   "clearFilters": "Effacer tous les filtres"
 }

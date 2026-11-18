@@ -9,6 +9,7 @@ import { CONTINENT_COUNTRIES } from '../data/countriesData';
 import { EUCountryCode } from '../types';
 import { SITE_NAME } from '../brand';
 import { useSeoMeta } from '../utils/seo';
+import { isProductUnderComplianceReview } from '../data/compliancePolicy';
 
 const ADMIN_EMAIL = 'info@eudossier.eu';
 
@@ -43,6 +44,7 @@ const CheckoutPage: React.FC = () => {
   const cryptoDiscount = paymentMethod === 'crypto' ? 0.05 : 0;
   const discountAmountEUR = cartTotalEUR * cryptoDiscount;
   const finalTotalEUR = cartTotalEUR - discountAmountEUR;
+  const hasRestrictedItems = cart.some(item => isProductUnderComplianceReview(item.product));
 
   if (cart.length === 0 && !orderSuccess) {
     return (
@@ -60,6 +62,10 @@ const CheckoutPage: React.FC = () => {
   const handleCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!gdprAgreed) return;
+    if (hasRestrictedItems) {
+      setCheckoutError('One or more items in your cart are currently under compliance review and unavailable for purchase. Please remove restricted items to proceed.');
+      return;
+    }
     setIsSubmitting(true);
     setCheckoutError(null);
     const { order: created, error } = await placeOrder({
@@ -327,6 +333,17 @@ const CheckoutPage: React.FC = () => {
             </span>
           </label>
 
+          {hasRestrictedItems && (
+            <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex items-start space-x-3 text-xs text-amber-300">
+              <div className="space-y-1">
+                <strong className="text-amber-200 font-bold block text-sm">Compliance Restriction Notice</strong>
+                <p className="leading-relaxed text-amber-300/90">
+                  One or more items in your cart are currently undergoing compliance review and are temporarily unavailable for purchase. Please remove restricted items from your cart to proceed with checkout.
+                </p>
+              </div>
+            </div>
+          )}
+
           {checkoutError && (
             <p className="text-sm text-rose-500" role="alert">{checkoutError}</p>
           )}
@@ -334,7 +351,7 @@ const CheckoutPage: React.FC = () => {
           {/* Submit */}
           <button
             type="submit"
-            disabled={isSubmitting || !gdprAgreed}
+            disabled={isSubmitting || !gdprAgreed || hasRestrictedItems}
             className="w-full bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-bold py-4 rounded-xl text-sm flex items-center justify-center space-x-2 transition-all shadow-lg shadow-blue-600/20"
           >
             <Lock className="w-4 h-4" />

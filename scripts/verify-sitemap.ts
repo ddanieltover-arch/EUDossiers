@@ -39,30 +39,20 @@ if (searchUrls.length > 0) {
   console.log('PASS: No search / placeholder URLs in sitemap');
 }
 
-// 4. Products check (23 approved, 5 excluded under compliance review)
-const sitemapProdSlugs = urls.filter(u => u.includes('/catalogue/')).map(u => u.replace('https://eudossier.eu/catalogue/', ''));
-const approvedProducts = INITIAL_PRODUCTS.filter(p => !p.complianceReviewPending);
-const reviewProducts = INITIAL_PRODUCTS.filter(p => p.complianceReviewPending);
-
-const expectedApprovedSlugs = approvedProducts.map(p => getProductSlug(p));
-const flaggedSlugs = reviewProducts.map(p => getProductSlug(p));
-
-// Verify approved are in sitemap
-const missingApproved = expectedApprovedSlugs.filter(s => !sitemapProdSlugs.includes(s));
-if (missingApproved.length > 0) {
-  console.error('FAIL: Missing approved products in sitemap:', missingApproved);
+// 4. Products check (all 28 excluded under Phase 3 compliance review)
+const sitemapProdUrls = urls.filter(u => u.includes('/catalogue/'));
+if (sitemapProdUrls.length > 0) {
+  console.error('FAIL: Restricted catalogue products found in sitemap:', sitemapProdUrls);
   errors++;
 } else {
-  console.log(`PASS: All ${expectedApprovedSlugs.length} approved products present in sitemap`);
+  console.log('PASS: All 28 unverified catalogue products successfully excluded from sitemap');
 }
 
-// Verify flagged are NOT in sitemap
-const mistakenlyIncluded = flaggedSlugs.filter(s => sitemapProdSlugs.includes(s));
-if (mistakenlyIncluded.length > 0) {
-  console.error('FAIL: Compliance-review products erroneously in sitemap:', mistakenlyIncluded);
+if (urls.length !== 29) {
+  console.error(`FAIL: Expected exactly 29 URLs in sitemap, got ${urls.length}`);
   errors++;
 } else {
-  console.log(`PASS: All ${flaggedSlugs.length} compliance-review products properly excluded from sitemap`);
+  console.log('PASS: Sitemap contains exactly 29 verified indexable URLs');
 }
 
 // 5. Blog posts check (all 24)

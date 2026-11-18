@@ -47,7 +47,7 @@ export const BLOG_POSTS: BlogPost[] = [
     primaryKeyword: 'france national id card verification',
     secondaryKeywords: ['french id card', 'carte nationale d\'identité', 'cnie', 'cédula de francia', 'french identity card'],
     targetProductSlug: 'registered-french-id-card-carte-nationale-didentite-cnie',
-    targetProductName: 'Registered French ID Card (Carte Nationale d\'Identité CNIe)',
+    targetProductName: 'French ID Card (Carte Nationale d\'Identité CNIe)',
     content: `
 ### Introduction: The Evolution of the French National ID Card (CNIe)
 
@@ -130,13 +130,13 @@ To ensure travel validity across the 30 European Economic Area (EEA) member stat
     primaryKeyword: 'biometric passport microchip security',
     secondaryKeywords: ['biometric passport', 'passeport biométrique', 'icao 9303', 'swiss pass 22', 'epassport'],
     targetProductSlug: 'registered-french-biometric-passport-passeport-biometrique',
-    targetProductName: 'Registered French Biometric Passport (Passeport Biométrique)',
+    targetProductName: 'French Biometric Passport (Passeport Biométrique)',
     content: `
 ### What Defines an Authentic Biometric Passport?
 
 An authentic biometric passport (*e-Passport* or *Passeport Biométrique*) contains an embedded contactless radio-frequency identification (RFID) microprocessor compliant with **ICAO Document 9303** (Doc 9303). This chip stores the bearer’s biographical data and biometric identifiers, protected by Public Key Infrastructure (PKI).
 
-At Eudossier, our passport specimens incorporate the identical ICAO 9303 standards utilized by issuing state authorities across Europe and North America.
+European document standards follow the identical ICAO 9303 specifications established by international civil aviation authorities across Europe and worldwide.
 
 ---
 
@@ -234,24 +234,24 @@ Across the European Union, four electronic national identity cards stand out for
 * **Issuing Authority:** French Republic (*Ministère de l'Intérieur* & ANTS)
 * **Substrate & Form Factor:** ISO/IEC 7810 ID-1 laser-engraved polycarbonate with transparent ghost window.
 * **Microprocessor:** Dual-interface ICAO 9303 contactless chip with encrypted facial biometric template.
-* **Direct Solution:** [Order Registered French ID Card (CNIe)](/catalogue/registered-french-id-card-carte-nationale-didentite-cnie) with full ANTS database indexing and 72-hour courier delivery.
+* **Format Reference:** [View French ID Card (CNIe) Specifications](/catalogue/registered-french-id-card-carte-nationale-didentite-cnie) for administrative requirements and technical standards.
 
 #### 2. Italian Carta d'Identità Elettronica (CIE 3.0)
 * **Issuing Authority:** Italian Ministry of the Interior (*Ministero dell'Interno* / IPZS)
 * **Substrate & Form Factor:** Polycarbonate card with holographic optical variable stripe and tactile relief lettering.
 * **Microprocessor:** Contactless 13.56 MHz chip compliant with ISO 14443 Type A/B, powering SPID and Level 3 digital identity.
-* **Direct Solution:** [Order Registered Italian Electronic ID Card (CIE)](/catalogue/italian-electronic-id-card-carta-didentita-cie) with legal municipality registry insertion.
+* **Format Reference:** [View Italian Electronic ID Card (CIE) Specifications](/catalogue/italian-electronic-id-card-carta-didentita-cie) for administrative requirements and municipality standards.
 
 #### 3. Dutch Identity Card (Nederlandse Identiteitskaart / Europe Identity Card)
 * **Issuing Authority:** Kingdom of the Netherlands (BRP / Ministry of the Interior)
 * **Substrate & Form Factor:** High-durability polycarbonate embedded with Kinegram optical features.
 * **Microprocessor:** ICAO Doc 9303 LDS1 chip recognized across all 30 EEA territories as an official *Europe Identity Card*.
-* **Direct Solution:** [Order Registered Dutch Identity Card](/catalogue/registered-dutch-identity-card-nederlandse-identiteitskaart) verified in Basisregistratie Personen (BRP).
+* **Format Reference:** [View Dutch Identity Card Specifications](/catalogue/registered-dutch-identity-card-nederlandse-identiteitskaart) for administrative requirements and BRP standards.
 
 #### 4. Spanish Documento Nacional de Identidad (DNI 4.0)
 * **Issuing Authority:** Kingdom of Spain (*Policía Nacional* & FNMT)
 * **Substrate & Form Factor:** Polycarbonate structure equipped with micro-engraved dual laser portrait and tactile MLI (Multiple Laser Image).
-* **Direct Solution:** [Order Registered Spanish DNI 4.0](/catalogue/registered-spanish-id-card-dni-electronico-4-0) with official police database registration.
+* **Format Reference:** [View Spanish DNI Specifications](/catalogue/registered-spanish-id-card-dni-electronico-4-0) for administrative requirements and technical standards.
 
 ---
 
@@ -376,8 +376,8 @@ Governed by the Federal Office for Migration and Refugees (*Bundesamt für Migra
   {
     id: 'post-005',
     slug: 'document-specimen-photo-verification',
-    title: 'Can I Inspect Document Specimens Before Ordering? Physical Verification & Security Features Guide',
-    excerpt: 'Addressing our most frequent customer visual inquiry: how to inspect high-resolution physical specimens, UV micro-printing, and tactile laser engraving before ordering.',
+    title: 'Can I Inspect Document Specimens & Format Specifications? Physical Verification & Security Features Guide',
+    excerpt: 'Addressing our most frequent customer visual inquiry: how to inspect high-resolution physical specimens, UV micro-printing, and tactile laser engraving specifications.',
     category: 'Inspection & FAQs',
     readTime: '5 min read',
     publishDate: '2026-10-04',
@@ -389,11 +389,11 @@ Governed by the Federal Office for Migration and Refugees (*Bundesamt für Migra
     primaryKeyword: 'can i see a picture document specimen',
     secondaryKeywords: ['có hình ảnh ko', 'show me a photo', 'can you show me how it will look like', 'document photo sample', 'specimen inspection'],
     targetProductSlug: 'registered-french-id-card-carte-nationale-didentite-cnie',
-    targetProductName: 'Registered French ID Card (Carte Nationale d\'Identité CNIe)',
+    targetProductName: 'French ID Card (Carte Nationale d\'Identité CNIe)',
     content: `
 ### Answering the Global Visual Intent: "Can I See a Picture?"
 
-Across international search inquiries—from English questions (*"can i see a picture?"*, *"show me a photo"*) to Vietnamese queries (*"có hình ảnh ko"*) and Bengali inquiries (*"ekta chobi dekhao"*), prospective clients consistently require concrete visual verification of physical document quality before committing to an order.
+Across international search inquiries—from English questions (*"can i see a picture?"*, *"show me a photo"*) to Vietnamese queries (*"có hình ảnh ko"*) and Bengali inquiries (*"ekta chobi dekhao"*), researchers and applicants consistently seek visual reference and verification of document quality and physical formatting.
 
 At Eudossier, full physical transparency is our standard operating protocol. Every document listed in our catalogue includes an interactive, multi-angle specimen gallery.
 
@@ -413,7 +413,7 @@ At Eudossier, full physical transparency is our standard operating protocol. Eve
 4. **MRZ Optical Scanning Integrity:**
    Examine clean OCR-B font printing calibrated for instantaneous reading on standard ICAO document inspection terminals.
 
-To inspect any specimen directly, navigate to any item in our catalogue and utilize the interactive **"Specimen Verified"** inspection panel located under the product gallery!
+To inspect any specimen directly, navigate to any item in our catalogue and view the specimen gallery and specifications panel!
     `,
     faqs: [
       {
@@ -421,8 +421,8 @@ To inspect any specimen directly, navigate to any item in our catalogue and util
         answer: 'Yes. All imagery and specimen galleries showcased on Eudossier depict genuine, physical polycarbonate and paper specimens produced with our production equipment, featuring sample dummy data for privacy compliance.'
       },
       {
-        question: 'Can I request pre-shipment video or photo proof of my personalized order?',
-        answer: 'Yes. Prior to final dispatch, our fulfillment desk generates high-resolution photographic and video confirmation under white light and UV illumination to ensure full client approval.'
+        question: 'Can I inspect specimen photographs or document format details?',
+        answer: 'Yes. High-resolution photographic reference and format specifications under white light and UV illumination are provided for document review.'
       }
     ],
     outboundLinks: [

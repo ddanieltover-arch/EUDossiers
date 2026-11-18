@@ -7,7 +7,7 @@
     "cart": "Kurv",
     "admin": "Admin",
     "changeLanguage": "Skift sprog",
-    "searchPlaceholder": "Søg efter registrerede pas, kørekort, opholdstilladelser, visa...",
+    "searchPlaceholder": "Søg efter dokumentformater, specifikationer, opholdsretningslinjer, visa...",
     "clear": "Ryd"
   },
   "footer": {
@@ -25,7 +25,7 @@
     "forgotten": "Retten til at blive glemt (art. 17)",
     "auditLog": "Inspektør for samtykkerevisionslog",
     "hosted": "Data hostes i Frankfurt, Tyskland (EU-West Node).",
-    "madeWith": "Fremstillet med præcision til europæiske officielle dokumenter og dossierer"
+    "madeWith": "Europæiske dokumenttjenester og dossierløsninger"
   },
   "language": {
     "title": "Sprogindstillinger",

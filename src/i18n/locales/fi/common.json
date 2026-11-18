@@ -7,7 +7,7 @@
     "cart": "Ostoskori",
     "admin": "Admin",
     "changeLanguage": "Vaihda kieli",
-    "searchPlaceholder": "Hae rekisteröityjä passeja, ajokortteja, oleskelulupia, viisumeita...",
+    "searchPlaceholder": "Hae asiakirjamuotoja, erittelyjä, oleskeluohjeita, viisumeita...",
     "clear": "Tyhjennä"
   },
   "footer": {
@@ -25,7 +25,7 @@
     "forgotten": "Oikeus tulla unohdetuksi (17 artikla)",
     "auditLog": "Suostumuksen auditointilokin tarkastaja",
     "hosted": "Tiedot isännöidään Frankfurtissa, Saksassa (EU-West Node).",
-    "madeWith": "Valmistettu tarkkuudella eurooppalaisia virallisia asiakirjoja ja dossier-tiedostoja varten"
+    "madeWith": "Eurooppalaiset asiakirjapalvelut ja dossier-ratkaisut"
   },
   "language": {
     "title": "Kieliasetukset",

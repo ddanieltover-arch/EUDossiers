@@ -6,6 +6,7 @@ import { useStore } from '../context/StoreContext';
 import { getLocalizedProductName } from '../data/productNameTranslations';
 import { getProductPath } from '../utils/productSlug';
 import { useSeoMeta } from '../utils/seo';
+import { isProductUnderComplianceReview } from '../data/compliancePolicy';
 
 const CartPage: React.FC = () => {
   const {
@@ -106,13 +107,30 @@ const CartPage: React.FC = () => {
               </div>
             </div>
 
-            <Link
-              to="/checkout"
-              className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 rounded-xl text-xs flex items-center justify-center space-x-2 transition-all shadow-lg shadow-blue-600/20"
-            >
-              <span>{tc('actions.proceedCheckout')}</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            {cart.some(item => isProductUnderComplianceReview(item.product)) ? (
+              <div className="space-y-2">
+                <div className="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs text-amber-300 space-y-1">
+                  <span className="font-bold block text-amber-200">Compliance Restriction</span>
+                  <span className="text-amber-300/90 leading-relaxed block">
+                    Your cart contains items currently under compliance review. Remove restricted items to proceed.
+                  </span>
+                </div>
+                <button
+                  disabled
+                  className="w-full bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] border border-[var(--color-border)] font-bold py-3.5 rounded-xl text-xs flex items-center justify-center space-x-2 cursor-not-allowed"
+                >
+                  <span>Checkout Unavailable (Under Review)</span>
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/checkout"
+                className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 rounded-xl text-xs flex items-center justify-center space-x-2 transition-all shadow-lg shadow-blue-600/20"
+              >
+                <span>{tc('actions.proceedCheckout')}</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            )}
           </div>
         </div>
       </div>

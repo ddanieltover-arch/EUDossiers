@@ -21,28 +21,28 @@ const CATEGORIES = [
 
 const CATEGORY_DESCRIPTIONS: Record<string, { title: string; subtitle: string; keywords: string[] }> = {
   'Identity Cards': {
-    title: 'European Union & EEA National Identity Cards (CNIe, CIE 3.0, DNI 4.0)',
-    subtitle: 'Official polycarbonate national electronic identity cards registered in central state records (ANTS, Ministero dell\'Interno, Policía Nacional, BRP). Equipped with high-security dual microchips, laser-engraved personal data, and full ICAO 9303 compliance for unconditional freedom of movement across 30 EEA Member States.',
+    title: 'European Union & EEA National Identity Cards Guide (CNIe, CIE 3.0, DNI 4.0)',
+    subtitle: 'Technical specifications, biometric microchip standards, and administrative guidelines for national identity cards across EEA Member States.',
     keywords: ['French CNIe', 'Italian CIE 3.0 (EEA ID)', 'Spanish DNI 4.0', 'Dutch Identiteitskaart', 'Belgian eID', 'Cédula de Francia']
   },
   'Passports': {
-    title: 'Biometric Passports & ICAO 9303 Compliant e-Passports',
-    subtitle: 'Full citizen biometric passports featuring contactless RFID microprocessors, Basic Access Control (BAC/PACE), 36 security-printed pages, and UV fluorescent security fibers. Valid for international travel, visa applications, and automated border control e-Gates globally.',
+    title: 'Biometric Passports & ICAO 9303 Technical Specifications',
+    subtitle: 'Overview of biometric passport standards, ICAO 9303 poly-carbonate data page specifications, and RFID microchip architecture.',
     keywords: ['Passeport Biométrique', 'Swiss Pass 22 (Fedpol)', 'Canadian e-Passport', 'Dutch Paspoort', 'Spanish Pasaporte', 'US Real-ID Passport']
   },
   'Residence Permits': {
-    title: 'European Biometric Residence Permits (eAT & Uppehållstillståndskort)',
-    subtitle: 'Contactless electronic residence titles authorized for legal stay and work across the European Union and Schengen Area. Featuring embedded biometric chips and direct indexing in immigration authorities (BAMF, Migrationsverket, Préfecture).',
+    title: 'European Residence Permits & Administrative Documentation',
+    subtitle: 'Technical specifications and administrative requirements for electronic residence titles (eAT) across Schengen member states.',
     keywords: ['German eAT (Elektronischer Aufenthaltstitel)', 'Swedish Uppehållstillståndskort', 'Italian Permesso di Soggiorno UE', 'French Titre de Séjour']
   },
   'Driver Licenses': {
-    title: 'Registered European Driver\'s Licenses (EU Führerschein & Permis de Conduire)',
-    subtitle: 'Official credit-card format driving permits registered in national transport databases (KBA, ANTS, DGT, RDW). Fully compliant with EU Directive 2006/126/EC with 12 points initial balance and international driving endorsement.',
+    title: 'European Driver\'s License Standards (EU Führerschein & Permis de Conduire)',
+    subtitle: 'Document specifications and security feature guides aligned with EU Directive 2006/126/EC format standards.',
     keywords: ['Permis de Conduire (ANTS)', 'EU Führerschein (KBA)', 'Carné de Conducir (DGT)', 'Kørekort', 'Vezetői Engedély']
   },
   'EU Visas': {
-    title: 'Multi-Entry Schengen EU Visas & Certified Financial Portfolios',
-    subtitle: 'Official sticker visas valid across all 29 Schengen member states with verified embassy database registration, alongside certified multi-currency EU banking proof packages.',
+    title: 'Schengen Visa Procedures & Financial Dossier Guidelines',
+    subtitle: 'Administrative guidelines and dossier preparation standards for Schengen visa documentation and supporting financial records.',
     keywords: ['1-5 Year Multi-Entry Schengen Visa', 'Certified EU Bank Statement Package', 'Schengen Area Clearance']
   }
 };
@@ -99,20 +99,20 @@ export const ProductGrid: React.FC = () => {
   }, [searchParams]);
 
   const hasFilters = Boolean(
-    searchQuery.trim() || 
-    (selectedCategory && selectedCategory !== 'All') || 
+    searchQuery.trim() ||
+    (selectedCategory && selectedCategory !== 'All') ||
     (selectedOriginCountry && selectedOriginCountry !== 'All') ||
     searchParams.has('search') ||
     searchParams.has('q')
   );
 
   const catalogueTitle = selectedCategory && selectedCategory !== 'All'
-    ? `${selectedCategory} Catalogue | Eudossier Europe`
-    : 'Official European Document Catalogue | Eudossier Europe';
+    ? `${selectedCategory} Information & Services | Eudossier`
+    : 'European Document Information & Services | Eudossier';
 
   useSeoMeta({
     title: catalogueTitle,
-    description: 'Explore the full Eudossier catalogue of European electronic identity cards, biometric passports, Schengen visas, and residence permits.',
+    description: 'Explore European document formats, administrative specifications, compliance guidelines and dossier support resources.',
     canonical: 'https://eudossier.eu/catalogue',
     robots: hasFilters ? 'noindex, follow' : 'index, follow',
   });

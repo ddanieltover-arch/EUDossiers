@@ -7,7 +7,7 @@
     "cart": "Winkelwagen",
     "admin": "Admin",
     "changeLanguage": "Taal wijzigen",
-    "searchPlaceholder": "Zoek geregistreerde paspoorten, rijbewijzen, verblijfsvergunningen, visa...",
+    "searchPlaceholder": "Zoek documentformaten, specificaties, verblijfsrichtlijnen, visa...",
     "clear": "Wissen"
   },
   "footer": {
@@ -25,7 +25,7 @@
     "forgotten": "Recht om vergeten te worden (art. 17)",
     "auditLog": "Inspecteur van het toestemmingsauditlogboek",
     "hosted": "Gegevens gehost in Frankfurt, Duitsland (EU-West Node).",
-    "madeWith": "Met precisie gemaakt voor Europese officiële documenten en dossiers"
+    "madeWith": "Europese documentdiensten & dossieroplossingen"
   },
   "language": {
     "title": "Taalinstellingen",

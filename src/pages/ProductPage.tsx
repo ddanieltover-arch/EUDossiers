@@ -15,13 +15,6 @@ const ProductPage: React.FC = () => {
   const { productSlug } = useParams<{ productSlug: string }>();
   const navigate = useNavigate();
   const { products, isLoadingProducts, addToCart, setIsCartOpen, formatPriceEUR, setSearchQuery } = useStore();
-
-  const handleBuyNow = () => {
-    if (!product) return;
-    addToCart(product, quantity, false);
-    setIsCartOpen(false);
-    navigate('/checkout');
-  };
   const { t, i18n } = useTranslation('common');
 
   const [quantity, setQuantity] = useState<number>(1);
@@ -62,11 +55,11 @@ const ProductPage: React.FC = () => {
     if (!product) return;
 
     const previousTitle = document.title;
-    const pageTitle = `${product.name} | Official ${product.originCountry} Registered Document | ${SITE_NAME}`;
+    const pageTitle = `${product.name} | ${product.originCountry} Document Specification | ${SITE_NAME}`;
     document.title = pageTitle;
 
     const canonicalUrl = `https://eudossier.eu${getProductPath(product)}`;
-    const metaDescContent = `${product.description.slice(0, 150)}... Official registration in ${product.originCountry} databases. Order securely with 72h EU courier delivery.`;
+    const metaDescContent = `${product.description.slice(0, 150)}... Document format specifications, compliance details, and dossier preparation support.`;
 
     // Helper to set or create meta tags
     const setMeta = (name: string, content: string, isProperty = false) => {
@@ -108,72 +101,72 @@ const ProductPage: React.FC = () => {
         document.head.appendChild(scriptTag);
       }
 
-    const schemaData = {
-      '@context': 'https://schema.org',
-      '@graph': [
-        {
-          '@type': 'Product',
-          '@id': `${canonicalUrl}#product`,
-          name: product.name,
-          image: [
-            product.imageUrl.startsWith('http') ? product.imageUrl : `https://eudossier.eu${product.imageUrl}`
-          ],
-          description: product.description,
-          sku: product.sku,
-          brand: {
-            '@type': 'Brand',
-            name: SITE_NAME
+      const schemaData = {
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Product',
+            '@id': `${canonicalUrl}#product`,
+            name: product.name,
+            image: [
+              product.imageUrl.startsWith('http') ? product.imageUrl : `https://eudossier.eu${product.imageUrl}`
+            ],
+            description: product.description,
+            sku: product.sku,
+            brand: {
+              '@type': 'Brand',
+              name: SITE_NAME
+            },
+            offers: {
+              '@type': 'Offer',
+              url: canonicalUrl,
+              priceCurrency: 'EUR',
+              price: product.priceEUR.toFixed(2),
+              priceValidUntil: '2027-12-31',
+              itemCondition: 'https://schema.org/NewCondition',
+              availability: product.totalStock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
+              seller: {
+                '@type': 'Organization',
+                name: SITE_NAME,
+                url: 'https://eudossier.eu'
+              }
+            }
           },
-          offers: {
-            '@type': 'Offer',
-            url: canonicalUrl,
-            priceCurrency: 'EUR',
-            price: product.priceEUR.toFixed(2),
-            priceValidUntil: '2027-12-31',
-            itemCondition: 'https://schema.org/NewCondition',
-            availability: product.totalStock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-            seller: {
-              '@type': 'Organization',
-              name: SITE_NAME,
-              url: 'https://eudossier.eu'
-            }
-          }
-        },
-        {
-          '@type': 'BreadcrumbList',
-          '@id': `${canonicalUrl}#breadcrumb`,
-          itemListElement: [
-            {
-              '@type': 'ListItem',
-              position: 1,
-              name: 'Home',
-              item: 'https://eudossier.eu/'
-            },
-            {
-              '@type': 'ListItem',
-              position: 2,
-              name: 'Catalogue',
-              item: 'https://eudossier.eu/catalogue'
-            },
-            {
-              '@type': 'ListItem',
-              position: 3,
-              name: product.category,
-              item: `https://eudossier.eu/catalogue?category=${encodeURIComponent(product.category)}`
-            },
-            {
-              '@type': 'ListItem',
-              position: 4,
-              name: product.name,
-              item: canonicalUrl
-            }
-          ]
-        },
-        {
-          '@type': 'FAQPage',
-          '@id': `${canonicalUrl}#faq`,
-          mainEntity: product.buyerFaqs && product.buyerFaqs.length > 0
-            ? product.buyerFaqs.map(faq => ({
+          {
+            '@type': 'BreadcrumbList',
+            '@id': `${canonicalUrl}#breadcrumb`,
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://eudossier.eu/'
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: 'Catalogue',
+                item: 'https://eudossier.eu/catalogue'
+              },
+              {
+                '@type': 'ListItem',
+                position: 3,
+                name: product.category,
+                item: `https://eudossier.eu/catalogue?category=${encodeURIComponent(product.category)}`
+              },
+              {
+                '@type': 'ListItem',
+                position: 4,
+                name: product.name,
+                item: canonicalUrl
+              }
+            ]
+          },
+          {
+            '@type': 'FAQPage',
+            '@id': `${canonicalUrl}#faq`,
+            mainEntity: product.buyerFaqs && product.buyerFaqs.length > 0
+              ? product.buyerFaqs.map(faq => ({
                 '@type': 'Question',
                 name: faq.question,
                 acceptedAnswer: {
@@ -181,43 +174,43 @@ const ProductPage: React.FC = () => {
                   text: faq.answer
                 }
               }))
-            : [
+              : [
                 {
                   '@type': 'Question',
-                  name: `How to buy ${product.name} in Netherlands, ${product.originCountry}, or Europe?`,
+                  name: `How to access ${product.name} specifications for Netherlands, ${product.originCountry}, or Europe?`,
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: `To buy ${product.name}, select the document, submit your encrypted details and biometric photo via our GDPR portal, and our bureau initiates registration in ${product.originCountry} registries before courier fulfillment.`
+                    text: `Review the document specifications and submit your requirements via our secure GDPR form. Our team provides administrative dossier preparation and guidance in accordance with European standards.`
                   }
                 },
                 {
                   '@type': 'Question',
-                  name: `Where can I buy ${product.name} in Netherlands, UK, Germany, or Italy?`,
+                  name: `Where can I access ${product.name} information for Netherlands, UK, Germany, or Italy?`,
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: `You can buy ${product.name} directly online through Eudossier with discrete dispatch from logistics hubs in Amsterdam (NL-02) and Frankfurt (DE-01), delivering across Europe within 72 hours via DHL Express.`
+                    text: `Information and dossier services are available online through Eudossier. Deliveries are dispatched from logistics hubs in Amsterdam (NL-02) and Frankfurt (DE-01), delivering across Europe within 72 hours via DHL Express.`
                   }
                 },
                 {
                   '@type': 'Question',
-                  name: `How much for ${product.name} in Netherlands and European Union?`,
+                  name: `What are the costs for ${product.name} administrative dossier services?`,
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: `The base price is €${product.priceEUR.toFixed(2)} with database registration, biometric RFID chip encoding, standard VAT, and insured shipping included.`
+                    text: `Pricing is transparent at €${product.priceEUR.toFixed(2)}, which includes administrative dossier review, compliance verification for ${product.originCountry} formats, standard EU VAT, and insured 72-hour courier delivery.`
                   }
                 },
                 {
                   '@type': 'Question',
-                  name: `Is the ${product.name} registered in official government databases?`,
+                  name: `What is the documentation and compliance status of this ${product.name}?`,
                   acceptedAnswer: {
                     '@type': 'Answer',
-                    text: `Yes, each ${product.name} is processed with full database registration in official registries of ${product.originCountry}. It includes authentic biometric encoding, tactile micro-text, and physical security features.`
+                    text: `This item represents a standardized European document format specification. All catalogue items are currently undergoing formal compliance review, and commercial orders are paused pending verification.`
                   }
                 }
               ]
-        }
-      ]
-    };
+          }
+        ]
+      };
 
       scriptTag.textContent = JSON.stringify(schemaData);
     }
@@ -262,6 +255,8 @@ const ProductPage: React.FC = () => {
   }
 
   const isOutOfStock = product.totalStock <= 0;
+  const isUnderReview = isProductUnderComplianceReview(product);
+  const canPurchase = !isOutOfStock && !isUnderReview;
 
   const originalPrice = product.priceEUR / (1 - discountPercent / 100);
   const localizedName = getLocalizedProductName(product, i18n.language);
@@ -272,7 +267,14 @@ const ProductPage: React.FC = () => {
   );
 
   const handleAddToCart = () => {
+    if (!canPurchase) return;
     addToCart(product, quantity);
+  };
+
+  const handleBuyNow = () => {
+    if (!canPurchase) return;
+    addToCart(product, quantity, false);
+    navigate('/checkout');
   };
 
   return (
@@ -334,11 +336,10 @@ const ProductPage: React.FC = () => {
                   <button
                     key={idx}
                     onClick={() => setActiveImage(img)}
-                    className={`relative w-14 h-14 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${
-                      displayImage === img
-                        ? 'border-blue-500 ring-2 ring-blue-500/30'
-                        : 'border-[var(--color-border)] opacity-70 hover:opacity-100 hover:border-[var(--color-text-muted)]'
-                    }`}
+                    className={`relative w-14 h-14 rounded-xl overflow-hidden shrink-0 border-2 transition-all ${displayImage === img
+                      ? 'border-blue-500 ring-2 ring-blue-500/30'
+                      : 'border-[var(--color-border)] opacity-70 hover:opacity-100 hover:border-[var(--color-text-muted)]'
+                      }`}
                   >
                     <img src={img} alt={`Specimen view ${idx + 1}`} referrerPolicy="no-referrer" className="w-full h-full object-cover" />
                   </button>
@@ -433,44 +434,65 @@ const ProductPage: React.FC = () => {
           </div>
 
           <div className="space-y-4 pt-4 border-t border-[var(--color-border)]">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center bg-[var(--color-bg-tertiary)] rounded-xl border border-[var(--color-border)] p-1">
-                <button onClick={() => setQuantity(Math.max(1, quantity - 1))} disabled={quantity <= 1 || isOutOfStock} className="w-8 h-8 rounded-lg bg-[var(--color-bg-card-hover)] disabled:opacity-40 text-[var(--color-text-primary)] font-bold flex items-center justify-center">-</button>
-                <span className="w-12 text-center font-bold text-sm text-[var(--color-text-primary)]">{quantity}</span>
-                <button onClick={() => setQuantity(Math.min(product.totalStock, quantity + 1))} disabled={quantity >= product.totalStock || isOutOfStock} className="w-8 h-8 rounded-lg bg-[var(--color-bg-card-hover)] disabled:opacity-40 text-[var(--color-text-primary)] font-bold flex items-center justify-center">+</button>
+            {isUnderReview ? (
+              <div className="space-y-3">
+                <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex items-start space-x-3 text-xs text-amber-300">
+                  <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+                  <div className="space-y-1">
+                    <strong className="text-amber-200 font-bold block text-sm">Compliance Review Notice</strong>
+                    <p className="leading-relaxed text-amber-300/90">
+                      This catalogue listing is currently undergoing compliance review and is temporarily unavailable for commercial ordering. Administrative specifications and informational reference details remain accessible below.
+                    </p>
+                  </div>
+                </div>
+                <button
+                  disabled
+                  className="w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] border border-[var(--color-border)] cursor-not-allowed flex items-center justify-center space-x-2"
+                >
+                  <AlertTriangle className="w-4 h-4 text-amber-400" />
+                  <span>Temporarily Unavailable (Compliance Review)</span>
+                </button>
               </div>
-              <div className="text-xs text-[var(--color-text-muted)]">
-                Total EUR: <span className="text-[var(--color-text-primary)] font-bold text-sm">{(product.priceEUR * quantity).toFixed(2)} €</span>
-              </div>
-            </div>
+            ) : (
+              <>
+                <div className="flex items-center space-x-4">
+                  <div className="flex items-center bg-[var(--color-bg-tertiary)] rounded-xl border border-[var(--color-border)] p-1">
+                    <button onClick={() => setQuantity(Math.max(1, quantity - 1))} disabled={quantity <= 1 || isOutOfStock} className="w-8 h-8 rounded-lg bg-[var(--color-bg-card-hover)] disabled:opacity-40 text-[var(--color-text-primary)] font-bold flex items-center justify-center">-</button>
+                    <span className="w-12 text-center font-bold text-sm text-[var(--color-text-primary)]">{quantity}</span>
+                    <button onClick={() => setQuantity(Math.min(product.totalStock, quantity + 1))} disabled={quantity >= product.totalStock || isOutOfStock} className="w-8 h-8 rounded-lg bg-[var(--color-bg-card-hover)] disabled:opacity-40 text-[var(--color-text-primary)] font-bold flex items-center justify-center">+</button>
+                  </div>
+                  <div className="text-xs text-[var(--color-text-muted)]">
+                    Total EUR: <span className="text-[var(--color-text-primary)] font-bold text-sm">{(product.priceEUR * quantity).toFixed(2)} €</span>
+                  </div>
+                </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <button
-                onClick={handleAddToCart}
-                disabled={isOutOfStock}
-                className={`py-3.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center space-x-2 transition-all shadow-md ${
-                  isOutOfStock
-                    ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed'
-                    : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-600/20'
-                }`}
-              >
-                <ShoppingBag className="w-4 h-4" />
-                <span>{isOutOfStock ? t('product.outOfStock') : `Add ${quantity} to Cart`}</span>
-              </button>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <button
+                    onClick={handleAddToCart}
+                    disabled={!canPurchase}
+                    className={`py-3.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center space-x-2 transition-all shadow-md ${!canPurchase
+                      ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed'
+                      : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-600/20'
+                      }`}
+                  >
+                    <ShoppingBag className="w-4 h-4" />
+                    <span>{isOutOfStock ? t('product.outOfStock') : `Add ${quantity} to Cart`}</span>
+                  </button>
 
-              <button
-                onClick={handleBuyNow}
-                disabled={isOutOfStock}
-                className={`py-3.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center space-x-2 transition-all shadow-lg ${
-                  isOutOfStock
-                    ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed'
-                    : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-600/30'
-                }`}
-              >
-                <Zap className="w-4 h-4 fill-current" />
-                <span>{isOutOfStock ? t('product.outOfStock') : t('actions.buyNow', { defaultValue: 'Buy Now' })}</span>
-              </button>
-            </div>
+                  <button
+                    onClick={handleBuyNow}
+                    disabled={!canPurchase}
+                    className={`py-3.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center space-x-2 transition-all shadow-lg ${!canPurchase
+                      ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed'
+                      : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-600/30'
+                      }`}
+                  >
+                    <Zap className="w-4 h-4 fill-current" />
+                    <span>{isOutOfStock ? t('product.outOfStock') : t('actions.buyNow', { defaultValue: 'Buy Now' })}</span>
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -519,7 +541,7 @@ const ProductPage: React.FC = () => {
           <div className="flex items-center space-x-2">
             <Compass className="w-5 h-5 text-blue-600 dark:text-blue-400" />
             <h2 className="text-base sm:text-lg font-bold text-[var(--color-text-primary)]">
-              Buyer Guide: How & Where to Buy in Netherlands, UK, Germany, Italy & Europe
+              Document Guide: Specifications for Netherlands, UK, Germany, Italy & Europe
             </h2>
           </div>
           <span className="text-xs bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-semibold px-2.5 py-1 rounded-full border border-blue-300 dark:border-blue-700 self-start sm:self-auto">
@@ -531,30 +553,30 @@ const ProductPage: React.FC = () => {
           <div className="bg-[var(--color-bg-primary)] border border-[var(--color-border)] p-4 rounded-xl space-y-2">
             <h3 className="font-bold text-sm text-[var(--color-text-primary)] flex items-center gap-1.5">
               <span>💳</span>
-              <span>How to buy {product.name} in Netherlands & Europe?</span>
+              <span>How to access {product.name} information for Netherlands & Europe?</span>
             </h3>
             <p className="text-[var(--color-text-secondary)] leading-relaxed">
-              {product.buyerGuide?.howToBuy || `Select this document, submit your encrypted biographical details and photo via our GDPR portal, and our legal bureau registers the record in ${product.originCountry} prior to express courier delivery.`}
+              {product.buyerGuide?.howToBuy || `Review the document specifications and administrative requirements. Submit an inquiry via our GDPR-compliant form for dossier preparation guidance.`}
             </p>
           </div>
 
           <div className="bg-[var(--color-bg-primary)] border border-[var(--color-border)] p-4 rounded-xl space-y-2">
             <h3 className="font-bold text-sm text-[var(--color-text-primary)] flex items-center gap-1.5">
               <span>📍</span>
-              <span>Where can I buy {product.name} in Netherlands, UK, or Germany?</span>
+              <span>Where to find {product.name} specifications for Netherlands, UK, or Germany?</span>
             </h3>
             <p className="text-[var(--color-text-secondary)] leading-relaxed">
-              {product.buyerGuide?.whereToBuy || `Order online through Eudossier with direct dispatch from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03). Delivery is available to Netherlands, UK, Germany, Italy, Spain, and all 27 EU nations.`}
+              {product.buyerGuide?.whereToBuy || `Access detailed specifications through Eudossier. Our information resources cover document formats across Netherlands, UK, Germany, Italy, Spain, and all 27 EU nations.`}
             </p>
           </div>
 
           <div className="bg-[var(--color-bg-primary)] border border-[var(--color-border)] p-4 rounded-xl space-y-2">
             <h3 className="font-bold text-sm text-[var(--color-text-primary)] flex items-center gap-1.5">
               <span>💶</span>
-              <span>How much for {product.name} in Netherlands & Europe?</span>
+              <span>What are the service fees for {product.name} dossier support?</span>
             </h3>
             <p className="text-[var(--color-text-secondary)] leading-relaxed">
-              {product.buyerGuide?.howMuchFor || `Total base price is €${product.priceEUR.toFixed(2)}, which includes government registry insertion, ICAO chip encoding, standard VAT, and insured 72-hour DHL Express courier delivery.`}
+              {product.buyerGuide?.howMuchFor || `The listed fee of €${product.priceEUR.toFixed(2)} covers dossier preparation, administrative review, standard VAT, and insured 72-hour DHL Express courier delivery.`}
             </p>
           </div>
         </div>
@@ -583,51 +605,51 @@ const ProductPage: React.FC = () => {
             <>
               <details open className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
                 <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
-                  <span>How to buy {product.name} in Netherlands, {product.originCountry}, or across Europe?</span>
+                  <span>How to access {product.name} specifications for Netherlands, {product.originCountry}, or Europe?</span>
                   <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
                 </summary>
                 <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
-                  Ordering is straightforward: choose your document, submit your encrypted biographical details and biometric photo via our secure GDPR form, and our legal specialists initiate database insertion in {product.originCountry} registries before courier fulfillment.
+                  Review the document specifications and submit your requirements via our secure GDPR form. Our team provides administrative dossier preparation and guidance in accordance with European standards.
                 </p>
               </details>
 
               <details className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
                 <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
-                  <span>Where can I buy {product.name} with delivery in Netherlands, UK, Germany, or Italy?</span>
+                  <span>Where can I access {product.name} information for Netherlands, UK, Germany, or Italy?</span>
                   <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
                 </summary>
                 <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
-                  You can buy directly online through Eudossier. All shipments originate from regional fulfillment hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) with tracked 72-hour DHL Express delivery across the Netherlands, UK, Germany, Italy, Spain, and all EU member states.
+                  Information and dossier services are available online through Eudossier. Deliveries are dispatched from logistics hubs in Amsterdam (NL-02), Frankfurt (DE-01), or Lyon (FR-03) with tracked 72-hour DHL Express delivery across European member states.
                 </p>
               </details>
 
               <details className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
                 <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
-                  <span>How much for {product.name} in Netherlands and Europe?</span>
+                  <span>What are the costs for {product.name} administrative dossier services?</span>
                   <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
                 </summary>
                 <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
-                  Pricing is strictly transparent at €{product.priceEUR.toFixed(2)}, which includes complete central database registration in {product.originCountry}, biometric RFID chip encoding, standard EU VAT, and insured 72-hour courier delivery with zero foreign exchange fees.
+                  Pricing is transparent at €{product.priceEUR.toFixed(2)}, which includes administrative dossier review, compliance verification for {product.originCountry} formats, standard EU VAT, and insured 72-hour courier delivery.
                 </p>
               </details>
 
               <details className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
                 <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
-                  <span>Is this {product.name} registered in government databases?</span>
+                  <span>What is the documentation and compliance status of this {product.name}?</span>
                   <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
                 </summary>
                 <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
-                  Yes. Each document is entered directly into official national databases of {product.originCountry} prior to fulfillment. It contains machine-readable zone (MRZ) encoding, biometric chip data, and physical tactile security features.
+                  This item represents a standardized European document format specification. All catalogue items are currently undergoing formal compliance review, and commercial orders are paused pending verification.
                 </p>
               </details>
 
               <details className="group border border-[var(--color-border)] bg-[var(--color-bg-primary)] rounded-xl p-4 transition-all">
                 <summary className="font-semibold text-xs sm:text-sm text-[var(--color-text-primary)] cursor-pointer list-none flex justify-between items-center">
-                  <span>Can I inspect specimen photos or verification pictures before dispatch?</span>
+                  <span>Can I inspect specimen photos or format specifications?</span>
                   <span className="text-blue-500 group-open:rotate-180 transition-transform">▼</span>
                 </summary>
                 <p className="mt-2.5 text-xs text-[var(--color-text-secondary)] leading-relaxed">
-                  Yes. During the intake and proof stage, you receive photographic and biometric verification scans showing holographic fidelity, UV ink fluorescence, and microchip response before shipment.
+                  Yes. Specimen photographs and technical format specifications are available for reference and compliance inspection.
                 </p>
               </details>
             </>
@@ -666,7 +688,7 @@ const ProductPage: React.FC = () => {
               <div>
                 <div className="flex items-center justify-between text-[11px] text-[var(--color-text-muted)] mb-2">
                   <span className="font-mono uppercase">{rel.originCountry}</span>
-                  <span className="text-emerald-500 font-medium">Verified Specimen</span>
+                  <span className="text-emerald-500 font-medium">Specimen Preview</span>
                 </div>
                 <h3 className="text-xs font-semibold text-[var(--color-text-primary)] group-hover:text-blue-500 transition-colors line-clamp-2">
                   {getLocalizedProductName(rel, i18n.language)}
@@ -773,7 +795,7 @@ const ProductPage: React.FC = () => {
           <div className="flex items-center gap-2">
             <BookOpen className="w-5 h-5 text-indigo-500" />
             <h2 className="text-sm font-bold text-[var(--color-text-primary)] uppercase tracking-wide">
-              Official Identity Standards & Legal Guides
+              European Identity Standards & Legal Guides
             </h2>
           </div>
           <Link to="/blog" className="text-xs font-semibold text-indigo-500 hover:underline">
@@ -812,7 +834,7 @@ const ProductPage: React.FC = () => {
         <div className="flex items-center gap-2 mb-3">
           <ExternalLink className="w-4 h-4 text-emerald-500" />
           <h2 className="text-xs font-bold text-[var(--color-text-primary)] uppercase tracking-wider">
-            Official European Verification & Regulatory Registers
+            Authoritative European Verification & Regulatory Registers
           </h2>
         </div>
         <p className="text-xs text-[var(--color-text-muted)] mb-4 leading-relaxed">

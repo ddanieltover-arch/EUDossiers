@@ -1,0 +1,452 @@
+/**
+ * Human Compliance Evidence Register
+ * 
+ * Internal regulatory and evidence tracking register for all 28 commercial catalogue products.
+ * Accessible only to authorized compliance administrators.
+ * 
+ * Governs legal verification status, evidence tracking, and approvals before any
+ * product may be released from compliance gating.
+ */
+
+export interface ComplianceRegisterEntry {
+  productId: string;
+  productName: string;
+  category: string;
+  advertisedClaims: string;
+  requiredEvidence: string;
+  evidenceReceived: string;
+  authorizationStatus: 'UNVERIFIED' | 'SUBSTANTIATED' | 'REJECTED';
+  reviewDate: string;
+  reviewer: string;
+  approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE' | 'APPROVED_FOR_COMMERCIAL_RELEASE' | 'PERMANENTLY_WITHDRAWN';
+  indexingEligibility: 'NOINDEX_RESTRICTED' | 'INDEXABLE_APPROVED';
+  purchasingEligibility: 'TEMPORARILY_UNAVAILABLE' | 'AVAILABLE_FOR_PURCHASE';
+  notes: string;
+}
+
+export const COMPLIANCE_EVIDENCE_REGISTER: ComplianceRegisterEntry[] = [
+  {
+    productId: 'doc-001',
+    productName: 'Registered Bulgarian Drivers License',
+    category: 'Driver Licenses',
+    advertisedClaims: 'Official registered Bulgarian driving license; database entry in Ministry of Transport & Executive Agency Road Transport Administration.',
+    requiredEvidence: 'Statutory concession or delegated agency contract with Bulgarian Ministry of Transport.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy. Awaiting official documentation.'
+  },
+  {
+    productId: 'doc-002',
+    productName: 'Registered Austrian Drivers License',
+    category: 'Driver Licenses',
+    advertisedClaims: 'Full registration in the Austrian Transport Registry (Führerscheinregister).',
+    requiredEvidence: 'Official licensing authority accreditation or Austrian BMK authorization.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-003',
+    productName: "Authentic US Driver's License (REAL ID Compliant)",
+    category: 'Driver Licenses',
+    advertisedClaims: 'State-issued REAL ID compliant American driving license with magnetic stripe encoding and state seal.',
+    requiredEvidence: 'U.S. state DMV / DHS accredited agency contract or statutory delegation.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-004',
+    productName: 'Registered Belgian ID Card (eID)',
+    category: 'Identity Cards',
+    advertisedClaims: 'Federal population register (Rijksregister) entry, biometric optical security.',
+    requiredEvidence: 'Belgian FPS Home Affairs delegation or official population register credential contract.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-005',
+    productName: 'Registered Danish Drivers License (Kørekort)',
+    category: 'Driver Licenses',
+    advertisedClaims: 'Registered in the national road safety database (Færdselsstyrelsen).',
+    requiredEvidence: 'Danish Road Traffic Agency (Færdselsstyrelsen) authorization.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-006',
+    productName: "Fast-Track EU Driver's License (Express 72-Hour Fulfillment)",
+    category: 'Driver Licenses',
+    advertisedClaims: 'Accelerated EU driving permit processing with priority registry insertion.',
+    requiredEvidence: 'Official statutory driving authority fast-track dispatch agreement.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Maintained in compliance review since initial audit.'
+  },
+  {
+    productId: 'doc-007',
+    productName: "Registered Hungarian Driver's License (Vezetői Engedély)",
+    category: 'Driver Licenses',
+    advertisedClaims: 'Linked with Central Data Processing Bureau database.',
+    requiredEvidence: 'Hungarian Government Bureau (Kormányablak / BM) authorization.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-008',
+    productName: "Italian Electronic ID Card (Carta d'Identità CIE)",
+    category: 'Identity Cards',
+    advertisedClaims: 'Official Ministry of Interior (Ministero dell\'Interno) record registration.',
+    requiredEvidence: 'Ministero dell\'Interno accreditation or official issuing authority contract.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-009',
+    productName: 'Registered Dutch Identity Card (Nederlandse Identiteitskaart)',
+    category: 'Identity Cards',
+    advertisedClaims: 'Complete BRP population registry indexing, Kinegram optic security.',
+    requiredEvidence: 'Dutch Ministry of the Interior (BZK) / RvIG accreditation.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Maintained in compliance review since initial audit.'
+  },
+  {
+    productId: 'doc-010',
+    productName: 'Italian EU Residence Permit (Permesso di Soggiorno UE)',
+    category: 'Residence Permits',
+    advertisedClaims: 'Official biometric EU residence permit card granting work and residency rights.',
+    requiredEvidence: 'Questura / Ministero dell\'Interno statutory authorization.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-011',
+    productName: 'Swedish EU Residence Permit (Uppehållstillståndskort)',
+    category: 'Residence Permits',
+    advertisedClaims: 'Swedish Migrationsverket residence permit card with legal right of residency certification.',
+    requiredEvidence: 'Swedish Migration Agency (Migrationsverket) delegation or permit issuance contract.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-012',
+    productName: 'Authentic Biometric EU Passport (Full Citizen Registration)',
+    category: 'Passports',
+    advertisedClaims: 'National citizen database insertion, ICAO 9303 smart chip.',
+    requiredEvidence: 'Sovereign state passport issuance delegation or diplomatic agency contract.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-013',
+    productName: 'Authentic US Passport Book (e-Passport Chip & Registration)',
+    category: 'Passports',
+    advertisedClaims: 'U.S. Department of State passport book registration and verification.',
+    requiredEvidence: 'U.S. Department of State Passport Agency designated acceptance facility documentation.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Maintained in compliance review since initial audit.'
+  },
+  {
+    productId: 'doc-014',
+    productName: 'Registered Dutch Biometric Passport (Nederlands Paspoort)',
+    category: 'Passports',
+    advertisedClaims: 'Full entry in the BRP & Kingdom Passport registry.',
+    requiredEvidence: 'Kingdom of the Netherlands passport issuing authority delegation.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-015',
+    productName: 'Original Registered UK Passport (HM Passport Office)',
+    category: 'Passports',
+    advertisedClaims: 'HM Passport Office (HMPO) database registration.',
+    requiredEvidence: 'UK Home Office / HMPO recognized partner or statutory facility accreditation.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-016',
+    productName: 'Real Canadian Electronic Passport (Passport Canada Registered)',
+    category: 'Passports',
+    advertisedClaims: 'Full Passport Canada system indexing, UV optical shift.',
+    requiredEvidence: 'Immigration, Refugees and Citizenship Canada (IRCC) accreditation.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-017',
+    productName: 'Multi-Entry Schengen EU Visa Processing (1 - 5 Year Visa)',
+    category: 'EU Visas',
+    advertisedClaims: 'Guaranteed multi-entry Schengen Visa sticker issuance with embassy database clearance.',
+    requiredEvidence: 'Consular outsourcing accreditation (e.g., VFS Global / TLScontact equivalent agreement).',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-018',
+    productName: "Registered French Driver's License (Permis de Conduire)",
+    category: 'Driver Licenses',
+    advertisedClaims: 'National ANTS database registration with 12 points initial balance.',
+    requiredEvidence: 'French Agence Nationale des Titres Sécurisés (ANTS) statutory agreement.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-019',
+    productName: "Registered German Driver's License (EU Führerschein)",
+    category: 'Driver Licenses',
+    advertisedClaims: 'KBA (Kraftfahrt-Bundesamt Flensburg) central traffic register registration.',
+    requiredEvidence: 'German Kraftfahrt-Bundesamt or Fahrerlaubnisbehörde authorization.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-020',
+    productName: "Registered Spanish Driver's License (Carné de Conducir)",
+    category: 'Driver Licenses',
+    advertisedClaims: 'DGT (Dirección General de Tráfico) portal registration.',
+    requiredEvidence: 'Spanish DGT (Dirección General de Tráfico) licensing facility documentation.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-021',
+    productName: 'Registered French Biometric Passport (Passeport Biométrique)',
+    category: 'Passports',
+    advertisedClaims: 'Registered with ANTS and Ministry of Foreign Affairs, e-Passport RFID.',
+    requiredEvidence: 'Ministère des Affaires étrangères / ANTS official passport processing mandate.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-022',
+    productName: 'Registered Spanish Biometric Passport (Pasaporte Español)',
+    category: 'Passports',
+    advertisedClaims: 'Registered in the Policía Nacional database with high-resolution laser data page.',
+    requiredEvidence: 'Dirección General de la Policía (Policía Nacional) statutory delegation.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-023',
+    productName: "Registered French ID Card (Carte Nationale d'Identité CNIe)",
+    category: 'Identity Cards',
+    advertisedClaims: 'ANTS central registry validation for unrestricted European travel.',
+    requiredEvidence: 'ANTS / Ministère de l\'Intérieur accredited credential manufacturing contract.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-024',
+    productName: 'Registered Spanish ID Card (DNI Electrónico 4.0)',
+    category: 'Identity Cards',
+    advertisedClaims: 'Registrado en la Dirección General de la Policía with digital signing chip.',
+    requiredEvidence: 'Cuerpo Nacional de Policía / DGT official identification facility agreement.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-025',
+    productName: 'French EU Residence Permit (Titre de Séjour Biométrique)',
+    category: 'Residence Permits',
+    advertisedClaims: 'Registered in the ANEF prefecture database granting residency and work rights.',
+    requiredEvidence: 'Ministère de l\'Intérieur (ANEF / Direction générale des étrangers en France) documentation.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-026',
+    productName: 'German EU Residence Permit (Elektronischer Aufenthaltstitel - eAT)',
+    category: 'Residence Permits',
+    advertisedClaims: 'Registered at the BAMF / Ausländerbehörde immigration database with biometrics.',
+    requiredEvidence: 'BAMF / Ausländerbehörde statutory authorization or service concession.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Restricted under Phase 3 compliance policy.'
+  },
+  {
+    productId: 'doc-027',
+    productName: 'Registered Swiss Biometric Passport (Schweizer Pass 22)',
+    category: 'Passports',
+    advertisedClaims: 'Federal Office of Police (fedpol) registration, Pass 22 design.',
+    requiredEvidence: 'Swiss Federal Department of Justice and Police (FDJP / fedpol) authorization.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Maintained in compliance review since initial audit.'
+  },
+  {
+    productId: 'doc-028',
+    productName: 'Verified EU Bank Statement & Financial Proof Package',
+    category: 'EU Visas',
+    advertisedClaims: 'Certified multi-currency EU bank statement with IBAN validation, QR audit code, and stamped bank verification letter.',
+    requiredEvidence: 'Regulated credit institution / banking partner authorization and statutory auditing certification.',
+    evidenceReceived: 'None submitted.',
+    authorizationStatus: 'UNVERIFIED',
+    reviewDate: '2026-11-18',
+    reviewer: 'Senior Technical SEO & Compliance Auditor',
+    approvalDecision: 'RESTRICTED_PENDING_LEGAL_EVIDENCE',
+    indexingEligibility: 'NOINDEX_RESTRICTED',
+    purchasingEligibility: 'TEMPORARILY_UNAVAILABLE',
+    notes: 'Maintained in compliance review since initial audit.'
+  }
+];
+
+export function getComplianceRegisterEntry(productId: string): ComplianceRegisterEntry | undefined {
+  return COMPLIANCE_EVIDENCE_REGISTER.find(e => e.productId === productId);
+}

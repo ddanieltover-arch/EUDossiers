@@ -2,6 +2,7 @@ import { Order, OrderItem, StockAdjustment } from '../types';
 import { applyStockChange, getProductById } from './products-repository';
 import { getOrderById, insertOrder, updateOrderById } from './orders-repository';
 import { notifyOrderPlaced, notifyOrderUpdated } from './email/notifications';
+import { isProductUnderComplianceReview } from '../data/compliancePolicy';
 
 export type CreateOrderInput = {
   customerName: string;
@@ -30,6 +31,13 @@ export async function createCheckoutOrder(
   input: CreateOrderInput,
   recordAdjustment?: StockAdjustmentRecorder
 ): Promise<Order> {
+  // Reject orders containing items currently under compliance review
+  for (const item of input.items) {
+    if (isProductUnderComplianceReview(item.productId)) {
+      throw new Error(`Product ${item.productId} is temporarily unavailable for purchase under compliance review.`);
+    }
+  }
+
   for (const item of input.items) {
     try {
       const product = await getProductById(item.productId);

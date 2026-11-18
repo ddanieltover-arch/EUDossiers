@@ -9,8 +9,8 @@ import { useSeoMeta } from '../utils/seo';
 
 const HomePage: React.FC = () => {
   useSeoMeta({
-    title: 'Eudossier — Official EU Documents & Registered Dossier Solutions',
-    description: 'Order registered European passports, national ID cards, driver\'s licenses, and EU residence permits. Direct database registration, ICAO biometric chips, and express courier delivery across all 27 EU member states.',
+    title: 'Eudossier — European Document Services & Dossier Solutions',
+    description: 'Explore European document information, administrative guidance and dossier preparation resources.',
     canonical: 'https://eudossier.eu/',
   });
 

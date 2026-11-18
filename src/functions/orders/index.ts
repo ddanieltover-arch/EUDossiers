@@ -1,6 +1,7 @@
 import { listOrders } from '../../server/orders-repository';
 import { createCheckoutOrder } from '../../server/orders-service';
 import { parseJsonBody, withApiHandler } from '../../server/http';
+import { isProductUnderComplianceReview } from '../../data/compliancePolicy';
 
 export const config = { maxDuration: 15 };
 
@@ -13,6 +14,15 @@ export default async function handler(req: unknown, res: unknown) {
       const payload = parseJsonBody(body) as unknown as Parameters<typeof createCheckoutOrder>[0];
       if (!payload.customerName || !payload.customerEmail || !Array.isArray(payload.items) || payload.items.length === 0) {
         return { status: 400, body: { error: 'Customer name, email, and at least one item are required' } };
+      }
+      const restrictedItem = payload.items.find(item => isProductUnderComplianceReview(item.productId));
+      if (restrictedItem) {
+        return {
+          status: 400,
+          body: {
+            error: `Product ${restrictedItem.productId} is currently under compliance review and temporarily unavailable for purchase.`
+          }
+        };
       }
       return { status: 201, body: await createCheckoutOrder(payload) };
     }

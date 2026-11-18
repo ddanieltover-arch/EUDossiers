@@ -7,7 +7,7 @@
     "cart": "Varukorg",
     "admin": "Admin",
     "changeLanguage": "Byt språk",
-    "searchPlaceholder": "Sök registrerade pass, körkort, uppehållstillstånd, visum...",
+    "searchPlaceholder": "Sök efter dokumentformat, specifikationer, uppehållsriktlinjer, visum...",
     "clear": "Rensa"
   },
   "footer": {
@@ -25,7 +25,7 @@
     "forgotten": "Rätt att bli glömd (art. 17)",
     "auditLog": "Inspektör för samtyckesrevisionslogg",
     "hosted": "Data hostas i Frankfurt, Tyskland (EU-West Node).",
-    "madeWith": "Tillverkat med precision för europeiska officiella dokument och dossier"
+    "madeWith": "Europeiska dokumenttjänster och dossierlösningar"
   },
   "language": {
     "title": "Språkinställningar",

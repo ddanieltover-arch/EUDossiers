@@ -3,6 +3,7 @@ import { X, Trash2, ShoppingBag, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useStore } from '../context/StoreContext';
 import { useTranslation } from 'react-i18next';
+import { isProductUnderComplianceReview } from '../data/compliancePolicy';
 import { getLocalizedProductName } from '../data/productNameTranslations';
 import { getProductPath } from '../utils/productSlug';
 
@@ -61,7 +62,13 @@ export const CartDrawer: React.FC = () => {
                   </Link>
                   <div className="flex-1 min-w-0">
                     <Link to={getProductPath(item.product)} onClick={() => setIsCartOpen(false)} className="text-xs font-bold text-[var(--color-text-primary)] truncate hover:text-blue-500 transition-colors block">{getLocalizedProductName(item.product, i18n.language)}</Link>
-                    <div className="text-[10px] text-[var(--color-text-muted)] mt-0.5">{item.product.originFlag} · {formatPriceEUR(item.product.priceEUR)}</div>
+                    {isProductUnderComplianceReview(item.product) ? (
+                      <span className="inline-block mt-0.5 text-[10px] font-bold text-amber-500 bg-amber-500/10 border border-amber-500/20 px-1.5 py-0.2 rounded">
+                        Under Review · Unavailable
+                      </span>
+                    ) : (
+                      <div className="text-[10px] text-[var(--color-text-muted)] mt-0.5">{item.product.originFlag} · {formatPriceEUR(item.product.priceEUR)}</div>
+                    )}
                     <div className="flex items-center mt-1.5">
                       <div className="flex items-center bg-[var(--color-bg-primary)] rounded-lg border border-[var(--color-border)] px-0.5">
                         <button onClick={() => updateCartQuantity(item.product.id, item.quantity - 1)} className="w-5 h-5 text-xs font-bold text-[var(--color-text-secondary)]">-</button>
@@ -93,14 +100,23 @@ export const CartDrawer: React.FC = () => {
                 >
                   {t('actions.viewCart')}
                 </Link>
-                <Link
-                  to="/checkout"
-                  onClick={() => setIsCartOpen(false)}
-                  className="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center space-x-1.5 transition-all shadow-md shadow-blue-600/20"
-                >
-                  <span>{t('actions.checkout')}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
+                {cart.some(i => isProductUnderComplianceReview(i.product)) ? (
+                  <span
+                    className="flex-1 bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] border border-[var(--color-border)] font-bold py-2.5 rounded-xl text-xs flex items-center justify-center space-x-1 cursor-not-allowed"
+                    title="Cart contains items currently under compliance review"
+                  >
+                    <span>Under Review</span>
+                  </span>
+                ) : (
+                  <Link
+                    to="/checkout"
+                    onClick={() => setIsCartOpen(false)}
+                    className="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 rounded-xl text-xs flex items-center justify-center space-x-1.5 transition-all shadow-md shadow-blue-600/20"
+                  >
+                    <span>{t('actions.checkout')}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                )}
               </div>
             </div>
           )}

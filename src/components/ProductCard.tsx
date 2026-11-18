@@ -7,6 +7,7 @@ import { useStore } from '../context/StoreContext';
 import { useLocalizedProductName } from '../hooks/useLocalizedProductName';
 import { useLocalizedProductDescription } from '../hooks/useLocalizedProductDescription';
 import { getProductPath } from '../utils/productSlug';
+import { isProductUnderComplianceReview } from '../data/compliancePolicy';
 
 interface ProductCardProps {
   product: Product;
@@ -20,6 +21,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   const isLowStock = product.totalStock > 0 && product.totalStock <= product.lowStockThreshold;
   const isOutOfStock = product.totalStock <= 0;
+  const isUnderReview = isProductUnderComplianceReview(product);
+  const canPurchase = !isOutOfStock && !isUnderReview;
 
   const discountPercent = React.useMemo(() => {
     let hash = 0;
@@ -59,7 +62,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
 
         <div className="absolute top-3 right-3">
-          {isOutOfStock ? (
+          {isUnderReview ? (
+            <span className="bg-amber-950/90 text-amber-300 border border-amber-800/80 text-[11px] font-bold px-2.5 py-1 rounded-lg flex items-center space-x-1 shadow-sm">
+              <AlertTriangle className="w-3 h-3 shrink-0" />
+              <span>Under Review</span>
+            </span>
+          ) : isOutOfStock ? (
             <span className="bg-rose-950/90 text-rose-300 border border-rose-800/80 text-[11px] font-bold px-2.5 py-1 rounded-lg shadow-sm">
               {t('product.outOfStock')}
             </span>
@@ -151,16 +159,24 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </p>
 
           <button
-            onClick={() => addToCart(product)}
-            disabled={isOutOfStock}
+            onClick={() => {
+              if (canPurchase) addToCart(product);
+            }}
+            disabled={!canPurchase}
             className={`w-full py-2.5 px-4 rounded-xl text-xs font-semibold inline-flex items-center justify-center gap-2 whitespace-nowrap transition-all ${
-              isOutOfStock
+              !canPurchase
                 ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed border border-[var(--color-border)]'
                 : 'bg-blue-600 hover:bg-blue-500 text-white shadow-md shadow-blue-600/20'
             }`}
           >
             <ShoppingBag className="w-3.5 h-3.5 shrink-0" />
-            <span>{isOutOfStock ? t('product.outOfStock') : t('actions.addToCart')}</span>
+            <span>
+              {isUnderReview
+                ? 'Under Review'
+                : isOutOfStock
+                ? t('product.outOfStock')
+                : t('actions.addToCart')}
+            </span>
           </button>
         </div>
       </div>

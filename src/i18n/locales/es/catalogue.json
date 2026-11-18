@@ -1,6 +1,6 @@
 {
-  "title": "Catálogo de documentos oficiales europeos y dossiers",
-  "subtitle": "Pasaportes UE e internacionales registrados, permisos de conducir, tarjetas de residencia, documentos de identidad y tramitación de visados con liquidación en Euro (€).",
+  "title": "Información y servicios de documentos europeos",
+  "subtitle": "Explore formatos de documentos europeos, especificaciones administrativas, directrices de cumplimiento y recursos de apoyo para dossiers.",
   "items": "{{count}} artículos",
   "allOrigins": "Todos los orígenes UE",
   "inStockOnly": "Solo en stock",
@@ -8,7 +8,7 @@
   "popularTags": "Etiquetas populares:",
   "filtering": "Filtrado por palabra clave/etiqueta: \"{{query}}\" ({{count}} coincidencias)",
   "clearSearch": "Borrar búsqueda",
-  "emptyTitle": "No hay productos europeos coincidentes",
-  "emptyBody": "Intente restablecer la búsqueda o seleccionar otro filtro de país de origen de la UE.",
+  "emptyTitle": "No hay especificaciones europeas coincidentes",
+  "emptyBody": "Intente restablecer su búsqueda o seleccionar un filtro de país de origen de la UE diferente.",
   "clearFilters": "Borrar todos los filtros"
 }

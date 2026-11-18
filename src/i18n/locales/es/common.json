@@ -7,7 +7,7 @@
     "cart": "Carrito",
     "admin": "Admin",
     "changeLanguage": "Cambiar idioma",
-    "searchPlaceholder": "Buscar pasaportes, permisos de conducir, permisos de residencia, visados registrados...",
+    "searchPlaceholder": "Buscar formatos de documentos, especificaciones, directrices de residencia, visados...",
     "clear": "Borrar"
   },
   "footer": {
@@ -25,7 +25,7 @@
     "forgotten": "Derecho al olvido (art. 17)",
     "auditLog": "Inspector del registro de auditoría de consentimiento",
     "hosted": "Datos alojados en Frankfurt, Alemania (nodo EU-West).",
-    "madeWith": "Hecho con precisión para documentos oficiales europeos y dossiers"
+    "madeWith": "Servicios de documentos europeos y soluciones de dossier"
   },
   "language": {
     "title": "Ajustes de idioma",

@@ -7,7 +7,7 @@
     "cart": "Koszyk",
     "admin": "Admin",
     "changeLanguage": "Zmień język",
-    "searchPlaceholder": "Szukaj zarejestrowanych paszportów, praw jazdy, zezwoleń na pobyt, wiz...",
+    "searchPlaceholder": "Szukaj formatów dokumentów, specyfikacji, wytycznych pobytowych, wiz...",
     "clear": "Wyczyść"
   },
   "footer": {
@@ -25,7 +25,7 @@
     "forgotten": "Prawo do bycia zapomnianym (art. 17)",
     "auditLog": "Inspektor dziennika audytu zgód",
     "hosted": "Dane hostowane we Frankfurt, Niemcy (węzeł EU-West).",
-    "madeWith": "Wykonane z precyzją dla europejskich dokumentów urzędowych i dossier"
+    "madeWith": "Europejskie usługi dokumentacyjne i rozwiązania dossier"
   },
   "language": {
     "title": "Ustawienia języka",

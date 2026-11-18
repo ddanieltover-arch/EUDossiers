@@ -1,6 +1,6 @@
 {
-  "title": "Eurooppalaisten virallisten asiakirjojen ja dossier-tiedostojen luettelo",
-  "subtitle": "Rekisteröidyt EU- ja kansainväliset passit, ajokortit, oleskelukortit, henkilöllisyystodistukset ja viisumikäsittely euro (€) -selvityksellä.",
+  "title": "Eurooppalaiset asiakirjatiedot ja -palvelut",
+  "subtitle": "Tutustu eurooppalaisiin asiakirjamuotoihin, hallinnollisiin erittelyihin, vaatimustenmukaisuusohjeisiin ja dossier-tukiresursseihin.",
   "items": "{{count}} kohdetta",
   "allOrigins": "Kaikki EU-alkuperät",
   "inStockOnly": "Vain varastossa",
@@ -8,7 +8,7 @@
   "popularTags": "Suositut tunnisteet:",
   "filtering": "Suodatetaan avainsanan/tunnisteen mukaan: \"{{query}}\" ({{count}} osumaa)",
   "clearSearch": "Tyhjennä haku",
-  "emptyTitle": "Ei vastaavia eurooppalaisia tuotteita",
-  "emptyBody": "Yritä nollata hakusi tai valitse toinen EU-alkuperämaan suodatin.",
+  "emptyTitle": "Ei vastaavia eurooppalaisia määrityksiä",
+  "emptyBody": "Kokeile nollata haku tai valita toinen EU-alkuperämaasuodatin.",
   "clearFilters": "Tyhjennä kaikki suodattimet"
 }

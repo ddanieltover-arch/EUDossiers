@@ -7,7 +7,7 @@
     "cart": "Warenkorb",
     "admin": "Admin",
     "changeLanguage": "Sprache ändern",
-    "searchPlaceholder": "Registrierte Pässe, Führerscheine, Aufenthaltstitel, Visa suchen...",
+    "searchPlaceholder": "Dokumentformate, Spezifikationen, Aufenthaltsrichtlinien, Visa suchen...",
     "clear": "Löschen"
   },
   "footer": {
@@ -25,7 +25,7 @@
     "forgotten": "Recht auf Vergessenwerden (Art. 17)",
     "auditLog": "Einwilligungs-Auditprotokoll",
     "hosted": "Daten gehostet in Frankfurt, Deutschland (EU-West Node).",
-    "madeWith": "Mit Präzision für europäische Amtspapiere & Dossiers gefertigt"
+    "madeWith": "Europäische Dokumentendienste & Dossierlösungen"
   },
   "language": {
     "title": "Spracheinstellungen",

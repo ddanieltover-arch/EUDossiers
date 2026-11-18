@@ -7,7 +7,7 @@
     "cart": "Panier",
     "admin": "Admin",
     "changeLanguage": "Changer de langue",
-    "searchPlaceholder": "Rechercher passeports, permis de conduire, titres de séjour, visas enregistrés...",
+    "searchPlaceholder": "Rechercher des formats de documents, spécifications, directives de séjour, visas...",
     "clear": "Effacer"
   },
   "footer": {
@@ -25,7 +25,7 @@
     "forgotten": "Droit à l’oubli (art. 17)",
     "auditLog": "Inspecteur du journal d’audit de consentement",
     "hosted": "Données hébergées à Frankfurt, Allemagne (nœud EU-West).",
-    "madeWith": "Conçu avec précision pour les documents officiels européens et dossiers"
+    "madeWith": "Services de documents européens et solutions de dossier"
   },
   "language": {
     "title": "Paramètres de langue",

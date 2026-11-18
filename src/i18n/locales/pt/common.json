@@ -7,7 +7,7 @@
     "cart": "Carrinho",
     "admin": "Admin",
     "changeLanguage": "Alterar idioma",
-    "searchPlaceholder": "Pesquisar passaportes, cartas de condução, autorizações de residência, vistos registados...",
+    "searchPlaceholder": "Pesquisar formatos de documentos, especificações, diretrizes de residência, vistos...",
     "clear": "Limpar"
   },
   "footer": {
@@ -25,7 +25,7 @@
     "forgotten": "Direito a ser esquecido (art. 17)",
     "auditLog": "Inspetor do registo de auditoria de consentimento",
     "hosted": "Dados alojados em Frankfurt, Alemanha (nó EU-West).",
-    "madeWith": "Feito com precisão para documentos oficiais europeus e dossiers"
+    "madeWith": "Serviços de documentos europeus e soluções de dossier"
   },
   "language": {
     "title": "Definições de idioma",

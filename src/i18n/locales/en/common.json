@@ -7,7 +7,7 @@
     "cart": "Cart",
     "admin": "Admin",
     "changeLanguage": "Change language",
-    "searchPlaceholder": "Search registered passports, driver licenses, residence permits, visas...",
+    "searchPlaceholder": "Search document formats, specifications, residence guidelines, visas...",
     "clear": "Clear"
   },
   "footer": {
@@ -25,7 +25,7 @@
     "forgotten": "Right to Be Forgotten (Art. 17)",
     "auditLog": "Consent Audit Log Inspector",
     "hosted": "Data hosted in Frankfurt, Germany (EU-West Node).",
-    "madeWith": "Made with precision for European Official Documents & Dossiers"
+    "madeWith": "European Document Services & Dossier Solutions"
   },
   "language": {
     "title": "Language Settings",

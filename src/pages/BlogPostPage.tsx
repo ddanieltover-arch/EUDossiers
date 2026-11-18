@@ -294,13 +294,13 @@ export const BlogPostPage: React.FC = () => {
                 />
                 <div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-accent-400)] bg-[var(--color-accent-600)]/20 px-2 py-0.5 rounded">
-                    Featured Catalogue Specimen
+                    European Document Reference
                   </span>
                   <h4 className="text-sm sm:text-base font-bold text-[var(--color-text-primary)] font-display mt-1">
                     {linkedProduct.name}
                   </h4>
                   <p className="text-xs text-[var(--color-text-muted)]">
-                    In Stock: <span className="font-semibold text-emerald-400">{linkedProduct.totalStock} units</span> • Price: €{linkedProduct.priceEUR.toFixed(2)}
+                    Specification: <span className="font-semibold text-blue-400">{linkedProduct.category}</span> • Status: <span className="text-amber-400 font-medium">Compliance Review · Informational Reference</span>
                   </p>
                 </div>
               </div>
@@ -310,7 +310,7 @@ export const BlogPostPage: React.FC = () => {
                   to={`/catalogue/${post.targetProductSlug}`}
                   className="w-full sm:w-auto bg-[var(--color-accent-600)] hover:bg-[var(--color-accent-500)] text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-md transition-all flex items-center justify-center space-x-1.5"
                 >
-                  <span>View Product Details</span>
+                  <span>View Document Specifications</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </Link>
               </div>
@@ -405,7 +405,7 @@ export const BlogPostPage: React.FC = () => {
           {/* Inbound Linking: Category & Catalogue Cross-Links */}
           <div className="p-4 rounded-xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
             <span className="font-semibold text-[var(--color-text-primary)]">
-              Explore Registered Document Catalogues:
+              Explore European Document Guides &amp; Specifications:
             </span>
             <div className="flex flex-wrap items-center gap-2">
               <Link

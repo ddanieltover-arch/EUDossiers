@@ -211,6 +211,10 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   // Cart Management
   const addToCart = (product: Product, quantity = 1, openDrawer = true) => {
+    if (isProductUnderComplianceReview(product)) {
+      console.warn(`Product ${product.id} is temporarily unavailable for purchase under compliance review.`);
+      return;
+    }
     if (product.totalStock <= 0) return;
     setCart(prev => {
       const existing = prev.find(item => item.product.id === product.id);
@@ -414,6 +418,14 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
     paymentMethod: 'bank' | 'crypto';
   }): Promise<{ order: Order | null; error?: string }> => {
     if (cart.length === 0) return { order: null, error: 'Your cart is empty' };
+
+    const restricted = cart.find(item => isProductUnderComplianceReview(item.product));
+    if (restricted) {
+      return {
+        order: null,
+        error: `Item "${restricted.product.name}" is currently undergoing compliance review and is temporarily unavailable for purchase.`
+      };
+    }
 
     const itemsForOrder = cart.map(item => ({
       productId: item.product.id,

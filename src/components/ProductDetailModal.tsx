@@ -5,6 +5,7 @@ import { useStore } from '../context/StoreContext';
 import { getLocalizedProductName } from '../data/productNameTranslations';
 import { getLocalizedProductDescription } from '../data/productDescriptionTranslations';
 import { useTranslation } from 'react-i18next';
+import { isProductUnderComplianceReview } from '../data/compliancePolicy';
 
 export const ProductDetailModal: React.FC = () => {
   const { 
@@ -24,6 +25,8 @@ export const ProductDetailModal: React.FC = () => {
 
   const product = selectedProductForDetail;
   const isOutOfStock = product.totalStock <= 0;
+  const isUnderReview = isProductUnderComplianceReview(product);
+  const canPurchase = !isOutOfStock && !isUnderReview;
   const localizedName = getLocalizedProductName(product, i18n.language);
   const localizedDescription = getLocalizedProductDescription(product, i18n.language);
   const priceLabel = formatPriceEUR(product.priceEUR);
@@ -34,11 +37,13 @@ export const ProductDetailModal: React.FC = () => {
   );
 
   const handleAddToCart = () => {
+    if (!canPurchase) return;
     addToCart(product, quantity);
     setSelectedProductForDetail(null);
   };
 
   const handleBuyNow = () => {
+    if (!canPurchase) return;
     addToCart(product, quantity, false);
     setIsCartOpen(false);
     setSelectedProductForDetail(null);
@@ -180,61 +185,82 @@ export const ProductDetailModal: React.FC = () => {
             </div>
 
             <div className="space-y-4 pt-4 border-t border-[var(--color-border)]">
-              
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center bg-[var(--color-bg-tertiary)] rounded-xl border border-[var(--color-border)] p-1">
+              {isUnderReview ? (
+                <div className="space-y-3">
+                  <div className="p-3.5 bg-amber-500/10 border border-amber-500/30 rounded-xl flex items-start space-x-2.5 text-xs text-amber-300">
+                    <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                    <div className="space-y-0.5">
+                      <span className="font-bold block text-amber-200">Compliance Review Notice</span>
+                      <span className="text-amber-300/90 leading-relaxed block">
+                        This item is currently undergoing compliance review and is temporarily unavailable for purchase.
+                      </span>
+                    </div>
+                  </div>
                   <button
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    disabled={quantity <= 1 || isOutOfStock}
-                    className="w-8 h-8 rounded-lg bg-[var(--color-bg-card-hover)] hover:bg-[var(--color-bg-secondary)] disabled:opacity-40 text-[var(--color-text-primary)] font-bold flex items-center justify-center transition-colors"
+                    disabled
+                    className="w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] border border-[var(--color-border)] cursor-not-allowed flex items-center justify-center space-x-2"
                   >
-                    -
-                  </button>
-                  <span className="w-12 text-center font-bold text-sm text-[var(--color-text-primary)]">
-                    {quantity}
-                  </span>
-                  <button
-                    onClick={() => setQuantity(Math.min(product.totalStock, quantity + 1))}
-                    disabled={quantity >= product.totalStock || isOutOfStock}
-                    className="w-8 h-8 rounded-lg bg-[var(--color-bg-card-hover)] hover:bg-[var(--color-bg-secondary)] disabled:opacity-40 text-[var(--color-text-primary)] font-bold flex items-center justify-center transition-colors"
-                  >
-                    +
+                    <AlertTriangle className="w-4 h-4 text-amber-400" />
+                    <span>Temporarily Unavailable (Compliance Review)</span>
                   </button>
                 </div>
+              ) : (
+                <>
+                  <div className="flex items-center space-x-4">
+                    <div className="flex items-center bg-[var(--color-bg-tertiary)] rounded-xl border border-[var(--color-border)] p-1">
+                      <button
+                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                        disabled={quantity <= 1 || isOutOfStock}
+                        className="w-8 h-8 rounded-lg bg-[var(--color-bg-card-hover)] hover:bg-[var(--color-bg-secondary)] disabled:opacity-40 text-[var(--color-text-primary)] font-bold flex items-center justify-center transition-colors"
+                      >
+                        -
+                      </button>
+                      <span className="w-12 text-center font-bold text-sm text-[var(--color-text-primary)]">
+                        {quantity}
+                      </span>
+                      <button
+                        onClick={() => setQuantity(Math.min(product.totalStock, quantity + 1))}
+                        disabled={quantity >= product.totalStock || isOutOfStock}
+                        className="w-8 h-8 rounded-lg bg-[var(--color-bg-card-hover)] hover:bg-[var(--color-bg-secondary)] disabled:opacity-40 text-[var(--color-text-primary)] font-bold flex items-center justify-center transition-colors"
+                      >
+                        +
+                      </button>
+                    </div>
 
-                <div className="text-xs text-[var(--color-text-muted)]">
-                  Total EUR: <span className="text-[var(--color-text-primary)] font-bold text-sm">{(product.priceEUR * quantity).toFixed(2)} €</span>
-                </div>
-              </div>
+                    <div className="text-xs text-[var(--color-text-muted)]">
+                      Total EUR: <span className="text-[var(--color-text-primary)] font-bold text-sm">{(product.priceEUR * quantity).toFixed(2)} €</span>
+                    </div>
+                  </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <button
-                  onClick={handleAddToCart}
-                  disabled={isOutOfStock}
-                  className={`py-3.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center space-x-2 transition-all shadow-md ${
-                    isOutOfStock
-                      ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed'
-                      : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-600/20'
-                  }`}
-                >
-                  <ShoppingBag className="w-4 h-4" />
-                  <span>{isOutOfStock ? t('product.outOfStock') : `Add ${quantity} to Cart`}</span>
-                </button>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button
+                      onClick={handleAddToCart}
+                      disabled={!canPurchase}
+                      className={`py-3.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center space-x-2 transition-all shadow-md ${
+                        !canPurchase
+                          ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed'
+                          : 'bg-blue-600 hover:bg-blue-500 text-white shadow-blue-600/20'
+                      }`}
+                    >
+                      <ShoppingBag className="w-4 h-4" />
+                      <span>{isOutOfStock ? t('product.outOfStock') : `Add ${quantity} to Cart`}</span>
+                    </button>
 
-                <button
-                  onClick={handleBuyNow}
-                  disabled={isOutOfStock}
-                  className={`py-3.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center space-x-2 transition-all shadow-lg ${
-                    isOutOfStock
-                      ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed'
-                      : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-600/30'
-                  }`}
-                >
-                  <Zap className="w-4 h-4 fill-current" />
-                  <span>{isOutOfStock ? t('product.outOfStock') : t('actions.buyNow', { defaultValue: 'Buy Now' })}</span>
-                </button>
-              </div>
-
+                    <button
+                      onClick={handleBuyNow}
+                      disabled={!canPurchase}
+                      className={`py-3.5 px-4 rounded-xl text-sm font-bold flex items-center justify-center space-x-2 transition-all shadow-lg ${
+                        !canPurchase
+                          ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed'
+                          : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-600/30'
+                      }`}
+                    >
+                      <Zap className="w-4 h-4 fill-current" />
+                      <span>{isOutOfStock ? t('product.outOfStock') : t('actions.buyNow', { defaultValue: 'Buy Now' })}</span>
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
 
           </div>
