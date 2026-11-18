@@ -48,11 +48,11 @@ const GERMAN_EAT_ALTERNATES: HreflangAlternate[] = [
   { hreflang: 'x-default', href: 'https://eudossier.eu/blog/german-electronic-residence-permit-eat-guide' },
 ];
 
-const ITALIAN_CIE_ALTERNATES: HreflangAlternate[] = [
-  { hreflang: 'en', href: 'https://eudossier.eu/blog/eea-id-cards-travel-rights-italian-cie' },
-  { hreflang: 'it-IT', href: 'https://eudossier.eu/blog/carta-identita-elettronica-cie-guida' },
-  { hreflang: 'x-default', href: 'https://eudossier.eu/blog/eea-id-cards-travel-rights-italian-cie' },
-];
+// Note on Italian CIE:
+// post-003 ('eea-id-cards-travel-rights-italian-cie') covers broader EEA travel rights with Directive 2004/38/EC,
+// while post-024 ('carta-identita-elettronica-cie-guida') focuses specifically on domestic Italian issuance procedures.
+// Because their core content and search intents are complementary rather than direct language equivalents,
+// they are deliberately decoupled to avoid false canonical/hreflang equivalencies across search engines.
 
 export const BLOG_HREFLANGS: Record<string, HreflangAlternate[]> = {
   // 1. EEA ID Card Cluster
@@ -84,8 +84,4 @@ export const BLOG_HREFLANGS: Record<string, HreflangAlternate[]> = {
   // 6. German eAT Cluster
   'german-electronic-residence-permit-eat-guide': GERMAN_EAT_ALTERNATES,
   'elektronischer-aufenthaltstitel-eat-guide': GERMAN_EAT_ALTERNATES,
-
-  // 7. Italian CIE Cluster
-  'eea-id-cards-travel-rights-italian-cie': ITALIAN_CIE_ALTERNATES,
-  'carta-identita-elettronica-cie-guida': ITALIAN_CIE_ALTERNATES,
 };
