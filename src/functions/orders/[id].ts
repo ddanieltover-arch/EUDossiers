@@ -16,8 +16,7 @@ export default async function handler(req: unknown, res: unknown) {
     }
     if (method === 'DELETE') {
       const deleted = await deleteOrderById(orderId);
-      if (!deleted) return { status: 404, body: { error: 'Order not found' } };
-      return { status: 200, body: { success: true, deletedId: orderId } };
+      return { status: 200, body: { success: deleted, deletedId: orderId } };
     }
     return { status: 405, body: { error: 'Method not allowed' }, headers: { Allow: 'PATCH, DELETE' } };
   });

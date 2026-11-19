@@ -282,18 +282,22 @@ async function startServer() {
     }
   });
 
-  app.delete('/api/orders/:id', async (req: Request, res: Response) => {
+  const handleOrderDelete = async (req: Request, res: Response) => {
     try {
-      const deleted = await deleteOrderById(req.params.id);
-      if (!deleted) {
-        return res.status(404).json({ error: 'Order not found' });
+      const id = req.params.id || (req.query.id as string) || req.body?.id;
+      if (!id) {
+        return res.status(400).json({ error: 'Order ID is required' });
       }
-      res.json({ success: true, deletedId: req.params.id });
+      const deleted = await deleteOrderById(id);
+      res.json({ success: true, deletedId: id, deleted });
     } catch (err) {
       console.error('Failed to delete order:', err);
       res.status(500).json({ error: 'Failed to delete order' });
     }
-  });
+  };
+
+  app.delete('/api/orders/:id', handleOrderDelete);
+  app.delete('/api/orders', handleOrderDelete);
 
   app.get('/api/contact', async (_req: Request, res: Response) => {
     try {

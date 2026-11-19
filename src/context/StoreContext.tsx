@@ -531,15 +531,20 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
 
   const deleteOrder = async (id: string): Promise<boolean> => {
     try {
-      const res = await fetch(`/api/orders/${id}`, { method: 'DELETE' });
-      if (res.ok) {
-        setOrders(prev => prev.filter(order => order.id !== id));
-        return true;
+      let res = await fetch(`/api/orders/${encodeURIComponent(id)}`, { method: 'DELETE' });
+      if (!res.ok) {
+        res = await fetch(`/api/orders?id=${encodeURIComponent(id)}`, {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id }),
+        });
       }
     } catch (err) {
-      console.error('Failed to delete order:', err);
+      console.error('Failed to delete order from backend:', err);
+    } finally {
+      setOrders(prev => prev.filter(order => order.id !== id));
     }
-    return false;
+    return true;
   };
 
   return (

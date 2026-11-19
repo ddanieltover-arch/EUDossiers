@@ -1,12 +1,12 @@
-import { listOrders } from '../../server/orders-repository';
-import { createCheckoutOrder } from '../../server/orders-service';
+import { listOrders, deleteOrderById } from '../../server/orders-repository';
+import { createCheckoutOrder, patchCheckoutOrder } from '../../server/orders-service';
 import { parseJsonBody, withApiHandler } from '../../server/http';
 import { isProductUnderComplianceReview } from '../../data/compliancePolicy';
 
 export const config = { maxDuration: 15 };
 
 export default async function handler(req: unknown, res: unknown) {
-  return withApiHandler(req, res, async (method, body) => {
+  return withApiHandler(req, res, async (method, body, rawReq) => {
     if (method === 'GET') {
       return { status: 200, body: await listOrders() };
     }
@@ -26,6 +26,23 @@ export default async function handler(req: unknown, res: unknown) {
       }
       return { status: 201, body: await createCheckoutOrder(payload) };
     }
-    return { status: 405, body: { error: 'Method not allowed' }, headers: { Allow: 'GET, POST' } };
+    if (method === 'PATCH') {
+      const parsed = parseJsonBody(body);
+      const queryId = (rawReq as { query?: Record<string, unknown> })?.query?.id;
+      const orderId = (typeof queryId === 'string' ? queryId : undefined) || (typeof parsed.id === 'string' ? parsed.id : undefined);
+      if (!orderId) return { status: 400, body: { error: 'Order id is required' } };
+      const updated = await patchCheckoutOrder(orderId, parsed);
+      if (!updated) return { status: 404, body: { error: 'Order not found' } };
+      return { status: 200, body: updated };
+    }
+    if (method === 'DELETE') {
+      const parsed = parseJsonBody(body);
+      const queryId = (rawReq as { query?: Record<string, unknown> })?.query?.id;
+      const orderId = (typeof queryId === 'string' ? queryId : undefined) || (typeof parsed.id === 'string' ? parsed.id : undefined);
+      if (!orderId) return { status: 400, body: { error: 'Order id is required' } };
+      const deleted = await deleteOrderById(orderId);
+      return { status: 200, body: { success: deleted, deletedId: orderId } };
+    }
+    return { status: 405, body: { error: 'Method not allowed' }, headers: { Allow: 'GET, POST, PATCH, DELETE' } };
   });
 }

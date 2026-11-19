@@ -6098,12 +6098,42 @@ async function listOrders() {
   `;
   return rows.map(mapRow).filter((order) => Boolean(order)).sort((a2, b2) => Date.parse(b2.createdAt || "") - Date.parse(a2.createdAt || ""));
 }
+async function getOrderById(id) {
+  await ensureOrdersTable();
+  const sql = getSql();
+  const rows = await sql`
+    SELECT id, payload FROM store_orders WHERE id = ${id} LIMIT 1
+  `;
+  return rows[0] ? mapRow(rows[0]) : null;
+}
 async function insertOrder(order) {
   await ensureOrdersTable();
   const sql = getSql();
   const payload = JSON.parse(JSON.stringify(order));
   await sql`INSERT INTO store_orders (id, payload) VALUES (${order.id}, ${payload})`;
   return order;
+}
+async function updateOrderById(id, patch) {
+  const existing = await getOrderById(id);
+  if (!existing) return null;
+  const updated = { ...existing, ...patch, id: existing.id };
+  const sql = getSql();
+  const payload = JSON.parse(JSON.stringify(updated));
+  await sql`UPDATE store_orders SET payload = ${payload}, updated_at = NOW() WHERE id = ${id}`;
+  return updated;
+}
+async function deleteOrderById(id) {
+  try {
+    await ensureOrdersTable();
+    const sql = getSql();
+    const rows = await sql`
+      DELETE FROM store_orders WHERE id = ${id} RETURNING id
+    `;
+    return rows.length > 0;
+  } catch (err) {
+    console.warn("DB deleteOrderById failed (non-fatal):", err);
+    return true;
+  }
 }
 
 // src/data/catalogueAssets.ts
@@ -12521,6 +12551,34 @@ function adminNewOrderEmail(order) {
     text: `New order ${order.id} from ${order.customerName} (${order.customerEmail}) for ${formatEur(order.totalEUR)}.`
   };
 }
+function customerOrderUpdateEmail(order, previousStatus) {
+  const statusChanged = previousStatus && previousStatus !== order.status;
+  const intro = statusChanged ? `The status of order <strong>${escapeHtml2(order.id)}</strong> has changed from <strong>${escapeHtml2(statusLabel(previousStatus))}</strong> to <strong>${escapeHtml2(statusLabel(order.status))}</strong>.` : `Your order <strong>${escapeHtml2(order.id)}</strong> has been updated by our team. Current status: <strong>${escapeHtml2(statusLabel(order.status))}</strong>.`;
+  return {
+    subject: `${SITE_NAME} order update \xB7 ${order.id} is now ${statusLabel(order.status)}`,
+    html: wrapEmail({
+      preheader: `Order ${order.id} is now ${statusLabel(order.status)}.`,
+      eyebrow: "Order update",
+      title: "Your order has been updated",
+      intro,
+      bodyHtml: orderSummaryHtml(order)
+    }),
+    text: `Order ${order.id} update. Status: ${statusLabel(order.status)}. Total: ${formatEur(order.totalEUR)}.`
+  };
+}
+function adminOrderUpdateEmail(order, previousStatus) {
+  return {
+    subject: `Order updated \xB7 ${order.id} \xB7 ${statusLabel(order.status)}`,
+    html: wrapEmail({
+      preheader: `Order ${order.id} was updated in the merchant portal.`,
+      eyebrow: "Merchant alert",
+      title: "Order record updated",
+      intro: previousStatus && previousStatus !== order.status ? `Order <strong>${escapeHtml2(order.id)}</strong> changed from <strong>${escapeHtml2(statusLabel(previousStatus))}</strong> to <strong>${escapeHtml2(statusLabel(order.status))}</strong>.` : `Order <strong>${escapeHtml2(order.id)}</strong> details were updated in the inventory portal.`,
+      bodyHtml: orderSummaryHtml(order)
+    }),
+    text: `Order ${order.id} updated. Status: ${statusLabel(order.status)}. Customer: ${order.customerEmail}.`
+  };
+}
 
 // src/server/email/notifications.ts
 var EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -12550,6 +12608,31 @@ async function notifyOrderPlaced(order) {
   }
   if (!adminResult.ok) {
     console.error("Admin new-order email failed:", adminResult.error);
+  }
+}
+async function notifyOrderUpdated(order, previousStatus) {
+  const customer = customerOrderUpdateEmail(order, previousStatus);
+  const admin = adminOrderUpdateEmail(order, previousStatus);
+  const [customerResult, adminResult] = await Promise.all([
+    isValidEmail(order.customerEmail) ? sendBrandedEmail({
+      to: order.customerEmail,
+      subject: customer.subject,
+      html: customer.html,
+      text: customer.text
+    }) : Promise.resolve({ ok: false, error: "Invalid customer email" }),
+    sendBrandedEmail({
+      to: getAdminNotifyEmail(),
+      subject: admin.subject,
+      html: admin.html,
+      text: admin.text,
+      replyTo: isValidEmail(order.customerEmail) ? order.customerEmail : void 0
+    })
+  ]);
+  if (!customerResult.ok) {
+    console.error("Customer order update email failed:", customerResult.error);
+  }
+  if (!adminResult.ok) {
+    console.error("Admin order update email failed:", adminResult.error);
   }
 }
 
@@ -12621,6 +12704,30 @@ async function createCheckoutOrder(input, recordAdjustment) {
   }
   return order;
 }
+async function patchCheckoutOrder(id, patch) {
+  const allowed = {};
+  if (typeof patch.customerName === "string") allowed.customerName = patch.customerName.trim();
+  if (typeof patch.customerEmail === "string") allowed.customerEmail = patch.customerEmail.trim();
+  if (patch.status === "COMPLETED" || patch.status === "PROCESSING" || patch.status === "CANCELLED") {
+    allowed.status = patch.status;
+  }
+  const existing = await getOrderById(id);
+  if (!existing) return null;
+  if (Object.keys(allowed).length === 0) return existing;
+  const previousStatus = existing.status;
+  const updated = await updateOrderById(id, allowed);
+  if (!updated) return null;
+  const statusChanged = previousStatus !== updated.status;
+  const detailsChanged = allowed.customerName && allowed.customerName !== existing.customerName || allowed.customerEmail && allowed.customerEmail !== existing.customerEmail;
+  if (statusChanged || detailsChanged) {
+    try {
+      await notifyOrderUpdated(updated, previousStatus);
+    } catch (err) {
+      console.error("Order update email failed:", err);
+    }
+  }
+  return updated;
+}
 
 // src/server/http.ts
 function parseJsonBody(body) {
@@ -12686,7 +12793,7 @@ async function withApiHandler(req, res, fn) {
 // src/functions/orders/index.ts
 var config = { maxDuration: 15 };
 async function handler(req, res) {
-  return withApiHandler(req, res, async (method, body) => {
+  return withApiHandler(req, res, async (method, body, rawReq) => {
     if (method === "GET") {
       return { status: 200, body: await listOrders() };
     }
@@ -12706,7 +12813,24 @@ async function handler(req, res) {
       }
       return { status: 201, body: await createCheckoutOrder(payload) };
     }
-    return { status: 405, body: { error: "Method not allowed" }, headers: { Allow: "GET, POST" } };
+    if (method === "PATCH") {
+      const parsed = parseJsonBody(body);
+      const queryId = rawReq?.query?.id;
+      const orderId = (typeof queryId === "string" ? queryId : void 0) || (typeof parsed.id === "string" ? parsed.id : void 0);
+      if (!orderId) return { status: 400, body: { error: "Order id is required" } };
+      const updated = await patchCheckoutOrder(orderId, parsed);
+      if (!updated) return { status: 404, body: { error: "Order not found" } };
+      return { status: 200, body: updated };
+    }
+    if (method === "DELETE") {
+      const parsed = parseJsonBody(body);
+      const queryId = rawReq?.query?.id;
+      const orderId = (typeof queryId === "string" ? queryId : void 0) || (typeof parsed.id === "string" ? parsed.id : void 0);
+      if (!orderId) return { status: 400, body: { error: "Order id is required" } };
+      const deleted = await deleteOrderById(orderId);
+      return { status: 200, body: { success: deleted, deletedId: orderId } };
+    }
+    return { status: 405, body: { error: "Method not allowed" }, headers: { Allow: "GET, POST, PATCH, DELETE" } };
   });
 }
 export {

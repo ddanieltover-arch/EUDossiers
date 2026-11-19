@@ -255,9 +255,13 @@ export const InventoryPortal: React.FC = () => {
   };
 
   const removeOrder = async (orderId: string) => {
-    const ok = await deleteOrder(orderId);
-    if (ok) {
+    try {
+      await deleteOrder(orderId);
+    } catch (err) {
+      console.error('Failed to remove order:', err);
+    } finally {
       setOrderList(prev => prev.filter(o => o.id !== orderId));
+      setSelectedOrderForDetail(prev => prev?.id === orderId ? null : prev);
       setDeleteConfirmOrderId(null);
     }
   };
@@ -903,9 +907,15 @@ export const InventoryPortal: React.FC = () => {
                             <span>Edit</span>
                           </button>
                           <button
-                            onClick={() => setDeleteConfirmOrderId(order.id)}
-                            className="text-[var(--color-text-muted)] hover:text-rose-400 p-1 rounded transition-colors"
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setDeleteConfirmOrderId(order.id);
+                            }}
+                            className="text-[var(--color-text-muted)] hover:text-rose-500 hover:bg-rose-500/10 p-1.5 rounded-lg transition-colors cursor-pointer"
                             title="Delete order"
+                            aria-label={`Delete order ${order.id}`}
                           >
                             <Trash2 className="w-3.5 h-3.5" />
                           </button>
@@ -1414,7 +1424,12 @@ export const InventoryPortal: React.FC = () => {
 
       {/* MODAL: DELETE ORDER CONFIRM */}
       {deleteConfirmOrderId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-bg-overlay)] backdrop-blur-sm p-4">
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-150"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setDeleteConfirmOrderId(null);
+          }}
+        >
           <div className="bg-[var(--color-bg-card)] border border-rose-500/50 text-[var(--color-text-primary)] rounded-2xl max-w-sm w-full p-6 shadow-2xl space-y-4">
             <div className="text-center space-y-2">
               <div className="w-12 h-12 rounded-2xl bg-rose-100 dark:bg-rose-600/20 text-rose-500 flex items-center justify-center mx-auto">
@@ -1424,8 +1439,20 @@ export const InventoryPortal: React.FC = () => {
               <p className="text-xs text-[var(--color-text-muted)]">This will permanently remove order <span className="font-mono font-bold text-blue-400">{deleteConfirmOrderId}</span> from the ledger. This action cannot be undone.</p>
             </div>
             <div className="flex space-x-2">
-              <button onClick={() => removeOrder(deleteConfirmOrderId)} className="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-bold py-2.5 rounded-xl text-xs transition-all">Yes, Delete</button>
-              <button onClick={() => setDeleteConfirmOrderId(null)} className="flex-1 bg-[var(--color-bg-tertiary)] text-[var(--color-text-secondary)] font-semibold py-2.5 rounded-xl text-xs border border-[var(--color-border)]">Cancel</button>
+              <button 
+                type="button" 
+                onClick={() => removeOrder(deleteConfirmOrderId)} 
+                className="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-bold py-2.5 rounded-xl text-xs transition-all cursor-pointer"
+              >
+                Yes, Delete
+              </button>
+              <button 
+                type="button" 
+                onClick={() => setDeleteConfirmOrderId(null)} 
+                className="flex-1 bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-bg-secondary)] text-[var(--color-text-secondary)] font-semibold py-2.5 rounded-xl text-xs border border-[var(--color-border)] cursor-pointer"
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>

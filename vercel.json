@@ -11,6 +11,8 @@
     }
   },
   "rewrites": [
+    { "source": "/api/orders/:id", "destination": "/api/orders/[id].js" },
+    { "source": "/api/products/:id", "destination": "/api/products/[id].js" },
     { "source": "/api/:path*", "destination": "/api/:path*" },
     { "source": "/catalogue/:file.:ext", "destination": "/catalogue/:file.:ext" },
     {
