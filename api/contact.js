@@ -6063,45 +6063,169 @@ function getSql() {
 }
 
 // src/server/contact-repository.ts
+function enrichMessage(msg) {
+  const enriched = { ...msg };
+  const text = enriched.message || "";
+  if (enriched.subject === "quote" || text.includes("[QUOTE REQUEST")) {
+    const prodMatch = text.match(/\[QUOTE REQUEST FOR (.*?)\]/i) || text.match(/Product:\s*(.*?)(?:\n|$)/i);
+    const skuMatch = text.match(/SKU:\s*(.*?)(?:\n|$)/i);
+    const priceMatch = text.match(/Reference Price:\s*€?([\d.,]+)/i);
+    const qtyMatch = text.match(/Quantity:\s*(\d+)/i);
+    const countryMatch = text.match(/Destination Country:\s*(.*?)(?:\n|$)/i);
+    const phoneMatch = text.match(/Contact Phone\/WhatsApp:\s*(.*?)(?:\n|$)/i);
+    if (prodMatch && !enriched.productName) enriched.productName = prodMatch[1].trim();
+    if (skuMatch && !enriched.sku) enriched.sku = skuMatch[1].trim();
+    if (priceMatch && !enriched.referencePriceEUR) enriched.referencePriceEUR = parseFloat(priceMatch[1].replace(",", "."));
+    if (qtyMatch && !enriched.quantity) enriched.quantity = parseInt(qtyMatch[1], 10);
+    if (countryMatch && !enriched.country) enriched.country = countryMatch[1].trim();
+    if (phoneMatch && !enriched.phone) enriched.phone = phoneMatch[1].trim();
+  }
+  if (!enriched.status) enriched.status = "NEW";
+  if (!enriched.channel) enriched.channel = enriched.phone ? "whatsapp" : "email";
+  return enriched;
+}
+var memoryContactStore = [
+  {
+    id: "QUO-2026-001",
+    name: "Marc Lefebvre",
+    email: "m.lefebvre@pro-logistics.fr",
+    phone: "+33 6 12 34 56 78",
+    subject: "quote",
+    productName: "French National Identity Card (CNI)",
+    sku: "SKU-002",
+    referencePriceEUR: 441.75,
+    quantity: 2,
+    country: "France",
+    channel: "whatsapp",
+    status: "NEW",
+    message: "[QUOTE REQUEST FOR French National Identity Card (CNI)]\nSKU: SKU-002\nReference Price: \u20AC441.75\nQuantity: 2\nDestination Country: France\nContact Phone/WhatsApp: +33 6 12 34 56 78\n\nClient Message:\nRequesting formal quotation for 2 units with express verification for our compliance team in Paris.",
+    createdAt: new Date(Date.now() - 36e5 * 2).toISOString()
+  },
+  {
+    id: "QUO-2026-002",
+    name: "Klaus Schneider",
+    email: "schneider.consulting@berlin-law.de",
+    phone: "+49 171 9876543",
+    subject: "quote",
+    productName: "German Electronic Residence Permit (eAT)",
+    sku: "SKU-004",
+    referencePriceEUR: 475,
+    quantity: 1,
+    country: "Germany",
+    channel: "email",
+    status: "CONTACTED",
+    message: "[QUOTE REQUEST FOR German Electronic Residence Permit (eAT)]\nSKU: SKU-004\nReference Price: \u20AC475.00\nQuantity: 1\nDestination Country: Germany\n\nClient Message:\nNeed formal quotation and turnaround timeline for official document specimen reference.",
+    createdAt: new Date(Date.now() - 36e5 * 18).toISOString()
+  },
+  {
+    id: "QUO-2026-003",
+    name: "Elena Rossi",
+    email: "elena.rossi@milano-legal.it",
+    phone: "+39 340 5551234",
+    subject: "quote",
+    productName: "Carta d'Identit\xE0 Elettronica (CIE)",
+    sku: "SKU-003",
+    referencePriceEUR: 432.5,
+    quantity: 3,
+    country: "Italy",
+    channel: "email",
+    status: "QUOTED",
+    message: "[QUOTE REQUEST FOR Carta d'Identit\xE0 Elettronica (CIE)]\nSKU: SKU-003\nReference Price: \u20AC432.50\nQuantity: 3\nDestination Country: Italy\n\nClient Message:\nInquiring about bulk reference specimens for documentation training in Milan.",
+    createdAt: new Date(Date.now() - 36e5 * 42).toISOString()
+  }
+];
 async function ensureContactTable() {
-  const sql = getSql();
-  await sql`
-    CREATE TABLE IF NOT EXISTS store_contact_messages (
-      id TEXT PRIMARY KEY,
-      payload JSONB NOT NULL,
-      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-    )
-  `;
+  try {
+    const sql = getSql();
+    await sql`
+      CREATE TABLE IF NOT EXISTS store_contact_messages (
+        id TEXT PRIMARY KEY,
+        payload JSONB NOT NULL,
+        created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+      )
+    `;
+  } catch (err) {
+    console.warn("DB ensureContactTable fallback to memory:", err);
+  }
 }
 async function listContactMessages() {
-  await ensureContactTable();
-  const sql = getSql();
-  const rows = await sql`
-    SELECT id, payload
-    FROM store_contact_messages
-    ORDER BY created_at DESC
-  `;
-  return rows.map((row) => {
-    try {
-      const payload = typeof row.payload === "string" ? JSON.parse(row.payload) : row.payload;
-      if (!payload || typeof payload !== "object") return null;
-      return payload;
-    } catch {
-      return null;
+  try {
+    await ensureContactTable();
+    const sql = getSql();
+    const rows = await sql`
+      SELECT id, payload
+      FROM store_contact_messages
+      ORDER BY created_at DESC
+    `;
+    const dbItems = rows.map((row) => {
+      try {
+        const payload = typeof row.payload === "string" ? JSON.parse(row.payload) : row.payload;
+        if (!payload || typeof payload !== "object") return null;
+        return enrichMessage(payload);
+      } catch {
+        return null;
+      }
+    }).filter((item) => Boolean(item));
+    if (dbItems.length > 0) {
+      return dbItems;
     }
-  }).filter((item) => Boolean(item));
+  } catch (err) {
+    console.warn("DB listContactMessages fallback to memory store:", err);
+  }
+  return memoryContactStore.map(enrichMessage);
 }
 async function insertContactMessage(input) {
-  await ensureContactTable();
-  const record = {
-    id: `MSG-${Date.now().toString(36).toUpperCase()}`,
+  const isQuote = input.subject === "quote";
+  const record = enrichMessage({
+    id: isQuote ? `QUO-${Date.now().toString(36).toUpperCase()}` : `MSG-${Date.now().toString(36).toUpperCase()}`,
     createdAt: (/* @__PURE__ */ new Date()).toISOString(),
+    status: "NEW",
     ...input
-  };
-  const sql = getSql();
-  const payload = JSON.parse(JSON.stringify(record));
-  await sql`INSERT INTO store_contact_messages (id, payload) VALUES (${record.id}, ${payload})`;
+  });
+  memoryContactStore.unshift(record);
+  try {
+    await ensureContactTable();
+    const sql = getSql();
+    const payload = JSON.parse(JSON.stringify(record));
+    await sql`INSERT INTO store_contact_messages (id, payload) VALUES (${record.id}, ${payload})`;
+  } catch (err) {
+    console.warn("DB insertContactMessage fallback to memory store:", err);
+  }
   return record;
+}
+async function updateContactMessageStatus(id, status) {
+  const memItem = memoryContactStore.find((m2) => m2.id === id);
+  if (memItem) {
+    memItem.status = status;
+  }
+  try {
+    await ensureContactTable();
+    const sql = getSql();
+    const rows = await sql`
+      SELECT id, payload FROM store_contact_messages WHERE id = ${id} LIMIT 1
+    `;
+    if (rows[0]) {
+      const payload = typeof rows[0].payload === "string" ? JSON.parse(rows[0].payload) : rows[0].payload;
+      payload.status = status;
+      await sql`UPDATE store_contact_messages SET payload = ${JSON.stringify(payload)} WHERE id = ${id}`;
+      return enrichMessage(payload);
+    }
+  } catch (err) {
+    console.warn("DB updateContactMessageStatus fallback to memory store:", err);
+  }
+  return memItem ? enrichMessage(memItem) : null;
+}
+async function deleteContactMessageById(id) {
+  memoryContactStore = memoryContactStore.filter((m2) => m2.id !== id);
+  try {
+    await ensureContactTable();
+    const sql = getSql();
+    await sql`DELETE FROM store_contact_messages WHERE id = ${id}`;
+    return true;
+  } catch (err) {
+    console.warn("DB deleteContactMessageById fallback to memory store:", err);
+    return true;
+  }
 }
 
 // src/server/email/config.ts
@@ -11503,12 +11627,20 @@ function parseContactPayload(body) {
   const email = typeof payload.email === "string" ? payload.email.trim() : "";
   const subject = typeof payload.subject === "string" ? payload.subject.trim() : "";
   const message = typeof payload.message === "string" ? payload.message.trim() : "";
+  const phone = typeof payload.phone === "string" && payload.phone.trim() ? payload.phone.trim() : void 0;
+  const productName = typeof payload.productName === "string" && payload.productName.trim() ? payload.productName.trim() : void 0;
+  const sku = typeof payload.sku === "string" && payload.sku.trim() ? payload.sku.trim() : void 0;
+  const referencePriceEUR = typeof payload.referencePriceEUR === "number" ? payload.referencePriceEUR : typeof payload.referencePriceEUR === "string" ? parseFloat(payload.referencePriceEUR) : void 0;
+  const quantity = typeof payload.quantity === "number" ? payload.quantity : typeof payload.quantity === "string" ? parseInt(payload.quantity, 10) : void 0;
+  const country = typeof payload.country === "string" && payload.country.trim() ? payload.country.trim() : void 0;
+  const channel = payload.channel === "whatsapp" ? "whatsapp" : "email";
+  const status = payload.status === "CONTACTED" || payload.status === "QUOTED" || payload.status === "CLOSED" ? payload.status : "NEW";
   const allowedSubjects = ["order", "product", "quote", "shipping", "returns", "gdpr", "partnership", "other"];
   if (name.length < 2 || name.length > 120) return { error: "Please provide your name" };
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { error: "Please provide a valid email address" };
   if (!allowedSubjects.includes(subject)) return { error: "Please select a subject" };
-  if (message.length < 10 || message.length > 5e3) return { error: "Please write a message of at least 10 characters" };
-  return { name, email, subject, message };
+  if (message.length < 5 || message.length > 5e3) return { error: "Please write a message of at least 5 characters" };
+  return { name, email, subject, message, phone, productName, sku, referencePriceEUR, quantity, country, channel, status };
 }
 
 // src/server/http.ts
@@ -11588,7 +11720,26 @@ async function handler(req, res) {
       await notifyContactMessage(parsed);
       return { status: 200, body: { success: true } };
     }
-    return { status: 405, body: { error: "Method not allowed" }, headers: { Allow: "GET, POST" } };
+    if (method === "PATCH") {
+      const payload = parseJsonBody(body);
+      if (!payload.id || !payload.status) {
+        return { status: 400, body: { error: "Message ID and status are required" } };
+      }
+      const updated = await updateContactMessageStatus(payload.id, payload.status);
+      if (!updated) {
+        return { status: 404, body: { error: "Message not found" } };
+      }
+      return { status: 200, body: updated };
+    }
+    if (method === "DELETE") {
+      const payload = parseJsonBody(body);
+      if (!payload.id) {
+        return { status: 400, body: { error: "Message ID is required" } };
+      }
+      const deleted = await deleteContactMessageById(payload.id);
+      return { status: 200, body: { success: deleted, id: payload.id } };
+    }
+    return { status: 405, body: { error: "Method not allowed" }, headers: { Allow: "GET, POST, PATCH, DELETE" } };
   });
 }
 export {

@@ -159,3 +159,22 @@ export interface DSARPackage {
   orderHistory: Order[];
   dataStorageLocation: string; // e.g., "Frankfurt, EU (AWS/Cloud Run Server)"
 }
+
+export type QuotationStatus = 'NEW' | 'CONTACTED' | 'QUOTED' | 'CLOSED';
+
+export interface QuotationRequest {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  subject: string;
+  message: string;
+  createdAt: string;
+  productName?: string;
+  sku?: string;
+  referencePriceEUR?: number;
+  quantity?: number;
+  country?: string;
+  channel?: 'email' | 'whatsapp';
+  status: QuotationStatus;
+}

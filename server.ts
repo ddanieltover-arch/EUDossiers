@@ -32,7 +32,7 @@ import {
   patchCheckoutOrder,
 } from './src/server/orders-service';
 import { notifyAdminGdpr, notifyContactMessage } from './src/server/email/notifications';
-import { ensureContactTable, listContactMessages } from './src/server/contact-repository';
+import { ensureContactTable, listContactMessages, updateContactMessageStatus, deleteContactMessageById } from './src/server/contact-repository';
 
 // In-memory data store for server session persistence (non-catalogue)
 let stockAdjustmentsStore: StockAdjustment[] = [...INITIAL_STOCK_ADJUSTMENTS];
@@ -315,6 +315,37 @@ async function startServer() {
     } catch (err) {
       console.error('Failed to send contact emails:', err);
       res.status(500).json({ error: 'Failed to send your message. Please try again or email us directly.' });
+    }
+  });
+
+  app.patch('/api/contact', async (req: Request, res: Response) => {
+    try {
+      const { id, status } = req.body || {};
+      if (!id || !status) {
+        return res.status(400).json({ error: 'Message ID and status are required' });
+      }
+      const updated = await updateContactMessageStatus(id, status);
+      if (!updated) {
+        return res.status(404).json({ error: 'Message not found' });
+      }
+      res.json(updated);
+    } catch (err) {
+      console.error('Failed to update message status:', err);
+      res.status(500).json({ error: 'Failed to update message' });
+    }
+  });
+
+  app.delete('/api/contact', async (req: Request, res: Response) => {
+    try {
+      const { id } = req.body || {};
+      if (!id) {
+        return res.status(400).json({ error: 'Message ID is required' });
+      }
+      const deleted = await deleteContactMessageById(id);
+      res.json({ success: deleted, id });
+    } catch (err) {
+      console.error('Failed to delete message:', err);
+      res.status(500).json({ error: 'Failed to delete message' });
     }
   });
 

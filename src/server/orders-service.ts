@@ -146,6 +146,14 @@ export function parseContactPayload(body: unknown): {
   email: string;
   subject: string;
   message: string;
+  phone?: string;
+  productName?: string;
+  sku?: string;
+  referencePriceEUR?: number;
+  quantity?: number;
+  country?: string;
+  channel?: 'email' | 'whatsapp';
+  status?: 'NEW' | 'CONTACTED' | 'QUOTED' | 'CLOSED';
 } | { error: string } {
   if (!body || typeof body !== 'object') {
     return { error: 'Invalid request body' };
@@ -155,12 +163,20 @@ export function parseContactPayload(body: unknown): {
   const email = typeof payload.email === 'string' ? payload.email.trim() : '';
   const subject = typeof payload.subject === 'string' ? payload.subject.trim() : '';
   const message = typeof payload.message === 'string' ? payload.message.trim() : '';
+  const phone = typeof payload.phone === 'string' && payload.phone.trim() ? payload.phone.trim() : undefined;
+  const productName = typeof payload.productName === 'string' && payload.productName.trim() ? payload.productName.trim() : undefined;
+  const sku = typeof payload.sku === 'string' && payload.sku.trim() ? payload.sku.trim() : undefined;
+  const referencePriceEUR = typeof payload.referencePriceEUR === 'number' ? payload.referencePriceEUR : (typeof payload.referencePriceEUR === 'string' ? parseFloat(payload.referencePriceEUR) : undefined);
+  const quantity = typeof payload.quantity === 'number' ? payload.quantity : (typeof payload.quantity === 'string' ? parseInt(payload.quantity, 10) : undefined);
+  const country = typeof payload.country === 'string' && payload.country.trim() ? payload.country.trim() : undefined;
+  const channel = payload.channel === 'whatsapp' ? 'whatsapp' : 'email';
+  const status = (payload.status === 'CONTACTED' || payload.status === 'QUOTED' || payload.status === 'CLOSED') ? payload.status : 'NEW';
 
   const allowedSubjects = ['order', 'product', 'quote', 'shipping', 'returns', 'gdpr', 'partnership', 'other'];
   if (name.length < 2 || name.length > 120) return { error: 'Please provide your name' };
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { error: 'Please provide a valid email address' };
   if (!allowedSubjects.includes(subject)) return { error: 'Please select a subject' };
-  if (message.length < 10 || message.length > 5000) return { error: 'Please write a message of at least 10 characters' };
+  if (message.length < 5 || message.length > 5000) return { error: 'Please write a message of at least 5 characters' };
 
-  return { name, email, subject, message };
+  return { name, email, subject, message, phone, productName, sku, referencePriceEUR, quantity, country, channel, status };
 }

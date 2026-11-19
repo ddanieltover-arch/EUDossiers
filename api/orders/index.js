@@ -7078,6 +7078,58 @@ async function applyStockChange(productId, warehouseId, quantityChange) {
   });
 }
 
+// src/server/contact-repository.ts
+var memoryContactStore = [
+  {
+    id: "QUO-2026-001",
+    name: "Marc Lefebvre",
+    email: "m.lefebvre@pro-logistics.fr",
+    phone: "+33 6 12 34 56 78",
+    subject: "quote",
+    productName: "French National Identity Card (CNI)",
+    sku: "SKU-002",
+    referencePriceEUR: 441.75,
+    quantity: 2,
+    country: "France",
+    channel: "whatsapp",
+    status: "NEW",
+    message: "[QUOTE REQUEST FOR French National Identity Card (CNI)]\nSKU: SKU-002\nReference Price: \u20AC441.75\nQuantity: 2\nDestination Country: France\nContact Phone/WhatsApp: +33 6 12 34 56 78\n\nClient Message:\nRequesting formal quotation for 2 units with express verification for our compliance team in Paris.",
+    createdAt: new Date(Date.now() - 36e5 * 2).toISOString()
+  },
+  {
+    id: "QUO-2026-002",
+    name: "Klaus Schneider",
+    email: "schneider.consulting@berlin-law.de",
+    phone: "+49 171 9876543",
+    subject: "quote",
+    productName: "German Electronic Residence Permit (eAT)",
+    sku: "SKU-004",
+    referencePriceEUR: 475,
+    quantity: 1,
+    country: "Germany",
+    channel: "email",
+    status: "CONTACTED",
+    message: "[QUOTE REQUEST FOR German Electronic Residence Permit (eAT)]\nSKU: SKU-004\nReference Price: \u20AC475.00\nQuantity: 1\nDestination Country: Germany\n\nClient Message:\nNeed formal quotation and turnaround timeline for official document specimen reference.",
+    createdAt: new Date(Date.now() - 36e5 * 18).toISOString()
+  },
+  {
+    id: "QUO-2026-003",
+    name: "Elena Rossi",
+    email: "elena.rossi@milano-legal.it",
+    phone: "+39 340 5551234",
+    subject: "quote",
+    productName: "Carta d'Identit\xE0 Elettronica (CIE)",
+    sku: "SKU-003",
+    referencePriceEUR: 432.5,
+    quantity: 3,
+    country: "Italy",
+    channel: "email",
+    status: "QUOTED",
+    message: "[QUOTE REQUEST FOR Carta d'Identit\xE0 Elettronica (CIE)]\nSKU: SKU-003\nReference Price: \u20AC432.50\nQuantity: 3\nDestination Country: Italy\n\nClient Message:\nInquiring about bulk reference specimens for documentation training in Milan.",
+    createdAt: new Date(Date.now() - 36e5 * 42).toISOString()
+  }
+];
+
 // src/server/email/config.ts
 import fs from "fs";
 import path from "path";

@@ -37,6 +37,7 @@ import { useTranslation } from 'react-i18next';
 import { EU_COUNTRIES } from '../../data/mockData';
 import { downloadOfficialEuInvoice } from '../../utils/generateInvoicePdf';
 import { ComplianceRegisterView } from './ComplianceRegisterView';
+import { QuotationsLedgerView } from './QuotationsLedgerView';
 
 export const InventoryPortal: React.FC = () => {
   const { 
@@ -61,7 +62,17 @@ export const InventoryPortal: React.FC = () => {
   const [selectedStockFilter, setSelectedStockFilter] = useState<'all' | 'low' | 'out'>('all');
 
   // Admin Portal Tab Navigation
-  const [activeTab, setActiveTab] = useState<'overview' | 'inventory' | 'orders' | 'privacy' | 'audit' | 'compliance'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'inventory' | 'orders' | 'quotations' | 'privacy' | 'audit' | 'compliance'>('overview');
+  const [quoteCount, setQuoteCount] = useState<number>(0);
+
+  useEffect(() => {
+    fetch('/api/contact')
+      .then((res) => res.json())
+      .then((data) => {
+        if (Array.isArray(data)) setQuoteCount(data.length);
+      })
+      .catch(() => {});
+  }, []);
 
   // Orders Ledger state
   const [orderList, setOrderList] = useState<Order[]>(orders);
@@ -118,7 +129,10 @@ export const InventoryPortal: React.FC = () => {
   const outOfStockProducts = products.filter(p => p.totalStock <= 0);
 
   // Order Metrics
-  const totalGrossRevenueEUR = orderList.reduce((sum, o) => sum + o.totalEUR, 0);
+  const totalGrossRevenueEUR = orderList.reduce((sum, o) => {
+    const val = Number(o.totalEUR) || Number((o as any).total) || Number((o as any).totalAmount) || 0;
+    return sum + (isNaN(val) ? 0 : val);
+  }, 0);
   const completedOrdersCount = orderList.length;
 
   // Recharts Data Prep: Stock by Category
@@ -412,6 +426,16 @@ export const InventoryPortal: React.FC = () => {
         </button>
 
         <button
+          onClick={() => setActiveTab('quotations')}
+          className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
+            activeTab === 'quotations' ? 'bg-blue-600 text-[var(--color-text-primary)] shadow-md' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
+          }`}
+        >
+          <FileText className="w-4 h-4 text-emerald-400" />
+          <span>Quotations {quoteCount > 0 ? `(${quoteCount})` : ''}</span>
+        </button>
+
+        <button
           onClick={() => setActiveTab('privacy')}
           className={`flex-1 py-2.5 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 ${
             activeTab === 'privacy' ? 'bg-blue-600 text-[var(--color-text-primary)] shadow-md' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]'
@@ -507,6 +531,31 @@ export const InventoryPortal: React.FC = () => {
             </div>
 
           </div>
+
+          {quoteCount > 0 && (
+            <div className="bg-gradient-to-r from-emerald-950/40 via-[var(--color-bg-card)] to-[var(--color-bg-card)] border border-emerald-500/30 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+                  <FileText className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-xs sm:text-sm font-bold text-[var(--color-text-primary)]">
+                    Commercial Quotation Inquiries Active
+                  </h4>
+                  <p className="text-[11px] text-[var(--color-text-muted)] mt-0.5">
+                    {quoteCount} prospective client inquiries received via WhatsApp and direct catalogue request forms.
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setActiveTab('quotations')}
+                className="px-4 py-2 rounded-xl text-xs font-bold bg-[#04928F] hover:bg-[#037A77] text-white shadow-md shadow-[#04928F]/20 flex items-center space-x-1.5 transition-all shrink-0 cursor-pointer"
+              >
+                <span>Review Quotations Ledger</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
 
           {/* Live Orders Feed & Low Stock Alerts Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -870,6 +919,13 @@ export const InventoryPortal: React.FC = () => {
           </div>
 
         </div>
+      )}
+
+      {/* ========================================================================= */}
+      {/* TAB: COMMERCIAL QUOTATIONS & LEADS */}
+      {/* ========================================================================= */}
+      {activeTab === 'quotations' && (
+        <QuotationsLedgerView />
       )}
 
       {/* ========================================================================= */}

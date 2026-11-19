@@ -93,7 +93,15 @@ export const QuoteModal: React.FC = () => {
         body: JSON.stringify({
           name: name.trim(),
           email: email.trim(),
+          phone: phone.trim() || undefined,
           subject: 'quote',
+          productName: quoteProduct.name,
+          sku: quoteProduct.sku,
+          referencePriceEUR: quoteProduct.priceEUR,
+          quantity,
+          country,
+          channel: 'email',
+          status: 'NEW',
           message: composedMessage,
         }),
       });

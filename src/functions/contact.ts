@@ -1,7 +1,7 @@
 import { parseContactPayload } from '../server/orders-service';
 import { notifyContactMessage } from '../server/email/notifications';
-import { ensureContactTable, listContactMessages } from '../server/contact-repository';
-import { withApiHandler } from '../server/http';
+import { ensureContactTable, listContactMessages, updateContactMessageStatus, deleteContactMessageById } from '../server/contact-repository';
+import { parseJsonBody, withApiHandler } from '../server/http';
 
 export const config = { maxDuration: 15 };
 
@@ -19,6 +19,25 @@ export default async function handler(req: unknown, res: unknown) {
       await notifyContactMessage(parsed);
       return { status: 200, body: { success: true } };
     }
-    return { status: 405, body: { error: 'Method not allowed' }, headers: { Allow: 'GET, POST' } };
+    if (method === 'PATCH') {
+      const payload = parseJsonBody(body) as { id?: string; status?: any };
+      if (!payload.id || !payload.status) {
+        return { status: 400, body: { error: 'Message ID and status are required' } };
+      }
+      const updated = await updateContactMessageStatus(payload.id, payload.status);
+      if (!updated) {
+        return { status: 404, body: { error: 'Message not found' } };
+      }
+      return { status: 200, body: updated };
+    }
+    if (method === 'DELETE') {
+      const payload = parseJsonBody(body) as { id?: string };
+      if (!payload.id) {
+        return { status: 400, body: { error: 'Message ID is required' } };
+      }
+      const deleted = await deleteContactMessageById(payload.id);
+      return { status: 200, body: { success: deleted, id: payload.id } };
+    }
+    return { status: 405, body: { error: 'Method not allowed' }, headers: { Allow: 'GET, POST, PATCH, DELETE' } };
   });
 }
