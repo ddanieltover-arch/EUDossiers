@@ -14,7 +14,7 @@ import { isProductUnderComplianceReview } from '../data/compliancePolicy';
 const ProductPage: React.FC = () => {
   const { productSlug } = useParams<{ productSlug: string }>();
   const navigate = useNavigate();
-  const { products, isLoadingProducts, addToCart, setIsCartOpen, formatPriceEUR, setSearchQuery } = useStore();
+  const { products, isLoadingProducts, addToCart, setIsCartOpen, formatPriceEUR, setSearchQuery, openQuoteModal } = useStore();
   const { t, i18n } = useTranslation('common');
 
   const [quantity, setQuantity] = useState<number>(1);
@@ -439,18 +439,19 @@ const ProductPage: React.FC = () => {
                 <div className="p-4 bg-amber-500/10 border border-amber-500/30 rounded-2xl flex items-start space-x-3 text-xs text-amber-300">
                   <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                   <div className="space-y-1">
-                    <strong className="text-amber-200 font-bold block text-sm">Compliance Review Notice</strong>
+                    <strong className="text-amber-200 font-bold block text-sm">Direct Ordering Under Review</strong>
                     <p className="leading-relaxed text-amber-300/90">
-                      This catalogue listing is currently undergoing compliance review and is temporarily unavailable for commercial ordering. Administrative specifications and informational reference details remain accessible below.
+                      Standard automated checkout is paused while this item undergoes compliance review. You can request a personalized quotation and official dossier specifications directly via WhatsApp or email.
                     </p>
                   </div>
                 </div>
                 <button
-                  disabled
-                  className="w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] border border-[var(--color-border)] cursor-not-allowed flex items-center justify-center space-x-2"
+                  type="button"
+                  onClick={() => openQuoteModal(product)}
+                  className="w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-[#04928F] hover:bg-[#037A77] text-white shadow-md shadow-[#04928F]/25 hover:shadow-[#04928F]/40 flex items-center justify-center space-x-2 transition-all cursor-pointer hover:scale-[1.01] active:scale-[0.99]"
                 >
-                  <AlertTriangle className="w-4 h-4 text-amber-400" />
-                  <span>Temporarily Unavailable (Compliance Review)</span>
+                  <FileText className="w-4 h-4" />
+                  <span>{t('actions.getQuote', { defaultValue: 'Get a Quote' })}</span>
                 </button>
               </div>
             ) : (

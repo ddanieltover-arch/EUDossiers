@@ -8,6 +8,7 @@ import { MobileBottomNav } from './components/MobileBottomNav';
 import { CartDrawer } from './components/CartDrawer';
 import { OrderSuccessModal } from './components/OrderSuccessModal';
 import { LanguageModal } from './components/LanguageModal';
+import { QuoteModal } from './components/QuoteModal';
 import { GDPRBanner } from './components/GDPRBanner';
 import { FloatingActions } from './components/FloatingActions';
 import { TawkWidget } from './components/TawkWidget';
@@ -78,6 +79,7 @@ const AppContent: React.FC = () => {
       <CartDrawer />
       <OrderSuccessModal />
       <LanguageModal />
+      <QuoteModal />
       <GDPRBanner />
       <FloatingActions />
       <TawkWidget />

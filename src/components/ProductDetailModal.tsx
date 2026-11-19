@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { X, ShoppingBag, ShieldCheck, Warehouse, MapPin, Tag, Truck, Check, AlertTriangle, Zap } from 'lucide-react';
+import { X, ShoppingBag, ShieldCheck, Warehouse, MapPin, Tag, Truck, Check, AlertTriangle, Zap, FileText } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 import { getLocalizedProductName } from '../data/productNameTranslations';
 import { getLocalizedProductDescription } from '../data/productDescriptionTranslations';
@@ -14,6 +14,7 @@ export const ProductDetailModal: React.FC = () => {
     addToCart, 
     setIsCartOpen,
     formatPriceEUR,
+    openQuoteModal,
   } = useStore();
   const { t, i18n } = useTranslation('common');
 
@@ -197,11 +198,15 @@ export const ProductDetailModal: React.FC = () => {
                     </div>
                   </div>
                   <button
-                    disabled
-                    className="w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-semibold bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] border border-[var(--color-border)] cursor-not-allowed flex items-center justify-center space-x-2"
+                    type="button"
+                    onClick={() => {
+                      setSelectedProductForDetail(null);
+                      openQuoteModal(product);
+                    }}
+                    className="w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold bg-[#04928F] hover:bg-[#037A77] text-white shadow-md shadow-[#04928F]/25 flex items-center justify-center space-x-2 transition-all cursor-pointer"
                   >
-                    <AlertTriangle className="w-4 h-4 text-amber-400" />
-                    <span>Temporarily Unavailable (Compliance Review)</span>
+                    <FileText className="w-4 h-4" />
+                    <span>{t('actions.getQuote', { defaultValue: 'Get a Quote' })}</span>
                   </button>
                 </div>
               ) : (

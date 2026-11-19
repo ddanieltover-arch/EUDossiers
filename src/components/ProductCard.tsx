@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShoppingBag, Eye, AlertTriangle } from 'lucide-react';
+import { ShoppingBag, Eye, AlertTriangle, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Product } from '../types';
@@ -14,7 +14,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { addToCart, formatPriceEUR, setSearchQuery } = useStore();
+  const { addToCart, formatPriceEUR, setSearchQuery, openQuoteModal } = useStore();
   const { t } = useTranslation('common');
   const localizedName = useLocalizedProductName(product);
   const localizedDescription = useLocalizedProductDescription(product);
@@ -158,26 +158,39 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             {t('product.includesVat')}
           </p>
 
-          <button
-            onClick={() => {
-              if (canPurchase) addToCart(product);
-            }}
-            disabled={!canPurchase}
-            className={`w-full py-2.5 px-4 rounded-xl text-xs font-semibold inline-flex items-center justify-center gap-2 whitespace-nowrap transition-all ${
-              !canPurchase
-                ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed border border-[var(--color-border)]'
-                : 'bg-blue-600 hover:bg-blue-500 text-white shadow-md shadow-blue-600/20'
-            }`}
-          >
-            <ShoppingBag className="w-3.5 h-3.5 shrink-0" />
-            <span>
-              {isUnderReview
-                ? 'Under Review'
-                : isOutOfStock
-                ? t('product.outOfStock')
-                : t('actions.addToCart')}
-            </span>
-          </button>
+          {isUnderReview ? (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                openQuoteModal(product);
+              }}
+              className="w-full py-2.5 px-4 rounded-xl text-xs font-bold inline-flex items-center justify-center gap-2 whitespace-nowrap transition-all bg-[#04928F] hover:bg-[#037A77] text-white shadow-md shadow-[#04928F]/25 hover:shadow-[#04928F]/40 hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+            >
+              <FileText className="w-3.5 h-3.5 shrink-0" />
+              <span>{t('actions.getQuote', { defaultValue: 'Get a Quote' })}</span>
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                if (canPurchase) addToCart(product);
+              }}
+              disabled={!canPurchase}
+              className={`w-full py-2.5 px-4 rounded-xl text-xs font-semibold inline-flex items-center justify-center gap-2 whitespace-nowrap transition-all ${
+                !canPurchase
+                  ? 'bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] cursor-not-allowed border border-[var(--color-border)]'
+                  : 'bg-blue-600 hover:bg-blue-500 text-white shadow-md shadow-blue-600/20'
+              }`}
+            >
+              <ShoppingBag className="w-3.5 h-3.5 shrink-0" />
+              <span>
+                {isOutOfStock
+                  ? t('product.outOfStock')
+                  : t('actions.addToCart')}
+              </span>
+            </button>
+          )}
         </div>
       </div>
     </div>

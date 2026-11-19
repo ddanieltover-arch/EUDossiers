@@ -29,7 +29,7 @@ export const HomepageFeatured: React.FC = () => {
       
       <div className="flex flex-col md:flex-row md:items-end justify-between border-b border-[var(--color-border)] pb-5 gap-4">
         <div>
-          <div className="inline-flex items-center space-x-1.5 bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 border border-blue-300 dark:border-blue-800/60 px-3 py-1 rounded-full text-xs font-semibold mb-2">
+          <div className="inline-flex items-center space-x-1.5 bg-blue-50 dark:bg-blue-900/50 text-blue-600 dark:text-blue-200 border border-blue-300 dark:border-blue-700/60 px-3 py-1 rounded-full text-xs font-semibold mb-2">
             <Sparkles className="w-3.5 h-3.5" />
             <span>{t('home:featured.badge')}</span>
           </div>

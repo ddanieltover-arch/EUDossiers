@@ -156,7 +156,7 @@ export function parseContactPayload(body: unknown): {
   const subject = typeof payload.subject === 'string' ? payload.subject.trim() : '';
   const message = typeof payload.message === 'string' ? payload.message.trim() : '';
 
-  const allowedSubjects = ['order', 'product', 'shipping', 'returns', 'gdpr', 'partnership', 'other'];
+  const allowedSubjects = ['order', 'product', 'quote', 'shipping', 'returns', 'gdpr', 'partnership', 'other'];
   if (name.length < 2 || name.length > 120) return { error: 'Please provide your name' };
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return { error: 'Please provide a valid email address' };
   if (!allowedSubjects.includes(subject)) return { error: 'Please select a subject' };

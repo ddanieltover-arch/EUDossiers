@@ -79,6 +79,12 @@ interface StoreContextType {
   setCurrentCompletedOrder: (order: Order | null) => void;
   isLanguageModalOpen: boolean;
   setIsLanguageModalOpen: (open: boolean) => void;
+  isQuoteModalOpen: boolean;
+  setIsQuoteModalOpen: (open: boolean) => void;
+  quoteProduct: Product | null;
+  setQuoteProduct: (product: Product | null) => void;
+  openQuoteModal: (product: Product) => void;
+  closeQuoteModal: () => void;
 }
 
 const StoreContext = createContext<StoreContextType | undefined>(undefined);
@@ -99,6 +105,17 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [isLanguageModalOpen, setIsLanguageModalOpen] = useState<boolean>(false);
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState<boolean>(false);
+  const [quoteProduct, setQuoteProduct] = useState<Product | null>(null);
+
+  const openQuoteModal = (product: Product) => {
+    setQuoteProduct(product);
+    setIsQuoteModalOpen(true);
+  };
+
+  const closeQuoteModal = () => {
+    setIsQuoteModalOpen(false);
+  };
 
   // GDPR & Audit logs
   const [gdprPreferences, setGdprPreferences] = useState<GDPRPreferences>({
@@ -570,6 +587,12 @@ export const StoreProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         setCurrentCompletedOrder,
         isLanguageModalOpen,
         setIsLanguageModalOpen,
+        isQuoteModalOpen,
+        setIsQuoteModalOpen,
+        quoteProduct,
+        setQuoteProduct,
+        openQuoteModal,
+        closeQuoteModal,
       }}
     >
       {children}
